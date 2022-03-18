@@ -89,11 +89,12 @@ keymap("n", "<C-j>", "<c-w>j", opts)
 keymap("n", "<C-k>", "<c-w>k", opts)
 keymap("n", "<C-h>", "<c-w>h", opts)
 keymap("n", "<C-l>", "<c-w>l", opts)
--- Terminal Hopping
+-- Terminal Hopping / Mapping
 keymap("t", "<C-j>", "<C-\\><C-N><C-W>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-W>k", opts)
 keymap("t", "<C-h>", "<C-\\><C-N><C-W>h", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-W>l", opts)
+keymap("t", "<A-l>", "<C-l>", opts) --> clear
 -- Split Windows
 keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
 keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
