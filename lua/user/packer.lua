@@ -12,7 +12,7 @@ if not status_ok then
 end
 
 -- Install your plugins here
-return require('packer').startup(function()
+return require('packer').startup(function(use)
 
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
