@@ -22,6 +22,8 @@ keymap("n", "<S-l>", ":bprevious<cr>", opts)
 
 -- Cursor Movement Mappings
 keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
+keymap("n", "<A-J>", "2<C-e>2j", opts)
+keymap("n", "<A-K>", "2<C-y>2k", opts)
 keymap("n", "<A-j>", "2j", opts)
 keymap("n", "<A-k>", "2k", opts)
 
