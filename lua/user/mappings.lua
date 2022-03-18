@@ -65,9 +65,9 @@ keymap("n", "e", "w", opts)
 keymap("n", "b", "e", opts)
 
 -- Comment Remaps
-keymap("n", "<C-_>", "gcc", term_opts)
-keymap("i", "<C-_>", "<Esc>gcc", term_opts)
-keymap("v", "<C-_>", "gc", term_opts)
+keymap("n", "<C-_>", "gcc", opts)
+keymap("i", "<C-_>", "<Esc>gcc", opts)
+keymap("v", "<C-_>", "gc", opts)
 
 -- Insert Mode Remap
 keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word

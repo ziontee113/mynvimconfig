@@ -3,6 +3,9 @@ return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
+  -- Toggle Terminal
+  use 'akinsho/toggleterm.nvim'
+
 	-- Telescope
 	use 'nvim-lua/plenary.nvim'
 	use 'nvim-telescope/telescope.nvim'
