@@ -33,10 +33,11 @@ return require('packer').startup(function()
   use 'gruvbox-community/gruvbox'
   use 'folke/tokyonight.nvim'
 
-
-  -- NVIM CMP Autocomplete
+  -- LSP
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
+
+  -- NVIM CMP Autocomplete
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
