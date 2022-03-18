@@ -23,3 +23,7 @@ require("toggleterm").setup({
 	persist_size = true,
 	direction = "horizontal",
 })
+
+
+-- Comment.nvim --
+require('Comment').setup()
