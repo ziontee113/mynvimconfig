@@ -39,6 +39,13 @@ keymap("n", "vv", "viw", opts)
 keymap("n", "vV", "viW", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+--Moving Lines
+keymap("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", opts)
+keymap("i", "<A-Up>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("n", "<A-Down>", ":m .+1<CR>==", opts)
+keymap("n", "<A-Up>", ":m .-2<CR>==", opts)
+keymap("v", "<A-Down>", "'>+1<CR>gv=gv", opts)
+keymap("v", "<A-Up>", "'<-2<CR>gv=gv", opts)
 
 -- w,e,b (Wordwise Motions) remaps
 keymap("v", "W", "B", opts)
@@ -60,7 +67,7 @@ keymap("i", "<C-_>", "<Esc>gcc", term_opts)
 keymap("v", "<C-_>", "gc", term_opts)
 
 -- Insert Mode Remap
-keymap("i", "<C-u>", "<Esc>viWgUWa", opts) --> go UPPERCASE current word
+keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word
 keymap("i", "<C-l>", "<right>", opts)
 keymap("i", "<C-h>", "<left>", opts)
 
