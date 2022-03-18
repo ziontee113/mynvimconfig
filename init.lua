@@ -1,7 +1,7 @@
-require('packer-config')
-
+require('user.packer')
 require('user.settings')
 require('user.mappings')
+require('user.cmp')
 
 -- NVIM-Tree --
 require('nvim-tree').setup{
