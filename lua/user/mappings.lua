@@ -22,10 +22,12 @@ keymap("n", "<S-l>", ":bprevious<cr>", opts)
 
 -- Cursor Movement Mappings
 keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
-keymap("n", "<A-J>", "2<C-e>2j", opts)
-keymap("n", "<A-K>", "2<C-y>2k", opts)
-keymap("n", "<A-j>", "2j", opts)
-keymap("n", "<A-k>", "2k", opts)
+--keymap("n", "<A-J>", "2<C-e>jj", opts) --> these motions brings motion sickness
+--keymap("n", "<A-K>", "2<C-y>kk", opts)
+--keymap("n", "<A-J>", "2jzz", opts)
+--keymap("n", "<A-K>", "2kzz", opts)
+keymap("n", "<A-j>", "jj", opts)
+keymap("n", "<A-k>", "kk", opts)
 
 -- New Lines in Normal Mode
 keymap("n", "<A-o>", "o<Esc>", opts)
