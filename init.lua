@@ -1,4 +1,5 @@
 require('packer-config')
+
 require('user.settings')
 require('user.mappings')
 

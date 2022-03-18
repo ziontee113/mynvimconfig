@@ -30,3 +30,5 @@ set.undofile = true
 
 set.splitright = true
 set.splitbelow = true
+
+set.timeoutlen = 500
