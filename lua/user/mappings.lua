@@ -110,6 +110,7 @@ keymap("n", "<leader>s", "<c-w>s<c-w>j", opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 -- Telescope
+keymap("n", "<leader>F", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-p>", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-g>", ":Telescope live_grep<cr>", opts)

@@ -2,6 +2,7 @@ require('user.packer')
 require('user.settings')
 require('user.cmp')
 require('user.lsp')
+require('user.treesitter')
 require('user.telescope')
 require('user.mappings')
 

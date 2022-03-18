@@ -33,6 +33,9 @@ return require('packer').startup(function(use)
   use 'gruvbox-community/gruvbox'
   use 'folke/tokyonight.nvim'
 
+  -- Tree Sitter
+  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
