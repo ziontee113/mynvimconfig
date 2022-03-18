@@ -32,3 +32,4 @@ set.splitright = true
 set.splitbelow = true
 
 set.timeoutlen = 500
+set.cursorline = true
