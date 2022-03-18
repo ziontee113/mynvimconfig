@@ -37,8 +37,11 @@ keymap("n", "gp", '"*p', opts)
 -- Visual Mode remaps
 keymap("n", "vv", "viw", opts)
 keymap("n", "vV", "viW", opts)
+--
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+keymap("v", "p", "'_dP", opts)
+
 --Moving Lines
 keymap("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("i", "<A-Up>", "<Esc>:m .-2<CR>==gi", opts)
