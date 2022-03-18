@@ -3,6 +3,7 @@ require('user.settings')
 require('user.mappings')
 require('user.cmp')
 require('user.lsp')
+require('user.telescope')
 
 -- NVIM-Tree --
 require('nvim-tree').setup{
