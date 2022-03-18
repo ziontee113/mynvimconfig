@@ -112,6 +112,7 @@ cmp.setup {
   sources = {
     { name = "luasnip" },
     { name = "nvim_lua" },
+    { name = "cmdline" },
     { name = "buffer" },
     { name = "path" },
   },
@@ -127,3 +128,10 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+-- CMP in /search  autocomplete in buffer
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
