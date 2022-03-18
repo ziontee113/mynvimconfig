@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
 
   -- Tree Sitter
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  use "p00f/nvim-ts-rainbow"
 
   -- LSP
   use 'neovim/nvim-lspconfig'
