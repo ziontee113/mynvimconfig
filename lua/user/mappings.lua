@@ -10,11 +10,20 @@ vim.g.maplocalleader = " "
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
+--keymap("i", "jk", "<Esc>", opts)
 --keymap("i", "jj", "<Esc>", opts)
 --keymap("i", "kk", "<Esc>", opts)
 
--- go to middle of the line
+-- Prev / Next Buffer
+keymap("n", "<Tab>", ":bnext<cr>", opts)
+keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
+keymap("n", "<S-h>", ":bnext<cr>", opts)
+keymap("n", "<S-l>", ":bprevious<cr>", opts)
+
+-- Cursor Movement Mappings
 keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
+keymap("n", "<A-j>", "2j", opts)
+keymap("n", "<A-k>", "2k", opts)
 
 -- New Lines in Normal Mode
 keymap("n", "<A-o>", "o<Esc>", opts)
@@ -28,6 +37,8 @@ keymap("n", "gp", '"*p', opts)
 -- Visual Mode remaps
 keymap("n", "vv", "viw", opts)
 keymap("n", "vV", "viW", opts)
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
 
 -- w,e,b (Wordwise Motions) remaps
 keymap("v", "W", "B", opts)
@@ -53,29 +64,28 @@ keymap("i", "<C-u>", "<Esc>viWgUWa", opts) --> go UPPERCASE current word
 keymap("i", "<C-l>", "<right>", opts)
 keymap("i", "<C-h>", "<left>", opts)
 
--- Move Cursor Between Windows
-keymap("n", "<C-j>", "<c-w>j", opts)
-keymap("n", "<C-k>", "<c-w>k", opts)
-keymap("n", "<C-h>", "<c-w>h", opts)
-keymap("n", "<C-l>", "<c-w>l", opts)
--- Split Windows w/ Leader Key
-keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
-keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
-keymap("n", "<leader>S", "<c-w>S<c-w>j<:Telescope find_files<cr>", opts)
-keymap("n", "<leader>s", "<c-w>s<c-w>j", opts)
-
-
--- Leader--
+-- Leader Mappings --
 keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim
 keymap("n", "<leader>os", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
 keymap("n", "<leader>R", ":!lua %<cr>", nosilent_opts) --run current .lua file in
 keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader>l", ":LspInfo<cr>", opts) --open LspInfo
+keymap("n", "<leader>d", ":bd<cr>", opts) --quit current file
 keymap("n", "<leader>q", ":q<cr>", opts) --quit current file
 
+-- Move Cursor Between Windows
+keymap("n", "<C-j>", "<c-w>j", opts)
+keymap("n", "<C-k>", "<c-w>k", opts)
+keymap("n", "<C-h>", "<c-w>h", opts)
+keymap("n", "<C-l>", "<c-w>l", opts)
+-- Split Windows
+keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
+keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
+keymap("n", "<leader>S", "<c-w>S<c-w>j<:Telescope find_files<cr>", opts)
+keymap("n", "<leader>s", "<c-w>s<c-w>j", opts)
+
 ------ Plugins--------
---
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 -- Telescope
