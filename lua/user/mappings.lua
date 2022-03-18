@@ -3,14 +3,17 @@ local opts = { noremap = true, silent = true }
 local nosilent_opts = { noremap = true, silent = false }
 local term_opts = { silent = true }
 
+keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)
+keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 --keymap("i", "jj", "<Esc>", opts)
 --keymap("i", "kk", "<Esc>", opts)
-keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 
+-- go to middle of the line
 keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
 
 -- New Lines in Normal Mode
@@ -24,8 +27,9 @@ keymap("n", "gp", '"*p', opts)
 
 -- Visual Mode remaps
 keymap("n", "vv", "viw", opts)
+keymap("n", "vV", "viW", opts)
 
--- w,e,b (Words) remaps
+-- w,e,b (Wordwise Motions) remaps
 keymap("v", "W", "B", opts)
 keymap("v", "E", "W", opts)
 keymap("v", "B", "E", opts)
@@ -60,22 +64,26 @@ keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
 keymap("n", "<leader>S", "<c-w>S<c-w>j<:Telescope find_files<cr>", opts)
 keymap("n", "<leader>s", "<c-w>s<c-w>j", opts)
 
------- Plugins & Leader --------
 
--- Leader Remaps
-keymap("n", "<leader>ms", ":mks! ", nosilent_opts)
-keymap("n", "<leader>os", ":so Session.vim<cr>", nosilent_opts)
-keymap("n", "<leader>R", ":!lua %<cr>", nosilent_opts) --source current lua file
-keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file
-keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file
+-- Leader--
+keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim
+keymap("n", "<leader>os", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
+keymap("n", "<leader>R", ":!lua %<cr>", nosilent_opts) --run current .lua file in
+keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
+keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader>l", ":LspInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>q", ":q<cr>", opts) --quit current file
--- NvimTreeToggle & Telescope
+
+------ Plugins--------
+--
+-- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+-- Telescope
 keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-p>", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-g>", ":Telescope live_grep<cr>", opts)
 keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
+-- Packer Mappings
 keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
