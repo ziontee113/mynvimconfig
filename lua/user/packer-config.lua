@@ -2,7 +2,7 @@
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost ~/.config/nvim/lua/user/packer.lua source <afile> | PackerSync
+    autocmd BufWritePost ~/.config/nvim/lua/user/packer-config.lua source <afile> | PackerSync
   augroup end
 ]]
 -- Use a protected call so we don't error out on first use
@@ -42,6 +42,9 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use 'hrsh7th/cmp-nvim-lsp'
+
+  -- Null-ls
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- NVIM CMP Autocomplete
   use 'hrsh7th/cmp-buffer'

@@ -1,13 +1,14 @@
-require('user.packer-config')
-require('user.settings')
-require('user.cmp')
-require('user.lsp')
-require('user.treesitter')
-require('user.telescope')
-require('user.autopairs')
-require('user.gitsigns')
-require('user.nvim-tree')
-require('user.mappings')
+require("user.packer-config")
+require("user.settings")
+require("user.cmp")
+require("user.lsp")
+require("user.treesitter")
+require("user.telescope")
+require("user.autopairs")
+require("user.gitsigns")
+require("user.null-ls")
+require("user.nvim-tree")
+require("user.mappings")
 
 -- Toggle Term --
 require("toggleterm").setup({
@@ -21,6 +22,5 @@ require("toggleterm").setup({
 	direction = "horizontal",
 })
 
-
 -- Comment.nvim --
-require('Comment').setup()
+require("Comment").setup()
