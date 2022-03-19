@@ -1,4 +1,4 @@
-require('user.packer')
+require('user.packer-config')
 require('user.settings')
 require('user.cmp')
 require('user.lsp')
