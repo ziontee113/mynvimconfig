@@ -9,6 +9,7 @@ require("user.gitsigns")
 require("user.null-ls-config")
 require("user.lualine")
 require("user.nvim-tree")
+require("user.toggle-term")
 require("user.mappings")
 
 -- Comment.nvim --
