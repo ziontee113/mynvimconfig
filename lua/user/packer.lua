@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
   -- Tree Sitter
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use "p00f/nvim-ts-rainbow"
+  use 'nvim-treesitter/playground'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
@@ -55,5 +56,6 @@ return require('packer').startup(function(use)
 
   -- Comments
   use 'numToStr/Comment.nvim'
+  use 'windwp/nvim-autopairs'
 
 end)

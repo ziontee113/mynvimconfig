@@ -4,6 +4,7 @@ require('user.cmp')
 require('user.lsp')
 require('user.treesitter')
 require('user.telescope')
+require('user.autopairs')
 require('user.mappings')
 
 -- NVIM-Tree --
