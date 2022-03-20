@@ -8,5 +8,3 @@ local snippets = {
 		s("test", fmt("test snippet")),
 	},
 }
-
-print("coming from snippets/all.lua")
