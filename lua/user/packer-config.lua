@@ -61,6 +61,7 @@ return require("packer").startup(function(use)
 	use("wellle/targets.vim")
 	use("numToStr/Comment.nvim")
 	use("windwp/nvim-autopairs")
+	use("tpope/vim-surround")
 
 	-- Git Signs
 	use("lewis6991/gitsigns.nvim")
