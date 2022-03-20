@@ -10,8 +10,8 @@ set.softtabstop = 2
 set.shiftwidth = 2
 
 vim.wo.signcolumn = "yes"
-vim.cmd[[:colorscheme gruvbox]]
-vim.cmd[[:highlight SignColumn guibg=NONE]]
+vim.cmd([[:colorscheme gruvbox]])
+vim.cmd([[:highlight SignColumn guibg=NONE]])
 
 set.hlsearch = false
 set.ignorecase = true
@@ -33,3 +33,6 @@ set.splitbelow = true
 
 set.timeoutlen = 500
 set.cursorline = true
+
+set.showmode = false
+-- vim.cmd([[:set cmdheight=2]])

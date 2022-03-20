@@ -40,13 +40,6 @@ function _G.snippets_clear()
 		package.loaded["snippets." .. m] = nil
 	end
 
-	-- local ok, m = pcall(require, "snippets.all")
-	-- if not ok then
-	-- 	print(m)
-	-- else
-	-- 	-- TODO
-	-- end
-
 	ls.snippets = setmetatable({}, {
 		__index = function(t, k)
 			local ok, m = pcall(require, "snippets." .. k)
