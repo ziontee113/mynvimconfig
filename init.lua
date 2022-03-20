@@ -12,6 +12,7 @@ require("user.nvim-tree")
 require("user.toggle-term")
 require("user.mappings")
 require("user.luasnip-config")
+-- require("snippets.all")
 
 -- Comment.nvim --
 require("Comment").setup()

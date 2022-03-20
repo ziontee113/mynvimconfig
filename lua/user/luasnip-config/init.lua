@@ -1,9 +1,11 @@
 local luasnip = require("luasnip")
 
 function _G.snippets_clear()
-	local ok, m = pcall(require, "~/.config/nvim/lua/snippets/all.lua")
+	local ok, m = pcall(require, "snippets.all")
 	if not ok then
-		print(vim.inspect(m))
+		print(m)
+	else
+		print("cool")
 	end
 end
 
