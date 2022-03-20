@@ -1,11 +1,13 @@
 local luasnip = require("luasnip")
 
 function _G.snippets_clear()
+	for m, _ in pairs(luasnip.snippets) do --> clear all snippets
+		package.loaded["snippets." .. m] = nil
+	end
+
 	local ok, m = pcall(require, "snippets.all")
 	if not ok then
 		print(m)
-	else
-		print("cool")
 	end
 end
 
