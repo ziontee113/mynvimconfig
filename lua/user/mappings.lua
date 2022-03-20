@@ -28,6 +28,8 @@ keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
 --keymap("n", "<A-K>", "2kzz", opts)
 keymap("n", "<A-j>", "10j", opts)
 keymap("n", "<A-k>", "10k", opts)
+-- keymap("n", "<C-e>", "2<C-e>", opts)
+-- keymap("n", "<C-y>", "2<C-y>", opts)
 
 -- New Lines in Normal Mode
 keymap("n", "<A-o>", "o<Esc>", opts)

@@ -57,7 +57,8 @@ return require("packer").startup(function(use)
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
 
-	-- Comments
+	-- Text Formatting / Comments / Targets / Brackets
+	use("wellle/targets.vim")
 	use("numToStr/Comment.nvim")
 	use("windwp/nvim-autopairs")
 
