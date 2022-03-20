@@ -11,7 +11,7 @@ local snippets = {
 	s("oddeye", { t("some text") }),
 	s("mamba", { t("some text") }),
 	s("black", { t("black "), i(1, "mamba") }),
-	s("test", { t(require("snippets.all.test_in_all")) }),
+	s("test", { t("this is a test text node") }),
 }
 
 return snippets
