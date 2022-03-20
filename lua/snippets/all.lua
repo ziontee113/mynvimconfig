@@ -6,10 +6,9 @@ local t = ls.t
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
-local function getSavage()
-	package.loaded["snippets.all.savage"] = nil
-	local tempVar = require("snippets.all.savage")
-	return tempVar
+local function lp(package_name) -- lp -> stands for Load Package
+	package.loaded[package_name] = nil
+	return require(package_name)
 end
 
 local snippets = {
@@ -17,7 +16,8 @@ local snippets = {
 	s("oddeye", { t("some text") }),
 	s("mamba", { t("some text") }),
 	s("black", { t("black "), i(1, "mamba") }),
-	s("test", { t(getSavage()) }),
+	s("test", { t(lp("snippets.all.savage")) }),
+	s("t", { t(lp("snippets.all.savage")) }),
 }
 
 return snippets
