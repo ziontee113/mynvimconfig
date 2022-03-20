@@ -26,8 +26,8 @@ keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
 --keymap("n", "<A-K>", "2<C-y>kk", opts)
 --keymap("n", "<A-J>", "2jzz", opts)
 --keymap("n", "<A-K>", "2kzz", opts)
-keymap("n", "<A-j>", "jj", opts)
-keymap("n", "<A-k>", "kk", opts)
+keymap("n", "<A-j>", "3j", opts)
+keymap("n", "<A-k>", "3k", opts)
 
 -- New Lines in Normal Mode
 keymap("n", "<A-o>", "o<Esc>", opts)
