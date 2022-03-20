@@ -11,6 +11,7 @@ require("user.lualine-config")
 require("user.nvim-tree")
 require("user.toggle-term")
 require("user.mappings")
+require("user.luasnip-config")
 
 -- Comment.nvim --
 require("Comment").setup()
