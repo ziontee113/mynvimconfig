@@ -1,9 +1,9 @@
 local luasnip = require("luasnip")
 
 function _G.snippets_clear()
-	local ok, m = pcall(require, "snippets.all")
-	if not ok and not string.match(m, "^module.*not found:") then
-		error(m)
+	local ok, m = pcall(require, "~/.config/nvim/lua/snippets/all.lua")
+	if not ok then
+		print(vim.inspect(m))
 	end
 end
 
