@@ -9,7 +9,7 @@ local rep = require("luasnip.extras").rep
 local function lp(package_name) -- lp -> stands for Load Package
 	package.loaded[package_name] = nil
 	return require(package_name)
-end
+end --> TODO: turn this function into a snippet (for easier autocomplete)
 
 local snippets = {
 	s("req", fmt("require {} = require('{}')", { i(1, "default"), rep(1) })),
