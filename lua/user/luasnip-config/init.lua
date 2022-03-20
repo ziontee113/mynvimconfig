@@ -1,24 +1,10 @@
 local luasnip = require("luasnip")
 
 function _G.snippets_clear()
-	for m, _ in pairs(luasnip.snippets) do
-		package.loaded["snippets." .. m] = nil
+	local ok, m = pcall(require, "snippets.all")
+	if not ok and not string.match(m, "^module.*not found:") then
+		error(m)
 	end
-	luasnip.snippets = setmetatable({}, {
-		__index = function(t, k)
-			local ok, m = pcall(require, "snippets." .. k)
-			if not ok and not string.match(m, "^module.*not found:") then
-				error(m)
-			end
-			t[k] = ok and m or {}
-
-			-- optionally load snippets from vscode- or snipmate-library:
-			--
-			-- require("luasnip.loaders.from_vscode").load({include={k}})
-			-- require("luasnip.loaders.from_snipmate").load({include={k}})
-			return t[k]
-		end,
-	})
 end
 
 _G.snippets_clear()
