@@ -17,7 +17,7 @@ local snippets = {
 	s("mamba", { t("some text") }),
 	s("black", { t("black "), i(1, "mamba") }),
 	s("test", { t(lp("snippets.all.savage")) }),
-	s("t", { t(lp("snippets.all.savage")) }),
+	s("t", { t(lp("snippets.all.next_level")) }),
 }
 
 return snippets
