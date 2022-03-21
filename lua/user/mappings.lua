@@ -86,6 +86,11 @@ keymap("n", "<leader>L", ":LspInstallInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>d", ":bd<cr>", opts) --quit current file
 keymap("n", "<leader>q", ":q<cr>", opts) --quit current file
 
+-- Comment with <A-/> --> Remapped AHK for Alacrity <C-/> to <A-/>
+keymap("n", "<A-/>", "gcc", term_opts)
+keymap("v", "<A-/>", "gc", term_opts)
+keymap("i", "<A-/>", "<Esc>gcc", term_opts)
+
 -- Move Cursor Between Windows
 keymap("n", "<C-j>", "<c-w>j", opts)
 keymap("n", "<C-k>", "<c-w>k", opts)
@@ -97,6 +102,7 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-W>k", opts)
 keymap("t", "<C-h>", "<C-\\><C-N><C-W>h", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-W>l", opts)
 keymap("t", "<A-l>", "<C-l>", opts) --> clear
+keymap("t", "<A-\\>", "<C-l>", opts) --> clear
 -- Split Windows
 keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
 keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
