@@ -37,7 +37,7 @@ keymap("n", "<A-O>", "O<Esc>", opts)
 
 -- Yank / Paste mapping
 keymap("n", "yp", "yyp", opts)
-keymap("n", "gy", '"*y', opts)
+keymap("x", "gy", '"*y', opts)
 keymap("n", "gp", '"*p', opts)
 
 -- Visual Mode remaps
@@ -121,5 +121,8 @@ keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 -- Hop
 keymap("n", "<leader>w", ":HopWord<cr>", opts)
+keymap("n", "<leader>W", ":HopWordMW<cr>", opts)
+keymap("n", "f", ":HopChar1<cr>", opts)
+keymap("n", "F", ":HopChar1CurrentLine<cr>", opts)
 -- Packer Mappings
 keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
