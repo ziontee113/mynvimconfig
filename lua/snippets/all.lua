@@ -34,7 +34,7 @@ local snippets = {
 	),
 	s("st", fmt([[-- example: {}, function: {}]], { i(1), same(1) })),
 	s( --> look at this shit man!
-		{ trig = "b(%d)", regTrig = true },
+		{ trig = "b(%d)", regTrig = true, hidden = true },
 		f(function(_, snip)
 			return "Captured Text: " .. snip.captures[1] .. "."
 		end, {})
@@ -75,5 +75,16 @@ local for_loop_snippet = s( --> javascript for loop
 	)
 )
 table.insert(snippets, for_loop_snippet)
+
+local dynamic_for_loop = s( --> look at this shit man!
+	{ trig = "f(%w+)", regTrig = true, hidden = true },
+	{
+		t("for ("),
+		f(function(_, snip)
+			return snip.captures[1]
+		end, {}),
+	}
+)
+table.insert(snippets, dynamic_for_loop)
 
 return snippets
