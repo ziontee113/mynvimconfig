@@ -37,9 +37,12 @@ local snippets = {
 		end)
 	),
 	s("st", fmt([[-- example: {}, function: {}]], { i(1), same(1) })),
+	s( --> look at this shit man!
+		{ trig = "b(%d)", regTrig = true },
+		f(function(_, snip)
+			return "Captured Text: " .. snip.captures[1] .. "."
+		end, {})
+	),
 }
--- Current Time is: 03/21/22 - 08:41
---example: hellovenus, function: hellovenus
--- 10
--- my name is super
+
 return snippets
