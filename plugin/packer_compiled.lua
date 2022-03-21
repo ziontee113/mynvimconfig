@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
+  ["nvim-treehopper"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/nvim-treehopper",
+    url = "https://github.com/mfussenegger/nvim-treehopper"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
