@@ -57,7 +57,7 @@ local snippets = {
 }
 
 local for_loop_snippet = s( --> javascript for loop
-	{ trig = "f(%w+)", regTrig = true, hidden = true },
+	{ trig = "fori", regTrig = true, hidden = true },
 
 	fmt(
 		[[
@@ -67,8 +67,8 @@ local for_loop_snippet = s( --> javascript for loop
     ]],
 		{
 			i = i(1, "i"),
-			loop_to = i(2, "10"),
 			rep(1),
+			loop_to = i(2, "10"),
 			rep(1),
 			i(3, "// TODO something"),
 		}
