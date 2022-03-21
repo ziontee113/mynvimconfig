@@ -26,8 +26,8 @@ local snippets = {
 	s("mamba", { t("some text") }),
 	s("black", { t("black "), i(1, "mamba") }),
 	s("test", { t(lp("snippets.all.savage")) }),
-	s("t", { t(lp("snippets.all.super").age) }),
-	s("k", fmt("this is a {1} and it's not a {}", { i(1, "string"), i(2, "number") })),
+	s("t", { t("-- " .. lp("snippets.all.super").name) }),
+	s("k", fmt("-- this is a {1} and it's not a {}", { i(1, "string"), i(2, "number") })),
 	s("c", fmt("hey this is cool: {}", { c(1, { t("option →"), t("◙") }) })),
 	s("j", fmt("hel{{{}}}lo", { i(0) })),
 	s(
@@ -36,7 +36,10 @@ local snippets = {
 			return "-- Current Time is: " .. os.date("%D - %H:%M")
 		end)
 	),
-	s("st", fmt([[example: {}, function: {}]], { i(1), same(1) })),
+	s("st", fmt([[-- example: {}, function: {}]], { i(1), same(1) })),
 }
-
+-- Current Time is: 03/21/22 - 08:41
+-- example: hellovenus, function: hellovenus
+-- 10
+-- my name is super
 return snippets

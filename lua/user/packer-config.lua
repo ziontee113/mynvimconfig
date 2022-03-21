@@ -19,6 +19,8 @@ return require("packer").startup(function(use)
 	-- Toggle Terminal
 	use("akinsho/toggleterm.nvim")
 	use("nvim-lualine/lualine.nvim")
+	use("metakirby5/codi.vim")
+	use("justinmk/vim-sneak")
 
 	-- Telescope
 	use("nvim-lua/plenary.nvim")

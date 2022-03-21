@@ -15,3 +15,6 @@ require("user.luasnip-config")
 
 -- Comment.nvim --
 require("Comment").setup()
+
+-- Sneak
+vim.cmd([[let g:sneak#label = 1]])
