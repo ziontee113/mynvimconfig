@@ -124,6 +124,8 @@ keymap("n", "<leader>w", ":HopWord<cr>", opts)
 keymap("n", "<leader>W", ":HopWordMW<cr>", opts)
 keymap("n", "f", ":HopChar1<cr>", opts)
 keymap("n", "F", ":HopChar1CurrentLine<cr>", opts)
+keymap("o", "t", ":HopChar1CurrentLine<cr>", opts)
+keymap("o", "f", "<cmd>lua require'hop'.hint_char1({ current_line_only = true, inclusive_jump = true })<cr>", opts)
 -- TS Hoppper
 keymap("v", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
