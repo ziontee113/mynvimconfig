@@ -45,4 +45,15 @@ local snippets = {
 	),
 }
 
+local for_loop_snippet = s( --> javascript for loop
+	{ trig = "fl(%w+)", regTrig = true, hidden = true },
+	{
+		t({ "some text node ", "" }),
+		f(function(_, snip)
+			return "Captured Text: " .. snip.captures[1] .. "."
+		end, {}),
+	}
+)
+table.insert(snippets, for_loop_snippet)
+
 return snippets

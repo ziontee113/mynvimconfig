@@ -46,7 +46,7 @@ keymap("n", "vV", "viW", opts)
 --
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-keymap("v", "p", "'_dP", opts)
+keymap("v", "p", '"_dP', opts)
 
 --Moving Lines
 keymap("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", opts)
