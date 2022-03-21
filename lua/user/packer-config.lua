@@ -20,7 +20,6 @@ return require("packer").startup(function(use)
 	use("akinsho/toggleterm.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("metakirby5/codi.vim")
-	use("justinmk/vim-sneak")
 
 	-- Telescope
 	use("nvim-lua/plenary.nvim")
@@ -64,6 +63,10 @@ return require("packer").startup(function(use)
 	use("numToStr/Comment.nvim")
 	use("windwp/nvim-autopairs")
 	use("tpope/vim-surround")
+
+	-- Test Jumping / Hopping
+	use("justinmk/vim-sneak")
+	use("phaazon/hop.nvim")
 
 	-- Git Signs
 	use("lewis6991/gitsigns.nvim")

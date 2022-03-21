@@ -119,5 +119,7 @@ keymap("n", "<c-g>", ":Telescope live_grep<cr>", opts)
 keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
+-- Hop
+keymap("n", "<leader>w", ":HopWord<cr>", opts)
 -- Packer Mappings
 keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)

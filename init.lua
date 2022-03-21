@@ -18,3 +18,8 @@ require("Comment").setup()
 
 -- Sneak
 vim.cmd([[let g:sneak#label = 1]])
+
+-- Hop
+require("hop").setup({
+	keys = "etovxqpdygfblzhckisuran",
+})
