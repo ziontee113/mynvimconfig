@@ -8,11 +8,12 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +15 lua/user/luasnip-config/init.lua
-badd +8 lua/snippets/all.lua
+badd +1 lua/user/luasnip-config/init.lua
+badd +28 lua/snippets/all.lua
+badd +2 test.js
 argglobal
 %argdel
-edit lua/user/luasnip-config/init.lua
+edit test.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -43,11 +44,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 24) / 49)
+let s:l = 10 - ((9 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 10
 normal! 0
 wincmd w
 argglobal
@@ -66,14 +67,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 24) / 49)
+let s:l = 62 - ((47 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
+keepjumps 62
 normal! 0
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 tabnext 1

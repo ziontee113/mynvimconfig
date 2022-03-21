@@ -22,16 +22,12 @@ end
 
 local snippets = {
 	s("req", fmt("require {} = require('{}')", { i(1, "default"), rep(1) })),
-	s("oddeye", { t("some text") }),
-	s("mamba", { t("some text") }),
 	s("black", { t("black "), i(1, "mamba") }),
 	s("test", { t(lp("snippets.all.savage")) }),
 	s("t", { t("-- " .. lp("snippets.all.super").name) }),
-	s("k", fmt("-- this is a {1} and it's not a {}", { i(1, "string"), i(2, "number") })),
 	s("c", fmt("hey this is cool: {}", { c(1, { t("option →"), t("◙") }) })),
-	s("j", fmt("hel{{{}}}lo", { i(0) })),
 	s(
-		"f",
+		"curtime",
 		f(function()
 			return "-- Current Time is: " .. os.date("%D - %H:%M")
 		end)
@@ -43,16 +39,40 @@ local snippets = {
 			return "Captured Text: " .. snip.captures[1] .. "."
 		end, {})
 	),
+	s(
+		"fmt1",
+		fmt("To {title} {} {}.", {
+			i(2, "Name"),
+			i(3, "Surname"),
+			title = c(1, { t("Mr."), t("Ms.") }),
+		})
+	),
+	s(
+		"fmt2",
+		fmt("To {title} {}.", {
+			title = c(1, { t("Mr."), t("Ms.") }),
+			rep(1),
+		})
+	),
 }
 
 local for_loop_snippet = s( --> javascript for loop
-	{ trig = "fl(%w+)", regTrig = true, hidden = true },
-	{
-		t({ "some text node ", "" }),
-		f(function(_, snip)
-			return "Captured Text: " .. snip.captures[1] .. "."
-		end, {}),
-	}
+	{ trig = "f(%w+)", regTrig = true, hidden = true },
+
+	fmt(
+		[[
+		  for ({i} = 0; {} < {loop_to}; {}++) {{
+      {}
+		  }}
+    ]],
+		{
+			i = i(1, "i"),
+			loop_to = i(2, "10"),
+			rep(1),
+			rep(1),
+			i(3, "// TODO something"),
+		}
+	)
 )
 table.insert(snippets, for_loop_snippet)
 

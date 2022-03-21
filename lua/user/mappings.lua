@@ -21,7 +21,8 @@ keymap("n", "<S-h>", ":bnext<cr>", opts)
 keymap("n", "<S-l>", ":bprevious<cr>", opts)
 
 -- Cursor Movement Mappings
-keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
+-- keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
+keymap("n", "<C-m>", "`m", opts)
 --keymap("n", "<A-J>", "2<C-e>jj", opts) --> these motions brings motion sickness
 --keymap("n", "<A-K>", "2<C-y>kk", opts)
 --keymap("n", "<A-J>", "2jzz", opts)
