@@ -30,6 +30,11 @@ vim.keymap.set("i", "<c-l>", function()
 		ls.change_choice(1)
 	end
 end)
+vim.keymap.set("i", "<c-h>", function()
+	if ls.choice_active() then
+		ls.change_choice(-1)
+	end
+end)
 
 vim.keymap.set("i", "<c-u>", require("luasnip.extras.select_choice"))
 

@@ -3,8 +3,10 @@ local s = ls.s
 local i = ls.i
 local t = ls.t
 
+local d = ls.dynamic_node
 local c = ls.choice_node
 local f = ls.function_node
+local sn = ls.snippet_node
 
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
@@ -50,10 +52,43 @@ local snippets = {
 	s(
 		"fmt2",
 		fmt("To {title} {}.", {
-			title = c(1, { t("Mr."), t("Ms.") }),
+			title = c(1, { t("Mr."), t("Ms."), t("Mrs.") }),
 			rep(1),
 		})
 	),
+	s("muit", { i(1, { "smile", "away" }) }), --> multi line insert placeholder
+
+	-- function_node demonstration
+	s("trig1", {
+		i(1),
+		f(function(args, snip, user_arg_1, user_arg_2)
+			return args[1][1] .. user_arg_2
+		end, { 1 }, { user_args = { "Will be appended to text from i(0)", " user_arg2" } }),
+		i(0),
+	}),
+
+	s(
+		"trig2",
+		sn(1, { --> snippet node example
+			t("basically just text "),
+			i(1, "And an insertNode."),
+		})
+	),
+
+	-- dynamic node example
+	s("trig", {
+		t("text: "),
+		i(1),
+		t({ "", "copy: " }),
+		d(2, function(args)
+			-- the returned snippetNode doesn't need a position; it's inserted
+			-- "inside" the dynamicNode.
+			return sn(nil, {
+				-- jump-indices are local to each snippetNode, so restart at 1.
+				i(1, args[1]),
+			})
+		end, { 1 }),
+	}),
 }
 
 local for_loop_snippet = s( --> javascript for loop

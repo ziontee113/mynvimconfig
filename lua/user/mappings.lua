@@ -72,6 +72,7 @@ keymap("n", "e", "w", opts)
 keymap("n", "b", "e", opts)
 
 -- Insert Mode Remap
+keymap("i", "<C-y>", "<CR>", opts) --> go UPPERCASE current word
 keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word
 keymap("i", "<C-l>", "<right>", opts)
 keymap("i", "<C-h>", "<left>", opts)
