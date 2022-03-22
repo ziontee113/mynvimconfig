@@ -122,12 +122,43 @@ table.insert(snippets, for_loop_snippet)
 
 -- Helper functions goes here
 
+local wait_a_minute = function(index, contents, old_node)
+	if old_node == nil then
+		return i(index, contents)
+	else
+		return old_node
+	end
+end
+
+local function lunatic(table, index, old_node)
+	if old_node == nil then
+		return sn(index, {
+			t("for "),
+			i(1, "i"),
+			t(" = 1; "),
+			rep(1),
+			t("< "),
+			i(2, "10"),
+			t("; "),
+			rep(1),
+			t({ "++ {", "\t" }),
+			wait_a_minute(3, "// TODO", old_node),
+			t({ "", "}" }),
+		})
+	else
+		return sn(index, {
+			old_node,
+			i(1, table[index]),
+		})
+	end
+end
+
 local function fighting_dreamers(table, index, old_node)
 	return d(1, function()
 		if old_node == nil then
-			return sn(1, i(1, vim.inspect(table[index])))
+			return lunatic(table, index)
 		else
-			return sn(1, { old_node, i(2, vim.inspect(table[index])) })
+			return lunatic(table, index, old_node)
 		end
 	end, {--[[argnodes]]
 	})
