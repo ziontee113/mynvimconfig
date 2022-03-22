@@ -115,16 +115,34 @@ table.insert(snippets, for_loop_snippet)
 --
 --
 --
---
+-- Notes goes here
 
-local captured = d(function(_, snip)
-	return sn(nil, i(1, { snip.captures[1] }))
-end, {})
+-- We want the snippet to get the information from our trigger
+-- process that info, then do something like splitting the trigger capture group
 
---
+-- Helper functions goes here
 
-local dynamic_for_loop = s( -- TODO: dynamic for loop
+local dynamic_for_loop_V2 = s( --  TODO: dynamic for loop V2
 	{ trig = "f(%w+)", regTrig = true, hidden = true },
+	{
+		d(1, function(_, snip)
+			local split_result = vim.split(snip.captures[1], "", true)
+			for _, value in pairs(split_result) do
+				print(value)
+				-- TODO: something with this value
+			end
+			return sn(nil, t(vim.inspect(split_result)))
+		end),
+	}
+)
+table.insert(snippets, dynamic_for_loop_V2)
+
+--
+--
+--
+--
+local dynamic_for_loop_V1 = s(
+	{ trig = "f(%w+)xx", regTrig = true, hidden = true },
 	fmt(
 		[[
 		  for ({i} = 0; {} < {loop_to}; {}++) {{
@@ -142,6 +160,6 @@ local dynamic_for_loop = s( -- TODO: dynamic for loop
 		}
 	)
 )
-table.insert(snippets, dynamic_for_loop)
+table.insert(snippets, dynamic_for_loop_V1)
 
 return snippets
