@@ -3,7 +3,8 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		-- theme = "powerline",
-		theme = "gruvbox",
+		-- theme = "gruvbox",
+		theme = "tokyonight",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {},

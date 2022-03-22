@@ -23,3 +23,6 @@ vim.cmd([[let g:sneak#label = 1]])
 require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
+
+-- TODO: comments
+require("todo-comments").setup({ signs = false })

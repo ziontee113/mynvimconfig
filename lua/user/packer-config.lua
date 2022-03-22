@@ -33,6 +33,7 @@ return require("packer").startup(function(use)
 	-- Color Scheme
 	use("gruvbox-community/gruvbox")
 	use("folke/tokyonight.nvim")
+	use("folke/todo-comments.nvim")
 
 	-- Tree Sitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -65,7 +66,6 @@ return require("packer").startup(function(use)
 	use("tpope/vim-surround")
 
 	-- Test Jumping / Hopping
-	use("justinmk/vim-sneak")
 	use("phaazon/hop.nvim")
 	use("mfussenegger/nvim-treehopper")
 

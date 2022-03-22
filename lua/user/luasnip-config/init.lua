@@ -5,7 +5,27 @@ ls.config.set_config({
 	enable_autosnippets = true,
 })
 
--- Kep Mapping --
+-- Hint node-type with virtual text
+local types = require("luasnip.util.types")
+
+require("luasnip").config.setup({
+	ext_opts = {
+		[types.choiceNode] = {
+			active = {
+				virt_text = { { "●", "GruvboxOrange" } },
+			},
+		},
+		[types.insertNode] = {
+			active = {
+				virt_text = { { "●", "GruvboxBlue" } },
+			},
+		},
+	},
+})
+
+-- Key Mapping --
+vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
+--> little rough for selecting choices
 
 -- <c-k> is my expansion key
 -- this will expand the current item or jump to the next item within the snippet.

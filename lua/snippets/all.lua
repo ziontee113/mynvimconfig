@@ -76,7 +76,7 @@ local snippets = {
 	),
 
 	-- dynamic node example
-	s("trig", {
+	s("trig3", {
 		t("text: "),
 		i(1),
 		t({ "", "copy: " }),
@@ -91,7 +91,7 @@ local snippets = {
 	}),
 }
 
-local for_loop_snippet = s( --> javascript for loop
+local for_loop_snippet = s( --> javascript simple for loop
 	{ trig = "fori", regTrig = true, hidden = true },
 
 	fmt(
@@ -111,7 +111,7 @@ local for_loop_snippet = s( --> javascript for loop
 )
 table.insert(snippets, for_loop_snippet)
 
-local dynamic_for_loop = s( --> look at this shit man!
+local dynamic_for_loop = s( -- TODO: dynamic for loop
 	{ trig = "f(%w+)", regTrig = true, hidden = true },
 	{
 		t("for ("),
