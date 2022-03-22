@@ -9,6 +9,11 @@ M.setup = function()
 		{ name = "DiagnosticSignInfo", text = "" },
 	}
 
+	vim.cmd([[hi DiagnosticSignHint guifg=#87af87 guibg=NONE]])
+	vim.cmd([[hi DiagnosticSignError guifg=#ff5f5f guibg=NONE]])
+	vim.cmd([[hi DiagnosticSignWarn guifg=DiagnosticSignWarn guibg=NONE]])
+	vim.cmd([[hi DiagnosticSignInfo guifg=DiagnosticSignInfo guibg=NONE]])
+
 	for _, sign in ipairs(signs) do
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end

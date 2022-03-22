@@ -3,7 +3,6 @@ local set = vim.opt
 set.number = true
 set.relativenumber = true
 set.cursorline = false
-
 set.expandtab = true
 set.tabstop = 2
 set.softtabstop = 2
@@ -41,3 +40,7 @@ set.showmode = false
 vim.wo.signcolumn = "yes"
 vim.cmd([[:colorscheme gruvbox]])
 vim.cmd([[:highlight SignColumn guibg=NONE]])
+
+-- Wez Term
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE") --transparent Document bg-color
+vim.cmd([[set mouse=a]])

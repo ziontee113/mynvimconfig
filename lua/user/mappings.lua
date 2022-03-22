@@ -102,6 +102,11 @@ keymap("n", "<C-j>", "<c-w>j", opts)
 keymap("n", "<C-k>", "<c-w>k", opts)
 keymap("n", "<C-h>", "<c-w>h", opts)
 keymap("n", "<C-l>", "<c-w>l", opts)
+-- Resize with arrows
+keymap("n", "<C-Down>", ":resize -2<CR>", opts)
+keymap("n", "<C-Up>", ":resize +2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
 -- Terminal Hopping / Mapping
 keymap("t", "<C-j>", "<C-\\><C-N><C-W>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-W>k", opts)

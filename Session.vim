@@ -30,8 +30,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
+exe 'vert 1resize ' . ((&columns * 101 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 109 + 105) / 211)
 argglobal
 balt lua/snippets/all.lua
 setlocal fdm=manual
@@ -44,11 +44,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 10 - ((9 * winheight(0) + 24) / 49)
+let s:l = 4 - ((2 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 10
+keepjumps 4
 normal! 0
 wincmd w
 argglobal
@@ -67,7 +67,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 129 - ((18 * winheight(0) + 24) / 49)
+let s:l = 129 - ((17 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -75,8 +75,8 @@ keepjumps 129
 normal! 0
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
+exe 'vert 1resize ' . ((&columns * 101 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 109 + 105) / 211)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
