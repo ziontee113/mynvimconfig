@@ -23,6 +23,7 @@ return require("packer").startup(function(use)
 
 	-- Telescope
 	use("nvim-lua/plenary.nvim")
+	use("stevearc/dressing.nvim")
 	use("nvim-telescope/telescope.nvim")
 	use("BurntSushi/ripgrep")
 
