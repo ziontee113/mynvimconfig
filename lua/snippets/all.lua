@@ -111,14 +111,36 @@ local for_loop_snippet = s( --> javascript simple for loop
 )
 table.insert(snippets, for_loop_snippet)
 
+--
+--
+--
+--
+--
+
+local captured = d(function(_, snip)
+	return sn(nil, i(1, { snip.captures[1] }))
+end, {})
+
+--
+
 local dynamic_for_loop = s( -- TODO: dynamic for loop
 	{ trig = "f(%w+)", regTrig = true, hidden = true },
-	{
-		t("for ("),
-		f(function(_, snip)
-			return snip.captures[1]
-		end, {}),
-	}
+	fmt(
+		[[
+		  for ({i} = 0; {} < {loop_to}; {}++) {{
+      {}
+		  }}
+    ]],
+		{
+			i = d(1, function(_, snip)
+				return sn(nil, i(1, { snip.captures[1] }))
+			end),
+			rep(1),
+			loop_to = i(2, "10"),
+			rep(1),
+			i(3, "// TODO something"),
+		}
+	)
 )
 table.insert(snippets, dynamic_for_loop)
 
