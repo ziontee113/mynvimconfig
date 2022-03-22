@@ -131,26 +131,23 @@ local wait_a_minute = function(index, contents, old_node)
 end
 
 local function lunatic(table, index, old_node)
-	if old_node == nil then
-		return sn(index, {
-			t("for "),
-			i(1, "i"),
-			t(" = 1; "),
-			rep(1),
-			t("< "),
-			i(2, "10"),
-			t("; "),
-			rep(1),
-			t({ "++ {", "\t" }),
-			wait_a_minute(3, "// TODO", old_node),
-			t({ "", "}" }),
-		})
-	else
-		return sn(index, {
-			old_node,
-			i(1, table[index]),
-		})
+	local base_number = 1
+	if index > 1 then
+		base_number = 2
 	end
+	return sn(index, {
+		t("for ("),
+		i(base_number, table[index]),
+		t(" = 1; "),
+		rep(base_number),
+		t(" < "),
+		i(base_number + 1, "10"),
+		t("; "),
+		rep(base_number),
+		t({ "++ ) {", "\t" }),
+		wait_a_minute(base_number + 2, "", old_node),
+		t({ "", "}" }),
+	})
 end
 
 local function fighting_dreamers(table, index, old_node)
