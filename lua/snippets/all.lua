@@ -122,16 +122,29 @@ table.insert(snippets, for_loop_snippet)
 
 -- Helper functions goes here
 
+local function recursiveFunc(table, index, old_node)
+	if old_node == nil then
+		old_node = sn(1, i(1, tostring(table[index])))
+	else
+		if index <= #table then
+			old_node = sn(1, { old_node, i(2, tostring(table[index])) })
+		end
+	end
+
+	if index > #table then
+		return old_node
+	else
+		index = index + 1
+		return recursiveFunc(table, index, old_node)
+	end --
+end
+
 local dynamic_for_loop_V2 = s( --  TODO: dynamic for loop V2
 	{ trig = "f(%w+)", regTrig = true, hidden = true },
 	{
 		d(1, function(_, snip)
 			local split_result = vim.split(snip.captures[1], "", true)
-			for _, value in pairs(split_result) do
-				print(value)
-				-- TODO: something with this value
-			end
-			return sn(nil, t(vim.inspect(split_result)))
+			return sn(1, recursiveFunc(split_result, 1))
 		end),
 	}
 )

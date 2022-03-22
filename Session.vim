@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 badd +1 lua/user/luasnip-config/init.lua
 badd +28 lua/snippets/all.lua
-badd +2 test.js
+badd +1 test.js
 argglobal
 %argdel
 edit test.js
@@ -67,13 +67,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 62 - ((47 * winheight(0) + 24) / 49)
+let s:l = 129 - ((18 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 62
+keepjumps 129
 normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 tabnext 1
