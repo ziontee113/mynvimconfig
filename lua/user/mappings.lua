@@ -10,6 +10,7 @@ vim.g.maplocalleader = " "
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
+
 --keymap("i", "jk", "<Esc>", opts)
 --keymap("i", "jj", "<Esc>", opts)
 --keymap("i", "kk", "<Esc>", opts)
@@ -90,8 +91,11 @@ keymap("n", "<leader>q", ":q<cr>", opts) --quit current file
 
 -- Comment with <A-/> --> Remapped AHK for Alacrity <C-/> to <A-/>
 keymap("n", "<A-/>", "gcc", term_opts)
-keymap("v", "<A-/>", "gc", term_opts)
+keymap("x", "<A-/>", "gc", term_opts)
 keymap("i", "<A-/>", "<Esc>gccA", term_opts)
+keymap("n", "", "gcc", term_opts)
+keymap("i", "", "<Esc>gccA", term_opts)
+keymap("x", "", "gc", term_opts)
 
 -- Move Cursor Between Windows
 keymap("n", "<C-j>", "<c-w>j", opts)
