@@ -1,14 +1,9 @@
 local ls = require("luasnip")
+local types = require("luasnip.util.types")
 ls.config.set_config({
 	history = true, --keep around last snippet local to jump back
 	updateevents = "TextChanged,TextChangedI", --update changes as you type
 	enable_autosnippets = true,
-})
-
--- Hint node-type with virtual text
-local types = require("luasnip.util.types")
-
-require("luasnip").config.setup({
 	ext_opts = {
 		[types.choiceNode] = {
 			active = {
