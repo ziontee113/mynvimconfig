@@ -122,12 +122,23 @@ table.insert(snippets, for_loop_snippet)
 
 -- Helper functions goes here
 
+local function fighting_dreamers(table, index, old_node)
+	return d(1, function()
+		if old_node == nil then
+			return sn(1, i(1, vim.inspect(table[index])))
+		else
+			return sn(1, { old_node, i(2, vim.inspect(table[index])) })
+		end
+	end, {--[[argnodes]]
+	})
+end
+
 local function recursiveFunc(table, index, old_node)
 	if old_node == nil then
-		old_node = sn(1, i(1, tostring(table[index])))
+		old_node = fighting_dreamers(table, index)
 	else
 		if index <= #table then
-			old_node = sn(1, { old_node, i(2, tostring(table[index])) })
+			old_node = fighting_dreamers(table, index, old_node)
 		end
 	end
 
