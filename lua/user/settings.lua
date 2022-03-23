@@ -45,4 +45,5 @@ vim.cmd([[:highlight SignColumn guibg=NONE]])
 vim.cmd("hi Normal guibg=NONE ctermbg=NONE") --transparent Document bg-color
 vim.cmd([[set mouse=a]])
 
+-- for Gitsigns & LSP Diagnostics
 vim.o.signcolumn = "yes:2"

@@ -70,6 +70,6 @@ return require("packer").startup(function(use)
 	use("phaazon/hop.nvim")
 	use("mfussenegger/nvim-treehopper")
 
-	-- Git Signs
+	-- Git Signs / Minimap
 	use("lewis6991/gitsigns.nvim")
 end)
