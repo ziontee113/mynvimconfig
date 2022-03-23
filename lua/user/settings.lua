@@ -44,3 +44,5 @@ vim.cmd([[:highlight SignColumn guibg=NONE]])
 -- Wez Term
 vim.cmd("hi Normal guibg=NONE ctermbg=NONE") --transparent Document bg-color
 vim.cmd([[set mouse=a]])
+
+vim.o.signcolumn = "yes:2"
