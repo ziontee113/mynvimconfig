@@ -47,3 +47,7 @@ vim.cmd([[set mouse=a]])
 
 -- for Gitsigns & LSP Diagnostics
 vim.o.signcolumn = "yes:2"
+
+-- Fold
+vim.cmd([[set fdc=1]])
+vim.cmd([[hi FoldColumn guibg=none guifg=#008cff]])
