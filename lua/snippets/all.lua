@@ -178,8 +178,8 @@ local function recursiveFunc(table, index, old_node)
 	end --
 end
 
-local dynamic_for_loop_V2 = s( --  TODO: dynamic for loop V2
-	{ trig = "f(%w+)", regTrig = true, hidden = true },
+local dynamic_for_loop_V2 = s( -- dynamic for loop V2
+	{ trig = "f(%w+)xx", regTrig = true, hidden = true },
 	{
 		d(1, function(_, snip)
 			local split_result = vim.split(snip.captures[1], "", true)
@@ -188,13 +188,36 @@ local dynamic_for_loop_V2 = s( --  TODO: dynamic for loop V2
 	}
 )
 table.insert(snippets, dynamic_for_loop_V2)
+--
+--
+--
+--
+
+-- NOTE: our dynamic for loop V3 goes here
+
+local forLoopRecursive = function(table, lastNode)
+	if lastNode == nil then
+		return sn(1, { t(vim.inspect(table)) })
+	end
+end
+
+local dynamic_for_loop_V3 = s( --  TODO: dynamic for loop V3
+	{ trig = "f(%w+)", regTrig = true, hidden = true },
+	{
+		d(1, function(_, snip)
+			local args_table = vim.split(snip.captures[1], "", true)
+			return sn(1, forLoopRecursive(args_table))
+		end),
+	}
+)
+table.insert(snippets, dynamic_for_loop_V3)
 
 --
 --
 --
 --
 local dynamic_for_loop_V1 = s(
-	{ trig = "f(%w+)xx", regTrig = true, hidden = true },
+	{ trig = "f(%w+)x", regTrig = true, hidden = true },
 	fmt(
 		[[
 		  for ({i} = 0; {} < {loop_to}; {}++) {{
