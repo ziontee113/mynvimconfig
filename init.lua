@@ -10,19 +10,14 @@ require("user.null-ls-config")
 require("user.lualine-config")
 require("user.nvim-tree")
 require("user.toggle-term")
+require("user.todo-comments")
 require("user.mappings")
 require("user.luasnip-config")
 
 -- Comment.nvim --
 require("Comment").setup()
 
--- Sneak
-vim.cmd([[let g:sneak#label = 1]])
-
 -- Hop
 require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
-
--- TODO: comments
-require("todo-comments").setup({ signs = false })
