@@ -195,10 +195,30 @@ table.insert(snippets, dynamic_for_loop_V2)
 
 -- NOTE: our dynamic for loop V3 goes here
 
-local forLoopRecursive = function(table, lastNode)
+local nodeCheck = function(position, contents, table, lastNode)
 	if lastNode == nil then
-		return sn(1, { t(vim.inspect(table)) })
+		return i(position, contents)
 	end
+end
+
+local forLoopRecursive = function(table, lastNode)
+	return sn(
+		1,
+		fmt(
+			[[
+for ({} = 0; {} < {}, {}++ {{
+  {}
+}}
+        ]],
+			{
+				i(1, table[1]),
+				rep(1),
+				i(2, "10"),
+				rep(1),
+				nodeCheck(3, "// V3", table, lastNode),
+			}
+		)
+	)
 end
 
 local dynamic_for_loop_V3 = s( --  TODO: dynamic for loop V3
