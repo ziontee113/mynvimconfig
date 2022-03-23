@@ -1,0 +1,1 @@
+require("fold-cycle").setup()

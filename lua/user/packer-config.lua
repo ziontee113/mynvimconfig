@@ -75,4 +75,7 @@ return require("packer").startup(function(use)
 
 	-- Submodes
 	use("kana/vim-submode")
+
+	-- Folds
+	use("jghauser/fold-cycle.nvim")
 end)

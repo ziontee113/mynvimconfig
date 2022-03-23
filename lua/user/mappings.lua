@@ -7,6 +7,11 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Test Zone
+keymap("n", "<tab>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
+keymap("n", "<s-tab>", [[<cmd>lua require('fold-cycle').close()<cr>]], { noremap = true, silent = true })
+keymap("n", "zC", [[<cmd>lua require('fold-cycle').close_all()<cr>]], { noremap = false, silent = true })
+
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
@@ -16,8 +21,8 @@ keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 --keymap("i", "kk", "<Esc>", opts)
 
 -- Prev / Next Buffer
-keymap("n", "<Tab>", ":bnext<cr>", opts)
-keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
+-- keymap("n", "<Tab>", ":bnext<cr>", opts)
+-- keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
 keymap("n", "<S-h>", ":bnext<cr>", opts)
 keymap("n", "<S-l>", ":bprevious<cr>", opts)
 

@@ -15,6 +15,7 @@ require("user.todo-comments-config")
 require("user.mappings")
 require("user.luasnip-config")
 require("user.vim-submode-config")
+require("user.fold-cycle-config")
 
 -- Comment.nvim --
 require("Comment").setup()
