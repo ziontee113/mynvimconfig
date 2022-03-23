@@ -14,6 +14,7 @@ require("user.toggle-term")
 require("user.todo-comments-config")
 require("user.mappings")
 require("user.luasnip-config")
+require("user.vim-submode-config")
 
 -- Comment.nvim --
 require("Comment").setup()

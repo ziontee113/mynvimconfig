@@ -72,4 +72,7 @@ return require("packer").startup(function(use)
 
 	-- Git Signs / Minimap
 	use("lewis6991/gitsigns.nvim")
+
+	-- Submodes
+	use("kana/vim-submode")
 end)
