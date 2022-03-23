@@ -7,3 +7,6 @@
   -> If not, move down 10 lines.
   ==> Only 2 mappings for up / down
   ====> Most of what we want already exist!
+  --> Keybindings to remember:
+  - Basic: zf, zo, zc, zd
+  - Advanced: zr, zm, zR, zM, zj, zk
