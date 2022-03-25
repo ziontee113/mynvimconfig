@@ -162,10 +162,6 @@ ins_left({
 		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 		local clients = vim.lsp.get_active_clients()
 
-		for _, value in ipairs(clients) do
-			print(value.name)
-		end
-
 		local combined_lsp_names = ""
 
 		for _, client in ipairs(clients) do
