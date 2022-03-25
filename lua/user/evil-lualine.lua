@@ -161,16 +161,27 @@ ins_left({
 		local msg = "No Active Lsp"
 		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 		local clients = vim.lsp.get_active_clients()
-		if next(clients) == nil then
-			return msg
+
+		for _, value in ipairs(clients) do
+			print(value.name)
 		end
+
+		local combined_lsp_names = ""
+
 		for _, client in ipairs(clients) do
 			local filetypes = client.config.filetypes
 			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-				return client.name
+				if client.name ~= "null-ls" then
+					combined_lsp_names = client.name .. " " .. combined_lsp_names
+				end
 			end
 		end
-		return msg
+
+		if combined_lsp_names ~= nil then
+			return combined_lsp_names
+		else
+			return msg
+		end
 	end,
 	icon = " LSP:",
 	color = { fg = "#ffffff", gui = "bold" },
