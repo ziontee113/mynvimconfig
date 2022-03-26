@@ -32,6 +32,8 @@ require("Comment").setup()
 require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
+require("pretty-fold").setup({})
+require("pretty-fold.preview").setup({ key = "l" })
 
 -- HACK:
 vim.cmd([[nnoremap <c-i> <c-i>]])

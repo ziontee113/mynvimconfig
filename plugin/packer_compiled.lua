@@ -209,6 +209,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["pretty-fold.nvim"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/pretty-fold.nvim",
+    url = "https://github.com/anuvyklack/pretty-fold.nvim"
+  },
   ripgrep = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/ripgrep",

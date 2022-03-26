@@ -78,4 +78,5 @@ return require("packer").startup(function(use)
 
 	-- Folds
 	use("jghauser/fold-cycle.nvim")
+	use("anuvyklack/pretty-fold.nvim")
 end)
