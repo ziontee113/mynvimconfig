@@ -65,6 +65,7 @@ return require("packer").startup(function(use)
 	use("numToStr/Comment.nvim")
 	use("windwp/nvim-autopairs")
 	use("tpope/vim-surround")
+	use("mg979/vim-visual-multi")
 
 	-- Test Jumping / Hopping
 	use("phaazon/hop.nvim")

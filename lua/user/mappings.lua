@@ -11,6 +11,7 @@ vim.g.maplocalleader = " "
 keymap("n", "<C-i>", [[<C-i>]], opts)
 keymap("n", "ck", [[ciq]], term_opts)
 keymap("n", "c,", [[cib]], term_opts)
+keymap("n", "cj", [[ciw]], opts)
 
 -- Fold Cycle
 keymap("n", "<A-l>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
