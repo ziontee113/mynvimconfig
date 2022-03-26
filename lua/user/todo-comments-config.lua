@@ -17,13 +17,16 @@ require("todo-comments").setup({
 			color = "#25BAA2",
 		},
 		F = {
-			color = "#F6EEF9",
+			color = "#E0377A",
 		},
 		G = {
-			color = "#25BAA2",
+			color = "#947216",
 		},
 		H = {
-			color = "#25BAA2",
+			color = "#38E0D0",
+		},
+		J = {
+			color = "#8F1495",
 		},
 		S = {
 			color = "#F7D731",

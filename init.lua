@@ -1,5 +1,7 @@
 -- A: Essentials:
 require("user.packer-config")
+require("user.settings")
+require("user.mappings")
 -- B: LSP Related:
 require("user.null-ls-config")
 require("user.cmp")
@@ -10,20 +12,22 @@ require("user.treesitter")
 require("user.telescope")
 require("user.telescope-pickers")
 -- E: UI Elements
+require("user.nvim-tree")
 require("user.gitsigns")
+require("user.toggle-term")
+-- F: Status Line
 -- require("user.lualine-config")
 require("user.evil-lualine")
-require("user.nvim-tree")
-require("user.toggle-term")
+-- G: Editing
 require("user.autopairs")
 require("user.todo-comments-config")
-require("user.mappings")
-require("user.settings")
+-- H: Snippets
 require("user.luasnip-config")
+-- J: Advanced Plugins
 require("user.vim-submode-config")
 require("user.fold-cycle-config")
 
--- SECTION: Simple Configs
+-- S:imple Configs
 require("Comment").setup()
 require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
