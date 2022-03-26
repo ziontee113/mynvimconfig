@@ -21,6 +21,7 @@ require("user.evil-lualine")
 -- G: Editing
 require("user.autopairs")
 require("user.todo-comments-config")
+require("user.pretty-fold-config")
 -- H: Snippets
 require("user.luasnip-config")
 -- J: Advanced Plugins
@@ -32,8 +33,6 @@ require("Comment").setup()
 require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
-require("pretty-fold").setup({})
-require("pretty-fold.preview").setup({ key = "l" })
 
 -- HACK:
 vim.cmd([[nnoremap <c-i> <c-i>]])

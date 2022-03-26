@@ -20,6 +20,8 @@ telescope.setup({
 
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
+				["<A-j>"] = actions.move_selection_next,
+				["<A-k>"] = actions.move_selection_previous,
 
 				["<C-c>"] = actions.close,
 				["<Esc>"] = actions.close,
@@ -60,8 +62,11 @@ telescope.setup({
 				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
+				["<A-j>"] = actions.move_selection_next,
+				["<A-k>"] = actions.move_selection_previous,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
+
 				["j"] = actions.move_selection_next,
 				["k"] = actions.move_selection_previous,
 				["H"] = actions.move_to_top,
