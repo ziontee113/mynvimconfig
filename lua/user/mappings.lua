@@ -11,6 +11,7 @@ vim.g.maplocalleader = " "
 keymap("n", "<tab>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
 keymap("n", "<s-tab>", [[<cmd>lua require('fold-cycle').close()<cr>]], { noremap = true, silent = true })
 keymap("n", "zC", [[<cmd>lua require('fold-cycle').close_all()<cr>]], { noremap = false, silent = true })
+keymap("n", "<C-i>", [[<C-i>]], opts)
 
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)

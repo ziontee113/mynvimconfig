@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
+local action_layout = require("telescope.actions.layout")
 
 telescope.setup({
 	defaults = {
@@ -43,6 +44,8 @@ telescope.setup({
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-l>"] = actions.complete_tag,
 				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+
+				["<A-p>"] = action_layout.toggle_preview,
 			},
 
 			n = {
@@ -77,6 +80,7 @@ telescope.setup({
 				["<PageDown>"] = actions.results_scrolling_down,
 
 				["?"] = actions.which_key,
+				["<A-p>"] = action_layout.toggle_preview,
 			},
 		},
 	},

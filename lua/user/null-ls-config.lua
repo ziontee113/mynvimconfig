@@ -9,6 +9,7 @@ null_ls.setup({
 		-- formatting.eslint_d,
 		formatting.stylua,
 		formatting.clang_format,
+		formatting.black,
 
 		-- diagnostics.eslint_d,
 	},
