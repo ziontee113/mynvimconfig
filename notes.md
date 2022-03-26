@@ -1,3 +1,0 @@
-# Notes
-
-- Look into Hope

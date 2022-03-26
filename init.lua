@@ -32,3 +32,6 @@ require("Comment").setup()
 require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
+
+-- HACK:
+vim.cmd([[nnoremap <c-i> <c-i>]])

@@ -1,4 +1,4 @@
--- Autocommand that reloads neovim whenever you save the plugins.lua file (PackerSync on save)
+-- Autocommand PackerSync on this file save
 vim.cmd([[
   augroup packer_user_config
     autocmd!

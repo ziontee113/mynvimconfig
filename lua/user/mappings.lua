@@ -12,8 +12,10 @@ keymap("n", "<C-i>", [[<C-i>]], opts)
 keymap("n", "ck", [[ciq]], term_opts)
 
 -- Fold Cycle
-keymap("n", "<tab>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
-keymap("n", "<s-tab>", [[<cmd>lua require('fold-cycle').close()<cr>]], { noremap = true, silent = true })
+keymap("n", "<A-l>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
+keymap("n", "<A-h>", [[<cmd>lua require('fold-cycle').close()<cr>]], { noremap = true, silent = true })
+keymap("n", "<A-j>", [[zj]], { noremap = true, silent = true })
+keymap("n", "<A-k>", [[zk]], { noremap = true, silent = true })
 keymap("n", "zC", [[<cmd>lua require('fold-cycle').close_all()<cr>]], { noremap = false, silent = true })
 
 -- Save and Esc remaps
@@ -26,9 +28,13 @@ keymap("n", "<S-l>", ":bprevious<cr>", opts)
 
 -- Cursor Movement Mappings
 -- keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
-keymap("n", "<C-m>", "`m", opts)
-keymap("n", "<A-j>", "10j", opts)
-keymap("n", "<A-k>", "10k", opts)
+-- keymap("n", "<C-m>", "`m", opts)
+-- keymap("n", "<A-j>", "10j", opts)
+-- keymap("n", "<A-k>", "10k", opts)
+keymap("v", "<C-u>", "11k", opts)
+keymap("v", "<C-d>", "11j", opts)
+keymap("n", "<C-u>", "11k", opts)
+keymap("n", "<C-d>", "11j", opts)
 
 -- New Lines in Normal Mode
 keymap("n", "<A-o>", "o<Esc>", opts)

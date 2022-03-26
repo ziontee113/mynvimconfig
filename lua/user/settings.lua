@@ -1,5 +1,11 @@
 local set = vim.opt
 
+-- Fold
+vim.cmd([[
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+]])
+
 set.number = true
 set.relativenumber = true
 set.cursorline = false
