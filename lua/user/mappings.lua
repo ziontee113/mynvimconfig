@@ -8,36 +8,27 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Test Zone
+keymap("n", "<C-i>", [[<C-i>]], opts)
+keymap("n", "ck", [[ciq]], term_opts)
+
+-- Fold Cycle
 keymap("n", "<tab>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
 keymap("n", "<s-tab>", [[<cmd>lua require('fold-cycle').close()<cr>]], { noremap = true, silent = true })
 keymap("n", "zC", [[<cmd>lua require('fold-cycle').close_all()<cr>]], { noremap = false, silent = true })
-keymap("n", "<C-i>", [[<C-i>]], opts)
 
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 
---keymap("i", "jk", "<Esc>", opts)
---keymap("i", "jj", "<Esc>", opts)
---keymap("i", "kk", "<Esc>", opts)
-
 -- Prev / Next Buffer
--- keymap("n", "<Tab>", ":bnext<cr>", opts)
--- keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
 keymap("n", "<S-h>", ":bnext<cr>", opts)
 keymap("n", "<S-l>", ":bprevious<cr>", opts)
 
 -- Cursor Movement Mappings
 -- keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
 keymap("n", "<C-m>", "`m", opts)
---keymap("n", "<A-J>", "2<C-e>jj", opts) --> these motions brings motion sickness
---keymap("n", "<A-K>", "2<C-y>kk", opts)
---keymap("n", "<A-J>", "2jzz", opts)
---keymap("n", "<A-K>", "2kzz", opts)
 keymap("n", "<A-j>", "10j", opts)
 keymap("n", "<A-k>", "10k", opts)
--- keymap("n", "<C-e>", "2<C-e>", opts)
--- keymap("n", "<C-y>", "2<C-y>", opts)
 
 -- New Lines in Normal Mode
 keymap("n", "<A-o>", "o<Esc>", opts)
@@ -81,8 +72,8 @@ keymap("n", "b", "e", opts)
 -- Insert Mode Remap
 keymap("i", "<C-y>", "<CR>", opts) --> go UPPERCASE current word
 keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word
-keymap("i", "<C-l>", "<right>", opts)
-keymap("i", "<C-h>", "<left>", opts)
+keymap("i", "<A-l>", "<right>", opts)
+keymap("i", "<A-h>", "<left>", opts)
 
 -- Leader Mappings --
 keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim

@@ -7,6 +7,7 @@ set.expandtab = true
 set.tabstop = 2
 set.softtabstop = 2
 set.shiftwidth = 2
+vim.cmd([[set guicursor=n-v-c:block-Cursor]])
 
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_italic_functions = true

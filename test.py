@@ -1,1 +1,4 @@
-print("Hello World")
+list = ["one", "three", "two"]
+list.clear()
+
+print(list)
