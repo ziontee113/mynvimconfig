@@ -10,6 +10,7 @@ vim.g.maplocalleader = " "
 -- Test Zone
 keymap("n", "<C-i>", [[<C-i>]], opts)
 keymap("n", "ck", [[ciq]], term_opts)
+keymap("n", "c,", [[cib]], term_opts)
 
 -- Fold Cycle
 keymap("n", "<A-l>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
