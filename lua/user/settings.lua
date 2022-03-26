@@ -1,10 +1,11 @@
 local set = vim.opt
 
 -- Fold
-vim.cmd([[
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
-]])
+vim.cmd([[set foldmethod=marker]])
+-- vim.cmd([[
+-- autocmd BufWinLeave *.* mkview
+-- autocmd BufWinEnter *.* silent loadview
+-- ]]) -- this is for foldmethod=manual only
 
 set.number = true
 set.relativenumber = true
