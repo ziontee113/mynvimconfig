@@ -38,6 +38,8 @@ return require("packer").startup(function(use)
 
 	-- Tree Sitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use("windwp/nvim-autopairs")
+	use("windwp/nvim-ts-autotag")
 	use("p00f/nvim-ts-rainbow")
 	use("nvim-treesitter/playground")
 
@@ -63,7 +65,6 @@ return require("packer").startup(function(use)
 	-- Text Formatting / Comments / Targets / Brackets
 	use("wellle/targets.vim")
 	use("numToStr/Comment.nvim")
-	use("windwp/nvim-autopairs")
 	use("tpope/vim-surround")
 	use("mg979/vim-visual-multi")
 
