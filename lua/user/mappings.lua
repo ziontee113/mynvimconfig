@@ -16,7 +16,7 @@ keymap("n", "<A-l>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = 
 keymap("n", "<A-h>", [[<cmd>lua require('fold-cycle').close()<cr>]], { noremap = true, silent = true })
 keymap("n", "<A-j>", [[zj]], { noremap = true, silent = true })
 keymap("n", "<A-k>", [[zk]], { noremap = true, silent = true })
-keymap("n", "zC", [[<cmd>lua require('fold-cycle').close_all()<cr>]], { noremap = false, silent = true })
+keymap("n", "zm", [[zM]], { noremap = true, silent = true })
 
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)
