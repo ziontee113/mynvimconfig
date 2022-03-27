@@ -1,4 +1,7 @@
 local ls = require("luasnip")
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local types = require("luasnip.util.types")
 ls.config.set_config({
 	history = true, --keep around last snippet local to jump back
@@ -10,11 +13,11 @@ ls.config.set_config({
 				virt_text = { { "●", "GruvboxOrange" } },
 			},
 		},
-		[types.insertNode] = {
-			active = {
-				virt_text = { { "●", "GruvboxBlue" } },
-			},
-		},
+		-- [types.insertNode] = {
+		-- 	active = {
+		-- 		virt_text = { { "●", "GruvboxBlue" } },
+		-- 	},
+		-- },
 	},
 })
 
