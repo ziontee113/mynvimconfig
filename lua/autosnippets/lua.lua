@@ -19,7 +19,7 @@ end
 
 local snippets = {
 	s(
-		{ trig = "s!", hidden = true },
+		{ trig = "s~", hidden = true },
 		fmt([[ s({{ trig = "{}", hidden = true }}, {})]], { i(1, "trigger"), i(2, 't"contents"') })
 	),
 	s({ trig = "trigger!", hidden = true }, t("contents")),
