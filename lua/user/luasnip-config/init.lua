@@ -25,30 +25,32 @@ ls.config.set_config({
 
 vim.keymap.set({ "i", "s" }, "<c-s>", "<Esc>:w<cr>")
 vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
-vim.keymap.set({ "i", "s" }, "<c-k>", function()
+vim.keymap.set({ "i", "s" }, "<a-p>", function()
 	if ls.expand_or_jumpable() then
-		ls.expand_or_jump()
+		ls.expand()
 	end
 end, { silent = true })
-
-vim.keymap.set({ "i", "s" }, "<c-j>", function()
+vim.keymap.set({ "i", "s" }, "<a-k>", function()
+	if ls.jumpable(1) then
+		ls.jump(1)
+	end
+end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<a-j>", function()
 	if ls.jumpable(-1) then
 		ls.jump(-1)
 	end
 end, { silent = true })
-
-vim.keymap.set("i", "<c-l>", function()
+vim.keymap.set("i", "<a-l>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
 	end
 end)
-vim.keymap.set("i", "<c-h>", function()
+vim.keymap.set("i", "<a-h>", function()
 	if ls.choice_active() then
 		ls.change_choice(-1)
 	end
 end)
-
-vim.keymap.set("i", "<c-u>", require("luasnip.extras.select_choice"))
+vim.keymap.set("i", "<a-u>", require("luasnip.extras.select_choice"))
 
 -- Auto Reload --
 
