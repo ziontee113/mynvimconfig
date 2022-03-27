@@ -34,5 +34,4 @@ require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
 
--- HACK:
-vim.cmd([[nnoremap <c-i> <c-i>]])
+vim.cmd([[:hi Folded guibg=NONE]])

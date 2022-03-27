@@ -1,19 +1,7 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
-end
-
-require("luasnip/loaders/from_vscode").lazy_load()
-
-local check_backspace = function()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-end
+require("luasnip/loaders/from_vscode").lazy_load() -- loading VSCode snippets
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
@@ -68,12 +56,6 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.expandable() then
-				luasnip.expand()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif check_backspace() then
-				fallback()
 			else
 				fallback()
 			end
@@ -126,12 +108,5 @@ cmp.setup({
 	experimental = {
 		ghost_text = true,
 		native_menu = false,
-	},
-})
-
--- CMP in /search  autocomplete in buffer
-cmp.setup.cmdline("/", {
-	sources = {
-		{ name = "buffer" },
 	},
 })

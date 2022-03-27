@@ -7,8 +7,11 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Test Zone
-keymap("n", "<C-i>", [[<C-i>]], opts)
+-- Ctrl+I and Ctrl+O replacement
+keymap("n", "<A-i>", [[<C-i>]], opts)
+keymap("n", "<A-o>", [[<C-o>]], opts)
+
+-- Change-in Shortcuts
 keymap("n", "ck", [[ciq]], term_opts)
 keymap("n", "c,", [[cib]], term_opts)
 keymap("n", "cj", [[ciw]], opts)
@@ -37,10 +40,6 @@ keymap("v", "<C-u>", "11k", opts)
 keymap("v", "<C-d>", "11j", opts)
 keymap("n", "<C-u>", "11k", opts)
 keymap("n", "<C-d>", "11j", opts)
-
--- New Lines in Normal Mode
-keymap("n", "<A-o>", "o<Esc>", opts)
-keymap("n", "<A-O>", "O<Esc>", opts)
 
 -- Yank / Paste mapping
 keymap("n", "yp", "yyp", opts)

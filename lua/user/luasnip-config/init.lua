@@ -22,27 +22,20 @@ ls.config.set_config({
 })
 
 -- Key Mapping --
-vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
---> little rough for selecting choices
 
--- <c-k> is my expansion key
--- this will expand the current item or jump to the next item within the snippet.
+vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
 vim.keymap.set({ "i", "s" }, "<c-k>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand_or_jump()
 	end
 end, { silent = true })
 
--- <c-j> is my jump backwards key.
--- this always moves to the previous item within the snippet
 vim.keymap.set({ "i", "s" }, "<c-j>", function()
 	if ls.jumpable(-1) then
 		ls.jump(-1)
 	end
 end, { silent = true })
 
--- <c-l> is selecting within a list of options.
--- This is useful for choice nodes (introduced in the forthcoming episode 2)
 vim.keymap.set("i", "<c-l>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
@@ -74,6 +67,23 @@ function _G.snippets_clear()
 			return t[k]
 		end,
 	})
+
+	-- for Auto Triggered
+	for m, _ in pairs(ls.autosnippets) do --> clear all snippets
+		package.loaded["autosnippets." .. m] = nil
+	end
+
+	ls.autosnippets = setmetatable({}, {
+		__index = function(t, k)
+			local ok, m = pcall(require, "autosnippets." .. k)
+			if not ok and not string.match(m, "^module.*not found:") then
+				error(m)
+			end
+			t[k] = ok and m or {}
+
+			return t[k]
+		end,
+	})
 end
 
 _G.snippets_clear()
@@ -82,21 +92,7 @@ vim.cmd([[
 augroup snippets_clear
 au!
 au BufWritePost ~/.config/nvim/lua/snippets/*.lua lua _G.snippets_clear()
+au BufWritePost ~/.config/nvim/lua/autosnippets/*.lua lua _G.snippets_clear()
 " au BufWritePost ~/.config/nvim/lua/snippets/*.lua echo "Hello from " @%
 augroup END
 ]])
-
-function _G.edit_ft()
-	-- returns table like {"lua", "all"}
-	local fts = require("luasnip.util.util").get_snippet_filetypes()
-	vim.ui.select(fts, {
-		prompt = "Select which filetype to edit:",
-	}, function(item, idx)
-		-- selection aborted -> idx == nil
-		if idx then
-			vim.cmd("edit ~/.config/nvim/lua/snippets/" .. item .. ".lua")
-		end
-	end)
-end
-
-vim.cmd([[command! LuaSnipEdit :lua _G.edit_ft()]])

@@ -17,6 +17,11 @@ local function lp(package_name) -- Load Package Function
 	return require(package_name)
 end
 
-local snippets = {}
+local snippets = {
+	s(
+		{ trig = "s", hidden = true },
+		fmt([[ s({{ trig = "{}", hidden = true }}, {})]], { i(1, "trigger"), i(2, 't"contents"') })
+	),
+}
 
 return snippets
