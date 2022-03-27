@@ -254,6 +254,16 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-gutentags"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/vim-gutentags",
+    url = "https://github.com/ludovicchabant/vim-gutentags"
+  },
+  ["vim-js-file-import"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/vim-js-file-import",
+    url = "https://github.com/kristijanhusak/vim-js-file-import"
+  },
   ["vim-submode"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/vim-submode",

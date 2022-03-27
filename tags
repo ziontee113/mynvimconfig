@@ -1,0 +1,64 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/ubur/.config/nvim/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20220327.0/
+.super	test.css	/^.super {$/;"	c
+My HTML File	test.html	/^  <title>My HTML File<\/title>$/;"	j
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
+["<S-Tab>"]	lua/user/cmp-config.lua	/^		["<S-Tab>"] = cmp.mapping(function(fallback)$/;"	f
+["<Tab>"]	lua/user/cmp-config.lua	/^		["<Tab>"] = cmp.mapping(function(fallback)$/;"	f
+_HTOP_TOGGLE	lua/user/toggle-term.lua	/^function _HTOP_TOGGLE()$/;"	f
+_LAZYGIT_TOGGLE	lua/user/toggle-term.lua	/^function _LAZYGIT_TOGGLE()$/;"	f
+_NCDU_TOGGLE	lua/user/toggle-term.lua	/^function _NCDU_TOGGLE()$/;"	f
+_NODE_TOGGLE	lua/user/toggle-term.lua	/^function _NODE_TOGGLE()$/;"	f
+_PYTHON_TOGGLE	lua/user/toggle-term.lua	/^function _PYTHON_TOGGLE()$/;"	f
+__index	lua/user/luasnip-config/init.lua	/^		__index = function(t, k)$/;"	f
+body	test.css	/^body {$/;"	s
+buffer_not_empty	lua/user/evil-lualine.lua	/^	buffer_not_empty = function()$/;"	f
+check_git_workspace	lua/user/evil-lualine.lua	/^	check_git_workspace = function()$/;"	f
+color	lua/user/evil-lualine.lua	/^	color = function()$/;"	f
+description	lua/user/lsp/settings/jsonls.lua	/^    description = "The AWS Serverless Application Model (AWS SAM, previously known as Project Fl/;"	f
+error_msg	plugin/packer_compiled.lua	/^local no_errors, error_msg = pcall(function()$/;"	f
+expand	lua/user/cmp-config.lua	/^		expand = function(args)$/;"	f
+f	lua/autosnippets/javascript.lua	/^local f = ls.function_node$/;"	f
+f	lua/autosnippets/lua.lua	/^local f = ls.function_node$/;"	f
+f	lua/snippets/all.lua	/^local f = ls.function_node$/;"	f
+f	lua/snippets/javascript.lua	/^local f = ls.function_node$/;"	f
+f	lua/snippets/lua.lua	/^local f = ls.function_node$/;"	f
+format	lua/user/cmp-config.lua	/^		format = function(entry, vim_item)$/;"	f
+hide_in_width	lua/user/evil-lualine.lua	/^	hide_in_width = function()$/;"	f
+ins_left	lua/user/evil-lualine.lua	/^local function ins_left(component)$/;"	f
+ins_right	lua/user/evil-lualine.lua	/^local function ins_right(component)$/;"	f
+list	test.py	/^list = ["one", "three", "two"]$/;"	v
+lockfileVersion	package-lock.json	/^  "lockfileVersion": 2,$/;"	n
+lp	lua/autosnippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
+lp	lua/snippets/all.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
+lp	lua/snippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
+lsp_keymaps	lua/user/lsp/handlers.lua	/^local function lsp_keymaps(bufnr)$/;"	f
+name	package-lock.json	/^  "name": "nvim",$/;"	s
+on_attach	lua/user/lsp/handlers.lua	/^M.on_attach = function(client, bufnr)$/;"	f	unknown:M
+on_attach	lua/user/null-ls-config.lua	/^	on_attach = function(client) --> Format on Save$/;"	f
+packages	package-lock.json	/^  "packages": {}$/;"	o
+requires	package-lock.json	/^  "requires": true,$/;"	b
+s:l	Session.vim	/^let s:l = 129 - ((17 * winheight(0) + 22) \/ 45)$/;"	v
+s:l	Session.vim	/^let s:l = 4 - ((2 * winheight(0) + 22) \/ 45)$/;"	v
+s:save_splitbelow	Session.vim	/^let s:save_splitbelow = &splitbelow$/;"	v
+s:save_splitright	Session.vim	/^let s:save_splitright = &splitright$/;"	v
+s:save_winminheight	Session.vim	/^let s:save_winminheight = &winminheight$/;"	v
+s:save_winminwidth	Session.vim	/^let s:save_winminwidth = &winminwidth$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+save_profiles	plugin/packer_compiled.lua	/^local function save_profiles(threshold)$/;"	f
+setup	lua/user/lsp/handlers.lua	/^M.setup = function()$/;"	f	unknown:M
+snippets_clear	lua/user/luasnip-config/init.lua	/^function _G.snippets_clear()$/;"	f	unknown:_G
+time	plugin/packer_compiled.lua	/^    time = function(chunk, start) end$/;"	f
+time	plugin/packer_compiled.lua	/^    time = function(chunk, start)$/;"	f
+try_loadstring	plugin/packer_compiled.lua	/^local function try_loadstring(s, component, name)$/;"	f
