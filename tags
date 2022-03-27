@@ -37,16 +37,12 @@ hide_in_width	lua/user/evil-lualine.lua	/^	hide_in_width = function()$/;"	f
 ins_left	lua/user/evil-lualine.lua	/^local function ins_left(component)$/;"	f
 ins_right	lua/user/evil-lualine.lua	/^local function ins_right(component)$/;"	f
 list	test.py	/^list = ["one", "three", "two"]$/;"	v
-lockfileVersion	package-lock.json	/^  "lockfileVersion": 2,$/;"	n
 lp	lua/autosnippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
 lp	lua/snippets/all.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
 lp	lua/snippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
 lsp_keymaps	lua/user/lsp/handlers.lua	/^local function lsp_keymaps(bufnr)$/;"	f
-name	package-lock.json	/^  "name": "nvim",$/;"	s
 on_attach	lua/user/lsp/handlers.lua	/^M.on_attach = function(client, bufnr)$/;"	f	unknown:M
 on_attach	lua/user/null-ls-config.lua	/^	on_attach = function(client) --> Format on Save$/;"	f
-packages	package-lock.json	/^  "packages": {}$/;"	o
-requires	package-lock.json	/^  "requires": true,$/;"	b
 s:l	Session.vim	/^let s:l = 129 - ((17 * winheight(0) + 22) \/ 45)$/;"	v
 s:l	Session.vim	/^let s:l = 4 - ((2 * winheight(0) + 22) \/ 45)$/;"	v
 s:save_splitbelow	Session.vim	/^let s:save_splitbelow = &splitbelow$/;"	v
