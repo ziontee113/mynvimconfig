@@ -4,7 +4,7 @@ require("user.settings")
 require("user.mappings")
 -- B: LSP Related:
 require("user.null-ls-config")
-require("user.cmp")
+require("user.cmp-config")
 require("user.lsp")
 -- C: Treesitter
 require("user.treesitter")
