@@ -34,8 +34,6 @@ keymap("n", "<S-l>", ":bprevious<cr>", opts)
 -- Cursor Movement Mappings
 -- keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
 -- keymap("n", "<C-m>", "`m", opts)
--- keymap("n", "<A-j>", "10j", opts)
--- keymap("n", "<A-k>", "10k", opts)
 keymap("v", "<C-u>", "11k", opts)
 keymap("v", "<C-d>", "11j", opts)
 keymap("n", "<C-u>", "11k", opts)
@@ -77,10 +75,10 @@ keymap("n", "e", "w", opts)
 keymap("n", "b", "e", opts)
 
 -- Insert Mode Remap
-keymap("i", "<C-y>", "<CR>", opts) --> go UPPERCASE current word
+keymap("i", "<C-y>", "<CR>", opts) --> new line in insert mode
 keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word
-keymap("i", "<A-l>", "<right>", opts)
-keymap("i", "<A-h>", "<left>", opts)
+keymap("i", "<C-l>", "<Right>", opts)
+keymap("i", "<C-h>", "<Left>", opts)
 
 -- Leader Mappings --
 keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim
