@@ -138,6 +138,7 @@ keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-g>", ":Telescope live_grep<cr>", opts)
 keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
+keymap("n", "<Leader>G", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 -- Hop
 keymap("n", "<leader>w", ":HopWord<cr>", opts)

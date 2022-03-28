@@ -37,7 +37,6 @@ lp	snippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/
 lsp_keymaps	lua/user/lsp/handlers.lua	/^local function lsp_keymaps(bufnr)$/;"	f
 on_attach	lua/user/lsp/handlers.lua	/^M.on_attach = function(client, bufnr)$/;"	f	unknown:M
 on_attach	lua/user/null-ls-config.lua	/^	on_attach = function(client) --> Format on Save$/;"	f
-s:l	Session.vim	/^let s:l = 4 - ((3 * winheight(0) + 24) \/ 48)$/;"	v
 s:l	Session.vim	/^let s:l = 5 - ((4 * winheight(0) + 24) \/ 48)$/;"	v
 s:save_splitbelow	Session.vim	/^let s:save_splitbelow = &splitbelow$/;"	v
 s:save_splitright	Session.vim	/^let s:save_splitright = &splitright$/;"	v
