@@ -26,6 +26,7 @@ color	lua/user/evil-lualine.lua	/^	color = function()$/;"	f
 description	lua/user/lsp/settings/jsonls.lua	/^    description = "The AWS Serverless Application Model (AWS SAM, previously known as Project Fl/;"	f
 error_msg	plugin/packer_compiled.lua	/^local no_errors, error_msg = pcall(function()$/;"	f
 expand	lua/user/cmp-config.lua	/^		expand = function(args)$/;"	f
+f	snippets/all.lua	/^local f = ls.function_node$/;"	f
 f	snippets/javascript.lua	/^local f = ls.function_node$/;"	f
 f	snippets/lua.lua	/^local f = ls.function_node$/;"	f
 format	lua/user/cmp-config.lua	/^		format = function(entry, vim_item)$/;"	f
