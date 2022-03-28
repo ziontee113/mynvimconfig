@@ -17,6 +17,16 @@ local function lp(package_name) -- Load Package Function
 	return require(package_name)
 end
 
-local snippets = {}
+local snippets = {
+	s(
+		{ trig = "s", hidden = false },
+		fmt([[ s({{ trig = "{}", hidden = true }}, {})]], { i(1, "trigger"), i(2, 't"contents"') })
+	),
+	ls.parser.parse_snippet("lua", "also loaded!!"),
+}
 
-return snippets
+return snippets,
+	{
+		ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),
+		ls.parser.parse_snippet("get_down", "breakdown"),
+	}

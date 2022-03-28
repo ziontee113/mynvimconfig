@@ -1,6 +1,9 @@
 local ls = require("luasnip")
 
 require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+
+-- Set Config
 
 local types = require("luasnip.util.types")
 ls.config.set_config({
@@ -25,11 +28,19 @@ ls.config.set_config({
 
 vim.keymap.set({ "i", "s" }, "<c-s>", "<Esc>:w<cr>")
 vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
+vim.keymap.set("i", "<a-u>", require("luasnip.extras.select_choice"))
+
+vim.keymap.set({ "i", "s" }, "<c-p>", function()
+	if ls.expand_or_jumpable() then
+		ls.expand()
+	end
+end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<a-p>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand()
 	end
 end, { silent = true })
+
 vim.keymap.set({ "i", "s" }, "<a-k>", function()
 	if ls.jumpable(1) then
 		ls.jump(1)
@@ -40,6 +51,7 @@ vim.keymap.set({ "i", "s" }, "<a-j>", function()
 		ls.jump(-1)
 	end
 end, { silent = true })
+
 vim.keymap.set("i", "<a-l>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
@@ -50,52 +62,3 @@ vim.keymap.set("i", "<a-h>", function()
 		ls.change_choice(-1)
 	end
 end)
-vim.keymap.set("i", "<a-u>", require("luasnip.extras.select_choice"))
-
--- Auto Reload --
-
-function _G.snippets_clear()
-	for m, _ in pairs(ls.snippets) do --> clear all snippets
-		package.loaded["snippets." .. m] = nil
-	end
-
-	ls.snippets = setmetatable({}, {
-		__index = function(t, k)
-			local ok, m = pcall(require, "snippets." .. k)
-			if not ok and not string.match(m, "^module.*not found:") then
-				error(m)
-			end
-			t[k] = ok and m or {}
-
-			return t[k]
-		end,
-	})
-
-	-- for Auto Triggered
-	for m, _ in pairs(ls.autosnippets) do --> clear all snippets
-		package.loaded["autosnippets." .. m] = nil
-	end
-
-	ls.autosnippets = setmetatable({}, {
-		__index = function(t, k)
-			local ok, m = pcall(require, "autosnippets." .. k)
-			if not ok and not string.match(m, "^module.*not found:") then
-				error(m)
-			end
-			t[k] = ok and m or {}
-
-			return t[k]
-		end,
-	})
-end
-
-_G.snippets_clear()
-
-vim.cmd([[
-augroup snippets_clear
-au!
-au BufWritePost ~/.config/nvim/lua/snippets/*.lua lua _G.snippets_clear()
-au BufWritePost ~/.config/nvim/lua/autosnippets/*.lua lua _G.snippets_clear()
-" au BufWritePost ~/.config/nvim/lua/snippets/*.lua echo "Hello from " @%
-augroup END
-]])

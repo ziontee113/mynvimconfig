@@ -234,6 +234,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/targets.vim",
     url = "https://github.com/wellle/targets.vim"
   },
+  ["telescope-live-grep-raw.nvim"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/telescope-live-grep-raw.nvim",
+    url = "https://github.com/nvim-telescope/telescope-live-grep-raw.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/telescope.nvim",

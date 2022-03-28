@@ -13,7 +13,7 @@ local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
 local snippets = {
-	s({ trig = "testjs!", hidden = true }, t("testing hidden autosnippet in javascript")),
+	s({ trig = "testjs", hidden = false }, t("testing hidden snippet in javascript")),
 }
 
 return snippets

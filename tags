@@ -19,7 +19,6 @@ _LAZYGIT_TOGGLE	lua/user/toggle-term.lua	/^function _LAZYGIT_TOGGLE()$/;"	f
 _NCDU_TOGGLE	lua/user/toggle-term.lua	/^function _NCDU_TOGGLE()$/;"	f
 _NODE_TOGGLE	lua/user/toggle-term.lua	/^function _NODE_TOGGLE()$/;"	f
 _PYTHON_TOGGLE	lua/user/toggle-term.lua	/^function _PYTHON_TOGGLE()$/;"	f
-__index	lua/user/luasnip-config/init.lua	/^		__index = function(t, k)$/;"	f
 body	test.css	/^body {$/;"	s
 buffer_not_empty	lua/user/evil-lualine.lua	/^	buffer_not_empty = function()$/;"	f
 check_git_workspace	lua/user/evil-lualine.lua	/^	check_git_workspace = function()$/;"	f
@@ -27,24 +26,19 @@ color	lua/user/evil-lualine.lua	/^	color = function()$/;"	f
 description	lua/user/lsp/settings/jsonls.lua	/^    description = "The AWS Serverless Application Model (AWS SAM, previously known as Project Fl/;"	f
 error_msg	plugin/packer_compiled.lua	/^local no_errors, error_msg = pcall(function()$/;"	f
 expand	lua/user/cmp-config.lua	/^		expand = function(args)$/;"	f
-f	lua/autosnippets/javascript.lua	/^local f = ls.function_node$/;"	f
-f	lua/autosnippets/lua.lua	/^local f = ls.function_node$/;"	f
-f	lua/snippets/all.lua	/^local f = ls.function_node$/;"	f
-f	lua/snippets/javascript.lua	/^local f = ls.function_node$/;"	f
-f	lua/snippets/lua.lua	/^local f = ls.function_node$/;"	f
+f	snippets/javascript.lua	/^local f = ls.function_node$/;"	f
+f	snippets/lua.lua	/^local f = ls.function_node$/;"	f
 format	lua/user/cmp-config.lua	/^		format = function(entry, vim_item)$/;"	f
 hide_in_width	lua/user/evil-lualine.lua	/^	hide_in_width = function()$/;"	f
 ins_left	lua/user/evil-lualine.lua	/^local function ins_left(component)$/;"	f
 ins_right	lua/user/evil-lualine.lua	/^local function ins_right(component)$/;"	f
 list	test.py	/^list = ["one", "three", "two"]$/;"	v
-lp	lua/autosnippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
-lp	lua/snippets/all.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
-lp	lua/snippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
+lp	snippets/lua.lua	/^local function lp(package_name) -- Load Package Function$/;"	f
 lsp_keymaps	lua/user/lsp/handlers.lua	/^local function lsp_keymaps(bufnr)$/;"	f
 on_attach	lua/user/lsp/handlers.lua	/^M.on_attach = function(client, bufnr)$/;"	f	unknown:M
 on_attach	lua/user/null-ls-config.lua	/^	on_attach = function(client) --> Format on Save$/;"	f
-s:l	Session.vim	/^let s:l = 129 - ((17 * winheight(0) + 22) \/ 45)$/;"	v
-s:l	Session.vim	/^let s:l = 4 - ((2 * winheight(0) + 22) \/ 45)$/;"	v
+s:l	Session.vim	/^let s:l = 4 - ((3 * winheight(0) + 24) \/ 48)$/;"	v
+s:l	Session.vim	/^let s:l = 5 - ((4 * winheight(0) + 24) \/ 48)$/;"	v
 s:save_splitbelow	Session.vim	/^let s:save_splitbelow = &splitbelow$/;"	v
 s:save_splitright	Session.vim	/^let s:save_splitright = &splitright$/;"	v
 s:save_winminheight	Session.vim	/^let s:save_winminheight = &winminheight$/;"	v
@@ -54,7 +48,6 @@ s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
 s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
 save_profiles	plugin/packer_compiled.lua	/^local function save_profiles(threshold)$/;"	f
 setup	lua/user/lsp/handlers.lua	/^M.setup = function()$/;"	f	unknown:M
-snippets_clear	lua/user/luasnip-config/init.lua	/^function _G.snippets_clear()$/;"	f	unknown:_G
 time	plugin/packer_compiled.lua	/^    time = function(chunk, start) end$/;"	f
 time	plugin/packer_compiled.lua	/^    time = function(chunk, start)$/;"	f
 try_loadstring	plugin/packer_compiled.lua	/^local function try_loadstring(s, component, name)$/;"	f

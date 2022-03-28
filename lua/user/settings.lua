@@ -1,8 +1,7 @@
 local set = vim.opt
 
 vim.cmd([[set wildignore+=*node_modules/**]])
-vim.cmd([[set wildignore+=*package-lock.json]])
-vim.cmd([[set wildignore+=*package.json]])
+vim.cmd([[set wildignore+=*.json]])
 vim.cmd([[set wildignore+=*.md]])
 
 -- Fold
