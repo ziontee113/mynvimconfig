@@ -28,13 +28,8 @@ ls.config.set_config({
 
 vim.keymap.set({ "i", "s" }, "<c-s>", "<Esc>:w<cr>")
 vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
-vim.keymap.set("i", "<a-u>", require("luasnip.extras.select_choice"))
+vim.keymap.set({ "i", "s" }, "<a-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
 
-vim.keymap.set({ "i", "s" }, "<c-p>", function()
-	if ls.expand_or_jumpable() then
-		ls.expand()
-	end
-end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<a-p>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand()
