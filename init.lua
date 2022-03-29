@@ -27,7 +27,6 @@ require("user.pretty-fold-config")
 require("user.luasnip-config")
 -- J: Advanced Plugins
 require("user.vim-submode-config")
-require("user.fold-cycle-config")
 
 -- S:imple Configs
 require("Comment").setup()

@@ -88,7 +88,6 @@ return require("packer").startup(function(use)
 	use("kana/vim-submode")
 
 	-- Folds
-	use("jghauser/fold-cycle.nvim")
 	use("anuvyklack/pretty-fold.nvim")
 
 	-- Github Copilot

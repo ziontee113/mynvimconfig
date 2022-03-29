@@ -19,11 +19,11 @@ keymap("n", "c,", [[cib]], term_opts)
 keymap("n", "cj", [[ciw]], opts)
 
 -- Fold Cycle
-keymap("n", "<A-l>", [[<cmd>lua require('fold-cycle').open()<cr>]], { noremap = true, silent = true })
-keymap("n", "<A-h>", [[<cmd>lua require('fold-cycle').close()<cr>]], { noremap = true, silent = true })
-keymap("n", "<A-j>", [[zj]], { noremap = true, silent = true })
-keymap("n", "<A-k>", [[zk]], { noremap = true, silent = true })
-keymap("n", "zm", [[zM]], { noremap = true, silent = true })
+keymap("n", "<A-l>", [[za]], opts)
+keymap("n", "<A-h>", [[zc]], opts)
+keymap("n", "<A-j>", [[zj]], opts)
+keymap("n", "<A-k>", [[zk]], opts)
+keymap("n", "zm", [[zM]], opts)
 
 -- Save and Esc remaps
 keymap("n", "<C-s>", ":w<cr>", opts)
