@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/codi.vim",
     url = "https://github.com/metakirby5/codi.vim"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["dressing.nvim"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/dressing.nvim",

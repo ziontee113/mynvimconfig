@@ -1,9 +1,5 @@
 local set = vim.opt
 
-vim.cmd([[set wildignore+=*node_modules/**]])
-vim.cmd([[set wildignore+=*.json]])
-vim.cmd([[set wildignore+=*.md]])
-
 -- Fold
 vim.cmd([[set foldmethod=manual]])
 vim.cmd([[
@@ -19,6 +15,8 @@ set.tabstop = 2
 set.softtabstop = 2
 set.shiftwidth = 2
 vim.cmd([[set guicursor=n-v-c:block-Cursor]])
+
+vim.cmd([[:set formatoptions-=cro]])
 
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_italic_functions = true

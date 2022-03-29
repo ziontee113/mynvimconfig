@@ -7,9 +7,11 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Ctrl+I and Ctrl+O replacement
+-- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[<C-o>]], opts)
+-- keymap("n", "o", [[o<Esc>cc]], opts)
+-- keymap("n", "O", [[O<Esc>cc]], opts)
 
 -- Change-in Shortcuts
 keymap("n", "ck", [[ciq]], term_opts)
