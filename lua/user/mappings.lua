@@ -15,6 +15,9 @@ keymap("n", "<A-o>", [[<C-o>]], opts)
 
 -- Change-in Shortcuts
 keymap("n", "ck", [[ciq]], term_opts)
+keymap("n", "ckk", [[ciq]], term_opts)
+keymap("n", "ckj", [[cilq]], term_opts)
+keymap("n", "ckl", [[cinq]], term_opts)
 keymap("n", "c,", [[cib]], term_opts)
 keymap("n", "cj", [[ciw]], opts)
 
