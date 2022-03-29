@@ -16,7 +16,7 @@ set.softtabstop = 2
 set.shiftwidth = 2
 vim.cmd([[set guicursor=n-v-c:block-Cursor]])
 
-vim.cmd([[:set formatoptions-=cro]])
+vim.cmd([[au BufEnter * :set formatoptions-=cro]])
 
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_italic_functions = true
