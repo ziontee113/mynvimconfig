@@ -37,4 +37,3 @@ require("hop").setup({
 require("colorizer").setup()
 
 vim.cmd([[:hi Folded guibg=NONE]])
---
