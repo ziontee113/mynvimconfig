@@ -8,8 +8,8 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +5 snippets/all.lua
-badd +0 lua/user/luasnip-config/init.lua
+badd +25 snippets/all.lua
+badd +1 lua/user/luasnip-config/init.lua
 argglobal
 %argdel
 edit snippets/all.lua
@@ -42,13 +42,14 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
+1,13fold
 let &fdl = &fdl
-let s:l = 5 - ((4 * winheight(0) + 24) / 48)
+let s:l = 30 - ((29 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5
-normal! 04|
+keepjumps 30
+normal! 0
 wincmd w
 argglobal
 if bufexists("lua/user/luasnip-config/init.lua") | buffer lua/user/luasnip-config/init.lua | else | edit lua/user/luasnip-config/init.lua | endif
@@ -66,14 +67,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 5 - ((4 * winheight(0) + 24) / 48)
+let s:l = 13 - ((12 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5
-normal! 035|
+keepjumps 13
+normal! 029|
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 tabnext 1

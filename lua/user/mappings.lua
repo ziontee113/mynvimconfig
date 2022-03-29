@@ -28,8 +28,10 @@ keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 
 -- Prev / Next Buffer
-keymap("n", "<S-h>", ":bnext<cr>", opts)
-keymap("n", "<S-l>", ":bprevious<cr>", opts)
+keymap("n", "<S-l>", ":bnext<cr>", opts)
+keymap("n", "<S-h>", ":bprevious<cr>", opts)
+keymap("n", "<Tab>", ":bnext<cr>", opts)
+keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
 
 -- Cursor Movement Mappings
 -- keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)

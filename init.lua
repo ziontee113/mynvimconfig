@@ -18,6 +18,7 @@ require("user.toggle-term")
 -- F: Status Line
 -- require("user.lualine-config")
 require("user.evil-lualine")
+require("user.bufferline-config")
 -- G: Editing
 require("user.autopairs")
 require("user.todo-comments-config")
@@ -33,5 +34,6 @@ require("Comment").setup()
 require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
+require("colorizer").setup()
 
 vim.cmd([[:hi Folded guibg=NONE]])

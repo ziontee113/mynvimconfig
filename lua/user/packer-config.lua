@@ -19,6 +19,7 @@ return require("packer").startup(function(use)
 	-- Toggle Terminal
 	use("akinsho/toggleterm.nvim")
 	use("nvim-lualine/lualine.nvim")
+	use("akinsho/bufferline.nvim")
 	use("metakirby5/codi.vim")
 
 	-- Telescope
@@ -60,8 +61,9 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-nvim-lua")
 
 	-- Auto Import
-	use("ludovicchabant/vim-gutentags")
-	use("kristijanhusak/vim-js-file-import")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	-- use("ludovicchabant/vim-gutentags")
+	-- use("kristijanhusak/vim-js-file-import")
 
 	-- LuaSnip
 	use("L3MON4D3/LuaSnip")
@@ -78,8 +80,9 @@ return require("packer").startup(function(use)
 	use("phaazon/hop.nvim")
 	use("mfussenegger/nvim-treehopper")
 
-	-- Git Signs / Minimap
+	-- Git Signs / UI
 	use("lewis6991/gitsigns.nvim")
+	use("norcalli/nvim-colorizer.lua")
 
 	-- Submodes
 	use("kana/vim-submode")
