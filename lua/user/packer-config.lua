@@ -92,4 +92,5 @@ return require("packer").startup(function(use)
 
 	-- Github Copilot
 	use("github/copilot.vim")
+	use("mattn/emmet-vim")
 end)

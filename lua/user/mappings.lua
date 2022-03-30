@@ -20,6 +20,7 @@ keymap("n", "ckj", [[cilq]], term_opts)
 keymap("n", "ckl", [[cinq]], term_opts)
 keymap("n", "c,", [[cib]], term_opts)
 keymap("n", "cj", [[ciw]], opts)
+keymap("n", "cJ", [[ciW]], opts)
 
 -- Fold Cycle
 keymap("n", "<A-l>", [[za]], opts)

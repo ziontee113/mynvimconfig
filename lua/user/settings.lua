@@ -61,3 +61,4 @@ vim.o.signcolumn = "yes:2"
 -- Fold
 vim.cmd([[set fdc=1]])
 vim.cmd([[hi FoldColumn guibg=none guifg=#008cff]])
+vim.cmd([[:hi Folded guibg=NONE]])

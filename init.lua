@@ -34,5 +34,3 @@ require("hop").setup({
 	keys = "etovxqpdygfblzhckisuran",
 })
 require("colorizer").setup()
-
-vim.cmd([[:hi Folded guibg=NONE]])
