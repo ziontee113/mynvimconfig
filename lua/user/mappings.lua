@@ -91,12 +91,13 @@ keymap("i", "<C-l>", "<Right>", opts)
 keymap("i", "<C-h>", "<Left>", opts)
 
 -- Leader Mappings --
+keymap("n", "<leader><F12>", ":call EmmetSetup()<cr>", nosilent_opts) --save current session to Session.vim
 keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim
 keymap("n", "<leader>os", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
 keymap("n", "<leader>R", ":!lua %<cr>", nosilent_opts) --run current .lua file in
 keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
-keymap("n", "<leader>l", ":LspInfo<cr>", opts) --open LspInfo
+keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>L", ":LspInstallInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>d", ":bd<cr>", opts) --quit current file
 keymap("n", "<leader>q", ":q<cr>", opts) --quit current file
@@ -149,6 +150,7 @@ keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<Leader>G", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 -- Hop
+keymap("n", "<leader>l", ":HopLineStart<cr>", opts)
 keymap("n", "<leader>w", ":HopWord<cr>", opts)
 keymap("n", "<leader>W", ":HopWordMW<cr>", opts)
 keymap("n", "f", ":HopChar1<cr>", opts)
