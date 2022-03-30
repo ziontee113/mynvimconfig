@@ -22,6 +22,9 @@ keymap("n", "c,", [[cib]], term_opts)
 keymap("n", "cj", [[ciw]], opts)
 keymap("n", "cJ", [[ciW]], opts)
 
+-- Delete Shortcuts
+keymap("n", "dl", [[dd]], opts)
+
 -- Fold Cycle
 keymap("n", "<A-l>", [[za]], opts)
 keymap("n", "<A-h>", [[zc]], opts)
@@ -83,7 +86,7 @@ keymap("n", "e", "w", opts)
 keymap("n", "b", "e", opts)
 
 -- Insert Mode Remap
-keymap("i", "<C-y>", "<CR>", opts) --> new line in insert mode
+keymap("i", "<A-o>", "<Esc>o", opts) --> new line in insert mode
 keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word
 keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
