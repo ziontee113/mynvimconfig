@@ -150,6 +150,8 @@ keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<Leader>G", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 -- Hop
+keymap("n", ",", ":HopWord<cr>", opts)
+keymap("n", ";", ":HopLineStart<cr>", opts)
 keymap("n", "<leader>l", ":HopLineStart<cr>", opts)
 keymap("n", "<leader>w", ":HopWord<cr>", opts)
 keymap("n", "<leader>W", ":HopWordMW<cr>", opts)

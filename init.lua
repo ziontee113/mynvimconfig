@@ -31,6 +31,6 @@ require("user.vim-submode-config")
 -- S:imple Configs
 require("Comment").setup()
 require("hop").setup({
-	keys = "etovxqpdygfblzhckisuran",
+	-- keys = "etovxqpdygfblzhckisuran",
 })
 require("colorizer").setup()
