@@ -160,12 +160,22 @@ keymap("x", ";", "<cmd>HopLineStart<cr>", opts)
 keymap("n", "<leader>l", "<cmd>HopLineStart<cr>", opts)
 keymap("n", "<leader>w", "<cmd>HopWord<cr>", opts)
 keymap("n", "<leader>W", "<cmd>HopWordMW<cr>", opts)
-keymap("n", "f", "<cmd>HopChar1<cr>", opts)
-keymap("n", "F", "<cmd>HopChar1CurrentLine<cr>", opts)
-keymap("o", "t", "<cmd>HopChar1CurrentLine<cr>", opts)
-keymap("o", "T", "<cmd>HopChar1<cr>", opts)
-keymap("o", "f", "<cmd>lua require'hop'.hint_char1({ current_line_only = true, inclusive_jump = true })<cr>", opts)
-keymap("o", "F", "<cmd>lua require'hop'.hint_char1({ current_line_only = false, inclusive_jump = true })<cr>", opts)
+keymap("n", "f", "<cmd>HopChar1CurrentLineAC<cr>", opts)
+keymap("n", "F", "<cmd>HopChar1CurrentLineBC<cr>", opts)
+keymap("o", "t", "<cmd>HopChar1CurrentLineAC<cr>", opts)
+keymap("o", "T", "<cmd>HopChar1CurrentLineBC<cr>", opts)
+keymap(
+	"o",
+	"f",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+	opts
+)
+keymap(
+	"o",
+	"F",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = false })<cr>",
+	opts
+)
 -- TS Hoppper
 keymap("v", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
