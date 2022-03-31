@@ -146,8 +146,9 @@ keymap(
 	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
 	opts
 )
-keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
+keymap("n", "<leader>h", ":Telescope help_tags<cr>", opts)
 keymap("n", "<c-g>", ":Telescope live_grep<cr>", opts)
+keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<Leader>G", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
@@ -176,6 +177,8 @@ keymap(
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = false })<cr>",
 	opts
 )
+-- keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, vim.fn['getreg']('/'))<cr>", opts) --> will come to use later
+keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, [[\\d\\+]])<cr>", opts)
 -- TS Hoppper
 keymap("v", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
