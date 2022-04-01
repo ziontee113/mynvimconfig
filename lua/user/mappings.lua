@@ -33,6 +33,8 @@ keymap("n", "<A-k>", [[zk]], opts)
 keymap("n", "zm", [[zM]], opts)
 
 -- Save and Esc remaps
+vim.cmd([[autocmd FileType gitcommit inoremap <buffer> <C-s> <Esc>:wq<CR>]])
+vim.cmd([[autocmd FileType gitcommit nnoremap <buffer> <C-s> :wq<CR>]])
 keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 
