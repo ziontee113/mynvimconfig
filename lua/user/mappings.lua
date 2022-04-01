@@ -183,3 +183,6 @@ keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, [[\\d\\+]])<cr
 keymap("v", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
 keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
+
+-- Fugitive
+keymap("n", "<F12><F12>", ":G add .", nosilent_opts)
