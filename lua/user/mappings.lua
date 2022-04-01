@@ -184,4 +184,6 @@ keymap("v", "m", ":lua require('tsht').nodes()<CR>", opts)
 keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 
 -- Fugitive
-keymap("n", "<Leader>G", ":G<cr>", opts)
+keymap("n", "<F12><F12>", ":G add .<cr>", nosilent_opts)
+keymap("n", "<F12><F11>", ":G commit<cr>", nosilent_opts)
+keymap("n", "<Leader>G", ":G<cr>", nosilent_opts)
