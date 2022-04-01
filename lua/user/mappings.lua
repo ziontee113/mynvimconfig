@@ -146,6 +146,7 @@ keymap(
 	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
 	opts
 )
+keymap("n", "<leader>k", ":Telescope keymaps<cr>", opts)
 keymap("n", "<leader>h", ":Telescope help_tags<cr>", opts)
 keymap("n", "<c-g>", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
