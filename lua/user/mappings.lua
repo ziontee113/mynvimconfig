@@ -187,6 +187,7 @@ keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 
 -- Fugitive
 keymap("n", "<Leader>G", ":G<cr>", nosilent_opts)
+keymap("n", "<F9>", ":G add .<cr> | :G commit<cr>", nosilent_opts)
 keymap("n", "<F12><F12>", ":G add .<cr>", nosilent_opts)
 keymap("n", "<F12><F11>", ":G commit<cr>", nosilent_opts)
 keymap("n", "<F12><F10>", ":G push<cr>", nosilent_opts)
