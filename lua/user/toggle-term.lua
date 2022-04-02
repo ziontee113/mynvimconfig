@@ -1,6 +1,6 @@
 -- Toggle Term --
 require("toggleterm").setup({
-	size = 40,
+	size = 12,
 	open_mapping = [[<c-\>]],
 	shade_filetypes = {},
 	shade_terminals = true,
@@ -80,3 +80,60 @@ local python = Terminal:new({ cmd = "python", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
+
+----
+local newTerm = Terminal:new({
+	hidden = true,
+	close_on_exit = false,
+	count = 1,
+	direction = "horizontal",
+	float_opts = {
+		border = "double",
+	},
+
+	-- function to run on opening the terminal
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.cmd("set winheight=15")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-q>", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+	-- function to run on closing the terminal
+	on_close = function(term)
+		print("Closing terminal")
+	end,
+})
+
+function _NEW_TERM_TOGGLE()
+	newTerm:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>lua _NEW_TERM_TOGGLE()<CR>", { noremap = true, silent = true })
+
+----------
+
+local verticalTerm = Terminal:new({
+	hidden = true,
+	close_on_exit = false,
+	count = 2,
+	direction = "vertical",
+	float_opts = {
+		border = "double",
+	},
+
+	-- function to run on opening the terminal
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.cmd("set winwidth=120")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-q>", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+	-- function to run on closing the terminal
+	on_close = function(term)
+		print("Closing terminal")
+	end,
+})
+
+function _VERTICAL_TERM_TOGGLE()
+	verticalTerm:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>T", "<cmd>lua _VERTICAL_TERM_TOGGLE()<CR>", { noremap = true, silent = true })
