@@ -21,3 +21,5 @@ class Teacher extends Person {
 
 const teacher = new Teacher("John", "math");
 teacher.teach();
+
+teacher.walk();
