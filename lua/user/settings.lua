@@ -64,7 +64,7 @@ vim.cmd([[hi FoldColumn guibg=none guifg=#008cff]])
 vim.cmd([[:hi Folded guibg=NONE]])
 
 -- Codi Text Color
--- vim.cmd([[hi CodiVirtualText guifg=skyblue]])
+vim.cmd([[hi CodiVirtualText guifg=skyblue]])
 
 -- Text Yank Post
 vim.cmd([[
