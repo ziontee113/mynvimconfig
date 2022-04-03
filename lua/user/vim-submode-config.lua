@@ -2,7 +2,7 @@ vim.cmd([[
 " Create a submode to handle windows
 
 " The submode is entered whith <Leader>k and exited with <Leader>
-call submode#enter_with('WindowsMode', 'n', '', '<Leader>jj', ':echo "windows mode"<CR>')
+call submode#enter_with('WindowsMode', 'n', '', '<Leader>kk', ':echo "windows mode"<CR>')
 call submode#leave_with('WindowsMode', 'n', '', '<Leader>')
 
 " Change of windows with hjkl

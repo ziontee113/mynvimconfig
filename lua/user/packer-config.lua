@@ -100,4 +100,14 @@ return require("packer").startup(function(use)
 
 	-- Wiki
 	use("vimwiki/vimwiki")
+
+	-- DAP
+	use("mfussenegger/nvim-dap")
+	use("Pocco81/DAPInstall.nvim")
+
+	use("mfussenegger/nvim-dap-python")
+
+	use("theHamsta/nvim-dap-virtual-text")
+	use("rcarriga/nvim-dap-ui")
+	use("nvim-telescope/telescope-dap.nvim")
 end)
