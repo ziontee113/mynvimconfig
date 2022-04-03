@@ -1,4 +1,8 @@
-list = ["one", "three", "two"]
-list.clear()
+x = 5
+y = 9
 
-print(list)
+x + y
+
+print(x + y)
+
+print("Hello World")

@@ -41,7 +41,8 @@ set.undofile = true
 set.splitright = true
 set.splitbelow = true
 
-set.timeoutlen = 500
+-- set.timeoutlen = 500
+set.timeoutlen = 1000
 set.cursorline = true
 
 set.showmode = false
