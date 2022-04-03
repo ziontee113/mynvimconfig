@@ -103,7 +103,6 @@ return require("packer").startup(function(use)
 
 	-- DAP
 	use("mfussenegger/nvim-dap")
-	use("Pocco81/DAPInstall.nvim")
 
 	use("mfussenegger/nvim-dap-python")
 
