@@ -10,8 +10,10 @@ vim.g.maplocalleader = " "
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[<C-o>]], opts)
--- keymap("n", "o", [[o<Esc>cc]], opts)
--- keymap("n", "O", [[O<Esc>cc]], opts)
+
+-- Paragraph Jump
+keymap("n", "}", [[:keepjumps normal! }<cr>]], opts)
+keymap("n", "{", [[:keepjumps normal! {<cr>]], opts)
 
 -- Change-in Shortcuts
 keymap("n", "ck", [[ciq]], term_opts)
@@ -104,7 +106,7 @@ keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua 
 keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>L", ":LspInstallInfo<cr>", opts) --open LspInfo
--- keymap("n", "<leader>d", ":bd<cr>", opts) --quit current file
+keymap("n", "<leader>dd", ":bd<cr>", opts) --quit current file
 keymap("n", "<leader>q", ":q<cr>", opts) --quit current file
 
 -- Comment with <A-/> --> Remapped AHK for Alacrity <C-/> to <A-/>

@@ -45,6 +45,8 @@ return require("packer").startup(function(use)
 	use("p00f/nvim-ts-rainbow")
 	use("nvim-treesitter/playground")
 
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+
 	-- LSP
 	use("neovim/nvim-lspconfig")
 	use("williamboman/nvim-lsp-installer")
