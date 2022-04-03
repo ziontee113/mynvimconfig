@@ -1,5 +1,6 @@
 require("telescope").load_extension("dap")
 require("dbg.python")
+require("dbg.chrome")
 
 -- nvim-dap-virtual-text
 require("nvim-dap-virtual-text").setup()
