@@ -1,12 +1,10 @@
 require("telescope").load_extension("dap")
+require("dbg.dap-ui")
 require("dbg.python")
 require("dbg.chrome")
 
 -- nvim-dap-virtual-text
 require("nvim-dap-virtual-text").setup()
-
--- nvim-dap-ui
-require("dapui").setup()
 
 -- Key Maps
 
