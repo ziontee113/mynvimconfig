@@ -63,7 +63,7 @@ local config = {
 		lualine_b = {},
 		lualine_y = {},
 		lualine_z = {},
-		lualine_c = {},
+		lualine_c = { { "filename", path = 1 } },
 		lualine_x = {},
 	},
 }

@@ -17,9 +17,9 @@ require("dapui").setup({
 				id = "scopes",
 				size = 0.5, -- Can be float or integer > 1
 			},
-			{ id = "breakpoints", size = 0.25 },
+			-- { id = "breakpoints", size = 0.25 },
 			{ id = "stacks", size = 0.25 },
-			-- { id = "watches", size = 00.25 },
+			{ id = "watches", size = 0.25 },
 		},
 		size = 40,
 		position = "left", -- Can be "left", "right", "top", "bottom"

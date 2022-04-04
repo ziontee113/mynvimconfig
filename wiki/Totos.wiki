@@ -1,6 +1,3 @@
-- [ ] say hello
-- [ ] say hello
-- [ ] say hello
-- [ ] say hello
-- [ ] say hello
-- [ ] say hello
+- [ ] find a friend to code with
+- [ ] find a friend to leetcode with
+  - maybe on discord? or reddit?
