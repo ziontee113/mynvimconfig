@@ -151,7 +151,8 @@ keymap(
 	opts
 )
 keymap("n", "<leader>k", ":Telescope keymaps<cr>", opts)
-keymap("n", "<leader>h", ":Telescope help_tags<cr>", opts)
+keymap("n", "<leader>he", ":Telescope help_tags<cr>", opts)
+keymap("n", "<leader>hi", ":Telescope highlights<cr>", opts)
 keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)

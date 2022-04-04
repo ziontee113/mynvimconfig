@@ -39,3 +39,4 @@ require("hop").setup({
 	-- keys = "etovxqpdygfblzhckisuran",
 })
 require("colorizer").setup()
+require("fidget").setup({ window = { blend = 0 } })
