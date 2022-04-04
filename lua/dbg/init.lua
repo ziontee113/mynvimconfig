@@ -13,11 +13,12 @@ local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
 
-keymap("n", "<leader>dct", '<cmd>lua require"dap".continue()<CR>', opts)
-keymap("n", "<leader>dsv", '<cmd>lua require"dap".step_over()<CR>', opts)
-keymap("n", "<leader>dsi", '<cmd>lua require"dap".step_into()<CR>', opts)
-keymap("n", "<leader>dso", '<cmd>lua require"dap".step_out()<CR>', opts)
-keymap("n", "<leader>dtb", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+keymap("n", "<F5>", '<cmd>lua require"dap".continue()<CR>', opts)
+keymap("n", "<F10>", '<cmd>lua require"dap".step_into()<CR>', opts)
+keymap("n", "<F11>", '<cmd>lua require"dap".step_over()<CR>', opts)
+keymap("n", "<F12>", '<cmd>lua require"dap".step_out()<CR>', opts)
+keymap("n", "<leader>db", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+keymap("n", "<leader>dB", '<cmd>lua require"dap".set_breakpoint()<CR>', opts)
 
 keymap("n", "<leader>dsc", '<cmd>lua require"dap.ui.variables".scopes()<CR>', opts)
 keymap("n", "<leader>dhh", '<cmd>lua require"dap.ui.variables".hover()<CR>', opts)
@@ -31,7 +32,7 @@ keymap(
 	opts
 )
 
-keymap("n", "<leader>dsbr", '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', opts)
+-- keymap("n", "<leader>dsbr", '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', opts)
 keymap(
 	"n",
 	"<leader>dsbm",

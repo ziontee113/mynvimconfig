@@ -41,8 +41,8 @@ keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 
 -- Prev / Next Buffer
-keymap("n", "<S-l>", ":bnext<cr>", opts)
-keymap("n", "<S-h>", ":bprevious<cr>", opts)
+-- keymap("n", "<S-l>", ":bnext<cr>", opts)
+-- keymap("n", "<S-h>", ":bprevious<cr>", opts)
 keymap("n", "<Tab>", ":bnext<cr>", opts)
 keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
 
@@ -193,7 +193,7 @@ keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 
 -- Fugitive
 -- keymap("n", "<Leader>G", ":G<cr>", nosilent_opts)
-keymap("n", "<F12><F12>", ":G add .<cr> | :G commit<cr>", nosilent_opts)
-keymap("n", "<F12>", ":G add .<cr>", nosilent_opts)
-keymap("n", "<F12><F11>", ":G commit<cr>", nosilent_opts)
-keymap("n", "<F12><F10>", ":G push<cr> | :redraw!", nosilent_opts)
+-- keymap("n", "<F12><F12>", ":G add .<cr> | :G commit<cr>", nosilent_opts)
+-- keymap("n", "<F12>", ":G add .<cr>", nosilent_opts)
+-- keymap("n", "<F12><F11>", ":G commit<cr>", nosilent_opts)
+-- keymap("n", "<F12><F10>", ":G push<cr> | :redraw!", nosilent_opts)
