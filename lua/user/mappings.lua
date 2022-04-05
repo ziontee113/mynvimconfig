@@ -184,7 +184,7 @@ keymap(
 -- keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, vim.fn['getreg']('/'))<cr>", opts) --> will come to use later
 keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, [[\\d\\+]])<cr>", opts)
 -- TS Hoppper
-keymap("v", "m", ":lua require('tsht').nodes()<CR>", opts)
+keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
 keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 

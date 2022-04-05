@@ -66,6 +66,9 @@ vim.cmd([[:hi Folded guibg=NONE]])
 
 -- Codi Text Color
 vim.cmd([[hi CodiVirtualText guifg=skyblue]])
+vim.cmd([[
+let g:codi#width=80
+]])
 
 -- Text Yank Post
 vim.cmd([[
