@@ -7,6 +7,10 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Commands Remaps
+vim.cmd([[:command Q q]])
+vim.cmd([[:command Qa qa]])
+
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[<C-o>]], opts)
