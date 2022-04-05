@@ -52,6 +52,8 @@ return require("packer").startup(function(use)
 	use("williamboman/nvim-lsp-installer")
 	use("hrsh7th/cmp-nvim-lsp")
 
+	use("mattn/emmet-vim")
+
 	use("j-hui/fidget.nvim")
 
 	-- Null-ls
@@ -100,7 +102,19 @@ return require("packer").startup(function(use)
 
 	-- Github Copilot
 	use("github/copilot.vim")
-	use("mattn/emmet-vim")
+	-- use({
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		vim.schedule(function()
+	-- 			require("copilot")
+	-- 		end)
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua", "nvim-cmp" },
+	-- })
 
 	-- Wiki
 	use("vimwiki/vimwiki")
