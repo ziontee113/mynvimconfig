@@ -1,3 +1,6 @@
 - [ ] find a friend to code with
 - [ ] find a friend to leetcode with
   - maybe on discord? or reddit?
+
+- [ ] keep learning algorithms and data structures
+- [ ] keep learning React
