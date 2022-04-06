@@ -6,9 +6,8 @@ require("user.mappings")
 require("user.null-ls-config")
 require("user.cmp-config")
 require("user.lsp")
--- require("user.dap-config")
--- require("user.dap-install-config")
 require("dap-config")
+-- require("david")
 -- C: Treesitter
 require("user.treesitter")
 -- D: Telescope
