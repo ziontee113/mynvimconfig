@@ -30,7 +30,7 @@ keymap("n", "cj", [[ciw]], opts)
 keymap("n", "cJ", [[ciW]], opts)
 
 -- Delete Shortcuts
-keymap("n", "dl", [[dd]], opts)
+keymap("n", "dl", [[cc<Esc>]], opts)
 
 -- Fold Cycle
 keymap("n", "<A-l>", [[za]], opts)
@@ -112,6 +112,7 @@ keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua f
 keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>L", ":LspInstallInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>dd", ":bd<cr>", opts)
+keymap("n", "<leader>d<cr>", ":bd<cr>", opts)
 keymap("n", "<leader>da", ":%bd<cr>", opts) -- close all buffers
 keymap("n", "<leader>dA", ":%bd|e#<cr>", opts) -- close all buffers but this one
 keymap("n", "<leader>q", ":q<cr>", opts) --quit current file

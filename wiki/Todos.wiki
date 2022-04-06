@@ -1,2 +1,6 @@
+# TODOS:
+
+- [ ] have the first DAP session with Chrome DAP
+
 - [ ] keep learning algorithms and data structures
 - [ ] start making a React project
