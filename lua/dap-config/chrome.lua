@@ -15,6 +15,7 @@ dap.configurations.javascriptreact = { -- change this to javascript if needed
 		protocol = "inspector",
 		port = 9222,
 		webRoot = "${workspaceFolder}",
+		skipFiles = { "<node_internals>/**/*.js", "${workSpaceFolder}/node_modules/**/*.js", "<eval>/**/*.js" },
 	},
 }
 
@@ -28,5 +29,6 @@ dap.configurations.typescriptreact = { -- change to typescript if needed
 		protocol = "inspector",
 		port = 9222,
 		webRoot = "${workspaceFolder}",
+		skipFiles = { "<node_internals>/**/*.js", "${workSpaceFolder}/node_modules/**/*.js", "<eval>/**/*.js" },
 	},
 }

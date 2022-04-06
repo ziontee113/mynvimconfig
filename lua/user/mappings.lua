@@ -46,8 +46,8 @@ keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 
 -- Prev / Next Buffer
-keymap("n", "<S-l>", ":bnext<cr>", opts)
-keymap("n", "<S-h>", ":bprevious<cr>", opts)
+-- keymap("n", "<S-l>", ":bnext<cr>", opts)
+-- keymap("n", "<S-h>", ":bprevious<cr>", opts)
 keymap("n", "<Tab>", ":bnext<cr>", opts)
 keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
 
@@ -112,6 +112,7 @@ keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua f
 keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>L", ":LspInstallInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>dd", ":bd<cr>", opts)
+keymap("n", "<leader>dD", ":bd!<cr>", opts)
 keymap("n", "<leader>d<cr>", ":bd<cr>", opts)
 keymap("n", "<leader>da", ":%bd<cr>", opts) -- close all buffers
 keymap("n", "<leader>dA", ":%bd|e#<cr>", opts) -- close all buffers but this one

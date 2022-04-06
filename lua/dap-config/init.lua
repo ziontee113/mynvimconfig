@@ -1,11 +1,7 @@
-require("telescope").load_extension("dap")
 require("dap-config.dap-ui")
 require("dap-config.python")
 require("dap-config.chrome")
 require("dap-config.node")
-
--- .vscode/launch.json support
-require("dap.ext.vscode").load_launchjs()
 
 -- nvim-dap-virtual-text
 require("nvim-dap-virtual-text").setup()
@@ -16,13 +12,14 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
+keymap("n", "dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
 
-keymap("n", "<F5>", '<cmd>lua require"dap".continue()<CR>', opts)
--- keymap("n", "<F5>", '<cmd>lua require"dap-config.helper".attach()<CR>', opts)
-keymap("n", "<F10>", '<cmd>lua require"dap".step_into()<CR>', opts)
-keymap("n", "<F11>", '<cmd>lua require"dap".step_over()<CR>', opts)
-keymap("n", "<F12>", '<cmd>lua require"dap".step_out()<CR>', opts)
-keymap("n", "<leader>db", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+keymap("n", "<S-u>", '<cmd>lua require"dap".continue()<CR> | <cmd>lua require"dapui".toggle()<CR>', opts)
+keymap("n", "<Leader>cn", '<cmd>lua require"dap".continue()<CR>', opts)
+keymap("n", "<S-j>", '<cmd>lua require"dap".step_into()<CR>', opts)
+keymap("n", "<S-l>", '<cmd>lua require"dap".step_over()<CR>', opts)
+keymap("n", "<S-h>", '<cmd>lua require"dap".step_out()<CR>', opts)
+keymap("n", "B", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
 keymap("n", "<leader>dB", '<cmd>lua require"dap".set_breakpoint()<CR>', opts)
 
 keymap("n", "<leader>dsc", '<cmd>lua require"dap.ui.variables".scopes()<CR>', opts)

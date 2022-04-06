@@ -8,12 +8,12 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +59 lua/dbg/init.lua
-badd +6 test.py
-badd +0 test.js
+badd +39 test.js
+badd +6 .vscode/launch.json
+badd +20 lua/dap-config/node.lua
 argglobal
 %argdel
-edit test.js
+edit .vscode/launch.json
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -33,31 +33,7 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 argglobal
-balt test.py
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 4 - ((3 * winheight(0) + 23) / 47)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 4
-normal! 03|
-lcd ~/.config/nvim
-wincmd w
-argglobal
-if bufexists("~/.config/nvim/lua/dbg/init.lua") | buffer ~/.config/nvim/lua/dbg/init.lua | else | edit ~/.config/nvim/lua/dbg/init.lua | endif
-if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/lua/dbg/init.lua
-endif
-balt ~/.config/nvim/test.py
+balt lua/dap-config/node.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -68,14 +44,39 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 2 - ((1 * winheight(0) + 23) / 47)
+let s:l = 6 - ((5 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
+keepjumps 6
+normal! 03|
+lcd ~/.config/nvim/.vscode
+wincmd w
+argglobal
+if bufexists("~/.config/nvim/lua/dap-config/node.lua") | buffer ~/.config/nvim/lua/dap-config/node.lua | else | edit ~/.config/nvim/lua/dap-config/node.lua | endif
+if &buftype ==# 'terminal'
+  silent file ~/.config/nvim/lua/dap-config/node.lua
+endif
+balt ~/.config/nvim/.vscode/launch.json
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 6 - ((5 * winheight(0) + 23) / 47)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 6
 normal! 0
 lcd ~/.config/nvim
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 tabnext 1
