@@ -8,8 +8,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Commands Remaps
-vim.cmd([[:command Q q]])
-vim.cmd([[:command Qa qa]])
+vim.cmd([[:command! Q q]])
+vim.cmd([[:command! Qa qa]])
+vim.cmd([[:command! QA qa]])
 
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
