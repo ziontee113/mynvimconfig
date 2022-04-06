@@ -4,6 +4,9 @@ require("dap-config.python")
 require("dap-config.chrome")
 require("dap-config.node")
 
+-- .vscode/launch.json support
+require("dap.ext.vscode").load_launchjs()
+
 -- nvim-dap-virtual-text
 require("nvim-dap-virtual-text").setup()
 

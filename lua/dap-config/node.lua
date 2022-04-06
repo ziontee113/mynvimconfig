@@ -1,9 +1,11 @@
 local dap = require("dap")
+
 dap.adapters.node2 = {
 	type = "executable",
 	command = "node",
 	args = { "/home/ubur/.config/daps/vscode-node-debug2/out/src/nodeDebug.js" },
 }
+
 dap.configurations.javascript = {
 	{
 		name = "Launch",
