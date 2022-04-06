@@ -111,7 +111,8 @@ keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua 
 keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>L", ":LspInstallInfo<cr>", opts) --open LspInfo
-keymap("n", "<leader>dd", ":bd<cr>", opts) --quit current file
+keymap("n", "<leader>dd", ":bd<cr>", opts)
+keymap("n", "<leader>da", ":%bd<cr>", opts) -- close all buffers
 keymap("n", "<leader>q", ":q<cr>", opts) --quit current file
 
 -- Comment with <A-/> --> Remapped AHK for Alacrity <C-/> to <A-/>
