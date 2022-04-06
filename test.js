@@ -32,6 +32,8 @@ function twoSum(nums, target) {
   }
 }
 
+console.log("hello world!!!");
+
 // time complexity = O(n)
 [15, -2, 2, 11, 7, -2].sort((a, b) => a - b);
 twoSum([15, -2, 2, 11, 7, -2], 9);

@@ -8,7 +8,7 @@ require("user.cmp-config")
 require("user.lsp")
 -- require("user.dap-config")
 -- require("user.dap-install-config")
-require("dbg")
+require("dap-config")
 -- C: Treesitter
 require("user.treesitter")
 -- D: Telescope

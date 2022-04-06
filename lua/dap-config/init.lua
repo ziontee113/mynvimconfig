@@ -1,8 +1,8 @@
 require("telescope").load_extension("dap")
-require("dbg.dap-ui")
-require("dbg.python")
-require("dbg.chrome")
-require("dbg.node")
+require("dap-config.dap-ui")
+require("dap-config.python")
+require("dap-config.chrome")
+require("dap-config.node")
 
 -- nvim-dap-virtual-text
 require("nvim-dap-virtual-text").setup()
@@ -15,6 +15,7 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<leader>dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
 
 keymap("n", "<F5>", '<cmd>lua require"dap".continue()<CR>', opts)
+-- keymap("n", "<F5>", '<cmd>lua require"dap-config.helper".attach()<CR>', opts)
 keymap("n", "<F10>", '<cmd>lua require"dap".step_into()<CR>', opts)
 keymap("n", "<F11>", '<cmd>lua require"dap".step_over()<CR>', opts)
 keymap("n", "<F12>", '<cmd>lua require"dap".step_out()<CR>', opts)
