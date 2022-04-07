@@ -1,9 +1,9 @@
-function countDown(num) {
-  if (num > 0) {
-    return countDown(num - 1);
-  }
+function sumRange(num) {
+  if (num === 1) return 1;
+
+  return num + sumRange(num - 1);
 }
 
-countDown(8);
+sumRange(3);
 
 ("finished!");
