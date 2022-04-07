@@ -83,7 +83,7 @@ return require("packer").startup(function(use)
 	use("mg979/vim-visual-multi")
 
 	-- Test Jumping / Hopping
-	use("phaazon/hop.nvim")
+	-- use("phaazon/hop.nvim")
 	use("mfussenegger/nvim-treehopper")
 	use("ggandor/lightspeed.nvim")
 
