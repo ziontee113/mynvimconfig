@@ -85,6 +85,7 @@ return require("packer").startup(function(use)
 	-- Test Jumping / Hopping
 	use("phaazon/hop.nvim")
 	use("mfussenegger/nvim-treehopper")
+	use("ggandor/lightspeed.nvim")
 
 	-- Git Signs / UI
 	use("lewis6991/gitsigns.nvim")

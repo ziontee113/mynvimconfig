@@ -20,8 +20,8 @@ keymap("x", "f", "<cmd>HopChar1<cr>", opts)
 keymap("n", "f", "<cmd>HopChar1<cr>", opts)
 keymap("x", "f", "<cmd>HopChar1<cr>", opts)
 keymap("n", "f", "<cmd>HopChar1<cr>", opts)
-keymap("x", "s", "<cmd>HopChar1<cr>", opts)
-keymap("n", "s", "<cmd>HopChar1<cr>", opts)
+-- keymap("x", "s", "<cmd>HopChar1<cr>", opts)
+-- keymap("n", "s", "<cmd>HopChar1<cr>", opts)
 
 keymap("n", "/", "<cmd>HopChar1<cr>", opts)
 keymap("x", "/", "<cmd>HopChar1<cr>", opts)
@@ -46,13 +46,17 @@ keymap("n", "f'", "<cmd>lua require'hop'.hint_patterns({}, [[\"\\|']])<cr>", opt
 keymap("n", "f-", "<cmd>lua require'hop'.hint_patterns({}, [[-\\|+]])<cr>", opts)
 keymap("n", "f;", "<cmd>lua require'hop'.hint_patterns({}, [[;\\|:]])<cr>", opts)
 
-keymap("n", "s/", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts)
+-- keymap("n", "s/", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts)
 keymap("n", "f/", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts)
 keymap("n", "//", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts)
 
 -- keymap("n", "f[", "<cmd>lua require'hop'.hint_patterns({}, [[\\[\\|(]])<cr>", opts)
 -- keymap("n", "f]", "<cmd>lua require'hop'.hint_patterns({}, [[\\]\\|)]])<cr>", opts)
-keymap("n", "s[", "<cmd>lua require'hop'.hint_patterns({}, [[(]])<cr>", opts)
-keymap("n", "s]", "<cmd>lua require'hop'.hint_patterns({}, [[)]])<cr>", opts)
+-- keymap("n", "s[", "<cmd>lua require'hop'.hint_patterns({}, [[(]])<cr>", opts)
+-- keymap("n", "s]", "<cmd>lua require'hop'.hint_patterns({}, [[)]])<cr>", opts)
 keymap("n", "q[", "<cmd>lua require'hop'.hint_patterns({}, [[{]])<cr>", opts)
 keymap("n", "q]", "<cmd>lua require'hop'.hint_patterns({}, [[}]])<cr>", opts)
+
+--- Lightspeed
+
+keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
