@@ -38,4 +38,31 @@ console.log("hello world!!!");
 [15, -2, 2, 11, 7, -2].sort((a, b) => a - b);
 twoSum2([15, -2, 2, 11, 7, -2], 9);
 
+////////////////////////////////////////////////////////////////////////////////////////////
+
+function brushTeeth() {
+  console.log("Brush teeth!");
+}
+
+function wakeUp() {
+  let wakeUpTime = new Date();
+  wakeUpTime.setHours(7);
+  wakeUpTime.setMinutes(0);
+  wakeUpTime.setSeconds(0);
+  wakeUpTime.setMilliseconds(0);
+
+  let now = new Date();
+
+  if (now.getTime() < wakeUpTime.getTime()) {
+    console.log("Wake up!");
+    brushTeeth();
+  } else {
+    console.log("Sleep!");
+  }
+}
+
+wakeUp();
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
 console.log("end of script");

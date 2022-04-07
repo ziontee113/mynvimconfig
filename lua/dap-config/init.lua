@@ -20,7 +20,8 @@ autocmd FileType dap-float nnoremap <buffer> q :q<CR>
 keymap("n", "<leader>dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
 keymap("n", "dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
 
-keymap("n", "<S-u>", '<cmd>lua require"dap".continue()<CR> | <cmd>lua require"dapui".toggle()<CR>', opts)
+-- keymap("n", "<S-u>", '<cmd>lua require"dap".continue()<CR> | <cmd>lua require"dapui".toggle()<CR>', opts)
+keymap("n", "<S-u>", '<cmd>lua require"dap".continue()<CR>', opts)
 keymap("n", "<Leader>cn", '<cmd>lua require"dap".continue()<CR>', opts)
 keymap("n", "<S-j>", '<cmd>lua require"dap".step_into()<CR>', opts)
 keymap("n", "<S-l>", '<cmd>lua require"dap".step_over()<CR>', opts)
