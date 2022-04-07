@@ -17,7 +17,7 @@ twoSum([15, 2, 11, 7, 7], 9);
 
 // improve the time complexity, given a sorted array
 
-function twoSum(nums, target) {
+function twoSum2(nums, target) {
   nums.sort((a, b) => a - b);
 
   let left = 0;
@@ -36,6 +36,6 @@ console.log("hello world!!!");
 
 // time complexity = O(n)
 [15, -2, 2, 11, 7, -2].sort((a, b) => a - b);
-twoSum([15, -2, 2, 11, 7, -2], 9);
+twoSum2([15, -2, 2, 11, 7, -2], 9);
 
 console.log("end of script");
