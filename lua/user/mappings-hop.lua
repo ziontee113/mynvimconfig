@@ -52,11 +52,7 @@ keymap("n", "f/", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts
 
 -- keymap("n", "f[", "<cmd>lua require'hop'.hint_patterns({}, [[\\[\\|(]])<cr>", opts)
 -- keymap("n", "f]", "<cmd>lua require'hop'.hint_patterns({}, [[\\]\\|)]])<cr>", opts)
--- keymap("n", "s[", "<cmd>lua require'hop'.hint_patterns({}, [[(]])<cr>", opts)
--- keymap("n", "s]", "<cmd>lua require'hop'.hint_patterns({}, [[)]])<cr>", opts)
+keymap("n", "qj", "<cmd>lua require'hop'.hint_patterns({}, [[(]])<cr>", opts)
+keymap("n", "qk", "<cmd>lua require'hop'.hint_patterns({}, [[)]])<cr>", opts)
 keymap("n", "q[", "<cmd>lua require'hop'.hint_patterns({}, [[{]])<cr>", opts)
 keymap("n", "q]", "<cmd>lua require'hop'.hint_patterns({}, [[}]])<cr>", opts)
-
---- Lightspeed
-
-keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
