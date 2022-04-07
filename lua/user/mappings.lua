@@ -168,14 +168,30 @@ keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<C-g>", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 
+-- Hop Related
+keymap("n", "<A-q>", "q", opts) -- Macro q remap
+keymap("x", "<A-q>", "q", opts)
+keymap("n", "?", "/", nosilent_opts)
+
 -- Hop
 keymap("x", ",", "<cmd>HopWord<cr>", opts)
 keymap("n", ",", "<cmd>HopWord<cr>", opts)
+keymap("n", "q", "<cmd>HopLineStart<cr>", opts)
+keymap("x", "q", "<cmd>HopLineStart<cr>", opts)
 keymap("n", ";", "<cmd>HopLineStart<cr>", opts)
 keymap("x", ";", "<cmd>HopLineStart<cr>", opts)
 keymap("n", "<leader>l", "<cmd>HopLineStart<cr>", opts)
 keymap("n", "<leader>W", "<cmd>HopWordMW<cr>", opts)
+
+keymap("x", "f", "<cmd>HopChar1<cr>", opts)
 keymap("n", "f", "<cmd>HopChar1<cr>", opts)
+keymap("x", "f", "<cmd>HopChar1<cr>", opts)
+keymap("n", "f", "<cmd>HopChar1<cr>", opts)
+keymap("x", "s", "<cmd>HopChar1<cr>", opts)
+keymap("n", "s", "<cmd>HopChar1<cr>", opts)
+
+keymap("n", "/", "<cmd>HopChar1<cr>", opts)
+keymap("x", "/", "<cmd>HopChar1<cr>", opts)
 keymap("n", "F", "<cmd>HopChar1MW<cr>", opts)
 keymap("o", "t", "<cmd>HopChar1CurrentLineAC<cr>", opts)
 keymap("o", "T", "<cmd>HopChar1CurrentLineBC<cr>", opts)
