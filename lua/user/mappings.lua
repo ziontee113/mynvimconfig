@@ -58,8 +58,14 @@ keymap("v", "<C-u>", "11k", opts)
 keymap("v", "<C-d>", "11j", opts)
 keymap("n", "<C-u>", "11k", opts)
 keymap("n", "<C-d>", "11j", opts)
+-- Alt Cursor Movement Mappings
+keymap("n", "<A-j>", "3j", opts)
+keymap("n", "<A-k>", "3k", opts)
+keymap("n", "<A-l>", "4l", opts)
+keymap("n", "<A-h>", "4h", opts)
 
 -- Yank / Paste mapping
+keymap("n", "yl", "yy", opts)
 keymap("n", "yp", "yyp", opts)
 keymap("x", "gy", '"*y', opts)
 keymap("n", "gp", '"*p', opts)
