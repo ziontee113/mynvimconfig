@@ -14,7 +14,6 @@ function twoSum(nums, target) {
 }
 
 twoSum([15, 2, 11, 7, 7], 9);
-// yayayayayayayya
 
 // improve the time complexity, given a sorted array
 
