@@ -17,8 +17,10 @@ keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[<C-o>]], opts)
 
 -- Paragraph Jump
-keymap("n", "}", [[:keepjumps normal! }<cr>]], opts)
+keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for quickfix list
 keymap("n", "{", [[:keepjumps normal! {<cr>]], opts)
+keymap("n", "<C-j>", [[:keepjumps normal! }<cr>]], opts)
+keymap("n", "<C-k>", [[:keepjumps normal! {<cr>]], opts)
 
 -- Change-in Shortcuts
 keymap("n", "ck", [[ciq]], term_opts)
@@ -133,8 +135,8 @@ keymap("i", "", "<Esc>gccA", term_opts)
 keymap("x", "", "gc", term_opts)
 
 -- Move Cursor Between Windows
-keymap("n", "<C-j>", "<c-w>j", opts)
-keymap("n", "<C-k>", "<c-w>k", opts)
+-- keymap("n", "<C-j>", "<c-w>j", opts)
+-- keymap("n", "<C-k>", "<c-w>k", opts)
 keymap("n", "<C-h>", "<c-w>h", opts)
 keymap("n", "<C-l>", "<c-w>l", opts)
 -- Resize with arrows
