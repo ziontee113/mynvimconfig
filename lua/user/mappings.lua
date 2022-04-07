@@ -33,10 +33,10 @@ keymap("n", "cJ", [[ciW]], opts)
 keymap("n", "dl", [[cc<Esc>]], opts)
 
 -- Fold Cycle
-keymap("n", "<A-l>", [[za]], opts)
-keymap("n", "<A-h>", [[zc]], opts)
-keymap("n", "<A-j>", [[zj]], opts)
-keymap("n", "<A-k>", [[zk]], opts)
+-- keymap("n", "<A-l>", [[za]], opts)
+-- keymap("n", "<A-h>", [[zc]], opts)
+-- keymap("n", "<A-j>", [[zj]], opts)
+-- keymap("n", "<A-k>", [[zk]], opts)
 keymap("n", "zm", [[zM]], opts)
 
 -- Save and Esc remaps
@@ -185,6 +185,8 @@ keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 -- keymap("n", "<F12><F10>", ":G push<cr> | :redraw!", nosilent_opts)
 
 -- Harpoon
+vim.cmd([[autocmd FileType harpoon nnoremap <buffer> q :q<CR>]])
+vim.cmd([[autocmd FileType harpoon nnoremap <buffer> qq :q<CR>]])
 keymap("n", "<S-Tab>", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Leader>ha", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
