@@ -167,6 +167,7 @@ keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<C-g>", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
+
 -- Hop
 keymap("x", ",", "<cmd>HopWord<cr>", opts)
 keymap("n", ",", "<cmd>HopWord<cr>", opts)
@@ -192,6 +193,9 @@ keymap(
 )
 -- keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, vim.fn['getreg']('/'))<cr>", opts) --> will come to use later
 keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, [[\\d\\+]])<cr>", opts)
+keymap("n", "f'", "<cmd>lua require'hop'.hint_patterns({}, [[\"\\|']])<cr>", opts)
+keymap("n", "f-", "<cmd>lua require'hop'.hint_patterns({}, [[-\\|+]])<cr>", opts)
+keymap("n", "f;", "<cmd>lua require'hop'.hint_patterns({}, [[;\\|:]])<cr>", opts)
 -- TS Hoppper
 keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
@@ -201,7 +205,7 @@ keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 
--- Fugitive
+-- Fugitive +++
 -- keymap("n", "<Leader>G", ":G<cr>", nosilent_opts)
 -- keymap("n", "<F12><F12>", ":G add .<cr> | :G commit<cr>", nosilent_opts)
 -- keymap("n", "<F12>", ":G add .<cr>", nosilent_opts)
