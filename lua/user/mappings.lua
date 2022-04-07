@@ -48,8 +48,8 @@ keymap("i", "<C-s>", "<Esc>:w<cr>", opts)
 -- Prev / Next Buffer
 -- keymap("n", "<S-l>", ":bnext<cr>", opts)
 -- keymap("n", "<S-h>", ":bprevious<cr>", opts)
-keymap("n", "<Tab>", ":bnext<cr>", opts)
-keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
+-- keymap("n", "<Tab>", ":bnext<cr>", opts)
+-- keymap("n", "<S-Tab>", ":bprevious<cr>", opts)
 
 -- Cursor Movement Mappings
 -- keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
@@ -207,3 +207,13 @@ keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 -- keymap("n", "<F12>", ":G add .<cr>", nosilent_opts)
 -- keymap("n", "<F12><F11>", ":G commit<cr>", nosilent_opts)
 -- keymap("n", "<F12><F10>", ":G push<cr> | :redraw!", nosilent_opts)
+
+-- Harpoon
+keymap("n", "<Leader>ha", ":lua require('harpoon.mark').add_file()<cr>", opts)
+keymap("n", "<Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+keymap("n", "<Leader>1", ":lua require('harpoon.ui').nav_file(1)<cr>", opts)
+keymap("n", "<Leader>2", ":lua require('harpoon.ui').nav_file(2)<cr>", opts)
+keymap("n", "<Leader>3", ":lua require('harpoon.ui').nav_file(3)<cr>", opts)
+keymap("n", "<Leader>4", ":lua require('harpoon.ui').nav_file(4)<cr>", opts)
+keymap("n", "<Leader>5", ":lua require('harpoon.ui').nav_file(5)<cr>", opts)
+keymap("n", "<Leader>6", ":lua require('harpoon.ui').nav_file(6)<cr>", opts)

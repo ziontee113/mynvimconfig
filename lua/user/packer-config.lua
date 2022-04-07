@@ -126,4 +126,7 @@ return require("packer").startup(function(use)
 	use("theHamsta/nvim-dap-virtual-text")
 	use("rcarriga/nvim-dap-ui")
 	use("nvim-telescope/telescope-dap.nvim")
+
+	-- Harpoon
+	use("ThePrimeagen/harpoon")
 end)

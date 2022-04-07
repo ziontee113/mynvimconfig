@@ -20,7 +20,7 @@ require("user.toggle-term")
 -- F: Status Line
 -- require("user.lualine-config")
 require("user.evil-lualine")
-require("user.bufferline-config")
+-- require("user.bufferline-config")
 -- G: Editing
 require("user.autopairs")
 require("user.todo-comments-config")
