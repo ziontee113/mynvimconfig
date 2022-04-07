@@ -13,6 +13,10 @@ require("dap-config.node")
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+vim.cmd([[
+autocmd FileType dap-float nnoremap <buffer> q :q<CR>
+]])
+
 keymap("n", "<leader>dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
 keymap("n", "dui", '<cmd>lua require"dapui".toggle()<CR>', opts)
 
@@ -28,9 +32,9 @@ keymap("n", "<Leader>dj", '<cmd>:lua require"dap".down()<CR>', opts)
 keymap("n", "B", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
 keymap("n", "<leader>dB", '<cmd>lua require"dap".set_breakpoint()<CR>', opts)
 
-keymap("n", "<leader>dsc", '<cmd>lua require"dap.ui.variables".scopes()<CR>', opts)
-keymap("n", "<leader>dhh", '<cmd>lua require"dap.ui.variables".hover()<CR>', opts)
-keymap("v", "<leader>dhv", '<cmd>lua require"dap.ui.variables".visual_hover()<CR>', opts)
+keymap("n", "<leader>ds", '<cmd>lua require"dap.ui.widgets".scopes()<CR>', opts)
+keymap("n", "<leader>di", '<cmd>lua require"dap.ui.widgets".hover()<CR>', opts)
+keymap("v", "<leader>di", '<cmd>lua require"dap.ui.widgets".visual_hover()<CR>', opts)
 
 keymap("n", "<leader>duh", '<cmd>lua require"dap.ui.widgets".hover()<CR>', opts)
 keymap(
