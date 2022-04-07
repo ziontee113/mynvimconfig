@@ -194,9 +194,9 @@ keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 
 --- Lightspeed
 keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
-keymap("n", "S", "<Plug>Lightspeed_omni_gs", opts)
--- keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
--- keymap("n", "<Leader>s", "<Plug>Lightspeed_omni_gs", opts)
+keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
+keymap("n", "gS", "<Plug>Lightspeed_omni_gs", opts)
+keymap("n", "gs", "<Plug>Lightspeed_omni_gs", opts)
 
 -- Harpoon
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> q :q<CR>]])
