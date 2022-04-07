@@ -47,3 +47,10 @@ keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, [[\\d\\+]])<cr
 keymap("n", "f'", "<cmd>lua require'hop'.hint_patterns({}, [[\"\\|']])<cr>", opts)
 keymap("n", "f-", "<cmd>lua require'hop'.hint_patterns({}, [[-\\|+]])<cr>", opts)
 keymap("n", "f;", "<cmd>lua require'hop'.hint_patterns({}, [[;\\|:]])<cr>", opts)
+
+keymap("n", "s/", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts)
+keymap("n", "f/", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts)
+keymap("n", "//", "<cmd>lua require'hop'.hint_patterns({}, [[/\\|?]])<cr>", opts)
+
+keymap("n", "f[", "<cmd>lua require'hop'.hint_patterns({}, [[\\[\\|(]])<cr>", opts)
+keymap("n", "f]", "<cmd>lua require'hop'.hint_patterns({}, [[\\]\\|)]])<cr>", opts)
