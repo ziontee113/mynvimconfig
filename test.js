@@ -14,14 +14,6 @@ function twoSum(nums, target) {
 }
 
 twoSum([15, 2, 11, 7, 7], 9);
-<<<<<<< HEAD
-// yayayayyaya
-// yayayayyaya
-// yayayayyaya
-// yayayayyaya
-// yayayayyaya
-=======
->>>>>>> parent of 1a5fd20... yaya2
 
 // improve the time complexity, given a sorted array
 
