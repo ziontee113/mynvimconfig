@@ -80,6 +80,7 @@ return require("packer").startup(function(use)
 	use("wellle/targets.vim")
 	use("numToStr/Comment.nvim")
 	use("tpope/vim-surround")
+	use("tpope/vim-repeat")
 	use("mg979/vim-visual-multi")
 
 	-- Test Jumping / Hopping
