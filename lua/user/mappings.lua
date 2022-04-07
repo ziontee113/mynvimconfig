@@ -150,10 +150,10 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-W>l", opts)
 keymap("t", "<A-l>", "<C-l>", opts) --> clear
 keymap("t", "<A-\\>", "<C-l>", opts) --> clear
 -- Split Windows
-keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
+-- keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
 keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
-keymap("n", "<leader>S", "<c-w>S<c-w>j<:Telescope find_files<cr>", opts)
-keymap("n", "<leader>s", "<c-w>s<c-w>j", opts)
+-- keymap("n", "<leader>hS", "<c-w>S<c-w>j<:Telescope find_files<cr>", opts)
+keymap("n", "<leader>hs", "<c-w>s<c-w>j", opts)
 
 ------ Plugins--------
 -- NvimTree
@@ -193,6 +193,8 @@ keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 --- Lightspeed
 keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "S", "<Plug>Lightspeed_omni_gs", opts)
+-- keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
+-- keymap("n", "<Leader>s", "<Plug>Lightspeed_omni_gs", opts)
 
 -- Harpoon
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> q :q<CR>]])
