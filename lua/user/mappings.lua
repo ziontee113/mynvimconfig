@@ -179,7 +179,7 @@ keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 -- TS Hoppper
 keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
-keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
+-- keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 
 -- Toggleterm
 keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
@@ -197,6 +197,11 @@ keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "gS", "<Plug>Lightspeed_omni_gs", opts)
 keymap("n", "gs", "<Plug>Lightspeed_omni_gs", opts)
+
+--- Hop
+keymap("n", "<Leader>ww", ":HopWordMW<cr>", opts)
+keymap("n", "<Leader>W", ":HopWordMW<cr>", opts)
+keymap("n", "mw", ":HopWordMW<cr>", opts)
 
 -- Harpoon
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> q :q<CR>]])
