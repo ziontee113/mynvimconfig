@@ -168,50 +168,6 @@ keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<C-g>", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 
--- Hop Related
-keymap("n", "<A-q>", "q", opts) -- Macro q remap
-keymap("x", "<A-q>", "q", opts)
-keymap("n", "?", "/", nosilent_opts)
-
--- Hop
-keymap("x", ",", "<cmd>HopWord<cr>", opts)
-keymap("n", ",", "<cmd>HopWord<cr>", opts)
-keymap("n", "q", "<cmd>HopLineStart<cr>", opts)
-keymap("x", "q", "<cmd>HopLineStart<cr>", opts)
-keymap("n", ";", "<cmd>HopLineStart<cr>", opts)
-keymap("x", ";", "<cmd>HopLineStart<cr>", opts)
-keymap("n", "<leader>l", "<cmd>HopLineStart<cr>", opts)
-keymap("n", "<leader>W", "<cmd>HopWordMW<cr>", opts)
-
-keymap("x", "f", "<cmd>HopChar1<cr>", opts)
-keymap("n", "f", "<cmd>HopChar1<cr>", opts)
-keymap("x", "f", "<cmd>HopChar1<cr>", opts)
-keymap("n", "f", "<cmd>HopChar1<cr>", opts)
-keymap("x", "s", "<cmd>HopChar1<cr>", opts)
-keymap("n", "s", "<cmd>HopChar1<cr>", opts)
-
-keymap("n", "/", "<cmd>HopChar1<cr>", opts)
-keymap("x", "/", "<cmd>HopChar1<cr>", opts)
-keymap("n", "F", "<cmd>HopChar1MW<cr>", opts)
-keymap("o", "t", "<cmd>HopChar1CurrentLineAC<cr>", opts)
-keymap("o", "T", "<cmd>HopChar1CurrentLineBC<cr>", opts)
-keymap(
-	"o",
-	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
-	opts
-)
-keymap(
-	"o",
-	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = false })<cr>",
-	opts
-)
--- keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, vim.fn['getreg']('/'))<cr>", opts) --> will come to use later
-keymap("n", "<leader>H", "<cmd>lua require'hop'.hint_patterns({}, [[\\d\\+]])<cr>", opts)
-keymap("n", "f'", "<cmd>lua require'hop'.hint_patterns({}, [[\"\\|']])<cr>", opts)
-keymap("n", "f-", "<cmd>lua require'hop'.hint_patterns({}, [[-\\|+]])<cr>", opts)
-keymap("n", "f;", "<cmd>lua require'hop'.hint_patterns({}, [[;\\|:]])<cr>", opts)
 -- TS Hoppper
 keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
@@ -229,6 +185,7 @@ keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 -- keymap("n", "<F12><F10>", ":G push<cr> | :redraw!", nosilent_opts)
 
 -- Harpoon
+keymap("n", "<S-Tab>", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Leader>ha", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 keymap("n", "<Leader>1", ":lua require('harpoon.ui').nav_file(1)<cr>", opts)

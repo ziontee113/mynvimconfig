@@ -2,6 +2,7 @@
 require("user.packer-config")
 require("user.settings")
 require("user.mappings")
+require("user.mappings-hop")
 -- B: LSP Related:
 require("user.null-ls-config")
 require("user.cmp-config")
