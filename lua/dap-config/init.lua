@@ -56,10 +56,6 @@ vim.cmd([[
 nnoremap <leader>DF :Telescope dap frames<CR>
 nnoremap <leader>DC :Telescope dap commands<CR>
 nnoremap <leader>DB :Telescope dap list_breakpoints<CR>
-
-nnoremap <leader>di :lua require'dap.ui.widgets'.hover()<CR>
-vnoremap <leader>di :lua require'dap.ui.widgets'.visual_hover()<CR>
-nnoremap <leader>d? :lua require'dap.ui.widgets'.scopes()<CR>
 ]])
 -- keymap("n", "<leader>dcc", '<cmd>lua require"telescope".extensions.dap.commands{}<CR>', opts)
 -- keymap("n", "<leader>dco", '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>', opts)
