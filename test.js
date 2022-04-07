@@ -1,68 +1,9 @@
-// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-// You may assume that each input would have exactly one solution, and you may not use the same element twice.
-// You can return the answer in any order.
-
-function twoSum(nums, target) {
-  let hash = {};
-
-  for (let i = 0; i < nums.length; i++) {
-    let complement = target - nums[i];
-    if (hash[complement] !== undefined) return [hash[complement], i];
-
-    hash[nums[i]] = i;
+function countDown(num) {
+  if (num > 0) {
+    return countDown(num - 1);
   }
 }
 
-twoSum([15, 2, 11, 7, 7], 9);
+countDown(8);
 
-// improve the time complexity, given a sorted array
-
-function twoSum2(nums, target) {
-  nums.sort((a, b) => a - b);
-
-  let left = 0;
-  let right = nums.length - 1;
-
-  while (left < right) {
-    let sum = nums[left] + nums[right];
-
-    if (sum === target) return [left, right];
-    else if (sum < target) left++;
-    else right--;
-  }
-}
-
-console.log("hello world!!!");
-
-// time complexity = O(n)
-[15, -2, 2, 11, 7, -2].sort((a, b) => a - b);
-twoSum2([15, -2, 2, 11, 7, -2], 9);
-
-////////////////////////////////////////////////////////////////////////////////////////////
-
-function brushTeeth() {
-  console.log("Brush teeth!");
-}
-
-function wakeUp() {
-  let wakeUpTime = new Date();
-  wakeUpTime.setHours(7);
-  wakeUpTime.setMinutes(0);
-  wakeUpTime.setSeconds(0);
-  wakeUpTime.setMilliseconds(0);
-
-  let now = new Date();
-
-  if (now.getTime() < wakeUpTime.getTime()) {
-    console.log("Wake up!");
-    brushTeeth();
-  } else {
-    console.log("Sleep!");
-  }
-}
-
-wakeUp();
-
-////////////////////////////////////////////////////////////////////////////////////////////
-
-console.log("end of script");
+("finished!");
