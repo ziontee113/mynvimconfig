@@ -35,8 +35,8 @@ require("user.vimwiki")
 
 -- S:imple Configs
 require("Comment").setup()
-require("hop").setup({
-	-- keys = "etovxqpdygfblzhckisuran",
-})
+-- require("hop").setup({
+-- 	-- keys = "etovxqpdygfblzhckisuran",
+-- })
 require("colorizer").setup()
 require("fidget").setup({ window = { blend = 0 } })
