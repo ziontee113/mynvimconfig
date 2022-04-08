@@ -14,6 +14,36 @@ local rep = require("luasnip.extras").rep
 
 local snippets = {
 	s({ trig = "testjs", hidden = false }, t("testing hidden snippet in javascript")),
+	s(
+		{ trig = "for(%w)", regTrig = true },
+		fmt(
+			[[
+for (let {} = 0; {} < {}; {}++) {{
+    {}
+}}
+    ]],
+			{
+				i(1, "i"),
+				rep(1),
+				i(2, "arr.length"),
+				rep(1),
+				i(3, "// TODO:"),
+			}
+		)
+	),
+	s(
+		{ trig = "ire", regTrig = false },
+		fmt(
+			[[
+if ( {} === {} ) return {}
+    ]],
+			{
+				i(1, "lhs"),
+				i(2, "rhs"),
+				i(3, "true"),
+			}
+		)
+	),
 }
 
 return snippets
