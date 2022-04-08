@@ -222,3 +222,6 @@ keymap("n", "<Leader>3", ":lua require('harpoon.ui').nav_file(3)<cr>", opts)
 keymap("n", "<Leader>4", ":lua require('harpoon.ui').nav_file(4)<cr>", opts)
 keymap("n", "<Leader>5", ":lua require('harpoon.ui').nav_file(5)<cr>", opts)
 keymap("n", "<Leader>6", ":lua require('harpoon.ui').nav_file(6)<cr>", opts)
+
+-- Surround q shortcuts
+keymap("n", "d[", ":norm ds{<cr>", opts)

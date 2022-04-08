@@ -1,9 +1,9 @@
-function sumRange(num) {
-  if (num === 1) return 1;
+function factorial(num) {
+  if (num === 0) return 1;
 
-  return num + sumRange(num - 1);
+  return num * factorial(num - 1);
 }
 
-sumRange(3);
+factorial(4);
 
 ("finished!");
