@@ -18,7 +18,7 @@ local snippets = {
 		{ trig = "for(%w)", regTrig = true, hidden = true },
 		fmt(
 			[[
-for (let {} = 0; {} < {}{}; {}++) {{
+for (let {} = 0; {} < {}; {}++) {{
   {}
 }}
 
@@ -27,11 +27,10 @@ for (let {} = 0; {} < {}{}; {}++) {{
 			{
 				i(1, "i"),
 				rep(1),
-				i(2, "arr"),
-				c(3, { t(""), t(".length") }),
+				c(2, { i(1, "num"), sn(1, { i(1, "arr"), t(".length") }) }),
 				rep(1),
-				i(4, "// TODO:"),
-				i(5),
+				i(3, "// TODO:"),
+				i(4),
 			}
 		)
 	),
