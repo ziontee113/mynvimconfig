@@ -24,10 +24,12 @@ return require("packer").startup(function(use)
 
 	-- Telescope
 	use("nvim-lua/plenary.nvim")
-	use("stevearc/dressing.nvim")
 	use("nvim-telescope/telescope-live-grep-raw.nvim")
 	use("nvim-telescope/telescope.nvim")
 	use("BurntSushi/ripgrep")
+
+	-- Vim UI
+	use("stevearc/dressing.nvim")
 
 	-- NVIM Tree
 	use("kyazdani42/nvim-web-devicons")

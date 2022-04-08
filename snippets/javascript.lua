@@ -35,7 +35,7 @@ for (let {} = 0; {} < {}; {}++) {{
 		)
 	),
 	s(
-		{ trig = "ire", regTrig = false, hidden = true },
+		{ trig = "ifre", regTrig = false, hidden = true },
 		fmt(
 			[[
 if ({} === {}) return {};
@@ -43,7 +43,7 @@ if ({} === {}) return {};
 			{
 				i(1, "lhs"),
 				i(2, "rhs"),
-				i(3, "true"),
+				c(3, { i(1, "-1"), i(1, "i"), i(1, "0") }),
 			}
 		)
 	),
