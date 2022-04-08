@@ -6,4 +6,6 @@ function linearSearch(arr, target) {
   return -1;
 }
 
+linearSearch([1, 2, 3, 4, 5], 4);
+
 ("finished!");

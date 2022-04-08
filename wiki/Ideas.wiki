@@ -1,0 +1,9 @@
+# Ideas
+
+- In Javascript snippets, we can have:
+  - 'choice nodes' that can give us 'arr' or 'arr[i]'
+  - 'choice nodes' with choices of '[IF Statements]'
+    => So it can go like:
+      if -> Expand <A-j>
+      -> Cycle through choices <A-l> 
+      -> for different types of IF Statements
