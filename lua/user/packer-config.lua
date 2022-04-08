@@ -118,7 +118,7 @@ return require("packer").startup(function(use)
 	-- })
 
 	-- Wiki
-	use("vimwiki/vimwiki")
+	-- use("vimwiki/vimwiki")
 
 	-- DAP
 	use("mfussenegger/nvim-dap")

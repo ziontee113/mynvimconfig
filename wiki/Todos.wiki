@@ -1,7 +1,0 @@
-# TODOS:
-
-- [ ] have the first DAP session with Chrome DAP
-- [ ] have multiple autohotkey commands for nvim (for DAP, copy / paste,...)
-
-- [ ] keep learning algorithms and data structures
-- [ ] start making a React project
