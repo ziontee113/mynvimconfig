@@ -41,9 +41,24 @@ for (let {} = 0; {} < {}; {}++) {{
 if ({} === {}) return {};
     ]],
 			{
-				i(1, "lhs"),
-				i(2, "rhs"),
-				c(3, { i(1, "-1"), i(1, "i"), i(1, "0") }),
+				i(1, "LHS"),
+				i(2, "RHS"),
+				i(3, "true"),
+			}
+		)
+	),
+	s(
+		{ trig = "f[un]?", regTrig = true, hidden = true },
+		fmt(
+			[[
+function {}({}) {{
+  {}
+}}
+    ]],
+			{
+				i(1, "myFunc"),
+				c(2, { i(1, "arg"), i(1, "") }),
+				i(3, "//TODO:"),
 			}
 		)
 	),
