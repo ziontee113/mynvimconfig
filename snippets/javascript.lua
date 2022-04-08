@@ -15,11 +15,11 @@ local rep = require("luasnip.extras").rep
 local snippets = {
 	s({ trig = "testjs", hidden = false }, t("testing hidden snippet in javascript")),
 	s(
-		{ trig = "for(%w)", regTrig = true },
+		{ trig = "for(%w)", regTrig = true, hidden = true },
 		fmt(
 			[[
-for (let {} = 0; {} < {}; {}++) {{
-    {}
+for (let {} = 0; {} < {}{}; {}++) {{
+  {}
 }}
 
 {}
@@ -27,18 +27,19 @@ for (let {} = 0; {} < {}; {}++) {{
 			{
 				i(1, "i"),
 				rep(1),
-				i(2, "arr.length"),
+				i(2, "arr"),
+				c(3, { t(""), t(".length") }),
 				rep(1),
-				i(3, "// TODO:"),
-				i(4),
+				i(4, "// TODO:"),
+				i(5),
 			}
 		)
 	),
 	s(
-		{ trig = "ire", regTrig = false },
+		{ trig = "ire", regTrig = false, hidden = true },
 		fmt(
 			[[
-if ( {} === {} ) return {}
+if ({} === {}) return {};
     ]],
 			{
 				i(1, "lhs"),
