@@ -14,17 +14,18 @@ local rep = require("luasnip.extras").rep
 
 local if_fmt_1 = fmt(
 	[[
-if ({} {} {}) return {};
+{}if ({} {} {}) return {};
     ]],
 	{
-		i(1, "LHS"),
-		c(2, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
-		i(3, "RHS"),
-		c(4, { i(1, "someVariable"), i(1, "true"), i(1, "false"), i(1, "1"), i(1, "-1"), i(1, "0") }),
+		i(1, ""),
+		c(2, { i(1, "LHS"), i(1, "10") }),
+		c(3, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
+		i(4, "RHS"),
+		c(5, { i(1, "someVariable"), i(1, "true"), i(1, "false"), i(1, "1"), i(1, "-1"), i(1, "0") }),
 	}
 )
 
-local if_snippet = s({ trig = "IF", regTrig = false, hidden = true }, if_fmt_1)
+local if_snippet = s({ trig = "IF", regTrig = false, hidden = true }, c(1, { if_fmt_1, t("big baby") }))
 
 local snippets = {
 	s(
