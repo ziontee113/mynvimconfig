@@ -38,8 +38,8 @@ vim.keymap.set({ "i", "s" }, "<a-p>", function()
 end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<a-k>", function()
-	if ls.expand_or_jumpable() then
-		ls.expand_or_jump(1)
+	if ls.jumpable(1) then
+		ls.jump(1)
 	end
 end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<a-j>", function()
