@@ -12,23 +12,21 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
-local if_snippet = s(
-	{ trig = "IF", regTrig = false, hidden = true },
-	fmt(
-		[[
+local if_fmt_1 = fmt(
+	[[
 if ({} {} {}) return {};
     ]],
-		{
-			i(1, "LHS"),
-			c(2, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
-			i(3, "RHS"),
-			c(4, { i(1, "someVariable"), i(1, "true"), i(1, "false"), i(1, "1"), i(1, "-1"), i(1, "0") }),
-		}
-	)
+	{
+		i(1, "LHS"),
+		c(2, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
+		i(3, "RHS"),
+		c(4, { i(1, "someVariable"), i(1, "true"), i(1, "false"), i(1, "1"), i(1, "-1"), i(1, "0") }),
+	}
 )
 
+local if_snippet = s({ trig = "IF", regTrig = false, hidden = true }, if_fmt_1)
+
 local snippets = {
-	s({ trig = "testjs", hidden = false }, t("testing hidden snippet in javascript")),
 	s(
 		{ trig = "for(%w)", regTrig = true, hidden = true },
 		fmt(
