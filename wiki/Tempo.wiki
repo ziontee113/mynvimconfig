@@ -1,5 +1,7 @@
 # Tempo
 
+- I don't like typing variable names.
+
 - We don't like to solve problems because:
   - We suck at reading
   - We don't like to read

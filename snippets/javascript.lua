@@ -35,19 +35,6 @@ for (let {} = 0; {} < {}; {}++) {{
 		)
 	),
 	s(
-		{ trig = "ifre", regTrig = false, hidden = true },
-		fmt(
-			[[
-if ({} === {}) return {};
-    ]],
-			{
-				i(1, "LHS"),
-				i(2, "RHS"),
-				i(3, "true"),
-			}
-		)
-	),
-	s(
 		{ trig = "f[un]?", regTrig = true, hidden = true },
 		fmt(
 			[[
@@ -59,6 +46,19 @@ function {}({}) {{
 				i(1, "myFunc"),
 				c(2, { i(1, "arg"), i(1, "") }),
 				i(3, "//TODO:"),
+			}
+		)
+	),
+	s(
+		{ trig = "ifre", regTrig = false, hidden = true },
+		fmt(
+			[[
+if ({} === {}) return {};
+    ]],
+			{
+				i(1, "LHS"),
+				i(2, "RHS"),
+				i(3, "true"),
 			}
 		)
 	),
