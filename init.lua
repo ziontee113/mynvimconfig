@@ -24,7 +24,7 @@ require("user.evil-lualine")
 -- require("user.bufferline-config")
 -- G: Editing
 require("user.autopairs")
-require("user.todo-comments-config")
+-- require("user.todo-comments-config")
 require("user.pretty-fold-config")
 -- H: Snippets
 require("user.luasnip-config")
@@ -38,5 +38,5 @@ require("Comment").setup()
 require("hop").setup({
 	-- keys = "etovxqpdygfblzhckisuran",
 })
-require("colorizer").setup()
+require("colorizer").setup({ scss = { mode = "foreground" } })
 require("fidget").setup({ window = { blend = 0 } })
