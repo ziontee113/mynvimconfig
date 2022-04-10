@@ -55,10 +55,14 @@ require("toggleterm").setup({
 -- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, float_opts = { width = 1920, height = 1080 } })
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit_big = Terminal:new({ cmd = "lazygit", hidden = true, float_opts = { width = 1920, height = 1080 } })
 
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
+end
+function _LAZYGIT_BIG_TOGGLE()
+	lazygit_big:toggle()
 end
 
 local npm_start = Terminal:new({ cmd = "npm start", hidden = true })
