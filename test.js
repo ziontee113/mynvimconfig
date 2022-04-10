@@ -1,3 +1,3 @@
 function myFunc(k) {
-  //TODO:
+  console.log("Hello World");
 }
