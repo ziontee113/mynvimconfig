@@ -190,8 +190,6 @@ keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 
 -- Toggleterm
 keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
-keymap("n", "<Leader><Leader>g", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
-keymap("n", "<Leader><Leader>G", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader><C-g>", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 
