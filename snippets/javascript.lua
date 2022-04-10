@@ -106,6 +106,19 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 	t("return "),
 })
 
+local while_loop_snippet_fmt = fmt(
+	[[
+while ({}) {{
+  {}
+}}
+  ]],
+	{
+		i(1, ""),
+		i(2, "// TODO:"),
+	}
+)
+local while_loop_snippet = s("While", while_loop_snippet_fmt)
+
 local snippets = {
 	for_loop_snippet,
 	function_snippet,
@@ -122,8 +135,10 @@ local snippets = {
 	}),
 }
 
-return snippets, {
-	if_snippet,
-	short_hand_if_statement,
-	short_hand_if_statement_return_shortcut,
-}
+return snippets,
+	{
+		if_snippet,
+		short_hand_if_statement,
+		short_hand_if_statement_return_shortcut,
+		while_loop_snippet,
+	}
