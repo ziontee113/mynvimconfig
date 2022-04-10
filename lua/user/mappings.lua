@@ -116,6 +116,8 @@ keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 keymap("i", "<C-h>", "<Left>", opts)
+keymap("i", "<C-f>", "<C-Right>", opts)
+keymap("i", "<C-d>", "<C-Left>", opts)
 
 -- Leader Mappings --
 keymap("n", "<leader><F12>", ":call EmmetSetup()<cr>", nosilent_opts) --save current session to Session.vim
