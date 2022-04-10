@@ -8,10 +8,10 @@ require("toggleterm").setup({
 	start_in_insert = true,
 	persist_size = true,
 	direction = "float",
-	float_opts = {
-		width = 1920,
-		height = 1080,
-	},
+	-- float_opts = {
+	-- 	width = 1920,
+	-- 	height = 1080,
+	-- },
 })
 
 -- local status_ok, toggleterm = pcall(require, "toggleterm")
@@ -55,7 +55,7 @@ require("toggleterm").setup({
 -- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, float_opts = { width = 1920, height = 1080 } })
 
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
