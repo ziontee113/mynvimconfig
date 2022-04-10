@@ -22,6 +22,8 @@ keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for 
 keymap("n", "{", [[:keepjumps normal! {<cr>]], opts)
 keymap("n", "<C-j>", [[:keepjumps normal! }<cr>]], opts)
 keymap("n", "<C-k>", [[:keepjumps normal! {<cr>]], opts)
+keymap("x", "<C-j>", [[<cmd>keepjumps normal! }<cr>]], opts)
+keymap("x", "<C-k>", [[<cmd>keepjumps normal! {<cr>]], opts)
 
 -- Change-in Shortcuts
 keymap("n", "ck", [[ciq]], term_opts)
