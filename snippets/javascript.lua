@@ -59,7 +59,7 @@ local function_snippet = s({ trig = "f[un]?", regTrig = true, hidden = true }, f
 local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt))
 
 local for_loop_snippet = s(
-	{ trig = "for(%w+)", regTrig = true, hidden = true },
+	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
 	fmt(
 		[[
 for (let {} = 0; {} < {}; {}++) {{
