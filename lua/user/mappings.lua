@@ -223,6 +223,7 @@ vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 7 :7<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 8 :8<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 9 :9<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 0 :10<CR>]])
+
 keymap("n", "<S-Tab>", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Leader>ha", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
@@ -237,5 +238,5 @@ keymap("n", "<Leader>8", ":lua require('harpoon.ui').nav_file(8)<cr>", opts)
 keymap("n", "<Leader>9", ":lua require('harpoon.ui').nav_file(9)<cr>", opts)
 keymap("n", "<Leader>0", ":lua require('harpoon.ui').nav_file(10)<cr>", opts)
 
--- Surround q shortcuts
+-- Surround shortcuts
 keymap("n", "d[", ":norm ds{<cr>", opts)
