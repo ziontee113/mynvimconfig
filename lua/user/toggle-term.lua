@@ -8,6 +8,10 @@ require("toggleterm").setup({
 	start_in_insert = true,
 	persist_size = true,
 	direction = "float",
+	float_opts = {
+		width = 1920,
+		height = 1080,
+	},
 })
 
 -- local status_ok, toggleterm = pcall(require, "toggleterm")
