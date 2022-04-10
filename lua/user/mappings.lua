@@ -15,6 +15,7 @@ vim.cmd([[:command! QA qa]])
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
+keymap("n", "<C-o>", [[zM<C-o>]], opts)
 keymap("i", "<A-u>", [[<C-o>u]], opts)
 
 -- Paragraph Jump

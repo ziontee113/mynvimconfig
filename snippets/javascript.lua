@@ -85,6 +85,16 @@ local snippets = {
 	for_loop_snippet,
 	function_snippet,
 	function_snippet_func,
+	s("trig", {
+		t("text: "),
+		i(1),
+		t({ "", "copy: " }),
+		d(2, function(args)
+			return sn(nil, {
+				i(1, args[1]),
+			})
+		end, { 1 }),
+	}),
 }
 
 return snippets, { if_snippet }
