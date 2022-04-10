@@ -12,31 +12,26 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
+local if_fmt_arg = {
+	i(1, ""),
+	c(2, { i(1, "LHS"), i(1, "10") }),
+	c(3, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
+	i(4, "RHS"),
+	i(5, "//TODO:"),
+}
 local if_fmt_1 = fmt(
 	[[
-{}if ({} {} {}) return {};
+{}if ({} {} {}) {};
     ]],
-	{
-		i(1, ""),
-		c(2, { i(1, "LHS"), i(1, "10") }),
-		c(3, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
-		i(4, "RHS"),
-		c(5, { i(1, "someVariable"), i(1, "true"), i(1, "false"), i(1, "1"), i(1, "-1"), i(1, "0") }),
-	}
+	vim.deepcopy(if_fmt_arg)
 )
 local if_fmt_2 = fmt(
 	[[
 {}if ({} {} {}) {{
-  return {};
+  {};
 }}
     ]],
-	{
-		i(1, ""),
-		c(2, { i(1, "LHS"), i(1, "10") }),
-		c(3, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
-		i(4, "RHS"),
-		c(5, { i(1, "someVariable"), i(1, "true"), i(1, "false"), i(1, "1"), i(1, "-1"), i(1, "0") }),
-	}
+	vim.deepcopy(if_fmt_arg)
 )
 
 local if_snippet = s(
@@ -46,6 +41,22 @@ local if_snippet = s(
 		if_fmt_2,
 	})
 )
+
+local function_fmt = fmt(
+	[[
+function {}({}) {{
+  {}
+}}
+    ]],
+	{
+		i(1, "myFunc"),
+		c(2, { i(1, "arg"), i(1, "") }),
+		i(3, "//TODO:"),
+	}
+)
+
+local function_snippet = s({ trig = "f[un]?", regTrig = true, hidden = true }, function_fmt)
+local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt))
 
 local snippets = {
 	s(
@@ -68,22 +79,8 @@ for (let {} = 0; {} < {}; {}++) {{
 			}
 		)
 	),
-	s(
-		{ trig = "f[un]?", regTrig = true, hidden = true },
-		fmt(
-			[[
-function {}({}) {{
-  {}
-}}
-    ]],
-			{
-				i(1, "myFunc"),
-				c(2, { i(1, "arg"), i(1, "") }),
-				i(3, "//TODO:"),
-			}
-		)
-	),
-	-- if_snippet,
+	function_snippet,
+	function_snippet_func,
 }
 
 return snippets, { if_snippet }

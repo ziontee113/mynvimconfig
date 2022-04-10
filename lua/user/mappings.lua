@@ -14,7 +14,8 @@ vim.cmd([[:command! QA qa]])
 
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
-keymap("n", "<A-o>", [[<C-o>]], opts)
+keymap("n", "<A-o>", [[o<Esc>]], opts)
+keymap("i", "<A-u>", [[<C-o>u]], opts)
 
 -- Paragraph Jump
 keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for quickfix list
@@ -28,6 +29,9 @@ keymap("n", "ckk", [[ciq]], term_opts)
 keymap("n", "ckj", [[cilq]], term_opts)
 keymap("n", "ckl", [[cinq]], term_opts)
 keymap("n", "c,", [[cib]], term_opts)
+keymap("n", "c,,", [[cib]], term_opts)
+keymap("n", "c,j", [[cilb]], term_opts)
+keymap("n", "c,l", [[cinb]], term_opts)
 keymap("n", "cj", [[ciw]], opts)
 keymap("n", "cJ", [[ciW]], opts)
 

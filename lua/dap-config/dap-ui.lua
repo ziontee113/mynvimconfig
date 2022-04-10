@@ -13,13 +13,13 @@ require("dapui").setup({
 		-- You can change the order of elements in the sidebar
 		elements = {
 			-- Provide as ID strings or tables with "id" and "size" keys
-			-- { id = "watches", size = 0.33 },
 			{ id = "stacks", size = 0.33 },
 			{
 				id = "scopes",
 				size = 0.33, -- Can be float or integer > 1
 			},
-			{ id = "repl", size = 0.33 },
+			-- { id = "repl", size = 0.33 },
+			{ id = "watches", size = 0.33 },
 			-- { id = "breakpoints", size = 0.1 },
 		},
 		size = 60,
