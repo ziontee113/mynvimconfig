@@ -81,6 +81,24 @@ for (let {} = 0; {} < {}; {}++) {{
 	)
 )
 
+local short_hand_if_fmt = fmt(
+	[[
+if ({}) {};
+{}
+    ]],
+	{
+		d(1, function(_, snip)
+			-- return sn(1, i(1, snip.captures[1]))
+			return sn(1, t(snip.captures[1]))
+		end),
+		d(2, function(_, snip)
+			return sn(2, t(snip.captures[2]))
+		end),
+		i(3, ""),
+	}
+)
+local short_hand_if_statement = s({ trig = "if>(.+)>>(.+)\\", regTrig = true, hidden = true }, short_hand_if_fmt)
+
 local snippets = {
 	for_loop_snippet,
 	function_snippet,
@@ -97,4 +115,4 @@ local snippets = {
 	}),
 }
 
-return snippets, { if_snippet }
+return snippets, { if_snippet, short_hand_if_statement }
