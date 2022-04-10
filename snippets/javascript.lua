@@ -58,27 +58,29 @@ function {}({}) {{
 local function_snippet = s({ trig = "f[un]?", regTrig = true, hidden = true }, function_fmt)
 local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt))
 
-local snippets = {
-	s(
-		{ trig = "for(%w)", regTrig = true, hidden = true },
-		fmt(
-			[[
+local for_loop_snippet = s(
+	{ trig = "for(%w)", regTrig = true, hidden = true },
+	fmt(
+		[[
 for (let {} = 0; {} < {}; {}++) {{
   {}
 }}
 
 {}
     ]],
-			{
-				i(1, "i"),
-				rep(1),
-				c(2, { i(1, "num"), sn(1, { i(1, "arr"), t(".length") }) }),
-				rep(1),
-				i(3, "// TODO:"),
-				i(4),
-			}
-		)
-	),
+		{
+			i(1, "i"),
+			rep(1),
+			c(2, { i(1, "num"), sn(1, { i(1, "arr"), t(".length") }) }),
+			rep(1),
+			i(3, "// TODO:"),
+			i(4),
+		}
+	)
+)
+
+local snippets = {
+	for_loop_snippet,
 	function_snippet,
 	function_snippet_func,
 }
