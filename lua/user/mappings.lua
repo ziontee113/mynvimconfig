@@ -17,6 +17,12 @@ keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
 keymap("n", "<C-o>", [[zM<C-o>]], opts)
 keymap("i", "<A-u>", [[<C-o>u]], opts)
+-- keymap(
+-- 	"n",
+-- 	"'",
+-- 	[[<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>]],
+-- 	opts
+-- )
 
 -- Paragraph Jump
 keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for quickfix list
