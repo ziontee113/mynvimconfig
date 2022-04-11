@@ -101,23 +101,23 @@ return require("packer").startup(function(use)
 	use("anuvyklack/pretty-fold.nvim")
 
 	-- Github Copilot
-	use("github/copilot.vim")
-	-- use({
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		vim.schedule(function()
-	-- 			require("copilot")
-	-- 		end)
-	-- 	end,
-	-- })
-	-- use({
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	after = { "copilot.lua", "nvim-cmp" },
-	-- })
 
-	-- Wiki
-	-- use("vimwiki/vimwiki")
+	-- use("github/copilot.vim")
+
+	use({
+		"zbirenbaum/copilot.lua",
+		event = { "VimEnter" },
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup()
+			end, 100)
+		end,
+	})
+
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua", "nvim-cmp" },
+	})
 
 	-- DAP
 	use("mfussenegger/nvim-dap")
