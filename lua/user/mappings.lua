@@ -77,7 +77,25 @@ keymap("n", "<A-k>", "3k", opts)
 -- Quickfix List movement
 keymap("n", "<A-h>", ":cprev<cr>", opts)
 keymap("n", "<A-l>", ":cnext<cr>", opts)
-keymap("n", "<C-q>", ":cclose | :lclose<cr>", opts)
+keymap("n", "<C-q>", ":call ToggleQuickFix()<cr>", opts)
+keymap("n", "<S-q>", ":call ToggleLocationList()<cr>", opts)
+vim.cmd([[
+function! ToggleQuickFix()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    copen
+  else
+    cclose
+  endif
+endfunction
+
+function! ToggleLocationList()
+  if empty(filter(getwininfo(), 'v:val.loclist'))
+    lopen
+  else
+    lclose
+  endif
+endfunction
+]])
 
 -- Yank / Paste mapping
 keymap("n", "yl", "yy", opts)
