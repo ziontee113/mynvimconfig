@@ -16,7 +16,7 @@ local copilot_suggested = function()
 	end
 end
 
-local function get_master_node()
+local function get_master_node(block_check)
 	local node = ts_utils.get_node_at_cursor()
 	if node == nil then
 		error("No Treesitter parser found")
@@ -27,7 +27,11 @@ local function get_master_node()
 	local start_row = node:start()
 	local parent = node:parent()
 
-	while parent ~= nil and parent ~= root and parent:start() == start_row and parent:type() ~= "block" do
+	while parent ~= nil and parent ~= root and parent:start() == start_row do
+		if block_check and parent:type() == "block" then
+			break
+		end
+
 		node = parent
 		parent = node:parent()
 		-- print(node:type())
@@ -63,7 +67,7 @@ M.move = function(mode, up)
 end
 
 M.peek = function(up, mode)
-	local node = get_master_node()
+	local node = get_master_node(true)
 	local bufnr = vim.api.nvim_get_current_buf()
 
 	local target
