@@ -102,7 +102,7 @@ return require("packer").startup(function(use)
 
 	-- Github Copilot
 
-	-- use("github/copilot.vim")
+	use("github/copilot.vim")
 
 	use({
 		"zbirenbaum/copilot.lua",

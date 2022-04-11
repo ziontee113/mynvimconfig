@@ -50,19 +50,35 @@ M.select = function()
 end
 
 M.move = function(mode, up)
-	local node = get_master_node()
+	local node = get_master_node(true)
 	local bufnr = vim.api.nvim_get_current_buf()
 
-	local target = node:next_named_sibling()
+	local target
 	if up == true then
 		target = node:prev_named_sibling()
+	else
+		target = node:next_named_sibling()
 	end
 
-	ts_utils.swap_nodes(node, target, bufnr, true)
+	if target == nil then
+		return
+	end
 
-	if mode == "v" then
-		ts_utils.update_selection(bufnr, target)
-		ts_utils.update_selection(bufnr, target)
+	while target:type() == "comment" do
+		if up == true then
+			target = target:prev_named_sibling()
+		else
+			target = target:next_named_sibling()
+		end
+	end
+
+	if target ~= nil then
+		ts_utils.swap_nodes(node, target, bufnr, true)
+
+		if mode == "v" then
+			ts_utils.update_selection(bufnr, target)
+			ts_utils.update_selection(bufnr, target)
+		end
 	end
 end
 
@@ -88,8 +104,6 @@ M.peek = function(up, mode)
 			target = target:next_named_sibling()
 		end
 	end
-
-	-- this is a comment
 
 	if target ~= nil then
 		ts_utils.update_selection(bufnr, target)
