@@ -66,14 +66,18 @@ M.peek = function(up, mode)
 	local node = get_master_node()
 	local bufnr = vim.api.nvim_get_current_buf()
 
-	local target = node:next_sibling()
+	local target = node:next_named_sibling()
 	if up == true then
-		target = node:prev_sibling()
+		target = node:prev_named_sibling()
 	end
 
-	ts_utils.update_selection(bufnr, target)
-	if mode == "v" then
+	if target ~= nil then
+		P({ node:type(), target:type() })
+
 		ts_utils.update_selection(bufnr, target)
+		if mode == "v" then
+			ts_utils.update_selection(bufnr, target)
+		end
 	end
 end
 
