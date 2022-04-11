@@ -89,7 +89,20 @@ vim.api.nvim_set_keymap(
 	'<cmd>lua require("myPlugs").move("n", false)<cr>',
 	{ noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap("x", "u", '<cmd>lua require("myPlugs").move("v", true)<cr>', { noremap = true, silent = true })
+
+-- Alt Cursor Movement Mappings - Visual Mode
+vim.api.nvim_set_keymap(
+	"x",
+	"<A-k>",
+	'<cmd>lua require("myPlugs").move("v", true)<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"x",
+	"<A-j>",
+	'<cmd>lua require("myPlugs").move("v", false)<cr>',
+	{ noremap = true, silent = true }
+)
 
 -- Peek
 vim.api.nvim_set_keymap("n", "vh", '<cmd>lua require("myPlugs").peek(true)<cr>', { noremap = true, silent = true })
@@ -104,20 +117,6 @@ vim.api.nvim_set_keymap(
 	"x",
 	"<A-l>",
 	'<cmd>lua require("myPlugs").peek(false, "v")<cr>',
-	{ noremap = true, silent = true }
-)
-
--- Alt Cursor Movement Mappings - Visual Mode
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-k>",
-	'<cmd>lua require("myPlugs").move("v", true)<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-j>",
-	'<cmd>lua require("myPlugs").move("v", false)<cr>',
 	{ noremap = true, silent = true }
 )
 
