@@ -49,7 +49,7 @@ M.select = function()
 	ts_utils.update_selection(bufnr, node)
 end
 
-M.move = function(mode, up)
+M.move = function(_, up)
 	local node = get_master_node(true)
 	local bufnr = vim.api.nvim_get_current_buf()
 
@@ -74,9 +74,35 @@ M.move = function(mode, up)
 
 	if target ~= nil then
 		ts_utils.swap_nodes(node, target, bufnr, true)
+	end
+end
 
+M.dancin = function(up, mode)
+	local node = get_master_node(true)
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	local target
+	if up == true then
+		target = node:prev_named_sibling()
+	else
+		target = node:next_named_sibling()
+	end
+
+	if target == nil then
+		return
+	end
+
+	while target:type() == "comment" do
+		if up == true then
+			target = target:prev_named_sibling()
+		else
+			target = target:next_named_sibling()
+		end
+	end
+
+	if target ~= nil then
+		ts_utils.update_selection(bufnr, target)
 		if mode == "v" then
-			ts_utils.update_selection(bufnr, target)
 			ts_utils.update_selection(bufnr, target)
 		end
 	end
@@ -126,13 +152,13 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 	"x",
 	"<A-k>",
-	'<cmd>lua require("myPlugs").move("v", true)<cr>',
+	'<cmd>lua require("myPlugs").dancin("v", true)<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
 	"<A-j>",
-	'<cmd>lua require("myPlugs").move("v", false)<cr>',
+	'<cmd>lua require("myPlugs").dancin("v", false)<cr>',
 	{ noremap = true, silent = true }
 )
 
