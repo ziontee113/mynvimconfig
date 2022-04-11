@@ -80,8 +80,8 @@ M.move = function(mode, up)
 		ts_utils.swap_nodes(node, target, bufnr, true)
 
 		if mode == "v" then
-			ts_utils.update_selection(bufnr, target)
 			target = ts_utils.get_node_at_cursor()
+			ts_utils.update_selection(bufnr, target)
 			ts_utils.update_selection(bufnr, target)
 		end
 	end
