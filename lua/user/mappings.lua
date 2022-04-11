@@ -67,7 +67,8 @@ keymap("v", "<C-u>", "11k", opts)
 keymap("v", "<C-d>", "11j", opts)
 keymap("n", "<C-u>", "11k", opts)
 keymap("n", "<C-d>", "11j", opts)
--- Alt Cursor Movement Mappings
+
+-- Alt Cursor Movement Mappings - Normal Mode
 keymap("n", "<A-j>", "3j", opts)
 keymap("n", "<A-k>", "3k", opts)
 keymap("n", "<A-l>", "4l", opts)
