@@ -49,9 +49,9 @@ M.move = function(mode, up)
 	local node = get_master_node()
 	local bufnr = vim.api.nvim_get_current_buf()
 
-	local target = node:next_sibling()
+	local target = node:next_named_sibling()
 	if up == true then
-		target = node:prev_sibling()
+		target = node:prev_named_sibling()
 	end
 
 	ts_utils.swap_nodes(node, target, bufnr, true)
