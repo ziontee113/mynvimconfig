@@ -101,9 +101,9 @@ M.dancin = function(up, mode)
 	end
 
 	if target ~= nil then
-		ts_utils.swap_nodes(target, node, bufnr, false)
+		ts_utils.swap_nodes(target, node, bufnr, true)
 
-		ts_utils.update_selection(bufnr, target)
+		ts_utils.update_selection(bufnr, node)
 		if mode == "v" then
 			ts_utils.update_selection(bufnr, target)
 		end
