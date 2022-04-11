@@ -10,5 +10,7 @@ function binarySearch(arr, target) {
     else right = mid - 1;
   }
 
+  // this is a comment
+
   return -1;
 }

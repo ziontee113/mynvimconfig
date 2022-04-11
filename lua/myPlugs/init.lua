@@ -28,7 +28,7 @@ local function get_master_node()
 	local parent = node:parent()
 
 	while parent ~= nil and parent ~= root and parent:start() == start_row do
-		-- print(node:type())
+		print(node:type())
 		node = parent
 		parent = node:parent()
 	end
@@ -66,14 +66,28 @@ M.peek = function(up, mode)
 	local node = get_master_node()
 	local bufnr = vim.api.nvim_get_current_buf()
 
-	local target = node:next_named_sibling()
+	local target
 	if up == true then
 		target = node:prev_named_sibling()
+	else
+		target = node:next_named_sibling()
 	end
 
-	if target ~= nil then
-		P({ node:type(), target:type() })
+	if target == nil then
+		return
+	end
 
+	while target:type() == "comment" and target ~= nil do
+		if up == true then
+			target = target:prev_named_sibling()
+		else
+			target = target:next_named_sibling()
+		end
+	end
+
+	-- this is a comment
+
+	if target ~= nil then
 		ts_utils.update_selection(bufnr, target)
 		if mode == "v" then
 			ts_utils.update_selection(bufnr, target)
