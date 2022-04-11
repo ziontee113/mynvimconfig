@@ -81,7 +81,7 @@ M.peek = function(up, mode)
 		return
 	end
 
-	while target:type() == "comment" and target ~= nil do
+	while target:type() == "comment" do
 		if up == true then
 			target = target:prev_named_sibling()
 		else
