@@ -16,10 +16,14 @@ local copilot_suggested = function()
 	end
 end
 
-local function get_master_node(block_check)
+local function get_master_node(block_check, custom_node)
 	local node = ts_utils.get_node_at_cursor()
 	if node == nil then
 		error("No Treesitter parser found")
+	end
+
+	if custom_node ~= nil then
+		node = custom_node
 	end
 
 	local root = ts_utils.get_root_for_node(node)
@@ -77,39 +81,6 @@ M.move = function(_, up)
 	end
 end
 
-M.dancin = function(up, mode)
-	local node = get_master_node(true)
-	local bufnr = vim.api.nvim_get_current_buf()
-
-	local target
-	if up == true then
-		target = node:prev_named_sibling()
-	else
-		target = node:next_named_sibling()
-	end
-
-	if target == nil then
-		return
-	end
-
-	while target:type() == "comment" do
-		if up == true then
-			target = target:prev_named_sibling()
-		else
-			target = target:next_named_sibling()
-		end
-	end
-
-	if target ~= nil then
-		ts_utils.swap_nodes(target, node, bufnr, true)
-
-		ts_utils.update_selection(bufnr, node)
-		if mode == "v" then
-			ts_utils.update_selection(bufnr, target)
-		end
-	end
-end
-
 M.peek = function(up, mode)
 	local node = get_master_node(true)
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -151,18 +122,18 @@ vim.api.nvim_set_keymap(
 )
 
 -- Alt Cursor Movement Mappings - Visual Mode
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-k>",
-	'<cmd>lua require("myPlugs").dancin(true, "v")<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-j>",
-	'<cmd>lua require("myPlugs").dancin(false, "v")<cr>',
-	{ noremap = true, silent = true }
-)
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"<A-k>",
+-- 	'<cmd>lua require("myPlugs").dancin(true, "v")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"<A-j>",
+-- 	'<cmd>lua require("myPlugs").dancin(false, "v")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
 
 -- Peek
 -- vim.api.nvim_set_keymap("n", "vh", '<cmd>lua require("myPlugs").peek(true)<cr>', { noremap = true, silent = true })
