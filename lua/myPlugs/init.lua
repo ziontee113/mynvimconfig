@@ -77,13 +77,13 @@ M.move = function(mode, up)
 	end
 
 	if target ~= nil then
+		ts_utils.swap_nodes(node, target, bufnr, true)
+
 		if mode == "v" then
 			ts_utils.update_selection(bufnr, target)
 			target = ts_utils.get_node_at_cursor()
 			ts_utils.update_selection(bufnr, target)
 		end
-
-		ts_utils.swap_nodes(node, target, bufnr, true)
 	end
 end
 
