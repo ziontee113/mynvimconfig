@@ -71,8 +71,13 @@ keymap("n", "<C-d>", "11j", opts)
 -- Alt Cursor Movement Mappings - Normal Mode
 keymap("n", "<A-j>", "3j", opts)
 keymap("n", "<A-k>", "3k", opts)
-keymap("n", "<A-l>", "4l", opts)
-keymap("n", "<A-h>", "4h", opts)
+-- keymap("n", "<A-l>", "4l", opts)
+-- keymap("n", "<A-h>", "4h", opts)
+
+-- Quickfix List movement
+keymap("n", "<A-h>", ":cprev<cr>", opts)
+keymap("n", "<A-l>", ":cnext<cr>", opts)
+keymap("n", "<C-q>", ":cclose | :lclose<cr>", opts)
 
 -- Yank / Paste mapping
 keymap("n", "yl", "yy", opts)

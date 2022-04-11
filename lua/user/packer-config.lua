@@ -48,6 +48,7 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/playground")
 
 	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("mfussenegger/nvim-treehopper")
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
@@ -87,7 +88,6 @@ return require("packer").startup(function(use)
 
 	-- Test Jumping / Hopping
 	use("phaazon/hop.nvim")
-	use("mfussenegger/nvim-treehopper")
 	use("ggandor/lightspeed.nvim")
 
 	-- Git Signs / UI
