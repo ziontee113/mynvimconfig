@@ -27,10 +27,10 @@ local function get_master_node()
 	local start_row = node:start()
 	local parent = node:parent()
 
-	while parent ~= nil and parent ~= root and parent:start() == start_row do
-		-- print(node:type())
+	while parent ~= nil and parent ~= root and parent:start() == start_row and parent:type() ~= "block" do
 		node = parent
 		parent = node:parent()
+		-- print(node:type())
 	end
 
 	return node
@@ -71,10 +71,6 @@ M.peek = function(up, mode)
 		target = node:prev_named_sibling()
 	else
 		target = node:next_named_sibling()
-	end
-
-	if target == nil then
-		target = node:child(1)
 	end
 
 	if target == nil then
