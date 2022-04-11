@@ -101,6 +101,8 @@ M.dancin = function(up, mode)
 	end
 
 	if target ~= nil then
+		ts_utils.swap_nodes(target, node, bufnr, false)
+
 		ts_utils.update_selection(bufnr, target)
 		if mode == "v" then
 			ts_utils.update_selection(bufnr, target)
@@ -152,13 +154,13 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 	"x",
 	"<A-k>",
-	'<cmd>lua require("myPlugs").dancin("v", true)<cr>',
+	'<cmd>lua require("myPlugs").dancin(true, "v")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
 	"<A-j>",
-	'<cmd>lua require("myPlugs").dancin("v", false)<cr>',
+	'<cmd>lua require("myPlugs").dancin(false, "v")<cr>',
 	{ noremap = true, silent = true }
 )
 
