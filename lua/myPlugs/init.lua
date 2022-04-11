@@ -53,7 +53,7 @@ M.select = function()
 	ts_utils.update_selection(bufnr, node)
 end
 
-M.move = function(_, up)
+M.move = function(mode, up)
 	local node = get_master_node(true)
 	local bufnr = vim.api.nvim_get_current_buf()
 
@@ -77,6 +77,12 @@ M.move = function(_, up)
 	end
 
 	if target ~= nil then
+		if mode == "v" then
+			ts_utils.update_selection(bufnr, target)
+			target = ts_utils.get_node_at_cursor()
+			ts_utils.update_selection(bufnr, target)
+		end
+
 		ts_utils.swap_nodes(node, target, bufnr, true)
 	end
 end
@@ -112,6 +118,20 @@ M.peek = function(up, mode)
 	end
 end
 
+-- Champaing
+vim.api.nvim_set_keymap(
+	"x",
+	"<A-j>",
+	'<cmd>lua require("myPlugs").move("v", false)<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"x",
+	"<A-k>",
+	'<cmd>lua require("myPlugs").move("v", true)<cr>',
+	{ noremap = true, silent = true }
+)
+
 vim.api.nvim_set_keymap("n", "vx", '<cmd>lua require("myPlugs").select()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "vu", '<cmd>lua require("myPlugs").move("n", true)<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
@@ -120,20 +140,6 @@ vim.api.nvim_set_keymap(
 	'<cmd>lua require("myPlugs").move("n", false)<cr>',
 	{ noremap = true, silent = true }
 )
-
--- Alt Cursor Movement Mappings - Visual Mode
--- vim.api.nvim_set_keymap(
--- 	"x",
--- 	"<A-k>",
--- 	'<cmd>lua require("myPlugs").dancin(true, "v")<cr>',
--- 	{ noremap = true, silent = true }
--- )
--- vim.api.nvim_set_keymap(
--- 	"x",
--- 	"<A-j>",
--- 	'<cmd>lua require("myPlugs").dancin(false, "v")<cr>',
--- 	{ noremap = true, silent = true }
--- )
 
 -- Peek
 -- vim.api.nvim_set_keymap("n", "vh", '<cmd>lua require("myPlugs").peek(true)<cr>', { noremap = true, silent = true })
