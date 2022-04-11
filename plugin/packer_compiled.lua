@@ -324,11 +324,6 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
-  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/vim-repeat",

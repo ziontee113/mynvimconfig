@@ -94,9 +94,6 @@ return require("packer").startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	use("norcalli/nvim-colorizer.lua")
 
-	-- Vim Fugitive
-	use("tpope/vim-fugitive")
-
 	-- Submodes
 	use("kana/vim-submode")
 

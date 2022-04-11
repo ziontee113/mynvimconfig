@@ -225,13 +225,6 @@ keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader><C-g>", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 
--- Fugitive +++
--- keymap("n", "<Leader>G", ":G<cr>", nosilent_opts)
--- keymap("n", "<F12><F12>", ":G add .<cr> | :G commit<cr>", nosilent_opts)
--- keymap("n", "<F12>", ":G add .<cr>", nosilent_opts)
--- keymap("n", "<F12><F11>", ":G commit<cr>", nosilent_opts)
--- keymap("n", "<F12><F10>", ":G push<cr> | :redraw!", nosilent_opts)
-
 --- Lightspeed
 keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
