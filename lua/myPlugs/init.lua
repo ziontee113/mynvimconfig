@@ -107,7 +107,9 @@ M.select_sibling_node = function(direction, mode)
 				target = target:next_named_sibling()
 			end
 		end
+	end
 
+	if target ~= nil then
 		ts_utils.update_selection(bufnr, target) --> make the selection
 		if mode == "visual" then
 			ts_utils.update_selection(bufnr, target)
