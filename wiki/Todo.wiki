@@ -1,4 +1,5 @@
 # Todo:
 
-- Javascript autocmd insert mode
-- TS-Navigator
+- [x] Javascript autocmd insert mode
+- [ ] TS-Navigator
+  - So we want to traverse prev, next, in, out

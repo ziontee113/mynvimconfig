@@ -16,6 +16,32 @@ local copilot_suggested = function()
 	end
 end
 
+M.select_current_node = function()
+	local node = ts_utils.get_node_at_cursor()
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	if node ~= nil then
+		ts_utils.update_selection(bufnr, node)
+	end
+end
+
+M.select_sibling_node = function(direction, mode)
+	local node = ts_utils.get_node_at_cursor()
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	local target = node:next_named_sibling()
+	if direction == "prev" then
+		target = node:prev_named_sibling()
+	end
+
+	if target ~= nil then
+		ts_utils.update_selection(bufnr, target)
+		if mode == "visual" then
+			ts_utils.update_selection(bufnr, target)
+		end
+	end
+end
+
 local function get_master_node(block_check, custom_node)
 	local node = ts_utils.get_node_at_cursor()
 	if node == nil then
@@ -118,7 +144,39 @@ M.peek = function(up, mode)
 	end
 end
 
--- Champaing
+-- Experimental Mappings
+vim.api.nvim_set_keymap(
+	"n",
+	"vn",
+	'<cmd>lua require("myPlugs").select_current_node("n")<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"vj",
+	'<cmd>lua require("myPlugs").select_sibling_node("next")<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"vk",
+	'<cmd>lua require("myPlugs").select_sibling_node("prev")<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap( -- visual mode
+	"x",
+	"j",
+	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual")<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"x",
+	"k",
+	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual")<cr>',
+	{ noremap = true, silent = true }
+)
+
+-- Move with C-k and C-j
 vim.api.nvim_set_keymap(
 	"x",
 	"<A-j>",
