@@ -20,16 +20,32 @@ M.select_sibling_node = function(direction, mode)
 	end
 
 	if mode == "visual" then
+		local sameParent = true
+
 		local nodeA = node
 		vim.cmd("normal! o")
 		local nodeB = ts_utils.get_node_at_cursor()
+		vim.cmd("normal! o")
 
-		while ts_utils.is_parent(nodeA, nodeB) or ts_utils.is_parent(nodeB, nodeA) do
-			if ts_utils.is_parent(nodeA, nodeB) then
-				nodeA = nodeA:parent()
-			else
-				nodeB = nodeB:parent()
+		if nodeA:id() ~= nodeB:id() then
+			-- check if nodeA is parent to nodeB and vise versa
+			if ts_utils.is_parent(nodeB, nodeA) then
+				node = nodeA
+				sameParent = false
+			elseif ts_utils.is_parent(nodeA, nodeB) then
+				node = nodeB
+				sameParent = true
 			end
+		end
+
+		--> now to the case where nodeA and nodeB have the same parent
+		local parent = nodeA:parent()
+		while ts_utils.is_parent(nodeA, parent) == false and ts_utils.is_parent(nodeB, parent) == false do
+			parent = parent:parent()
+		end
+
+		if sameParent then
+			node = parent
 		end
 	end
 
@@ -37,25 +53,6 @@ M.select_sibling_node = function(direction, mode)
 	if direction == "prev" then
 		target = node:prev_named_sibling()
 	end
-
-	-- -- if there is no sibling at the specified direction:
-	-- if target == nil then
-	-- 	-- we check if the parent has only 1 child
-	-- 	--> If so, we keep going up  until parent has more than 1 child
-	-- 	P("we in this check")
-	--
-	-- 	local parent = node:parent()
-	-- 	while parent ~= nil and parent:named_child_count() == 1 do
-	-- 		P("and this while loop")
-	-- 		node = parent
-	-- 		parent = node:parent()
-	-- 	end
-	--
-	-- 	target = node:next_named_sibling() --> look for the sibling again
-	-- 	if direction == "prev" then
-	-- 		target = node:prev_named_sibling()
-	-- 	end
-	-- end
 
 	if target ~= nil then
 		ts_utils.update_selection(bufnr, target)
