@@ -38,6 +38,7 @@ M.select_sibling_node = function(direction, mode)
 		ts_utils.update_selection(bufnr, target)
 		if mode == "visual" then
 			ts_utils.update_selection(bufnr, target)
+			vim.cmd("normal! o") -- move cursor to the beginning of the selection
 		end
 	end
 end
