@@ -81,6 +81,7 @@ M.select_sibling_node = function(direction, mode)
 				or end_col_P ~= true_range[4]
 			do
 				parent = parent:parent()
+				start_row_P, start_col_P, end_row_P, end_col_P = parent:range()
 			end
 
 			node = parent
