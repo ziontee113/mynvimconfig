@@ -18,7 +18,7 @@ local function find_range_from_2nodes(nodeA, nodeB)
 	local true_range = {}
 
 	if start_row_A == start_row_B then
-		if start_col_A < start_row_B then
+		if start_col_A < start_col_B then
 			table.insert(true_range, start_row_A)
 			table.insert(true_range, start_col_A)
 		else
@@ -26,16 +26,17 @@ local function find_range_from_2nodes(nodeA, nodeB)
 			table.insert(true_range, start_col_B)
 		end
 	end
+
 	if start_row_A < start_row_B then
 		table.insert(true_range, start_row_A)
 		table.insert(true_range, start_col_A)
-	else
+	elseif start_row_A > start_row_B then
 		table.insert(true_range, start_row_B)
 		table.insert(true_range, start_col_B)
 	end
 
 	if end_row_A == end_row_B then
-		if end_col_A > end_row_B then
+		if end_col_A > end_col_B then
 			table.insert(true_range, end_row_A)
 			table.insert(true_range, end_col_A)
 		else
@@ -46,7 +47,7 @@ local function find_range_from_2nodes(nodeA, nodeB)
 	if end_row_A > end_row_B then
 		table.insert(true_range, end_row_A)
 		table.insert(true_range, end_col_A)
-	else
+	elseif end_row_A < end_row_B then
 		table.insert(true_range, end_row_B)
 		table.insert(true_range, end_col_B)
 	end
@@ -71,15 +72,23 @@ M.select_sibling_node = function(direction, mode)
 		if nodeA:id() ~= nodeB:id() then --> get the true node
 			local true_range = find_range_from_2nodes(nodeA, nodeB)
 			local parent = nodeA:parent()
-			while parent:range() ~= true_range do
+			local start_row_P, start_col_P, end_row_P, end_col_P = parent:range()
+
+			while
+				start_row_P ~= true_range[1]
+				or start_col_P ~= true_range[2]
+				or end_row_P ~= true_range[3]
+				or end_col_P ~= true_range[4]
+			do
 				parent = parent:parent()
 			end
+
 			node = parent
 		end
 	end
 
 	local parent = node:parent() --> if parent only has 1 child, move up the tree
-	while ts_utils.named_child_count(parent) == 1 do
+	while parent:named_child_count() == 1 do
 		node = parent
 		parent = node:parent()
 	end
