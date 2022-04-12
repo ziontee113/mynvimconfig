@@ -99,13 +99,11 @@ M.select_sibling_node = function(direction, mode)
 		target = node:prev_named_sibling()
 	end
 
-	if target ~= nil then
-		while target:type() == "comment" do -- skip over the comments because how comments are treated in Treesitter
-			if direction == "prev" then
-				target = target:prev_named_sibling()
-			else
-				target = target:next_named_sibling()
-			end
+	while target ~= nil and target:type() == "comment" do -- skip over the comments because how comments are treated in Treesitter
+		if direction == "prev" then
+			target = target:prev_named_sibling()
+		else
+			target = target:next_named_sibling()
 		end
 	end
 
