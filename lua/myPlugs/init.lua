@@ -19,10 +19,6 @@ M.select_sibling_node = function(direction, mode)
 		return
 	end
 
-	while #ts_utils.get_named_children(node:parent()) == 1 do -- keep going up until node have siblings
-		node = node:parent()
-	end
-
 	local target = node:next_named_sibling()
 	if direction == "prev" then
 		target = node:prev_named_sibling()
