@@ -1,0 +1,4 @@
+# Todo:
+
+- Javascript autocmd insert mode
+- TS-Navigator

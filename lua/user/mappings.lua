@@ -24,6 +24,12 @@ keymap("i", "<A-u>", [[<C-o>u]], opts)
 -- 	opts
 -- )
 
+-- Javascript Mappings
+vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> SS >]])
+vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> SA >=]])
+vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> AA <]])
+vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> AS <=]])
+
 -- Paragraph Jump
 keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for quickfix list
 keymap("n", "{", [[:keepjumps normal! {<cr>]], opts)
