@@ -24,21 +24,19 @@ M.select_sibling_node = function(direction, mode)
 		target = node:prev_named_sibling()
 	end
 
-	-- if there is no sibling at the specified direction, then we need to ???
+	-- if there is no sibling at the specified direction:
 	if target == nil then
-		-- TODO: do we do nothing? or do we try to go up the tree?
-		-- when we go up the tree:
-		--> we look at the parent, if the parent only has 1 child, then we select the parent
-		----> then we check if the parent has a sibling, if it does, we select the sibling
-		----> if it doesn't, we select the parent's parent, etc.
-
-		-->[[ So we need to check if the parent has more than 1 child regardless ]]
+		-- we check if the parent has only 1 child
+		--> If so, we keep going up  until parent has more than 1 child
 		local parent = node:parent()
-		if parent ~= nil and parent:named_child_count() == 1 then
-			while parent ~= nil and parent:named_child_count() == 1 do
-				node = parent
-				parent = parent:parent()
-			end
+		while parent ~= nil and parent:named_child_count() == 1 do
+			node = parent
+			parent = node:parent()
+		end
+
+		target = node:next_named_sibling() --> look for the sibling again
+		if direction == "prev" then
+			target = node:prev_named_sibling()
 		end
 	end
 
