@@ -25,16 +25,7 @@ M.select_sibling_node = function(direction, mode)
 		local nodeB = ts_utils.get_node_at_cursor()
 		vim.cmd("normal! o")
 
-		if nodeA:id() ~= nodeB:id() then
-			-- check if nodeA is parent to nodeB and vise versa
-			if ts_utils.is_parent(nodeB, nodeA) then
-				node = nodeA
-			elseif ts_utils.is_parent(nodeA, nodeB) then
-				node = nodeB
-			end
-		end
-
-		--> now to the case where nodeA and nodeB have the same parent
+		-- do something here
 	end
 
 	local target = node:next_named_sibling() -- naively look for next or prev sibling based on direction
