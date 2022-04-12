@@ -20,8 +20,6 @@ M.select_sibling_node = function(direction, mode)
 	end
 
 	if mode == "visual" then
-		local sameParent = true
-
 		local nodeA = node
 		vim.cmd("normal! o")
 		local nodeB = ts_utils.get_node_at_cursor()
@@ -31,22 +29,12 @@ M.select_sibling_node = function(direction, mode)
 			-- check if nodeA is parent to nodeB and vise versa
 			if ts_utils.is_parent(nodeB, nodeA) then
 				node = nodeA
-				sameParent = false
 			elseif ts_utils.is_parent(nodeA, nodeB) then
 				node = nodeB
-				sameParent = true
 			end
 		end
 
 		--> now to the case where nodeA and nodeB have the same parent
-		local parent = nodeA:parent()
-		while ts_utils.is_parent(nodeA, parent) == false and ts_utils.is_parent(nodeB, parent) == false do
-			parent = parent:parent()
-		end
-
-		if sameParent then
-			node = parent
-		end
 	end
 
 	local target = node:next_named_sibling() -- naively look for next or prev sibling based on direction
