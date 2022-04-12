@@ -12,47 +12,35 @@ M.select_current_node = function()
 end
 
 M.select_sibling_node = function(direction, mode)
-	local node = ts_utils.get_node_at_cursor()
+	local node = ts_utils.get_node_at_cursor() -- declare node and bufnr
 	local bufnr = vim.api.nvim_get_current_buf()
 
 	if node == nil then -- prevent errors
 		return
 	end
 
-	if mode == "visual" then
-		local end_row, end_col = node:end_() -- trying to get both visual cursor positions
-		vim.cmd("visual! o")
-		node = ts_utils.get_node_at_cursor()
-		local start_row, start_col = node:start()
-
-		local root = ts_utils.get_root_for_node(node)
-		local parent = node:parent() -- get parent node & its locations
-		local P_start_row, P_start_col, P_end_row, P_end_col = parent:end_()
-
-		while
-			parent ~= nil
-			and parent ~= root
-			and start_row == P_start_row
-			and start_col == P_start_col
-			and end_row == P_end_row
-			and end_col == P_end_col
-		do
-			node = parent
-			parent = node:parent()
-			P_end_row, P_end_col = parent:end_()
-		end
-	end
-
-	local target = node:next_named_sibling()
+	local target = node:next_named_sibling() -- naively look for next or prev sibling based on direction
 	if direction == "prev" then
 		target = node:prev_named_sibling()
+	end
+
+	-- if there is no sibling at the specified direction, then we need to ???
+	if target == nil then
+		-- TODO: do we do nothing? or do we try to go up the tree?
+		-- when we go up the tree:
+		--> we look at the parent, if the parent only has 1 child, then we select the parent
+		----> then we check if the parent has a sibling, if it does, we select the sibling
+		----> if it doesn't, we select the parent's parent, etc.
+
+		-- when we do nothing:
+		--> we check if the parent has more than 1 child
+		P("doing nothing")
 	end
 
 	if target ~= nil then
 		ts_utils.update_selection(bufnr, target)
 		if mode == "visual" then
 			ts_utils.update_selection(bufnr, target)
-			-- vim.cmd("normal! o") -- move cursor to the beginning of the selection
 		end
 	end
 end
