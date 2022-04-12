@@ -11,34 +11,12 @@ M.select_current_node = function()
 	end
 end
 
-local function get_cursor_range()
-	local cursorA = vim.api.nvim_win_get_cursor(0)
-	vim.cmd("normal! o")
-	local cursorB = vim.api.nvim_win_get_cursor(0)
-
-	if cursorA[1] <= cursorB[1] and cursorA[2] <= cursorB[2] then
-		return { cursorB[1] - 1, cursorA[2], cursorA[1] - 1, cursorB[2] + 1 }
-	else
-		return { cursorA[1] - 1, cursorB[2], cursorB[1] - 1, cursorA[2] + 1 }
-	end
-end
-
 M.select_sibling_node = function(direction, mode)
 	local node = ts_utils.get_node_at_cursor()
 	local bufnr = vim.api.nvim_get_current_buf()
 
 	if node == nil then -- prevent errors
 		return
-	end
-
-	-- get the right node
-	if mode == "visual" then
-		local cursor_range = get_cursor_range()
-		local start_row, start_col = node:start()
-		local end_row, end_col = node:end_()
-
-		P({ start_row, start_col, end_row, end_col })
-		P(cursor_range)
 	end
 
 	while #ts_utils.get_named_children(node:parent()) == 1 do -- keep going up until node have siblings
