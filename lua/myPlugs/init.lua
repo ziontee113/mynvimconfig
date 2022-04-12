@@ -99,16 +99,16 @@ M.select_sibling_node = function(direction, mode)
 		target = node:prev_named_sibling()
 	end
 
-	while target:type() == "comment" do -- skip over the comments because how comments are treated in Treesitter
-		if direction == "prev" then
-			target = target:prev_named_sibling()
-		else
-			target = target:next_named_sibling()
-		end
-	end
-
 	if target ~= nil then
-		ts_utils.update_selection(bufnr, target)
+		while target:type() == "comment" do -- skip over the comments because how comments are treated in Treesitter
+			if direction == "prev" then
+				target = target:prev_named_sibling()
+			else
+				target = target:next_named_sibling()
+			end
+		end
+
+		ts_utils.update_selection(bufnr, target) --> make the selection
 		if mode == "visual" then
 			ts_utils.update_selection(bufnr, target)
 		end
