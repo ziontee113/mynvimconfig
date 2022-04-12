@@ -2,20 +2,6 @@ local ts_utils = require("nvim-treesitter.ts_utils")
 
 local M = {}
 
-local copilot_suggested = function()
-	local node = ts_utils.get_node_at_cursor()
-
-	if node ~= nil then
-		local parent = node:parent()
-		if parent ~= nil then
-			local parent_type = parent:type()
-			if parent_type == "function" or parent_type == "method" then
-				return "lua"
-			end
-		end
-	end
-end
-
 M.select_current_node = function()
 	local node = ts_utils.get_node_at_cursor()
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -31,6 +17,25 @@ M.select_sibling_node = function(direction, mode)
 
 	if node == nil then -- prevent errors
 		return
+	end
+
+	-- get node at the whole selection
+	if node:end_() then
+		local parent = node:parent()
+		local startRow, startCol = node:start()
+		local endRow, endCol = node:end_()
+		local parentStartRow, parentStartCol = parent:start()
+		local parentEndRow, parentEndCol = parent:end_()
+
+		while
+			startRow == parentStartRow
+			and endRow == parentEndRow
+			and startCol == parentStartCol
+			and endCol == parentEndCol
+		do
+			node = parent
+			parent = node:parent()
+		end
 	end
 
 	while #ts_utils.get_named_children(node:parent()) == 1 do -- keep going up until node have siblings
@@ -174,13 +179,13 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap( -- visual mode
 	"x",
-	"k",
+	"K",
 	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
-	"j",
+	"J",
 	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
