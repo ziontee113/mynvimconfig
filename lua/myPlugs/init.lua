@@ -32,9 +32,14 @@ M.select_sibling_node = function(direction, mode)
 		----> then we check if the parent has a sibling, if it does, we select the sibling
 		----> if it doesn't, we select the parent's parent, etc.
 
-		-- when we do nothing:
-		--> we check if the parent has more than 1 child
-		P("doing nothing")
+		-->[[ So we need to check if the parent has more than 1 child regardless ]]
+		local parent = node:parent()
+		if parent ~= nil and parent:named_child_count() == 1 then
+			while parent ~= nil and parent:named_child_count() == 1 do
+				node = parent
+				parent = parent:parent()
+			end
+		end
 	end
 
 	if target ~= nil then
