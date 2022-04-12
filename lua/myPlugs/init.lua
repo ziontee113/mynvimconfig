@@ -29,6 +29,14 @@ M.select_sibling_node = function(direction, mode)
 	local node = ts_utils.get_node_at_cursor()
 	local bufnr = vim.api.nvim_get_current_buf()
 
+	if node == nil then -- prevent errors
+		return
+	end
+
+	while #ts_utils.get_named_children(node:parent()) == 1 do -- keep going up until node have siblings
+		node = node:parent()
+	end
+
 	local target = node:next_named_sibling()
 	if direction == "prev" then
 		target = node:prev_named_sibling()
@@ -154,25 +162,25 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
 	"n",
-	"vj",
+	"vk",
 	'<cmd>lua require("myPlugs").select_sibling_node("next")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"n",
-	"vk",
+	"vj",
 	'<cmd>lua require("myPlugs").select_sibling_node("prev")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap( -- visual mode
 	"x",
-	"j",
+	"k",
 	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
-	"k",
+	"j",
 	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
