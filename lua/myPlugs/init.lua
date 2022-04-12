@@ -11,6 +11,49 @@ M.select_current_node = function()
 	end
 end
 
+local function find_range_from_2nodes(nodeA, nodeB)
+	local start_row_A, start_col_A, end_row_A, end_col_A = nodeA:range()
+	local start_row_B, start_col_B, end_row_B, end_col_B = nodeB:range()
+
+	local true_range = {}
+
+	if start_row_A == start_row_B then
+		if start_col_A < start_row_B then
+			table.insert(true_range, start_row_A)
+			table.insert(true_range, start_col_A)
+		else
+			table.insert(true_range, start_row_B)
+			table.insert(true_range, start_col_B)
+		end
+	end
+	if start_row_A < start_row_B then
+		table.insert(true_range, start_row_A)
+		table.insert(true_range, start_col_A)
+	else
+		table.insert(true_range, start_row_B)
+		table.insert(true_range, start_col_B)
+	end
+
+	if end_row_A == end_row_B then
+		if end_col_A > end_row_B then
+			table.insert(true_range, end_row_A)
+			table.insert(true_range, end_col_A)
+		else
+			table.insert(true_range, end_row_B)
+			table.insert(true_range, end_col_B)
+		end
+	end
+	if end_row_A > end_row_B then
+		table.insert(true_range, end_row_A)
+		table.insert(true_range, end_col_A)
+	else
+		table.insert(true_range, end_row_B)
+		table.insert(true_range, end_col_B)
+	end
+
+	return true_range
+end
+
 M.select_sibling_node = function(direction, mode)
 	local node = ts_utils.get_node_at_cursor() -- declare node and bufnr
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -25,7 +68,20 @@ M.select_sibling_node = function(direction, mode)
 		local nodeB = ts_utils.get_node_at_cursor()
 		vim.cmd("normal! o")
 
-		-- do something here
+		if nodeA:id() ~= nodeB:id() then --> get the true node
+			local true_range = find_range_from_2nodes(nodeA, nodeB)
+			local parent = nodeA:parent()
+			while parent:range() ~= true_range do
+				parent = parent:parent()
+			end
+			node = parent
+		end
+	end
+
+	local parent = node:parent() --> if parent only has 1 child, move up the tree
+	while ts_utils.named_child_count(parent) == 1 do
+		node = parent
+		parent = node:parent()
 	end
 
 	local target = node:next_named_sibling() -- naively look for next or prev sibling based on direction
