@@ -19,6 +19,30 @@ M.select_sibling_node = function(direction, mode)
 		return
 	end
 
+	if mode == "visual" then
+		local end_row, end_col = node:end_() -- trying to get both visual cursor positions
+		vim.cmd("visual! o")
+		node = ts_utils.get_node_at_cursor()
+		local start_row, start_col = node:start()
+
+		local root = ts_utils.get_root_for_node(node)
+		local parent = node:parent() -- get parent node & its locations
+		local P_start_row, P_start_col, P_end_row, P_end_col = parent:end_()
+
+		while
+			parent ~= nil
+			and parent ~= root
+			and start_row == P_start_row
+			and start_col == P_start_col
+			and end_row == P_end_row
+			and end_col == P_end_col
+		do
+			node = parent
+			parent = node:parent()
+			P_end_row, P_end_col = parent:end_()
+		end
+	end
+
 	local target = node:next_named_sibling()
 	if direction == "prev" then
 		target = node:prev_named_sibling()
@@ -28,7 +52,7 @@ M.select_sibling_node = function(direction, mode)
 		ts_utils.update_selection(bufnr, target)
 		if mode == "visual" then
 			ts_utils.update_selection(bufnr, target)
-			vim.cmd("normal! o") -- move cursor to the beginning of the selection
+			-- vim.cmd("normal! o") -- move cursor to the beginning of the selection
 		end
 	end
 end
