@@ -1,5 +1,7 @@
 # Ideas
 
+- pressing "l" in a Javascript file will generates a "let" variable declaration
+
 - In Javascript snippets, we can have:
   - 'choice nodes' that can give us 'arr' or 'arr[i]'
   - 'choice nodes' with choices of '[IF Statements]'
