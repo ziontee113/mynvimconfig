@@ -94,16 +94,29 @@ M.select_sibling_node = function(direction, mode)
 		parent = node:parent()
 	end
 
-	local target = node:next_named_sibling() -- naively look for next or prev sibling based on direction
-	if direction == "prev" then
-		target = node:prev_named_sibling()
-	end
-
-	while target ~= nil and target:type() == "comment" do -- skip over the comments because how comments are treated in Treesitter
+	local target --> setting the target, depending on the direction
+	if direction == "parent" then
+		target = node:parent()
+	elseif direction == "child" and node ~= nil then
+		while node ~= nil do
+			if node:named_child_count() >= 2 then
+				target = node:named_child(0)
+				break
+			end
+			node = node:named_child(0)
+		end
+	else
+		target = node:next_named_sibling() -- naively look for next or prev sibling based on direction
 		if direction == "prev" then
-			target = target:prev_named_sibling()
-		else
-			target = target:next_named_sibling()
+			target = node:prev_named_sibling()
+		end
+
+		while target ~= nil and target:type() == "comment" do -- skip over the comments because how comments are treated in Treesitter
+			if direction == "prev" then
+				target = target:prev_named_sibling()
+			else
+				target = target:next_named_sibling()
+			end
 		end
 	end
 
@@ -238,14 +251,26 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap( -- visual mode
 	"x",
-	"K",
+	"L",
 	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
-	"J",
+	"H",
 	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual")<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap( -- visual mode
+	"x",
+	"K",
+	'<cmd>lua require("myPlugs").select_sibling_node("parent", "visual")<cr>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"x",
+	"J",
+	'<cmd>lua require("myPlugs").select_sibling_node("child", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
 
