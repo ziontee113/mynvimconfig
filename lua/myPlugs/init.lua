@@ -55,7 +55,7 @@ local function find_range_from_2nodes(nodeA, nodeB)
 	return true_range
 end
 
-M.select_sibling_node = function(direction, mode)
+M.select_sibling_node = function(direction, mode, move)
 	local node = ts_utils.get_node_at_cursor() -- declare node and bufnr
 	local bufnr = vim.api.nvim_get_current_buf()
 
@@ -121,9 +121,19 @@ M.select_sibling_node = function(direction, mode)
 	end
 
 	if target ~= nil then
-		ts_utils.update_selection(bufnr, target) --> make the selection
-		if mode == "visual" then
-			ts_utils.update_selection(bufnr, target)
+		if move == true then
+			ts_utils.swap_nodes(node, target, bufnr, true)
+
+			if mode == "visual" then
+				target = ts_utils.get_node_at_cursor()
+				ts_utils.update_selection(bufnr, target)
+				ts_utils.update_selection(bufnr, target)
+			end
+		else
+			ts_utils.update_selection(bufnr, target) --> make the selection
+			if mode == "visual" then
+				ts_utils.update_selection(bufnr, target)
+			end
 		end
 	end
 end
@@ -303,13 +313,13 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 	"x",
 	"<A-h>",
-	'<cmd>lua require("myPlugs").peek(true, "v")<cr>',
+	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual", true)<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
 	"<A-l>",
-	'<cmd>lua require("myPlugs").peek(false, "v")<cr>',
+	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual", true)<cr>',
 	{ noremap = true, silent = true }
 )
 
