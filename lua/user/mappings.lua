@@ -277,5 +277,16 @@ keymap("n", "<Leader>0", ":lua require('harpoon.ui').nav_file(10)<cr>", opts)
 keymap("n", "d[", ":norm ds{<cr>", opts)
 
 -- Syntax Tree Surfer
-vim.api.nvim_set_keymap("n", "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', opts)
-vim.api.nvim_set_keymap("n", "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', opts)
+keymap("n", "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', opts)
+keymap("n", "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', opts)
+
+keymap("n", "vx", '<cmd>lua require("syntax-tree-surfer").select()<cr>', opts)
+keymap("n", "vn", '<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', opts)
+
+keymap("x", "J", '<cmd>lua require("syntax-tree-surfer").surf("next", "visual")<cr>', opts)
+keymap("x", "K", '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual")<cr>', opts)
+keymap("x", "H", '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', opts)
+keymap("x", "L", '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', opts)
+
+keymap("x", "<A-j>", '<cmd>lua require("syntax-tree-surfer").surf("next", "visual", true)<cr>', opts)
+keymap("x", "<A-k>", '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual", true)<cr>', opts)
