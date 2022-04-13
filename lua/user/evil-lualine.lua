@@ -169,7 +169,9 @@ ins_left({
 			local filetypes = client.config.filetypes
 			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
 				if client.name ~= "null-ls" then
-					combined_lsp_names = client.name .. " " .. combined_lsp_names
+					if string.find(combined_lsp_names, client.name) == nil then
+						combined_lsp_names = client.name .. " " .. combined_lsp_names
+					end
 				end
 			end
 		end

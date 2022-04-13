@@ -8,12 +8,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +39 test.js
-badd +6 .vscode/launch.json
-badd +20 lua/dap-config/node.lua
+badd +15 test.js
+badd +58 lua/myPlugs/init.lua
+badd +1 lua/myPlugs/references.lua
+badd +4 lua/myPlugs/syntax-tree-surfer/.git/config
+badd +49 lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua
 argglobal
 %argdel
-edit .vscode/launch.json
+edit lua/myPlugs/init.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -33,7 +35,7 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 argglobal
-balt lua/dap-config/node.lua
+balt lua/myPlugs/syntax-tree-surfer/.git/config
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -43,21 +45,29 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
+5,12fold
+14,56fold
+58,139fold
+141,167fold
+169,176fold
+178,210fold
+212,241fold
+243,324fold
 let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 23) / 47)
+let s:l = 141 - ((140 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
-normal! 03|
-lcd ~/.config/nvim/.vscode
+keepjumps 141
+normal! 0
+lcd ~/.config/nvim
 wincmd w
 argglobal
-if bufexists("~/.config/nvim/lua/dap-config/node.lua") | buffer ~/.config/nvim/lua/dap-config/node.lua | else | edit ~/.config/nvim/lua/dap-config/node.lua | endif
+if bufexists("~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua") | buffer ~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua | else | edit ~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/lua/dap-config/node.lua
+  silent file ~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua
 endif
-balt ~/.config/nvim/.vscode/launch.json
+balt ~/.config/nvim/lua/myPlugs/init.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -67,12 +77,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
+5,47fold
+49,130fold
 let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 23) / 47)
+49
+normal! zo
+let s:l = 104 - ((19 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
+keepjumps 104
 normal! 0
 lcd ~/.config/nvim
 wincmd w
@@ -92,7 +106,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

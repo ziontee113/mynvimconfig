@@ -275,3 +275,7 @@ keymap("n", "<Leader>0", ":lua require('harpoon.ui').nav_file(10)<cr>", opts)
 
 -- Surround shortcuts
 keymap("n", "d[", ":norm ds{<cr>", opts)
+
+-- Syntax Tree Surfer
+vim.api.nvim_set_keymap("n", "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', opts)
+vim.api.nvim_set_keymap("n", "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', opts)

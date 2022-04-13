@@ -138,14 +138,10 @@ M.select_sibling_node = function(direction, mode, move)
 	end
 end
 
-local function get_master_node(block_check, custom_node)
+local function get_master_node(block_check)
 	local node = ts_utils.get_node_at_cursor()
 	if node == nil then
 		error("No Treesitter parser found")
-	end
-
-	if custom_node ~= nil then
-		node = custom_node
 	end
 
 	local root = ts_utils.get_root_for_node(node)
@@ -169,8 +165,6 @@ end
 M.select = function()
 	local node = get_master_node()
 	local bufnr = vim.api.nvim_get_current_buf()
-
-	-- print(node:type())
 
 	ts_utils.update_selection(bufnr, node)
 end
@@ -240,87 +234,87 @@ M.peek = function(up, mode)
 	end
 end
 
--- Experimental Mappings
-vim.api.nvim_set_keymap(
-	"n",
-	"vn",
-	'<cmd>lua require("myPlugs").select_current_node("n")<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"vk",
-	'<cmd>lua require("myPlugs").select_sibling_node("next")<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"vj",
-	'<cmd>lua require("myPlugs").select_sibling_node("prev")<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap( -- visual mode
-	"x",
-	"J",
-	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual")<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"x",
-	"K",
-	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual")<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap( -- visual mode
-	"x",
-	"H",
-	'<cmd>lua require("myPlugs").select_sibling_node("parent", "visual")<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"x",
-	"L",
-	'<cmd>lua require("myPlugs").select_sibling_node("child", "visual")<cr>',
-	{ noremap = true, silent = true }
-)
-
--- Move with C-k and C-j
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-j>",
-	'<cmd>lua require("myPlugs").move("v", false)<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-k>",
-	'<cmd>lua require("myPlugs").move("v", true)<cr>',
-	{ noremap = true, silent = true }
-)
-
-vim.api.nvim_set_keymap("n", "vx", '<cmd>lua require("myPlugs").select()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "vu", '<cmd>lua require("myPlugs").move("n", true)<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"vd",
-	'<cmd>lua require("myPlugs").move("n", false)<cr>',
-	{ noremap = true, silent = true }
-)
-
--- Peek
--- vim.api.nvim_set_keymap("n", "vh", '<cmd>lua require("myPlugs").peek(true)<cr>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "vl", '<cmd>lua require("myPlugs").peek(false)<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-h>",
-	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual", true)<cr>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"x",
-	"<A-l>",
-	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual", true)<cr>',
-	{ noremap = true, silent = true }
-)
+-- -- Experimental Mappings
+-- vim.api.nvim_set_keymap(
+-- 	"n",
+-- 	"vn",
+-- 	'<cmd>lua require("myPlugs").select_current_node("n")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"n",
+-- 	"vk",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("next")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"n",
+-- 	"vj",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("prev")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap( -- visual mode
+-- 	"x",
+-- 	"J",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"K",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap( -- visual mode
+-- 	"x",
+-- 	"H",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("parent", "visual")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"L",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("child", "visual")<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+--
+-- -- Move with C-k and C-j
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"<A-j>",
+-- 	'<cmd>lua require("myPlugs").move("v", false)<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"<A-k>",
+-- 	'<cmd>lua require("myPlugs").move("v", true)<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+--
+-- vim.api.nvim_set_keymap("n", "vx", '<cmd>lua require("myPlugs").select()<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "vu", '<cmd>lua require("myPlugs").move("n", true)<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap(
+-- 	"n",
+-- 	"vd",
+-- 	'<cmd>lua require("myPlugs").move("n", false)<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+--
+-- -- Peek
+-- -- vim.api.nvim_set_keymap("n", "vh", '<cmd>lua require("myPlugs").peek(true)<cr>', { noremap = true, silent = true })
+-- -- vim.api.nvim_set_keymap("n", "vl", '<cmd>lua require("myPlugs").peek(false)<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"<A-h>",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual", true)<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"x",
+-- 	"<A-l>",
+-- 	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual", true)<cr>',
+-- 	{ noremap = true, silent = true }
+-- )
 
 return M
