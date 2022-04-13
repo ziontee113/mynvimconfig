@@ -251,25 +251,25 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap( -- visual mode
 	"x",
-	"L",
+	"J",
 	'<cmd>lua require("myPlugs").select_sibling_node("next", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
-	"H",
+	"K",
 	'<cmd>lua require("myPlugs").select_sibling_node("prev", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap( -- visual mode
 	"x",
-	"K",
+	"H",
 	'<cmd>lua require("myPlugs").select_sibling_node("parent", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"x",
-	"J",
+	"L",
 	'<cmd>lua require("myPlugs").select_sibling_node("child", "visual")<cr>',
 	{ noremap = true, silent = true }
 )
