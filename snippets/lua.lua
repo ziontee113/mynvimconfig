@@ -25,8 +25,15 @@ local snippets = {
 	ls.parser.parse_snippet("lua", "also loaded!!"),
 }
 
+local vim_cmd_multiline_snippet = s("CMD", {
+	t({ "vim.cmd[[", "  " }),
+	i(1, ""),
+	t({ "", "]]" }),
+})
+
 return snippets,
 	{
 		ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),
 		ls.parser.parse_snippet("get_down", "breakdown"),
+		vim_cmd_multiline_snippet,
 	}
