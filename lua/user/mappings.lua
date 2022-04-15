@@ -240,6 +240,7 @@ keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "gS", "<Plug>Lightspeed_omni_gs", opts)
 keymap("n", "gs", "<Plug>Lightspeed_omni_gs", opts)
+keymap("n", "<leader>s", "<Plug>Lightspeed_omni_gs", opts)
 
 --- Hop
 keymap("n", "<Leader>ww", ":HopWordMW<cr>", opts)
