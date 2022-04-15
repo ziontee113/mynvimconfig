@@ -119,10 +119,13 @@ while ({}) {{
 )
 local while_loop_snippet = s("While", while_loop_snippet_fmt)
 
+local console_log_snippet = s({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") })
+
 local snippets = {
 	for_loop_snippet,
 	function_snippet,
 	function_snippet_func,
+	console_log_snippet,
 	s("trig", {
 		t("text: "),
 		i(1),

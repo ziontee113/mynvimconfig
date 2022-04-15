@@ -131,6 +131,6 @@ return require("packer").startup(function(use)
 	use("ThePrimeagen/harpoon")
 
 	-- Code Runner
-	use("metakirby5/codi.vim")
+	-- use("metakirby5/codi.vim")
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 end)
