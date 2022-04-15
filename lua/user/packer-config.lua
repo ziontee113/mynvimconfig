@@ -64,9 +64,11 @@ return require("packer").startup(function(use)
 	-- NVIM CMP Autocomplete
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
+	-- use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lua")
+
+	use("ray-x/cmp-treesitter")
 
 	-- Auto Import
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")

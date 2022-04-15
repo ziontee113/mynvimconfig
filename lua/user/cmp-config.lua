@@ -86,6 +86,7 @@ cmp.setup({
 			vim_item.menu = ({
 				copilot = "[Copilot]",
 				luasnip = "[Snippet]",
+				treesitter = "[Treesitter]",
 				nvim_lua = "[NVim Lua]",
 				nvim_lsp = "[LSP]",
 				buffer = "[Buffer]",
@@ -97,10 +98,11 @@ cmp.setup({
 	sources = {
 		{ name = "copilot" },
 		{ name = "luasnip" },
-		{ name = "nvim_lsp" },
+		{ name = "treesitter" },
+		{ name = "nvim_lsp", max_item_count = 6 },
 		{ name = "nvim_lua" },
 		{ name = "path" },
-		{ name = "buffer" },
+		{ name = "buffer", max_item_count = 6 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -109,8 +111,8 @@ cmp.setup({
 	-- documentation = {
 	-- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	-- },
-	experimental = {
-		ghost_text = true,
-		native_menu = false,
-	},
+	-- experimental = {
+	-- 	ghost_text = true,
+	-- 	native_menu = false,
+	-- },
 })
