@@ -139,4 +139,7 @@ return require("packer").startup(function(use)
 
 	-- Cursor Flasher
 	use({ "rainbowhxch/beacon.nvim" })
+
+	-- Workspace Symbols
+	use("simrat39/symbols-outline.nvim")
 end)
