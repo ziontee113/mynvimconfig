@@ -17,12 +17,14 @@ keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
 keymap("n", "<C-o>", [[zM<C-o>]], opts)
 keymap("i", "<A-u>", [[<C-o>u]], opts)
+keymap("n", "<S-y>", "J", opts)
 -- keymap(
 -- 	"n",
 -- 	"'",
 -- 	[[<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>]],
 -- 	opts
 -- )
+vim.cmd([[autocmd FileType TelescopePrompt inoremap <silent> <buffer> kk <Esc>]])
 
 -- Javascript Mappings
 vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> SS >]])

@@ -4,11 +4,4 @@
 
 - We don't like to solve problems because:
   - We suck at reading
-  - We don't like to read
-    - Why don't we like to read?
-      - Because reading leads to problems that we'll have to solve
-        --> We're reading into problems
-        ==> Do we need to rethink our approach to problems?
-          --> Are problems our biggest problem?
-            --> Are we solving problems?
-            ==> Or are we just reading solutions?
+  --> It overloads our brain's call stack

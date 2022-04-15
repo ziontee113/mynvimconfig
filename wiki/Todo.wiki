@@ -1,5 +1,3 @@
 # Todo:
 
-- [x] Javascript autocmd insert mode
-- [ ] TS-Navigator
-  - So we want to traverse prev, next, in, out
+- Make a plugin that let plugin authors to easilty show help, info, keymaps, features, etc..

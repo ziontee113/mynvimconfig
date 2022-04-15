@@ -12,4 +12,6 @@ function findAllSubstrings(str, word) {
   return result;
 }
 
+findAllSubstrings('the quick brown fox jumps over the lazy dog', 'the');
+
 let stop = "Stop";
