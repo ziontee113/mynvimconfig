@@ -33,7 +33,7 @@ require("user.vim-submode-config")
 -- Cursor Flasher
 require("user.beacon-config")
 --Custom Plugins
-require("myPlugs")
+-- require("myPlugs")
 require("myPlugs.global")
 
 -- S:imple Configs
