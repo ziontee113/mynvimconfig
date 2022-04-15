@@ -12,13 +12,4 @@ function findAllSubstrings(str, word) {
   return result;
 }
 
-console.log("Super Simple");
-console.log("Super Simple");
-console.log("Super Simple");
-
-console.log(findAllSubstrings("Super Simple", "Simple"));
-
-let random_array = [1, 2, 3, 10];
-console.log(random_array);
-
 let stop = "Stop";

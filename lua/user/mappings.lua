@@ -187,10 +187,10 @@ keymap("n", "<C-k>", "<c-w>k", opts)
 keymap("n", "<C-h>", "<c-w>h", opts)
 keymap("n", "<C-l>", "<c-w>l", opts)
 -- Resize with arrows
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
+-- keymap("n", "<C-Down>", ":resize -2<CR>", opts)
+-- keymap("n", "<C-Up>", ":resize +2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
 -- Terminal Hopping / Mapping
 keymap("t", "<C-j>", "<C-\\><C-N><C-W>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-W>k", opts)
@@ -277,9 +277,15 @@ keymap("n", "<Leader>0", ":lua require('harpoon.ui').nav_file(10)<cr>", opts)
 keymap("n", "d[", ":norm ds{<cr>", opts)
 
 -- SnipRun
-keymap("n", "<leader>ru", "<cmd>SnipRun<cr>", opts)
-keymap("x", "<leader>ru", "<Plug>SnipRun", opts)
-keymap("x", "ru", "<Plug>SnipRun", opts)
+keymap("n", "<leader>ru", "<cmd>QuickRun<cr>", opts)
+keymap("n", "R", "<cmd>QuickRun<cr>", opts)
+vim.cmd([[autocmd FileType quickrun :vertical resize 60]])
+vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 6 :vertical resize 30<CR>]])
+vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 5 :vertical resize 40<CR>]])
+vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 4 :vertical resize 60<CR>]])
+vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 3 :vertical resize 80<CR>]])
+vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 2 :vertical resize 100<CR>]])
+vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 1 :vertical resize 120<CR>]])
 
 -- Syntax Tree Surfer
 keymap("n", "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', opts)
