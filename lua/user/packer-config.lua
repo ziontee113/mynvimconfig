@@ -20,7 +20,6 @@ return require("packer").startup(function(use)
 	use("akinsho/toggleterm.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/bufferline.nvim")
-	use("metakirby5/codi.vim")
 
 	-- Telescope
 	use("nvim-lua/plenary.nvim")
@@ -130,4 +129,8 @@ return require("packer").startup(function(use)
 
 	-- Harpoon
 	use("ThePrimeagen/harpoon")
+
+	-- Code Runner
+	use("metakirby5/codi.vim")
+	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 end)

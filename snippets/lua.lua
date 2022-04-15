@@ -31,6 +31,8 @@ local vim_cmd_multiline_snippet = s("CMD", {
 	t({ "", "]]" }),
 })
 
+-- this is a comment
+
 return snippets,
 	{
 		ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),

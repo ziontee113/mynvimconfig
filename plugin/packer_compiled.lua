@@ -303,6 +303,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
   },
+  sniprun = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/sniprun",
+    url = "https://github.com/michaelb/sniprun"
+  },
   ["targets.vim"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/targets.vim",
