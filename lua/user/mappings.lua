@@ -276,6 +276,11 @@ keymap("n", "<Leader>0", ":lua require('harpoon.ui').nav_file(10)<cr>", opts)
 -- Surround shortcuts
 keymap("n", "d[", ":norm ds{<cr>", opts)
 
+-- SnipRun
+keymap("n", "<leader>ru", "<cmd>SnipRun<cr>", opts)
+keymap("x", "<leader>ru", "<Plug>SnipRun", opts)
+keymap("x", "ru", "<Plug>SnipRun", opts)
+
 -- Syntax Tree Surfer
 keymap("n", "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', opts)
 keymap("n", "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', opts)

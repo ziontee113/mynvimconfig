@@ -12,8 +12,9 @@ function findAllSubstrings(str, word) {
   return result;
 }
 
-console.log(1 + 55);
+console.log(20 + 55);
 
 let random_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(random_array);
 
 let stop = "Stop";
