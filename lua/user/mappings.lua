@@ -240,7 +240,7 @@ keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "gS", "<Plug>Lightspeed_omni_gs", opts)
 keymap("n", "gs", "<Plug>Lightspeed_omni_gs", opts)
-keymap("n", "<leader>s", "<Plug>Lightspeed_omni_gs", opts)
+-- keymap("n", "<leader>s", "<Plug>Lightspeed_omni_gs", opts)
 
 --- Hop
 keymap("n", "<Leader>ww", ":HopWordMW<cr>", opts)
@@ -304,3 +304,8 @@ keymap("x", "L", '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")
 
 keymap("x", "<A-j>", '<cmd>lua require("syntax-tree-surfer").surf("next", "visual", true)<cr>', opts)
 keymap("x", "<A-k>", '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual", true)<cr>', opts)
+
+-- Symbols Outline
+keymap("n", "<Leader>s", "<cmd>SymbolsOutline<cr>", opts)
+vim.cmd([[autocmd FileType Outline nnoremap <silent> <buffer> H :norm! H<CR>]])
+vim.cmd([[autocmd FileType Outline nnoremap <silent> <buffer> L :norm! L<CR>]])
