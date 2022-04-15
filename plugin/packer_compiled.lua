@@ -303,11 +303,6 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
   },
-  sniprun = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/sniprun",
-    url = "https://github.com/michaelb/sniprun"
-  },
   ["targets.vim"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/targets.vim",
@@ -342,6 +337,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["vim-quickrun"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/vim-quickrun",
+    url = "https://github.com/thinca/vim-quickrun"
   },
   ["vim-repeat"] = {
     loaded = true,

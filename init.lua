@@ -30,8 +30,6 @@ require("user.pretty-fold-config")
 require("user.luasnip-config")
 -- J: Advanced Plugins
 require("user.vim-submode-config")
--- Code Runners
-require("user.sniprun-config")
 -- Cursor Flasher
 require("user.beacon-config")
 --Custom Plugins
