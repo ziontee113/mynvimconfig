@@ -32,6 +32,8 @@ require("user.luasnip-config")
 require("user.vim-submode-config")
 -- Code Runners
 require("user.sniprun-config")
+-- Cursor Flasher
+require("user.beacon-config")
 --Custom Plugins
 require("myPlugs")
 require("myPlugs.global")

@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["beacon.nvim"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/beacon.nvim",
+    url = "https://github.com/rainbowhxch/beacon.nvim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/bufferline.nvim",

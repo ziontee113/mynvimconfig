@@ -133,4 +133,7 @@ return require("packer").startup(function(use)
 	-- Code Runner
 	-- use("metakirby5/codi.vim")
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
+
+	-- Cursor Flasher
+	use({ "rainbowhxch/beacon.nvim" })
 end)
