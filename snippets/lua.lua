@@ -17,14 +17,6 @@ local function lp(package_name) -- Load Package Function
 	return require(package_name)
 end
 
-local snippets = {
-	s(
-		{ trig = "s", hidden = false },
-		fmt([[ s({{ trig = "{}", hidden = true }}, {})]], { i(1, "trigger"), i(2, 't"contents"') })
-	),
-	ls.parser.parse_snippet("lua", "also loaded!!"),
-}
-
 local vim_cmd_multiline_snippet = s("CMD", {
 	t({ "vim.cmd[[", "  " }),
 	i(1, ""),
@@ -44,6 +36,32 @@ local github_import_packer = s({ trig = "https://github%.com/([%w-_]+)/([%w-_]+)
 	t({ [["]], "" }),
 	i(1, ""),
 })
+
+-- Snippets to create new Snippets --
+
+local luasnip_regexSnippet = s(
+	"regexSnippet",
+	fmt(
+		[=[
+local {} = s({{ trig = "{}", regTrig = true, hidden = true }}, fmt([[ 
+  {}
+]], {{
+  {}
+}}))
+      ]=],
+		{
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+			i(4, ""),
+		}
+	)
+)
+
+local snippets = {
+	ls.parser.parse_snippet("lua", "also loaded!!"),
+	luasnip_regexSnippet,
+}
 
 return snippets,
 	{
