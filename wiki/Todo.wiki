@@ -1,3 +1,5 @@
 # Todo:
 
 - Make a plugin that let plugin authors to easilty show help, info, keymaps, features, etc..
+
+- Make snippet(s) that generates OOP tests / boilerplate for learning / implementing Object Oriented Programming

@@ -57,9 +57,42 @@ local {} = s({{ trig = "{}", regTrig = true, hidden = true }}, fmt([[
 		}
 	)
 )
+local luaSnippet = s(
+	"luaSnippet",
+	fmt(
+		[=[
+local {} = s("{}", fmt([[ 
+  {}
+]], {{
+  {}
+  }}))
+    ]=],
+		{
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+			i(4, ""),
+		}
+	)
+)
+local parseSnippet = s(
+	"parseSnippet",
+	fmt(
+		[[ 
+local {} = ls.parser.parseSnippet("{}", "{}")
+]],
+		{
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}
+	)
+)
 
 local snippets = {
 	ls.parser.parse_snippet("lua", "also loaded!!"),
+	parseSnippet,
+	luaSnippet,
 	luasnip_regexSnippet,
 }
 

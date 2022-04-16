@@ -98,8 +98,8 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "copilot" },
 		{ name = "luasnip" },
+		{ name = "copilot" },
 		{ name = "nvim_lsp", max_item_count = 6 },
 		{ name = "treesitter" },
 		{ name = "nvim_lua" },
