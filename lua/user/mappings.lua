@@ -13,6 +13,10 @@ vim.cmd([[:command! Qa qa]])
 vim.cmd([[:command! QA qa]])
 
 -- Experimental Mappings
+keymap("n", "<Leader>o", "2o<Esc>i", opts)
+keymap("n", "<Leader>O", "O<Esc>O", opts)
+
+-- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
 keymap("n", "<C-o>", [[zM<C-o>]], opts)
@@ -162,8 +166,8 @@ keymap("i", "<C-d>", "<C-Left>", opts)
 -- Leader Mappings --
 keymap("n", "<leader><F12>", ":call EmmetSetup()<cr>", nosilent_opts) --save current session to Session.vim
 keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim
-keymap("n", "<leader>os", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
-keymap("n", "<leader>R", ":!lua %<cr>", nosilent_opts) --run current .lua file in
+keymap("n", "<leader><Leader>os", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
+keymap("n", "<leader>R", ":!lua %<cr>", opts) --run current .lua file in
 keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo

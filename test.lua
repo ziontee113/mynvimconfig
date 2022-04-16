@@ -5,22 +5,22 @@ local Fighter = {
 }
 
 function Fighter:light_punch()
-	print("Fighter" .. self.name .. " performs a light punch")
+	print("Fighter " .. self.name .. " performs a light punch")
 end
 
 function Fighter:heavy_punch()
-	print("Fighter" .. self.name .. " performs a heavy punch")
+	print("Fighter " .. self.name .. " performs a heavy punch")
 end
 
 function Fighter:light_kick()
-	print("Fighter" .. self.name .. " performs a light kick")
+	print("Fighter " .. self.name .. " performs a light kick")
 end
 
 function Fighter:heavy_kick()
-	print("Fighter" .. self.name .. " performs a heavy kick")
+	print("Fighter " .. self.name .. " performs a heavy kick")
 end
 function Fighter:special_attack()
-	print("Fighter" .. self.name .. " performs a Special Attack!!!")
+	print("Fighter " .. self.name .. " performs a Special Attack!!!")
 end
 
 function Fighter:new(t)
@@ -40,5 +40,5 @@ blanka:heavy_kick()
 blanka:special_attack()
 
 chun_li:light_punch()
-chun_li:heavy_kick()
+chun_li:light_kick()
 chun_li:special_attack()
