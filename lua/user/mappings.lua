@@ -167,7 +167,9 @@ keymap("i", "<C-d>", "<C-Left>", opts)
 keymap("n", "<leader><F12>", ":call EmmetSetup()<cr>", nosilent_opts) --save current session to Session.vim
 keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim
 keymap("n", "<leader><Leader>os", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
-keymap("n", "<leader>R", ":!lua %<cr>", opts) --run current .lua file in
+-- keymap("n", "<leader>R", ":!lua %<cr>", opts) --run current .lua file in
+vim.cmd([[autocmd FileType lua nnoremap <silent> <buffer> <leader>R :!lua %<cr>]])
+vim.cmd([[autocmd FileType javascript nnoremap <silent> <buffer> <leader>R :!node %<cr>]])
 keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo

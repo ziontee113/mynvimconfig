@@ -30,6 +30,7 @@ local vim_cmd_multiline_snippet = s("CMD", {
 	i(1, ""),
 	t({ "", "]]" }),
 })
+local vim_cmd_singleline_snippet = s("CMd", fmt("vim.cmd[[{}]]", { i(1, "") }))
 
 -- this is a comment
 
@@ -38,4 +39,5 @@ return snippets,
 		ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),
 		ls.parser.parse_snippet("get_down", "breakdown"),
 		vim_cmd_multiline_snippet,
+		vim_cmd_singleline_snippet,
 	}
