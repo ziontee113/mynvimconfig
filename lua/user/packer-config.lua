@@ -122,9 +122,7 @@ return require("packer").startup(function(use)
 
 	-- DAP
 	use("mfussenegger/nvim-dap")
-
 	use("mfussenegger/nvim-dap-python")
-
 	use("theHamsta/nvim-dap-virtual-text")
 	use("rcarriga/nvim-dap-ui")
 	use("nvim-telescope/telescope-dap.nvim")
@@ -142,4 +140,7 @@ return require("packer").startup(function(use)
 
 	-- Workspace Symbols
 	use("simrat39/symbols-outline.nvim")
+
+	-- Wilder Cmdline
+	use("gelguy/wilder.nvim")
 end)

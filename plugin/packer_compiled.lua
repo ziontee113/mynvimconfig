@@ -362,6 +362,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
     url = "https://github.com/mg979/vim-visual-multi"
+  },
+  ["wilder.nvim"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/wilder.nvim",
+    url = "https://github.com/gelguy/wilder.nvim"
   }
 }
 

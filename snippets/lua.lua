@@ -32,7 +32,18 @@ local vim_cmd_multiline_snippet = s("CMD", {
 })
 local vim_cmd_singleline_snippet = s("CMd", fmt("vim.cmd[[{}]]", { i(1, "") }))
 
--- this is a comment
+local github_import_packer = s({ trig = "https://github%.com/([%w-_]+)/([%w-_]+)!", regTrig = true, hidden = true }, {
+	t([[use "]]),
+	f(function(_, snip)
+		return snip.captures[1]
+	end),
+	t("/"),
+	f(function(_, snip)
+		return snip.captures[2]
+	end),
+	t({ [["]], "" }),
+	i(1, ""),
+})
 
 return snippets,
 	{
@@ -40,4 +51,5 @@ return snippets,
 		ls.parser.parse_snippet("get_down", "breakdown"),
 		vim_cmd_multiline_snippet,
 		vim_cmd_singleline_snippet,
+		github_import_packer,
 	}
