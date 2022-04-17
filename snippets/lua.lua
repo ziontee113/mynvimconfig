@@ -93,12 +93,29 @@ local snippets = {
 	luaSnippet,
 	luasnip_regexSnippet,
 }
+local autosnippets = {
+	ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),
+	ls.parser.parse_snippet("get_down", "breakdown"),
+	vim_cmd_multiline,
+	vim_cmd_singleline_snippet,
+	github_import_packer,
+}
 
-return snippets,
-	{
-		ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),
-		ls.parser.parse_snippet("get_down", "breakdown"),
-		vim_cmd_multiline,
-		vim_cmd_singleline_snippet,
-		github_import_packer,
-	}
+-- Autocmd for keymap triggered snippets --
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+local group = augroup("Lua Snippets", { clear = true })
+autocmd("BufEnter", {
+	pattern = "*.lua",
+	group = group,
+	callback = function()
+		map({ "i" }, "jj", function()
+			ls.snip_expand(vim.deepcopy(snippets[2]))
+		end, opts)
+	end,
+})
+
+return snippets, autosnippets
