@@ -315,3 +315,9 @@ keymap("x", "<A-k>", '<cmd>lua require("syntax-tree-surfer").surf("prev", "visua
 keymap("n", "<Leader>s", "<cmd>SymbolsOutline<cr>", opts)
 vim.cmd([[autocmd FileType Outline nnoremap <silent> <buffer> H :norm! H<CR>]])
 vim.cmd([[autocmd FileType Outline nnoremap <silent> <buffer> L :norm! L<CR>]])
+
+-- Markdown Preview
+vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <Leader>rr :MarkdownPreviewToggle<CR>]])
+vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <Leader>pr :MarkdownPreviewToggle<CR>]])
+vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>rr :PlantumlOpen<CR>]])
+vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>pr :PlantumlOpen<CR>]])

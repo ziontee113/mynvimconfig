@@ -19,7 +19,7 @@ return require("packer").startup(function(use)
 	-- Toggle Terminal
 	use("akinsho/toggleterm.nvim")
 	use("nvim-lualine/lualine.nvim")
-	use("akinsho/bufferline.nvim")
+	-- use("akinsho/bufferline.nvim")
 
 	-- Telescope
 	use("nvim-lua/plenary.nvim")
@@ -143,4 +143,14 @@ return require("packer").startup(function(use)
 
 	-- Wilder Cmdline
 	use("gelguy/wilder.nvim")
+
+	-- PreVim
+	-- use("previm/previm")
+
+	use("aklt/plantuml-syntax")
+	use("tyru/open-browser.vim")
+	use("weirongxu/plantuml-previewer.vim")
+
+	-- Markdown preview
+	use({ "iamcco/markdown-preview.nvim" })
 end)

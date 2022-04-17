@@ -22,18 +22,22 @@ local vim_cmd_multiline = s("CMD", {
 	t({ "", "]]" }),
 })
 local vim_cmd_singleline_snippet = s("CMd", fmt("vim.cmd[[{}]]", { i(1, "") }))
-local github_import_packer = s({ trig = "https://github%.com/([%w-_]+)/([%w-_]+)!", regTrig = true, hidden = true }, {
-	t([[use "]]),
-	f(function(_, snip)
-		return snip.captures[1]
-	end),
-	t("/"),
-	f(function(_, snip)
-		return snip.captures[2]
-	end),
-	t({ [["]], "" }),
-	i(1, ""),
-})
+local github_import_packer =
+	s(
+		{ trig = "https://github%.com/([%w-%._]+)/([%w-%._]+)!", regTrig = true, hidden = true },
+		{
+			t([[use "]]),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			t("/"),
+			f(function(_, snip)
+				return snip.captures[2]
+			end),
+			t({ [["]], "" }),
+			i(1, ""),
+		}
+	)
 
 -- Snippets to create new Snippets --
 

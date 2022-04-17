@@ -1,0 +1,3 @@
+@startuml
+State1 --> State2
+@enduml
