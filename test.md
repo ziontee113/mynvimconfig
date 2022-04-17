@@ -1,7 +1,7 @@
 # One way ticket
 
 ```mermaid
-flowchart LR
+flowchart TD
   %%{init: {'theme': 'neutral'} }%%
   S[Start] --> A
   A(Enter your email address) --> B{Existing User}
@@ -21,10 +21,6 @@ B --> C(Baz)
 ```
 
 ---
-
-```plantuml
-Bob -> Alice : Hello Venus
-```
 
 ## Problem
 

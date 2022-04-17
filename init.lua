@@ -8,7 +8,6 @@ require("user.null-ls-config")
 require("user.cmp-config")
 require("user.lsp")
 require("dap-config")
--- require("david")
 -- C: Treesitter
 require("user.treesitter")
 -- D: Telescope
@@ -25,7 +24,7 @@ require("user.evil-lualine")
 -- require("user.bufferline-config")
 -- G: Editing
 require("user.autopairs")
--- require("user.todo-comments-config")
+require("user.todo-comments-config")
 require("user.pretty-fold-config")
 -- H: Snippets
 require("user.luasnip-config")
@@ -39,8 +38,9 @@ require("myPlugs.global")
 
 -- S:imple Configs
 require("Comment").setup()
-require("hop").setup({
-	-- keys = "etovxqpdygfblzhckisuran",
-})
-require("colorizer").setup({ scss = { mode = "foreground" } })
+-- require("hop").setup({
+-- 	-- keys = "etovxqpdygfblzhckisuran",
+-- })
+require("colorizer").setup(--[[ { scss = { mode = "foreground" } } ]]
+)
 require("fidget").setup({ window = { blend = 0 } })
