@@ -41,7 +41,6 @@ local if_snippet = s(
 		if_fmt_2,
 	})
 )
-
 local function_fmt = fmt(
 	[[
 function {}({}) {{
@@ -57,7 +56,6 @@ function {}({}) {{
 
 local function_snippet = s({ trig = "f[un]?", regTrig = true, hidden = true }, function_fmt)
 local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt))
-
 local for_loop_snippet = s(
 	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
 	fmt(
@@ -80,7 +78,6 @@ for (let {} = 0; {} < {}; {}++) {{
 		}
 	)
 )
-
 local short_hand_if_fmt = fmt(
 	[[
 if ({}) {}
@@ -105,7 +102,6 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 	end),
 	t("return "),
 })
-
 local while_loop_snippet_fmt = fmt(
 	[[
 while ({}) {{
@@ -118,7 +114,6 @@ while ({}) {{
 	}
 )
 local while_loop_snippet = s("While", while_loop_snippet_fmt)
-
 local console_log_snippet = s({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") })
 
 local snippets = {
@@ -137,11 +132,28 @@ local snippets = {
 		end, { 1 }),
 	}),
 }
+local autosnippets = {
+	if_snippet,
+	short_hand_if_statement,
+	short_hand_if_statement_return_shortcut,
+	while_loop_snippet,
+}
 
-return snippets,
-	{
-		if_snippet,
-		short_hand_if_statement,
-		short_hand_if_statement_return_shortcut,
-		while_loop_snippet,
-	}
+-- Autocmd for keymap triggered snippets --
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+local group = augroup("Javascript Snippets", { clear = true })
+autocmd("BufEnter", {
+	pattern = "*.js",
+	group = group,
+	callback = function()
+		map({ "i" }, "jj", function()
+			ls.snip_expand(snippets[1])
+		end, opts)
+	end,
+})
+
+return snippets, autosnippets

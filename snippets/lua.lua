@@ -113,7 +113,7 @@ autocmd("BufEnter", {
 	group = group,
 	callback = function()
 		map({ "i" }, "jj", function()
-			ls.snip_expand(vim.deepcopy(snippets[2]))
+			ls.snip_expand(snippets[2])
 		end, opts)
 	end,
 })
