@@ -115,6 +115,9 @@ autocmd("BufEnter", {
 		map({ "i" }, "jj", function()
 			ls.snip_expand(snippets[2])
 		end, opts)
+		map({ "i" }, "<C-d>", function()
+			ls.snip_expand(snippets[3])
+		end, opts)
 	end,
 })
 
