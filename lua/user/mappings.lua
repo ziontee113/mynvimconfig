@@ -15,6 +15,8 @@ vim.cmd([[:command! QA qa]])
 -- Experimental Mappings
 keymap("n", "<Leader>o", "2o<Esc>i", opts)
 keymap("n", "<Leader>O", "O<Esc>O", opts)
+keymap("n", "<Leader><Leader>o", "o<Esc>O", opts)
+keymap("n", "<Leader><Leader>O", "O<Esc>o", opts)
 
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
@@ -166,7 +168,7 @@ keymap("i", "<C-d>", "<C-Left>", opts)
 -- Leader Mappings --
 keymap("n", "<leader><F12>", ":call EmmetSetup()<cr>", nosilent_opts) --save current session to Session.vim
 keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Session.vim
-keymap("n", "<leader><Leader>os", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
+keymap("n", "<leader><Leader>s", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
 -- keymap("n", "<leader>R", ":!lua %<cr>", opts) --run current .lua file in
 vim.cmd([[autocmd FileType lua nnoremap <silent> <buffer> <leader>R :!lua %<cr>]])
 vim.cmd([[autocmd FileType javascript nnoremap <silent> <buffer> <leader>R :!node %<cr>]])
