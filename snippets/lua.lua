@@ -81,7 +81,7 @@ local parseSnippet = s(
 	"parseSnippet",
 	fmt(
 		[[ 
-local {} = ls.parser.parseSnippet("{}", "{}")
+local {} = ls.parser.parse_snippet("{}", "{}")
 ]],
 		{
 			i(1, ""),

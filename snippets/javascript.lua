@@ -151,7 +151,7 @@ autocmd("BufEnter", {
 	group = group,
 	callback = function()
 		map({ "i" }, "jj", function()
-			ls.snip_expand(snippets[1])
+			ls.snip_expand(console_log_snippet)
 		end, opts)
 	end,
 })

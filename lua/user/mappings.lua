@@ -171,8 +171,10 @@ keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Ses
 keymap("n", "<leader><Leader>s", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
 -- keymap("n", "<leader>R", ":!lua %<cr>", opts) --run current .lua file in
 vim.cmd([[autocmd FileType lua nnoremap <silent> <buffer> <leader>R :!lua %<cr>]])
+vim.cmd([[autocmd FileType lua nnoremap <silent> <buffer> <leader>rr :!luafile %<cr>]])
 vim.cmd([[autocmd FileType javascript nnoremap <silent> <buffer> <leader>R :!node %<cr>]])
-keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
+vim.cmd([[autocmd FileType javascript nnoremap <silent> <buffer> <leader>rr :!node %<cr>]])
+-- keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader>r", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
 keymap("n", "<leader><c-l>", ":LspInfo<cr>", opts) --open LspInfo
 keymap("n", "<leader>L", ":LspInstallInfo<cr>", opts) --open LspInfo

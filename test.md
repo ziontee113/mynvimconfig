@@ -2,6 +2,7 @@
 
 ```mermaid
 flowchart LR
+  %%{init: {'theme': 'neutral'} }%%
   S[Start] --> A
   A(Enter your email address) --> B{Existing User}
   B -->|No| C(Enter name)
@@ -12,6 +13,23 @@ flowchart LR
   E --> End
 ```
 
+```mermaid
+%%{init: {'theme': 'neutral' } }%%
+graph LR
+A(Foo) --> B(Bar)
+B --> C(Baz)
+```
+
+---
+
 ```plantuml
 Bob -> Alice : Hello Venus
 ```
+
+## Problem
+
+Given a codeblock that starts with 3 `backticks` and ends with 3 `backticks`
+Run the check function at one direction, if it hits 3 backticks, check the line
+If the line has code identifier, then check the other direction
+If checks for only 3 `backticks` == true, execute the function,
+otherwise execute something else
