@@ -9,10 +9,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess=aoO
-badd +1 lua/user/telescope-custom-pickers.lua
-badd +14 init.lua
-badd +238 lua/user/mappings.lua
+badd +18 lua/user/telescope-custom-pickers.lua
+badd +17 init.lua
+badd +241 lua/user/mappings.lua
 badd +1 lua/user/telescope-config.lua
+badd +117 snippets/lua.lua
 argglobal
 %argdel
 edit lua/user/telescope-custom-pickers.lua
@@ -45,12 +46,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 5 - ((4 * winheight(0) + 24) / 48)
+let s:l = 18 - ((17 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5
-normal! 022|
+keepjumps 18
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("lua/user/mappings.lua", ":p")) | buffer lua/user/mappings.lua | else | edit lua/user/mappings.lua | endif
@@ -68,15 +69,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 238 - ((36 * winheight(0) + 24) / 48)
+let s:l = 239 - ((36 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 238
-normal! 023|
+keepjumps 239
+normal! 052|
 lcd ~/.config/nvim
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 tabnext 1

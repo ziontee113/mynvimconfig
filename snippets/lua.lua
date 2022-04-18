@@ -107,6 +107,33 @@ end, opts)
 	)
 )
 
+-- Lua Snippets --
+
+local function_snippet = s(
+	"function",
+	fmt(
+		[[ 
+function {}({})
+  {}
+end
+]],
+		{
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}
+	)
+)
+local local_var_snippet = s(
+	"local",
+	fmt(
+		[[ 
+local {} = {}
+  ]],
+		{ i(1, ""), i(2, "") }
+	)
+)
+
 local snippets = {
 	ls.parser.parse_snippet("lua", "also loaded!!"),
 	parseSnippet,
@@ -134,10 +161,13 @@ autocmd("BufEnter", {
 	group = group,
 	callback = function()
 		map({ "i" }, "jj", function()
-			ls.snip_expand(snippets[2])
+			ls.snip_expand(local_var_snippet)
 		end, opts)
 		map({ "i" }, "<C-d>", function()
 			ls.snip_expand(snippets[3])
+		end, opts)
+		map({ "i" }, "jff", function()
+			ls.snip_expand(function_snippet)
 		end, opts)
 	end,
 })

@@ -239,6 +239,9 @@ keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>zf", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 keymap("n", "<leader>wo", ":Telescope grep_string<cr>", opts)
 
+keymap("n", "<leader><C-p>", ":lua require('user.telescope-custom-pickers').vimrc_find_files()<cr>", opts)
+keymap("n", "<leader><leader>g", ":lua require('user.telescope-custom-pickers').vimrc_live_grep()<cr>", opts)
+
 -- TS Hoppper
 keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- Packer Mappings
