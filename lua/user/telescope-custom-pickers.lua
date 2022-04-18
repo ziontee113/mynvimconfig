@@ -9,14 +9,27 @@ function M.grep_string()
 	})
 end
 
+local dropdown_theme = require("telescope.themes").get_dropdown({
+	winblend = 10,
+	width = 0.5,
+	prompt = " ",
+	results_height = 15,
+	previewer = false,
+})
+local ivy_theme = require("telescope.themes").get_ivy({
+	winblend = 10,
+	results_title = false,
+	layout_config = {
+		preview_width = 0.6,
+	},
+})
+
 function M.vimrc_find_files()
-	local opts = {}
-	opts.search_dirs = {
-		"~/.config/nvim/",
-	}
+	local opts = vim.deepcopy(ivy_theme)
+	opts.search_dirs = { "~/.config/nvim/" }
 	opts.prompt_title = "$MYVIMRC find_files"
 	opts.shorten_path = true
-	builtin.live_grep(opts)
+	builtin.find_files(opts)
 end
 
 function M.vimrc_live_grep()
