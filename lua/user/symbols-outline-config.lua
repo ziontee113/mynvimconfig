@@ -1,7 +1,7 @@
 vim.g.symbols_outline = {
-	highlight_hovered_item = true,
-	show_guides = true,
-	auto_preview = true,
+	highlight_hovered_item = false,
+	show_guides = false,
+	auto_preview = false,
 	position = "right",
 	relative_width = true,
 	width = 25,

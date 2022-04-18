@@ -7,16 +7,15 @@ cd ~/.config/nvim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
+let s:shortmess_save = &shortmess
 set shortmess=aoO
-badd +308 lua/myPlugs/init.lua
-badd +20 init.lua
-badd +290 lua/user/mappings.lua
-badd +69 lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua
-badd +3 lua/myPlugs/syntax-tree-surfer/README.md
-badd +17 test.js
+badd +1 lua/user/telescope-custom-pickers.lua
+badd +14 init.lua
+badd +238 lua/user/mappings.lua
+badd +1 lua/user/telescope-config.lua
 argglobal
 %argdel
-edit test.js
+edit lua/user/telescope-custom-pickers.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -36,7 +35,6 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 argglobal
-balt lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -47,20 +45,19 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 17 - ((16 * winheight(0) + 24) / 48)
+let s:l = 5 - ((4 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
-normal! 09|
-lcd ~/.config/nvim
+keepjumps 5
+normal! 022|
 wincmd w
 argglobal
-if bufexists("~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua") | buffer ~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua | else | edit ~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua | endif
+if bufexists(fnamemodify("lua/user/mappings.lua", ":p")) | buffer lua/user/mappings.lua | else | edit lua/user/mappings.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/lua/myPlugs/syntax-tree-surfer/lua/syntax-tree-surfer/init.lua
+  silent file lua/user/mappings.lua
 endif
-balt ~/.config/nvim/test.js
+balt init.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -70,21 +67,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-5,47fold
-49,130fold
-132,139fold
-143,165fold
-167,172fold
-174,206fold
 let &fdl = &fdl
-49
-normal! zo
-let s:l = 69 - ((68 * winheight(0) + 24) / 48)
+let s:l = 238 - ((36 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 69
-normal! 016|
+keepjumps 238
+normal! 023|
 lcd ~/.config/nvim
 wincmd w
 2wincmd w
@@ -95,7 +84,8 @@ if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebu
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 shortmess=filnxtToOF
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
 let &winminheight = s:save_winminheight
 let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"

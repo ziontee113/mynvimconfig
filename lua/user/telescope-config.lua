@@ -50,7 +50,6 @@ telescope.setup({
 
 				["<A-p>"] = action_layout.toggle_preview,
 			},
-
 			n = {
 				["<esc>"] = actions.close,
 				["<CR>"] = actions.select_default,

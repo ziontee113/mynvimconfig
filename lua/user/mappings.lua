@@ -120,6 +120,7 @@ endfunction
 ]])
 
 -- Yank / Paste mapping
+keymap("n", "yad", ":% y<cr>", opts)
 keymap("n", "yl", "yy", opts)
 keymap("n", "yp", "yyp", opts)
 keymap("x", "gy", '"*y', opts)
@@ -171,7 +172,7 @@ keymap("n", "<leader>ms", ":mks! ", nosilent_opts) --save current session to Ses
 keymap("n", "<leader><Leader>s", ":so Session.vim<cr>", nosilent_opts) --open Session.vim in working directory
 -- keymap("n", "<leader>R", ":!lua %<cr>", opts) --run current .lua file in
 vim.cmd([[autocmd FileType lua nnoremap <silent> <buffer> <leader>R :!lua %<cr>]])
-vim.cmd([[autocmd FileType lua nnoremap <silent> <buffer> <leader>rr :!luafile %<cr>]])
+vim.cmd([[autocmd FileType lua nnoremap <silent> <buffer> <leader>rr :luafile %<cr>]])
 vim.cmd([[autocmd FileType javascript nnoremap <silent> <buffer> <leader>R :!node %<cr>]])
 vim.cmd([[autocmd FileType javascript nnoremap <silent> <buffer> <leader>rr :!node %<cr>]])
 -- keymap("n", "<leader>rr", ":luafile %<cr>", nosilent_opts) --source current lua file for nvim
@@ -229,11 +230,14 @@ keymap(
 keymap("n", "<leader>k", ":Telescope keymaps<cr>", opts)
 keymap("n", "<leader>he", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>hi", ":Telescope highlights<cr>", opts)
-keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<C-g>", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
+keymap("n", "<leader>l", ":lua require('user.telescope-custom-pickers').grep_string()<cr>", opts)
+keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
+keymap("n", "<leader>zf", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+keymap("n", "<leader>wo", ":Telescope grep_string<cr>", opts)
 
 -- TS Hoppper
 keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
