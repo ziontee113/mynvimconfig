@@ -103,22 +103,22 @@ return require("packer").startup(function(use)
 
 	-- Github Copilot
 
-	-- use("github/copilot.vim")
+	use("github/copilot.vim")
 
-	use({
-		"zbirenbaum/copilot.lua",
-		event = { "VimEnter" },
-		config = function()
-			vim.defer_fn(function()
-				require("copilot").setup()
-			end, 100)
-		end,
-	})
+	-- use({
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	event = { "VimEnter" },
+	-- 	config = function()
+	-- 		vim.defer_fn(function()
+	-- 			require("copilot").setup()
+	-- 		end, 100)
+	-- 	end,
+	-- })
 
-	use({
-		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua", "nvim-cmp" },
-	})
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua", "nvim-cmp" },
+	-- })
 
 	-- DAP
 	use("mfussenegger/nvim-dap")

@@ -1,7 +1,7 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-require("luasnip/loaders/from_vscode").lazy_load() -- loading VSCode snippets
+-- require("luasnip/loaders/from_vscode").lazy_load() -- loading VSCode snippets
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
@@ -42,8 +42,9 @@ cmp.setup({
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<A-u>"] = cmp.mapping.select_prev_item(),
+		["<A-o>"] = cmp.mapping.select_prev_item(),
 		["<A-i>"] = cmp.mapping.select_next_item(),
+		["<A-u>"] = cmp.mapping.confirm({ select = true }),
 		-- 	["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		-- 	["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		-- 	["<C-i>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -55,6 +56,7 @@ cmp.setup({
 		-- 	-- Accept currently selected item. If none selected, `select` first item.
 		-- 	-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		-- ["<Space><Space>"] = cmp.mapping.confirm({ select = false }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		-- 	-- ["<Tab>"] = cmp.mapping(function(fallback)
 		-- 	-- 	if cmp.visible() then
@@ -101,10 +103,10 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "copilot" },
 		{ name = "nvim_lsp", max_item_count = 6 },
-		{ name = "treesitter" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "buffer", max_item_count = 6 },
+		{ name = "treesitter", max_item_count = 6 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

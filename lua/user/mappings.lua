@@ -156,7 +156,7 @@ keymap("n", "e", "w", opts)
 keymap("n", "b", "e", opts)
 
 -- Insert Mode Remap
-keymap("i", "<A-o>", "<Esc>o", opts) --> new line in insert mode
+-- keymap("i", "<A-o>", "<Esc>o", opts) --> new line in insert mode
 keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word
 -- keymap("i", "<C-j>", "<Down>", opts)
 -- keymap("i", "<C-k>", "<Up>", opts)
