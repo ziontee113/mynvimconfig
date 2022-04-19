@@ -36,10 +36,15 @@ local function toCamelCase(str)
 
 	return table.concat(words, "")
 end
-local function same_toLowerCase(index)
+local function same_toLowerCase_function(index)
 	return f(function(arg)
 		return toCamelCase(arg[1][1])
 	end, { index })
+end
+local function same_toLowerCase_dynamic(nodes, index)
+	return d(index, function(arg)
+		return sn(index, i(1, toCamelCase(arg[1][1])))
+	end, { nodes })
 end
 
 -- Snippets go here --
@@ -53,7 +58,7 @@ local plantUML_actor_snippet = s(
 		{
 			c(1, { t("actor"), t("usecase") }),
 			i(2, ""),
-			same_toLowerCase(2),
+			same_toLowerCase_dynamic(2, 3),
 		}
 	)
 )
