@@ -44,6 +44,9 @@ vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> ER !==]])
 -- Paragraph Jump
 keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for quickfix list
 keymap("n", "{", [[:keepjumps normal! {<cr>]], opts)
+
+keymap("n", "<C-j>", [[:keepjumps normal! j}k<cr>]], opts)
+keymap("n", "<C-k>", [[:keepjumps normal! k{j<cr>]], opts)
 keymap("n", "<A-j>", [[:keepjumps normal! }<cr>]], opts)
 keymap("n", "<A-k>", [[:keepjumps normal! {<cr>]], opts)
 keymap("x", "<C-j>", [[<cmd>keepjumps normal! }<cr>]], opts)
@@ -198,8 +201,8 @@ keymap("n", "gO", "gcO", term_opts)
 keymap("n", "gA", "gcA", term_opts)
 
 -- Move Cursor Between Windows
-keymap("n", "<C-j>", "<c-w>j", opts)
-keymap("n", "<C-k>", "<c-w>k", opts)
+-- keymap("n", "<C-j>", "<c-w>j", opts)
+-- keymap("n", "<C-k>", "<c-w>k", opts)
 keymap("n", "<C-h>", "<c-w>h", opts)
 keymap("n", "<C-l>", "<c-w>l", opts)
 -- Resize with arrows
