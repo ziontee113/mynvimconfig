@@ -192,4 +192,22 @@ autocmd("BufEnter", {
 	end,
 })
 
+local function cs(trigger, nodes, keymap)
+	local snippet = s(trigger, nodes)
+	table.insert(snippets, snippet)
+	if keymap ~= nil then
+		autocmd("BufEnter", {
+			pattern = "*.lua",
+			group = group,
+			callback = function()
+				map({ "i" }, keymap, function()
+					ls.snip_expand(snippet)
+				end, opts)
+			end,
+		})
+	end
+end
+
+cs("pop", { t("dilemma") }, "jxx")
+
 return snippets, autosnippets
