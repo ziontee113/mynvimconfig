@@ -33,7 +33,7 @@ function M.vimrc_find_files()
 end
 
 function M.vimrc_live_grep()
-	local opts = {}
+	local opts = vim.deepcopy(ivy_theme)
 	opts.search_dirs = {
 		"~/.config/nvim/",
 	}

@@ -1,31 +1,48 @@
 # One way ticket
 
-```mermaid
-flowchart TD
-  %%{init: {'theme': 'neutral'} }%%
-  S[Start] --> A
-  A(Enter your email address) --> B{Existing User}
-  B -->|No| C(Enter name)
-  C --> D{Accept Conditions ?}
-  D --> |No| A
-  D --> |Yes| E(Send email with magic link)
-  B --> |Yes| E
-  E --> End
-```
+@startuml
+left to right direction
+actor "Food Critic" as fc
 
-```mermaid
-%%{init: {'theme': 'neutral' } }%%
-graph LR
-A(Foo) --> B(Bar)
-B --> C(Baz)
-```
+usecase "Eat Food" as UC1
+usecase "Pay for Food" as UC2
+usecase "Drink" as UC3
 
----
+fc --> UC1
+fc --> UC2
+fc --> UC3
+@enduml
 
-## Problem
+@startuml
+left to right direction
+actor "Food Critic" as fc
+rectangle Restaurant {
+usecase "Eat Food" as UC1
+usecase "Pay for Food" as UC2
+usecase "Drink" as UC3
+}
+fc --> UC1
+fc --> UC2
+fc --> UC3
+@enduml
 
-Given a codeblock that starts with 3 `backticks` and ends with 3 `backticks`
-Run the check function at one direction, if it hits 3 backticks, check the line
-If the line has code identifier, then check the other direction
-If checks for only 3 `backticks` == true, execute the function,
-otherwise execute something else
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User -> (Start)
+User --> (Use)
+
+Admin ---> (Use)
+
+note right of Admin : This is an example.
+
+note right of (Use)
+A note can also
+be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml

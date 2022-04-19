@@ -193,6 +193,8 @@ keymap("i", "<A-/>", "<Esc>gccA", term_opts)
 keymap("n", "", "gcc", term_opts)
 keymap("i", "", "<Esc>gccA", term_opts)
 keymap("x", "", "gc", term_opts)
+keymap("n", "gO", "gcO", term_opts)
+keymap("n", "gA", "gcA", term_opts)
 
 -- Move Cursor Between Windows
 keymap("n", "<C-j>", "<c-w>j", opts)
@@ -263,6 +265,7 @@ keymap("n", "gs", "<Plug>Lightspeed_omni_gs", opts)
 keymap("n", "<Leader>ww", ":HopWordMW<cr>", opts)
 keymap("n", "<Leader>W", ":HopWordMW<cr>", opts)
 keymap("n", "mw", ":HopWordMW<cr>", opts)
+vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> q <cmd>HopLineStart<CR>]])
 
 -- Harpoon
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> q :q<CR>]])

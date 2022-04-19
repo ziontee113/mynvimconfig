@@ -38,9 +38,7 @@ require("myPlugs.global")
 
 -- S:imple Configs
 require("Comment").setup()
--- require("hop").setup({
--- 	-- keys = "etovxqpdygfblzhckisuran",
--- })
+-- require("hop").setup()
 require("colorizer").setup(--[[ { scss = { mode = "foreground" } } ]]
 )
 require("fidget").setup({ window = { blend = 0 } })
