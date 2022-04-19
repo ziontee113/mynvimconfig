@@ -63,11 +63,23 @@ local startuml_snippet = s(
 		[[ 
 @startuml
 {}
+{}
 @enduml
 ]],
 		{
-			i(1, ""),
+			c(1, { t("left to right direction"), t("") }),
+			i(2, ""),
 		}
+	)
+)
+
+local plantUML_direction = s(
+	{ trig = "dir", regTrig = true, hidden = true },
+	fmt(
+		[[ 
+{}
+]],
+		{ c(1, { t("left to right direction"), t("") }) }
 	)
 )
 
@@ -76,6 +88,7 @@ local startuml_snippet = s(
 local snippets = {
 	plantUML_actor_snippet,
 	startuml_snippet,
+	plantUML_direction,
 }
 local autosnippets = {}
 

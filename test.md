@@ -2,6 +2,7 @@
 
 @startuml
 left to right direction
+
 actor "Food Critic" as fc
 
 usecase "Eat Food" as UC1

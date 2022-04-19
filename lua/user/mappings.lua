@@ -261,6 +261,8 @@ keymap("n", "<Leader><C-g>", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 
 --- Lightspeed
+keymap("x", "s", "<Plug>Lightspeed_omni_s", opts)
+keymap("x", "S", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "gS", "<Plug>Lightspeed_omni_gs", opts)
