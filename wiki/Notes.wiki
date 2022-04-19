@@ -1,6 +1,3 @@
-# Notes to remember:
+# Notes
 
-@ https://youtu.be/IoyW8XYGqjM?t=394
-
-- Play nice with your Code Formatter while creating Lua Snippets.
-  - Otherwise it will mess up your LuaSnip jump locations.
+- There is too much mental overhead in the snippet creation process.

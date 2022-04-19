@@ -91,6 +91,19 @@ local {} = ls.parser.parse_snippet("{}", "{}")
 	)
 )
 
+local choice_node_snippet = s(
+	"choice_node_snippet",
+	fmt(
+		[[ 
+c({}, {{ {} }})
+]],
+		{
+			i(1, ""),
+			i(2, ""),
+		}
+	)
+)
+
 local keymapForLuaSnippet = s(
 	"keymapForLuaSnippet",
 	fmt(
@@ -140,6 +153,7 @@ local snippets = {
 	luaSnippet,
 	luasnip_regexSnippet,
 	keymapForLuaSnippet,
+	choice_node_snippet,
 }
 local autosnippets = {
 	ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),
@@ -168,6 +182,9 @@ autocmd("BufEnter", {
 		end, opts)
 		map({ "i" }, "jkr", function()
 			ls.snip_expand(luasnip_regexSnippet)
+		end, opts)
+		map({ "i" }, "jcn", function()
+			ls.snip_expand(choice_node_snippet)
 		end, opts)
 		map({ "i" }, "jff", function()
 			ls.snip_expand(function_snippet)
