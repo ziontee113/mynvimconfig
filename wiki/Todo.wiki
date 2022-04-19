@@ -1,5 +1,9 @@
 # Todo:
 
+- Streamline the Snippet Creation process
+  - Automatically Import into the respective snippet table when a keymap is pressed.
+  - Quick way to mark locations and jump to them
+
 - Make a plugin that let the user open a small buffer (using something like telescope), to pick the lines from the buffer, then paste those lines to the current cursor position.
  -> Maybe utilizing Telescope is the answer.
 

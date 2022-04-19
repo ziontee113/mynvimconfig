@@ -46,7 +46,7 @@ local luasnip_regexSnippet = s(
 	fmt(
 		[=[
 local {} = s({{ trig = "{}", regTrig = true, hidden = true }}, fmt([[ 
-  {}
+{}
 ]], {{
   {}
 }}))
@@ -64,7 +64,7 @@ local luaSnippet = s(
 	fmt(
 		[=[
 local {} = s("{}", fmt([[ 
-  {}
+{}
 ]], {{
   {}
   }}))
