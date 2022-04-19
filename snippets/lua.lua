@@ -16,34 +16,6 @@ local function lp(package_name) -- Load Package Function
 	return require(package_name)
 end
 
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-local group = augroup("Lua Snippets", { clear = true })
-local Snippet = { snippet = {} }
-
-function Snippet:create(snippet_args)
-	local snippet = s(snippet_args)
-	setmetatable(snippet, self)
-	self.__index = self
-	return snippet
-end
-
-function Snippet:keymap(keymap)
-	autocmd("BufEnter", {
-		pattern = "*.lua",
-		group = group,
-		callback = function()
-			map({ "i" }, keymap, function()
-				ls.snip_expand(self.snippet)
-			end, opts)
-		end,
-	})
-	return self
-end
-
 local vim_cmd_multiline = s("CMD", {
 	t({ "vim.cmd[[", "  " }),
 	i(1, ""),
@@ -192,6 +164,12 @@ local autosnippets = {
 }
 
 -- Autocmd for keymap triggered snippets --
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+local group = augroup("Lua Snippets", { clear = true })
 autocmd("BufEnter", {
 	pattern = "*.lua",
 	group = group,

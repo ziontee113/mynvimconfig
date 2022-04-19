@@ -263,7 +263,6 @@ keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 
 --- Lightspeed
 keymap("x", "s", "<Plug>Lightspeed_omni_s", opts)
-keymap("x", "S", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "s", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "S", "<Plug>Lightspeed_omni_s", opts)
 keymap("n", "gS", "<Plug>Lightspeed_omni_gs", opts)

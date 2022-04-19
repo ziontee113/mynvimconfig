@@ -11,7 +11,7 @@ let s:shortmess_save = &shortmess
 set shortmess=aoO
 badd +10 test.md
 badd +313 lua/user/mappings.lua
-badd +151 snippets/lua.lua
+badd +22 snippets/lua.lua
 badd +7 test.js
 badd +57 snippets/markdown.lua
 argglobal
@@ -57,11 +57,11 @@ normal! 0
 lcd ~/.config/nvim
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.config/nvim/test.md", ":p")) | buffer ~/.config/nvim/test.md | else | edit ~/.config/nvim/test.md | endif
+if bufexists(fnamemodify("~/.config/nvim/snippets/lua.lua", ":p")) | buffer ~/.config/nvim/snippets/lua.lua | else | edit ~/.config/nvim/snippets/lua.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/test.md
+  silent file ~/.config/nvim/snippets/lua.lua
 endif
-balt ~/.config/nvim/snippets/markdown.lua
+balt ~/.config/nvim/test.md
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -71,15 +71,31 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
+1,17fold
+48,53fold
+54,69fold
+73,90fold
+91,108fold
+109,121fold
+123,134fold
+136,150fold
+154,168fold
+169,177fold
+179,186fold
+187,193fold
+195,216fold
 let &fdl = &fdl
-let s:l = 10 - ((9 * winheight(0) + 24) / 48)
+195
+normal! zo
+let s:l = 22 - ((21 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 10
-normal! 0
+keepjumps 22
+normal! 027|
 lcd ~/.config/nvim
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 tabnext 1
