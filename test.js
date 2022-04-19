@@ -4,6 +4,12 @@ class Product {
     this.color = color;
     this.size = size;
   }
+  simpleFunction() {
+    return `${this.name} ${this.color} ${this.size}`;
+  }
+  sipersimplefunction() {
+    return `${this.name} ${this.color} ${this.size}`;
+  }
 }
 
 let apple = new Product("Apple", "red", "small");

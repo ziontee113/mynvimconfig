@@ -49,8 +49,10 @@ keymap("n", "<C-j>", [[:keepjumps normal! j}k<cr>]], opts)
 keymap("n", "<C-k>", [[:keepjumps normal! k{j<cr>]], opts)
 keymap("n", "<A-j>", [[:keepjumps normal! }<cr>]], opts)
 keymap("n", "<A-k>", [[:keepjumps normal! {<cr>]], opts)
-keymap("x", "<C-j>", [[<cmd>keepjumps normal! }<cr>]], opts)
-keymap("x", "<C-k>", [[<cmd>keepjumps normal! {<cr>]], opts)
+-- keymap("x", "<C-j>", [[<cmd>keepjumps normal! }<cr>]], opts)
+-- keymap("x", "<C-k>", [[<cmd>keepjumps normal! {<cr>]], opts)
+keymap("x", "<C-j>", [[<cmd>keepjumps normal! j}k<cr>]], opts)
+keymap("x", "<C-k>", [[<cmd>keepjumps normal! k{j<cr>]], opts)
 
 -- Change-in Shortcuts
 keymap("n", "ck", [[ciq]], term_opts)
