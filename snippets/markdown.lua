@@ -57,11 +57,25 @@ local plantUML_actor_snippet = s(
 		}
 	)
 )
+local startuml_snippet = s(
+	"startuml",
+	fmt(
+		[[ 
+@startuml
+{}
+@enduml
+]],
+		{
+			i(1, ""),
+		}
+	)
+)
 
 -- Snippets end here --
 
 local snippets = {
 	plantUML_actor_snippet,
+	startuml_snippet,
 }
 local autosnippets = {}
 
@@ -71,17 +85,17 @@ local augroup = vim.api.nvim_create_augroup
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-local group = augroup("Lua Snippets", { clear = true })
+local group = augroup("Markdown Snippets", { clear = true })
 autocmd("BufEnter", {
-	pattern = "*.lua",
+	pattern = "*.md",
 	group = group,
 	callback = function()
 		map({ "i" }, "jj", function() --> j act(or)
 			ls.snip_expand(plantUML_actor_snippet)
 		end, opts)
-		-- map({ "i" }, "<C-d>", function()
-		-- 	ls.snip_expand(snippets[3])
-		-- end, opts)
+		map({ "i" }, "jks", function()
+			ls.snip_expand(startuml_snippet)
+		end, opts)
 		-- map({ "i" }, "jff", function()
 		-- 	ls.snip_expand(function_snippet)
 		-- end, opts)

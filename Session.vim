@@ -13,7 +13,7 @@ badd +10 test.md
 badd +313 lua/user/mappings.lua
 badd +151 snippets/lua.lua
 badd +7 test.js
-badd +23 snippets/markdown.lua
+badd +57 snippets/markdown.lua
 argglobal
 %argdel
 edit snippets/markdown.lua
@@ -46,13 +46,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 1,17fold
+21,43fold
 let &fdl = &fdl
-let s:l = 23 - ((22 * winheight(0) + 24) / 48)
+let s:l = 57 - ((56 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
-normal! 03|
+keepjumps 57
+normal! 0
 lcd ~/.config/nvim
 wincmd w
 argglobal
