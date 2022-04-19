@@ -9,14 +9,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess=aoO
-badd +18 lua/user/telescope-custom-pickers.lua
-badd +17 init.lua
-badd +241 lua/user/mappings.lua
-badd +1 lua/user/telescope-config.lua
-badd +117 snippets/lua.lua
+badd +10 test.md
+badd +313 lua/user/mappings.lua
+badd +151 snippets/lua.lua
+badd +7 test.js
+badd +23 snippets/markdown.lua
 argglobal
 %argdel
-edit lua/user/telescope-custom-pickers.lua
+edit snippets/markdown.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -45,20 +45,22 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
+1,17fold
 let &fdl = &fdl
-let s:l = 18 - ((17 * winheight(0) + 24) / 48)
+let s:l = 23 - ((22 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 18
-normal! 0
+keepjumps 23
+normal! 03|
+lcd ~/.config/nvim
 wincmd w
 argglobal
-if bufexists(fnamemodify("lua/user/mappings.lua", ":p")) | buffer lua/user/mappings.lua | else | edit lua/user/mappings.lua | endif
+if bufexists(fnamemodify("~/.config/nvim/test.md", ":p")) | buffer ~/.config/nvim/test.md | else | edit ~/.config/nvim/test.md | endif
 if &buftype ==# 'terminal'
-  silent file lua/user/mappings.lua
+  silent file ~/.config/nvim/test.md
 endif
-balt init.lua
+balt ~/.config/nvim/snippets/markdown.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -69,12 +71,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 239 - ((36 * winheight(0) + 24) / 48)
+let s:l = 10 - ((9 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 239
-normal! 052|
+keepjumps 10
+normal! 0
 lcd ~/.config/nvim
 wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
