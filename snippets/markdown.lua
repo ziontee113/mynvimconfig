@@ -11,6 +11,39 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
+-- --
+
+local snippets = {}
+local autosnippets = {}
+
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+local group = augroup("Lua Snippets", { clear = true })
+
+local function cs(trigger, nodes, keymap) --> cs stands for create snippet
+	local snippet = s(trigger, nodes)
+	table.insert(snippets, snippet)
+
+	if keymap ~= nil then
+		local pattern = "*.lua"
+		if type(keymap) == "table" then
+			pattern = keymap[1]
+			keymap = keymap[2]
+		end
+		autocmd("BufEnter", {
+			pattern = pattern,
+			group = group,
+			callback = function()
+				map({ "i" }, keymap, function()
+					ls.snip_expand(snippet)
+				end, opts)
+			end,
+		})
+	end
+end
+
 local function lp(package_name) -- Load Package Function
 	package.loaded[package_name] = nil
 	return require(package_name)
@@ -47,9 +80,9 @@ local function same_toLowerCase_dynamic(nodes, index)
 	end, { nodes })
 end
 
--- Snippets go here --
+-- Start Refactoring --
 
-local plantUML_actor_snippet = s(
+cs( -- PlantUML Actor Snippet
 	"actor_plantUML",
 	fmt(
 		[[ 
@@ -62,7 +95,7 @@ local plantUML_actor_snippet = s(
 		}
 	)
 )
-local startuml_snippet = s(
+cs( -- PlantUML Start @startuml Snippet
 	"startuml",
 	fmt(
 		[[ 
@@ -77,8 +110,7 @@ local startuml_snippet = s(
 		}
 	)
 )
-
-local plantUML_direction = s(
+cs( -- PlantUML Direction Snippet
 	{ trig = "dir", regTrig = true, hidden = true },
 	fmt(
 		[[ 
@@ -88,36 +120,6 @@ local plantUML_direction = s(
 	)
 )
 
--- Snippets end here --
-
-local snippets = {
-	plantUML_actor_snippet,
-	startuml_snippet,
-	plantUML_direction,
-}
-local autosnippets = {}
-
--- Autocmd for keymap triggered snippets --
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-local group = augroup("Markdown Snippets", { clear = true })
-autocmd("BufEnter", {
-	pattern = "*.md",
-	group = group,
-	callback = function()
-		map({ "i" }, "jj", function() --> j act(or)
-			ls.snip_expand(plantUML_actor_snippet)
-		end, opts)
-		map({ "i" }, "jks", function()
-			ls.snip_expand(startuml_snippet)
-		end, opts)
-		-- map({ "i" }, "jff", function()
-		-- 	ls.snip_expand(function_snippet)
-		-- end, opts)
-	end,
-})
+-- Start Refactoring --
 
 return snippets, autosnippets

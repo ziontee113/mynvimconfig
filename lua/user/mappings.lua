@@ -259,10 +259,11 @@ keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 
 -- Toggleterm
-keymap("n", "<Leader>X", "<cmd>lua _TEST_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader><C-g>", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
+keymap("n", "<Leader>X", "<cmd>lua _TEST_TOGGLE()<cr>", nosilent_opts)
+keymap("n", "<S-Tab>", "<cmd>lua _TEST_TOGGLE()<cr>", opts)
 
 --- Lightspeed
 keymap("x", "s", "<Plug>Lightspeed_omni_s", opts)
@@ -293,7 +294,6 @@ vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 8 :8<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 9 :9<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 0 :10<CR>]])
 
-keymap("n", "<S-Tab>", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Leader>ha", ":lua require('harpoon.mark').add_file()<cr>", opts)
 keymap("n", "<Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 keymap("n", "<Leader>1", ":lua require('harpoon.ui').nav_file(1)<cr>", opts)
