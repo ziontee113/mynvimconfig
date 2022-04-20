@@ -9,8 +9,8 @@ require("toggleterm").setup({
 	persist_size = true,
 	direction = "float",
 	-- float_opts = {
-	-- 	width = 1920,
-	-- 	height = 1080,
+	-- 	width = 100,
+	-- 	height = 100,
 	-- },
 })
 
@@ -145,3 +145,29 @@ function _VERTICAL_TERM_TOGGLE()
 end
 
 vim.api.nvim_set_keymap("n", "<leader>T", "<cmd>lua _VERTICAL_TERM_TOGGLE()<CR>", { noremap = true, silent = true })
+
+--------------------- TODO: New Stuff!
+
+local test_new = Terminal:new({
+	hidden = true,
+	cmd = "nvim -c 'set scl=no' -c 'set scrolloff=2' ~/.config/nvim/test.md",
+	close_on_exit = true,
+	count = 4,
+	direction = "float",
+	float_opts = {
+		-- border = "double",
+		width = 50,
+		height = 15,
+	},
+
+	-- function to run on opening the terminal
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-q>", "<cmd>close<CR>", { noremap = true, silent = true })
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "Q", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+})
+
+function _TEST_TOGGLE()
+	test_new:toggle()
+end

@@ -259,6 +259,7 @@ keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
 -- keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 
 -- Toggleterm
+keymap("n", "<Leader>X", "<cmd>lua _TEST_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader><C-g>", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)

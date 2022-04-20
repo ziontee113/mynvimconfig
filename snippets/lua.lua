@@ -157,6 +157,4 @@ local {} = {}
 
 -- End Refactoring --
 
--- TODO: add options as table for autocmds patterns
-
 return snippets, autosnippets
