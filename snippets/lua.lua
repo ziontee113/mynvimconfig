@@ -92,7 +92,7 @@ cs( -- {}
 			i(4, ""),
 		}
 	),
-	"jre"
+	{ "*/snippets/*.lua", "jre" }
 )
 cs( -- multiline LuaSnippet
 	"luaSnippet",
@@ -102,16 +102,21 @@ cs("{}", fmt([[ -- {}
 {}
 ]], {{
   {}
-  }}))
+  }}){})
     ]=],
 		{
 			i(1, ""),
 			i(2, "Description"),
 			i(3, ""),
 			i(4, ""),
+			c(5, {
+				t(""),
+				fmt([[, "{}"]], { i(1, "keymap") }),
+				fmt([[, "{{ {}, {} }}"]], { i(1, "pattern"), i(2, "keymap") }),
+			}),
 		}
 	),
-	"jcs"
+	{ "*/snippets/*.lua", "jcs" }
 )
 
 cs( -- luaSnip choice node
@@ -125,7 +130,7 @@ c({}, {{ {} }}),
 			i(2, ""),
 		}
 	),
-	"jcn"
+	{ "*/snippets/*.lua", "jcn" }
 )
 
 cs( -- Lua function snippet
