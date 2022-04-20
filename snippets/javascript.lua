@@ -12,6 +12,41 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
+-- --
+
+local snippets = {}
+local autosnippets = {}
+
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+local group = augroup("Lua Snippets", { clear = true })
+
+local function cs(trigger, nodes, keymap) --> cs stands for create snippet
+	local snippet = s(trigger, nodes)
+
+	if keymap == "auto" then
+		table.insert(autosnippets, snippet)
+	else
+		table.insert(snippets, snippet)
+	end
+
+	if keymap ~= nil then
+		autocmd("BufEnter", {
+			pattern = "*.lua",
+			group = group,
+			callback = function()
+				map({ "i" }, keymap, function()
+					ls.snip_expand(snippet)
+				end, opts)
+			end,
+		})
+	end
+end
+
+-- Old Style --
+
 local if_fmt_arg = {
 	i(1, ""),
 	c(2, { i(1, "LHS"), i(1, "10") }),
@@ -56,28 +91,7 @@ function {}({}) {{
 
 local function_snippet = s({ trig = "f[un]?", regTrig = true, hidden = true }, function_fmt)
 local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt))
-local for_loop_snippet = s(
-	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
-	fmt(
-		[[
-for (let {} = 0; {} < {}; {}++) {{
-  {}
-}}
 
-{}
-    ]],
-		{
-			d(1, function(_, snip)
-				return sn(1, i(1, snip.captures[1]))
-			end),
-			rep(1),
-			c(2, { i(1, "num"), sn(1, { i(1, "arr"), t(".length") }) }),
-			rep(1),
-			i(3, "// TODO:"),
-			i(4),
-		}
-	)
-)
 local short_hand_if_fmt = fmt(
 	[[
 if ({}) {}
@@ -102,58 +116,47 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 	end),
 	t("return "),
 })
-local while_loop_snippet_fmt = fmt(
-	[[
+
+-- Refactoring Begin --
+
+cs( -- JS For Loop snippet
+	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
+	fmt(
+		[[
+for (let {} = 0; {} < {}; {}++) {{
+  {}
+}}
+
+{}
+    ]],
+		{
+			d(1, function(_, snip)
+				return sn(1, i(1, snip.captures[1]))
+			end),
+			rep(1),
+			c(2, { i(1, "num"), sn(1, { i(1, "arr"), t(".length") }) }),
+			rep(1),
+			i(3, "// TODO:"),
+			i(4),
+		}
+	)
+)
+cs( -- JS While Loop snippet
+	"while",
+	fmt(
+		[[
 while ({}) {{
   {}
 }}
   ]],
-	{
-		i(1, ""),
-		i(2, "// TODO:"),
-	}
+		{
+			i(1, ""),
+			i(2, "// TODO:"),
+		}
+	)
 )
-local while_loop_snippet = s("While", while_loop_snippet_fmt)
-local console_log_snippet = s({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") })
+cs({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") }) -- console.log
 
-local snippets = {
-	for_loop_snippet,
-	function_snippet,
-	function_snippet_func,
-	console_log_snippet,
-	s("trig", {
-		t("text: "),
-		i(1),
-		t({ "", "copy: " }),
-		d(2, function(args)
-			return sn(nil, {
-				i(1, args[1]),
-			})
-		end, { 1 }),
-	}),
-}
-local autosnippets = {
-	if_snippet,
-	short_hand_if_statement,
-	short_hand_if_statement_return_shortcut,
-	while_loop_snippet,
-}
-
--- Autocmd for keymap triggered snippets --
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-local group = augroup("Javascript Snippets", { clear = true })
-autocmd("BufEnter", {
-	pattern = "*.js",
-	group = group,
-	callback = function()
-		map({ "i" }, "jj", function()
-			ls.snip_expand(console_log_snippet)
-		end, opts)
-	end,
-})
+-- Refactoring End --
 
 return snippets, autosnippets

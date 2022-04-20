@@ -87,7 +87,8 @@ local {} = s({{ trig = "{}", regTrig = true, hidden = true }}, fmt([[
 			i(3, ""),
 			i(4, ""),
 		}
-	)
+	),
+	"jre"
 )
 cs( -- multiline luaSnippet
 	"luaSnippet",
@@ -147,7 +148,8 @@ end
 			i(2, ""),
 			i(3, ""),
 		}
-	)
+	),
+	"jff"
 )
 cs( -- Lua local variable snippet
 	"local",
@@ -156,7 +158,8 @@ cs( -- Lua local variable snippet
 local {} = {}
   ]],
 		{ i(1, ""), i(2, "") }
-	)
+	),
+	"jj"
 )
 
 -- End Refactoring --
