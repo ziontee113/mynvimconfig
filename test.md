@@ -8,10 +8,11 @@ actor "Food Critic" as fc
 usecase "Eat Food" as UC1
 usecase "Pay for Food" as UC2
 usecase "Drink" as UC3
-
+usecase "Go to the Bathroom" as UC4
 fc --> UC1
 fc --> UC2
 fc --> UC3
+fc --> UC4
 @enduml
 
 @startuml
