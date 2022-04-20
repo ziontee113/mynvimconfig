@@ -2,47 +2,19 @@
 
 @startuml
 left to right direction
-
-actor "Food Critic" as fc
-
-usecase "Eat Food" as UC1
-usecase "Pay for Food" as UC2
-usecase "Drink" as UC3
-usecase "Go to the Bathroom" as UC4
-fc --> UC1
-fc --> UC2
-fc --> UC3
-fc --> UC4
-@enduml
-
-@startuml
-left to right direction
-actor "Food Critic" as fc
-rectangle Restaurant {
-  usecase "Eat Food" as UC1
-  usecase "Pay for Food" as UC2
-  usecase "Drink" as UC3
-}
-fc --> UC1
-fc --> UC2
-fc --> UC3
-@enduml
-
-@startuml
-left to right direction
-actor Guest as g
-package Professional {
-  actor Chef as c
-  actor "Food Critic" as fc
-}
-package Restaurant {
-  usecase "Eat Food" as UC1
-  usecase "Pay for Food" as UC2
-  usecase "Drink" as UC3
-  usecase "Review" as UC4
-}
-g --> UC1
-g --> UC2
-g --> UC3
-fc --> UC4
+actor "John" as john #skyblue;line:blue;line.bold;text:blue
+actor "Mary" as mary #pink;line:red;line.bold;text:red
+actor "Jack" as jack
+actor "Jayce" as jayce
+usecase "Eat" as eat
+usecase "Eat Spagetti" as eatSpagetti
+usecase "Drink" as drink
+usecase "Smoke" as smoke
+john --> eat
+john --> smoke
+john --> drink
+mary --> eat
+mary --> drink
+jack --> eatSpagetti
+eatSpagetti <-- jayce
 @enduml

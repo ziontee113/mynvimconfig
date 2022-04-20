@@ -69,33 +69,37 @@ local function toCamelCase(str)
 
 	return table.concat(words, "")
 end
+
 local function same_toLowerCase_function(index)
 	return f(function(arg)
 		return toCamelCase(arg[1][1])
 	end, { index })
 end
+
 local function same_toLowerCase_dynamic(nodes, index)
 	return d(index, function(arg)
 		return sn(index, i(1, toCamelCase(arg[1][1])))
 	end, { nodes })
 end
+function previousLine()
+	local currentLine = vim.api.nvim_win_get_cursor(0)
+	local prevLine = vim.api.nvim_buf_get_lines(0, currentLine - 1, currentLine, false)
+	P(prevLine)
+end
 
 -- Start Refactoring --
 
-cs( -- PlantUML Actor Snippet
-	"actor_plantUML",
-	fmt(
-		[[ 
+local actor_snippet_fmt = fmt( -- PlantUML Actor Snippet
+	[[ 
 {} "{}" as {}
 ]],
-		{
-			c(1, { t("actor"), t("usecase") }),
-			i(2, ""),
-			same_toLowerCase_dynamic(2, 3),
-		}
-	),
-	"jj"
+	{
+		c(1, { t("actor"), t("usecase") }),
+		i(2, ""),
+		same_toLowerCase_dynamic(2, 3),
+	}
 )
+cs("actor_plantUML", actor_snippet_fmt, "jj")
 cs( -- PlantUML Start @startuml Snippet
 	"startuml",
 	fmt(
@@ -122,6 +126,21 @@ cs( -- PlantUML Direction Snippet
 	)
 )
 
--- Start Refactoring --
+cs( -- Double Arrow Relationship Snippet
+	"doubleArrow",
+	fmt(
+		[[
+{} {} {}
+]],
+		{
+			i(1, "from"),
+			c(2, { t("-->"), t("<--") }),
+			i(3, "to"),
+		}
+	),
+	"jda"
+)
+
+-- End Refactoring --
 
 return snippets, autosnippets

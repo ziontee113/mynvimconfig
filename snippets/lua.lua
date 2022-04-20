@@ -110,20 +110,22 @@ cs("{}", fmt([[ -- {}
 			i(3, ""),
 			i(4, ""),
 		}
-	)
+	),
+	"jcs"
 )
 
 cs( -- luaSnip choice node
 	"choice_node_snippet",
 	fmt(
 		[[ 
-c({}, {{ {} }})
+c({}, {{ {} }}),
 ]],
 		{
 			i(1, ""),
 			i(2, ""),
 		}
-	)
+	),
+	"jcn"
 )
 
 cs( -- Lua function snippet

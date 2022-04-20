@@ -154,7 +154,7 @@ vim.api.nvim_set_keymap("n", "<leader>T", "<cmd>lua _VERTICAL_TERM_TOGGLE()<CR>"
 
 local test_new = Terminal:new({
 	hidden = true,
-	cmd = "nvim -c 'set scl=no' -c 'set scrolloff=2' ~/.config/nvim/test.md",
+	cmd = "nvim -c 'set scl=no' -c 'set scrolloff=2' -c 'set wrap' -c 'set linebreak' ~/.config/nvim/wiki/Todo.wiki",
 	close_on_exit = true,
 	count = 4,
 	direction = "float",
