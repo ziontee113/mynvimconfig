@@ -4,6 +4,8 @@ local ls = require("luasnip")
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
 require("luasnip").config.setup({ store_selection_keys = "<A-p>" })
 
+vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]])
+
 -- Set Config
 
 local types = require("luasnip.util.types")

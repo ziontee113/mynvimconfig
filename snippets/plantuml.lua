@@ -125,7 +125,6 @@ cs( -- PlantUML Direction Snippet
 		{ c(1, { t("left to right direction"), t("") }) }
 	)
 )
-
 cs( -- Double Arrow Relationship Snippet
 	"doubleArrow",
 	fmt(

@@ -1,6 +1,6 @@
 # Todo:
 
-
+Read the LuaSnip doc about opening the correct snippet file if we want to edit it mid session.
 
 - Make a plugin that let the user open a small buffer (using something like telescope), to pick the lines from the buffer, then paste those lines to the current cursor position.
  -> Maybe utilizing Telescope is the answer.

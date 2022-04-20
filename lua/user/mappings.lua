@@ -355,3 +355,6 @@ vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <Leader>rr :Markd
 vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <Leader>pr :MarkdownPreviewToggle<CR>]])
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>rr :PlantumlOpen<CR>]])
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>pr :PlantumlOpen<CR>]])
+
+-- LuaSnip
+keymap("n", "<Leader>es", "<cmd>LuaSnipEdit<cr>", opts)
