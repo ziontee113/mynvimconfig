@@ -49,8 +49,6 @@ local function lp(package_name) -- Load Package Function
 	return require(package_name)
 end
 
-cs("pop", { t("dilemma"), i(1, ""), t("dilemma") }, "jxx") -- example
-
 -- Start Refactoring --
 
 cs("CMD", { -- multiline vim.cmd

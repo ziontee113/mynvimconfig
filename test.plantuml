@@ -1,32 +1,12 @@
 @startuml
-' !define DARKBLUE
-' !includeurl https://raw.github.com/Drakemor/RedDress-PlantUML/master/style.puml
 
-State1 --> State2
+header SayHello
+footer Page %page% of %lastpage%
 
-left to right direction
+Bob -> Alice : hello
 
-actor "Food Critic" as fc
+newpage last page
 
-usecase "Eat Food" as UC1
-usecase "Pay for Food" as UC2
-usecase "Drink" as UC3
-
-fc --> UC1
-fc --> UC2
-fc --> UC3
-@enduml
-
-@startuml
-left to right direction
-actor "Food Critic" as fc
-rectangle Restaurant {
-usecase "Eat Food" as UC1
-usecase "Pay for Food" as UC2
-usecase "Drink" as UC3
-}
-fc --> UC1
-fc --> UC2
-fc --> UC3
+Bob -> Mark : Hi
 
 @enduml

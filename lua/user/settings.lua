@@ -78,5 +78,8 @@ augroup highlight_yank
 augroup END
 ]])
 
+-- Markdown Previewer
+vim.cmd([[let g:mkdp_auto_close = 0]])
+
 -- Runtime Path
 vim.cmd([[set runtimepath+=~/.config/nvim/lua/myPlugs/syntax-tree-surfer/]])

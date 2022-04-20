@@ -1,4 +1,4 @@
-# One way ticket
+# Super Cool Starchart
 
 @startuml
 left to right direction
@@ -48,3 +48,8 @@ note "This note is connected\nto several objects." as N2
 (Start) .. N2
 N2 .. (Use)
 @enduml
+
+```javascript
+let y = 100;
+let x = "Super cool";
+```

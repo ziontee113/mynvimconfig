@@ -43,6 +43,12 @@ vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> AS <=]])
 vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> EE ===]])
 vim.cmd([[autocmd FileType javascript inoremap <silent> <buffer> ER !==]])
 
+-- Markdown / PlantUML Mappings
+vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <F12> :set filetype=markdown<CR>]])
+vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <F11> :set filetype=plantuml<CR>]])
+vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <F12> :set filetype=markdown<CR>]])
+vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <F11> :set filetype=plantuml<CR>]])
+
 -- Paragraph Jump
 keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for quickfix list
 keymap("n", "{", [[:keepjumps normal! {<cr>]], opts)
