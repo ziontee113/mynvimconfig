@@ -27,8 +27,13 @@ local function cs(trigger, nodes, keymap) --> cs stands for create snippet
 	table.insert(snippets, snippet)
 
 	if keymap ~= nil then
+		local pattern = "*.lua"
+		if type(keymap) == "table" then
+			pattern = keymap[1]
+			keymap = keymap[2]
+		end
 		autocmd("BufEnter", {
-			pattern = "*.lua",
+			pattern = pattern,
 			group = group,
 			callback = function()
 				map({ "i" }, keymap, function()
@@ -151,5 +156,7 @@ local {} = {}
 )
 
 -- End Refactoring --
+
+-- TODO: add options as table for autocmds patterns
 
 return snippets, autosnippets

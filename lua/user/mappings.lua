@@ -24,7 +24,7 @@ vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <leader>c
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
-keymap("n", "<C-o>", [[zM<C-o>]], opts)
+-- keymap("n", "<C-o>", [[zM<C-o>]], opts)
 keymap("i", "<A-u>", [[<C-o>u]], opts)
 keymap("n", "<S-y>", "J", opts)
 -- keymap(
