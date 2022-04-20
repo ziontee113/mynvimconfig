@@ -20,8 +20,8 @@ local autosnippets = {}
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-local group = augroup("Lua Snippets", { clear = true })
+local opts = { noremap = true, silent = true, buffer = true }
+local group = augroup("Javascript Snippets", { clear = true })
 
 local function cs(trigger, nodes, keymap) --> cs stands for create snippet
 	local snippet = s(trigger, nodes)
@@ -34,7 +34,7 @@ local function cs(trigger, nodes, keymap) --> cs stands for create snippet
 
 	if keymap ~= nil then
 		autocmd("BufEnter", {
-			pattern = "*.lua",
+			pattern = "*.js",
 			group = group,
 			callback = function()
 				map({ "i" }, keymap, function()

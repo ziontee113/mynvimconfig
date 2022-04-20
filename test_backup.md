@@ -1,21 +1,21 @@
-# One way ticket
+# Super Cool Starchart
 
 @startuml
-!define LIGHTBLUE
-!includeurl https://raw.github.com/Drakemor/RedDress-PlantUML/master/style.puml
-
 left to right direction
 
-actor :Last actor: as Person1
-usecase (Last Usecase) as UC4
+actor "Food Critic" as fc
 
-Person1 --> UC4
-
+usecase "Eat Food" as UC1
+usecase "Pay for Food" as UC2
+usecase "Drink" as UC3
+usecase "Go to the Bathroom" as UC4
+fc --> UC1
+fc --> UC2
+fc --> UC3
+fc --> UC4
 @enduml
 
 @startuml
-!define LIGHTBLUE
-!includeurl https://raw.github.com/Drakemor/RedDress-PlantUML/master/style.puml
 left to right direction
 actor "Food Critic" as fc
 rectangle Restaurant {
@@ -27,3 +27,29 @@ fc --> UC1
 fc --> UC2
 fc --> UC3
 @enduml
+
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User -> (Start)
+User --> (Use)
+
+Admin ---> (Use)
+
+note right of Admin : This is an example.
+
+note right of (Use)
+A note can also
+be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml
+
+```javascript
+let y = 100;
+let x = "Super cool";
+```

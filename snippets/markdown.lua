@@ -19,7 +19,7 @@ local autosnippets = {}
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true, buffer = true }
 local group = augroup("Markdown Snippets", { clear = true })
 
 local function cs(trigger, nodes, keymap) --> cs stands for create snippet

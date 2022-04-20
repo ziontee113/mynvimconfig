@@ -148,8 +148,8 @@ return require("packer").startup(function(use)
 	-- use("previm/previm")
 
 	use("aklt/plantuml-syntax")
-	use("tyru/open-browser.vim")
-	use("weirongxu/plantuml-previewer.vim")
+	-- use("tyru/open-browser.vim")
+	-- use("weirongxu/plantuml-previewer.vim")
 
 	-- Markdown preview
 	use({ "iamcco/markdown-preview.nvim" })
