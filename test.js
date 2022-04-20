@@ -16,4 +16,10 @@ let apple = new Product("Apple", "red", "small");
 let tree = new Product("Tree", "green", "large");
 let house = new Product("House", "blue", "huge");
 
+function sampleFunction(product) {
+  return `${product.name} ${product.color} ${product.size}`;
+}
+
+sampleFunction(apple);
+
 let stop = "Stop";

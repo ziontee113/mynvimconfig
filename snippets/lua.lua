@@ -11,18 +11,50 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
+-- --
+
+local snippets = {}
+local autosnippets = {}
+
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+local group = augroup("Lua Snippets", { clear = true })
+
+local function cs(trigger, nodes, keymap) --> cs stands for create snippet
+	local snippet = s(trigger, nodes)
+	table.insert(snippets, snippet)
+
+	if keymap ~= nil then
+		autocmd("BufEnter", {
+			pattern = "*.lua",
+			group = group,
+			callback = function()
+				map({ "i" }, keymap, function()
+					ls.snip_expand(snippet)
+				end, opts)
+			end,
+		})
+	end
+end
+
 local function lp(package_name) -- Load Package Function
 	package.loaded[package_name] = nil
 	return require(package_name)
 end
 
-local vim_cmd_multiline = s("CMD", {
+cs("pop", { t("dilemma"), i(1, ""), t("dilemma") }, "jxx") -- example
+
+-- Start Refactoring --
+
+cs("CMD", { -- multiline vim.cmd
 	t({ "vim.cmd[[", "  " }),
 	i(1, ""),
 	t({ "", "]]" }),
 })
-local vim_cmd_singleline_snippet = s("CMd", fmt("vim.cmd[[{}]]", { i(1, "") }))
-local github_import_packer = s({
+cs("CMd", fmt("vim.cmd[[{}]]", { i(1, "") })) -- single line vim.cmd
+cs({ -- github import for packer
 	trig = "https://github%.com/([%w-%._]+)/([%w-%._]+)!",
 	regTrig = true,
 	hidden = true,
@@ -39,9 +71,7 @@ local github_import_packer = s({
 	i(1, ""),
 })
 
--- Snippets to create new Snippets --
-
-local luasnip_regexSnippet = s(
+cs( -- regex luaSnippet
 	"regexSnippet",
 	fmt(
 		[=[
@@ -59,7 +89,7 @@ local {} = s({{ trig = "{}", regTrig = true, hidden = true }}, fmt([[
 		}
 	)
 )
-local luaSnippet = s(
+cs( -- multiline luaSnippet
 	"luaSnippet",
 	fmt(
 		[=[
@@ -77,7 +107,7 @@ local {} = s("{}", fmt([[
 		}
 	)
 )
-local parseSnippet = s(
+cs( -- parseSnippet
 	"parseSnippet",
 	fmt(
 		[[ 
@@ -91,7 +121,7 @@ local {} = ls.parser.parse_snippet("{}", "{}")
 	)
 )
 
-local choice_node_snippet = s(
+cs( -- luaSnip choice node
 	"choice_node_snippet",
 	fmt(
 		[[ 
@@ -104,25 +134,7 @@ c({}, {{ {} }})
 	)
 )
 
-local keymapForLuaSnippet = s(
-	"keymapForLuaSnippet",
-	fmt(
-		[[ 
-map({{ "{}" }}, "{}", function()
-  ls.snip_expand({})
-end, opts)
-]],
-		{
-			i(1, "i"),
-			i(2, "jk"),
-			i(3, "someSnippet"),
-		}
-	)
-)
-
--- Lua Snippets --
-
-local function_snippet = s(
+cs( -- Lua function snippet
 	"function",
 	fmt(
 		[[ 
@@ -137,7 +149,7 @@ end
 		}
 	)
 )
-local local_var_snippet = s(
+cs( -- Lua local variable snippet
 	"local",
 	fmt(
 		[[ 
@@ -147,67 +159,6 @@ local {} = {}
 	)
 )
 
-local snippets = {
-	ls.parser.parse_snippet("lua", "also loaded!!"),
-	parseSnippet,
-	luaSnippet,
-	luasnip_regexSnippet,
-	keymapForLuaSnippet,
-	choice_node_snippet,
-}
-local autosnippets = {
-	ls.parser.parse_snippet("autolua", "autotriggered, if enabled"),
-	ls.parser.parse_snippet("get_down", "breakdown"),
-	vim_cmd_multiline,
-	vim_cmd_singleline_snippet,
-	github_import_packer,
-}
-
--- Autocmd for keymap triggered snippets --
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-local group = augroup("Lua Snippets", { clear = true })
-autocmd("BufEnter", {
-	pattern = "*.lua",
-	group = group,
-	callback = function()
-		map({ "i" }, "jj", function()
-			ls.snip_expand(local_var_snippet)
-		end, opts)
-		map({ "i" }, "<C-d>", function()
-			ls.snip_expand(snippets[3])
-		end, opts)
-		map({ "i" }, "jkr", function()
-			ls.snip_expand(luasnip_regexSnippet)
-		end, opts)
-		map({ "i" }, "jcn", function()
-			ls.snip_expand(choice_node_snippet)
-		end, opts)
-		map({ "i" }, "jff", function()
-			ls.snip_expand(function_snippet)
-		end, opts)
-	end,
-})
-
-local function cs(trigger, nodes, keymap)
-	local snippet = s(trigger, nodes)
-	table.insert(snippets, snippet)
-	if keymap ~= nil then
-		autocmd("BufEnter", {
-			pattern = "*.lua",
-			group = group,
-			callback = function()
-				map({ "i" }, keymap, function()
-					ls.snip_expand(snippet)
-				end, opts)
-			end,
-		})
-	end
-end
-
-cs("pop", { t("dilemma") }, "jxx")
+-- End Refactoring --
 
 return snippets, autosnippets
