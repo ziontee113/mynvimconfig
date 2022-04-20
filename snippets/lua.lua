@@ -71,18 +71,19 @@ cs({ -- github import for packer
 	i(1, ""),
 })
 
-cs( -- regex luaSnippet
+cs( -- regex LuaSnippet
 	"regexSnippet",
 	fmt(
 		[=[
-local {} = s({{ trig = "{}", regTrig = true, hidden = true }}, fmt([[ 
+cs( -- {}
+{{ trig = "{}", regTrig = true, hidden = true }}, fmt([[ 
 {}
 ]], {{
   {}
 }}))
       ]=],
 		{
-			i(1, ""),
+			i(1, "Description"),
 			i(2, ""),
 			i(3, ""),
 			i(4, ""),
@@ -90,11 +91,11 @@ local {} = s({{ trig = "{}", regTrig = true, hidden = true }}, fmt([[
 	),
 	"jre"
 )
-cs( -- multiline luaSnippet
+cs( -- multiline LuaSnippet
 	"luaSnippet",
 	fmt(
 		[=[
-local {} = s("{}", fmt([[ 
+cs("{}", fmt([[ -- {}
 {}
 ]], {{
   {}
@@ -102,22 +103,9 @@ local {} = s("{}", fmt([[
     ]=],
 		{
 			i(1, ""),
-			i(2, ""),
+			i(2, "Description"),
 			i(3, ""),
 			i(4, ""),
-		}
-	)
-)
-cs( -- parseSnippet
-	"parseSnippet",
-	fmt(
-		[[ 
-local {} = ls.parser.parse_snippet("{}", "{}")
-]],
-		{
-			i(1, ""),
-			i(2, ""),
-			i(3, ""),
 		}
 	)
 )

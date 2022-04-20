@@ -155,7 +155,7 @@ while ({}) {{
 		}
 	)
 )
-cs({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") }) -- console.log
+cs({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") }, "jcl") -- console.log
 
 -- Refactoring End --
 

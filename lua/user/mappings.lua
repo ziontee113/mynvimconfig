@@ -19,6 +19,8 @@ keymap("n", "<Leader><Leader>o", "o<Esc>O", opts)
 keymap("n", "<Leader><Leader>O", "O<Esc>o", opts)
 keymap("n", "<F31>", "<C-i>", opts) --> Ctrl + F7 for Wezterm
 
+vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <leader>cs /-- End Refactoring --<CR>O<Esc>O]])
+
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
