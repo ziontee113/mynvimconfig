@@ -41,7 +41,7 @@ require("Comment").setup()
 -- require("hop").setup()
 require("colorizer").setup(--[[ { scss = { mode = "foreground" } } ]]
 )
-require("fidget").setup({ window = { blend = 0 } })
+-- require("fidget").setup({ window = { blend = 0 } })
 
 -- Litee
 -- require("litee.lib").setup({

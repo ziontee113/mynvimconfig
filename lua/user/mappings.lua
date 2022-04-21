@@ -226,12 +226,12 @@ keymap("n", "<C-l>", "<c-w>l", opts)
 keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
 -- Terminal Hopping / Mapping
-keymap("t", "<C-j>", "<C-\\><C-N><C-W>j", opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-W>k", opts)
-keymap("t", "<C-h>", "<C-\\><C-N><C-W>h", opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-W>l", opts)
-keymap("t", "<A-l>", "<C-l>", opts) --> clear
-keymap("t", "<A-\\>", "<C-l>", opts) --> clear
+-- keymap("t", "<C-j>", "<C-\\><C-N><C-W>j", opts)
+-- keymap("t", "<C-k>", "<C-\\><C-N><C-W>k", opts)
+-- keymap("t", "<C-h>", "<C-\\><C-N><C-W>h", opts)
+-- keymap("t", "<C-l>", "<C-\\><C-N><C-W>l", opts)
+-- keymap("t", "<A-l>", "<C-l>", opts) --> clear
+-- keymap("t", "<A-\\>", "<C-l>", opts) --> clear
 -- Split Windows
 -- keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
 keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
@@ -273,7 +273,7 @@ keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader><C-g>", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 keymap("n", "<Leader>X", "<cmd>lua _TEST_TOGGLE()<cr>", nosilent_opts)
-keymap("n", "<S-Tab>", "<cmd>lua _TEST_TOGGLE()<cr>", opts)
+keymap("n", "<Tab>", "<cmd>lua _TEST_TOGGLE()<cr>", opts)
 
 --- Lightspeed
 keymap("x", "s", "<Plug>Lightspeed_omni_s", opts)
@@ -290,6 +290,7 @@ keymap("n", "mw", ":HopWordMW<cr>", opts)
 vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> q <cmd>HopLineStart<CR>]])
 
 -- Harpoon
+vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> <Tab> :q<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> q :q<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> Q :q<CR>]])
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 1 <CMD>lua require('harpoon.ui').nav_file(11)<CR>]])
@@ -304,7 +305,7 @@ vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 9 <CMD>lua require
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 0 <CMD>lua require('harpoon.ui').nav_file(20)<CR>]])
 
 keymap("n", "<Leader>ha", ":lua require('harpoon.mark').add_file()<cr>", opts)
-keymap("n", "<Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+keymap("n", "<S-Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 keymap("n", "<Leader>1", ":lua require('harpoon.ui').nav_file(1)<cr>", opts)
 keymap("n", "<Leader>2", ":lua require('harpoon.ui').nav_file(2)<cr>", opts)
 keymap("n", "<Leader>3", ":lua require('harpoon.ui').nav_file(3)<cr>", opts)

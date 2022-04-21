@@ -117,7 +117,7 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 	t("return "),
 })
 
--- Refactoring Begin --
+-- Begin Refactoring --
 
 cs( -- JS For Loop snippet
 	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
@@ -157,6 +157,6 @@ while ({}) {{
 )
 cs({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") }, "jcl") -- console.log
 
--- Refactoring End --
+-- End Refactoring --
 
 return snippets, autosnippets

@@ -167,15 +167,9 @@ local test_new = Terminal:new({
 	-- function to run on opening the terminal
 	on_open = function(term)
 		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<Tab>", "<cmd>close<CR>", { noremap = true, silent = true })
 		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-q>", "<cmd>close<CR>", { noremap = true, silent = true })
-		vim.api.nvim_buf_set_keymap(
-			term.bufnr,
-			"t",
-			"<S-Tab>",
-			":w<cr> | <cmd>close<CR>",
-			{ noremap = true, silent = true }
-		)
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "Q", "<cmd>close<CR>", { noremap = true, silent = true })
 	end,
 })
 
