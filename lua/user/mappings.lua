@@ -18,6 +18,7 @@ keymap("n", "<Leader>O", "O<Esc>O", opts)
 keymap("n", "<Leader><Leader>o", "o<Esc>O", opts)
 keymap("n", "<Leader><Leader>O", "O<Esc>o", opts)
 keymap("n", "<F31>", "<C-i>", opts) --> Ctrl + F7 for Wezterm
+keymap("n", "<A-,>", "owe will use this keymap for the great purpose<Esc>", opts) --> Ctrl + F7 for Wezterm
 
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)

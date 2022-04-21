@@ -8,6 +8,7 @@ vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_sni
 
 -- Set Config
 
+-- Virtual Text
 local types = require("luasnip.util.types")
 ls.config.set_config({
 	history = true, --keep around last snippet local to jump back
@@ -64,6 +65,11 @@ end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<a-l>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
+	else
+		-- print current time
+		local t = os.date("*t")
+		local time = string.format("%02d:%02d:%02d", t.hour, t.min, t.sec)
+		print(time)
 	end
 end)
 vim.keymap.set({ "i", "s" }, "<a-h>", function()
