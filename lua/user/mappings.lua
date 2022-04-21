@@ -357,4 +357,4 @@ vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>rr :Plant
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>pr :PlantumlOpen<CR>]])
 
 -- LuaSnip
-keymap("n", "<Leader>es", "<cmd>LuaSnipEdit<cr>", opts)
+keymap("n", "<Leader>E", "<cmd>LuaSnipEdit<cr>", opts)

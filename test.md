@@ -15,6 +15,6 @@ john --> smoke
 john --> drink
 mary --> eat
 mary --> drink
-jack --> eatSpagetti
+jack ..> eatSpagetti
 eatSpagetti <-- jayce
 @enduml
