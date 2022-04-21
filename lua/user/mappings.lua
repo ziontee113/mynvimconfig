@@ -19,8 +19,6 @@ keymap("n", "<Leader><Leader>o", "o<Esc>O", opts)
 keymap("n", "<Leader><Leader>O", "O<Esc>o", opts)
 keymap("n", "<F31>", "<C-i>", opts) --> Ctrl + F7 for Wezterm
 
-vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <leader>cs /-- End Refactoring --<CR>O<Esc>O]])
-
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
@@ -358,7 +356,8 @@ vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>rr :Plant
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>pr :PlantumlOpen<CR>]])
 
 -- LuaSnip
-keymap("n", "<Leader>E", "<cmd>LuaSnipEdit<cr>", opts)
+keymap("n", "<Leader><CR>", "<cmd>LuaSnipEdit<cr>", opts)
+vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <CR> /-- End Refactoring --<CR>O<Esc>O]])
 
 -- Supporting Acctress
 keymap("n", "<Leader>S", "<cmd>lua require('supporting-acctress').open_window()<cr>", opts)

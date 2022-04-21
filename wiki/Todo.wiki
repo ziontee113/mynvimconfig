@@ -1,5 +1,8 @@
 # Todo:
 
+- Hot snippet for <CR> purpose
+--> Multiple hot snippets in 1 basket.
+
 - Make a plugin that let the user open a small buffer (using something like telescope), to pick the lines from the buffer, then paste those lines to the current cursor position.
  -> Maybe utilizing Telescope is the answer.
 
