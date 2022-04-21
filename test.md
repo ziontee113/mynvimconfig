@@ -18,3 +18,4 @@ mary --> drink
 jack ..> eatSpagetti
 eatSpagetti <-- jayce
 @enduml
+

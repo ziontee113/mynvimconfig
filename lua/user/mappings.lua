@@ -141,6 +141,7 @@ endfunction
 keymap("n", "yad", ":% y<cr>", opts)
 keymap("n", "yl", "yy", opts)
 keymap("n", "yp", "yyp", opts)
+keymap("n", "gy", '"*yy', opts)
 keymap("x", "gy", '"*y', opts)
 keymap("n", "gp", '"*p', opts)
 
@@ -358,3 +359,6 @@ vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>pr :Plant
 
 -- LuaSnip
 keymap("n", "<Leader>E", "<cmd>LuaSnipEdit<cr>", opts)
+
+-- Supporting Acctress
+keymap("n", "<Leader>S", "<cmd>lua require('supporting-acctress').open_window()<cr>", opts)
