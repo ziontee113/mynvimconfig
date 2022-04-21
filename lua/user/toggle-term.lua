@@ -154,7 +154,7 @@ vim.api.nvim_set_keymap("n", "<leader>T", "<cmd>lua _VERTICAL_TERM_TOGGLE()<CR>"
 
 local test_new = Terminal:new({
 	hidden = true,
-	cmd = "nvim -c 'set scl=no' -c 'set scrolloff=2' -c 'set wrap' -c 'set linebreak' ~/.config/nvim/wiki/Todo.wiki",
+	cmd = "nvim -c 'set scl=no' -c 'set scrolloff=2' -c 'set wrap' -c 'set linebreak' -c 'set clipboard=unnamed' ~/.config/nvim/wiki/Todo.wiki",
 	close_on_exit = true,
 	count = 4,
 	direction = "float",
@@ -167,6 +167,7 @@ local test_new = Terminal:new({
 	-- function to run on opening the terminal
 	on_open = function(term)
 		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "q", "<cmd>close<CR>", { noremap = true, silent = true })
 		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-q>", "<cmd>close<CR>", { noremap = true, silent = true })
 		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<S-Tab>", "<cmd>close<CR>", { noremap = true, silent = true })
 	end,
