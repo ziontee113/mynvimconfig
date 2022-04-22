@@ -148,6 +148,7 @@ return require("packer").startup(function(use)
 	-- PreVim
 	-- use("previm/previm")
 
+	use("mracos/mermaid.vim")
 	use("aklt/plantuml-syntax")
 	-- use("tyru/open-browser.vim")
 	-- use("weirongxu/plantuml-previewer.vim")

@@ -6,7 +6,6 @@ local set = vim.opt
 -- autocmd BufWinLeave *.* mkview
 -- autocmd BufWinEnter *.* silent loadview
 -- ]])
-
 vim.cmd([[
 set foldmethod=marker
 ]])

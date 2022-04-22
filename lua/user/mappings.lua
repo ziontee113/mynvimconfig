@@ -48,8 +48,13 @@ vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> ' I'<Esc>]])
 
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <F12> :set filetype=markdown<CR>]])
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <F11> :set filetype=plantuml<CR>]])
+vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <F10> :set filetype=mermaid<CR>]])
 vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <F12> :set filetype=markdown<CR>]])
 vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <F11> :set filetype=plantuml<CR>]])
+vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <F10> :set filetype=mermaid<CR>]])
+vim.cmd([[autocmd FileType mermaid nnoremap <silent> <buffer> <F12> :set filetype=markdown<CR>]])
+vim.cmd([[autocmd FileType mermaid nnoremap <silent> <buffer> <F11> :set filetype=plantuml<CR>]])
+vim.cmd([[autocmd FileType mermaid nnoremap <silent> <buffer> <F10> :set filetype=mermaid<CR>]])
 
 -- Paragraph Jump
 keymap("n", "}", [[:keepjumps normal! }<cr>]], opts) --> Later will be used for quickfix list
