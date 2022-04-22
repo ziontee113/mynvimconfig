@@ -92,7 +92,7 @@ cs( -- {}
 			i(4, ""),
 		}
 	),
-	{ "*/snippets/*.lua", "jre" }
+	{ "*/snippets/*.lua", "<C-d>" }
 ) --}}}
 cs( -- multiline LuaSnippet{{{
 	"luaSnippet",
