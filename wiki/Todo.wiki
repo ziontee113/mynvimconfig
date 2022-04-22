@@ -1,5 +1,11 @@
 # Todo:
 
+- Transition to Pattern Type Folding
+  - Learn more about operations with Folds.
+- Try out continuous snippet streaming.
+
+-> We can have commands or keymaps to change the table of choices for the <A-l> key.
+
 - How can we utilize <A-l> when not having a choice snippet node?
   --> We can use <A-l> to "trigger a special function"
   ==> This is my draft:
@@ -19,10 +25,3 @@
   --> Maybe something like a "snippet basket" where we can store the snippets
       and then we can create the snippet from the basket.
   --> Maybe something like a snippet that takes in the current selection, disect it with Treesitter, then we can decide which part to place a placeholder.
-
-- Make a plugin that let the user open a small buffer (using something like telescope), to pick the lines from the buffer, then paste those lines to the current cursor position.
- -> Maybe utilizing Telescope is the answer.
-
-- Make a plugin that let plugin authors to easilty show help, info, keymaps, features, etc..
-
-- Make snippet(s) that generates OOP tests / boilerplate for learning / implementing Object Oriented Programming

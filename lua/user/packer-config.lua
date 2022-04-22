@@ -40,7 +40,8 @@ return require("packer").startup(function(use)
 	use("folke/todo-comments.nvim")
 
 	-- Tree Sitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "21ac88b9551072f49ba994f461f78794af43a5aa" })
+	-- use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "21ac88b9551072f49ba994f461f78794af43a5aa" })
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
 	use("p00f/nvim-ts-rainbow")
