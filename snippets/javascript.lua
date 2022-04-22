@@ -1,4 +1,4 @@
-local ls = require("luasnip")
+local ls = require("luasnip") --{{{
 
 local s = ls.s
 local i = ls.i
@@ -43,11 +43,11 @@ local function cs(trigger, nodes, keymap) --> cs stands for create snippet
 			end,
 		})
 	end
-end
+end --}}}
 
 -- Old Style --
 
-local if_fmt_arg = {
+local if_fmt_arg = { --{{{
 	i(1, ""),
 	c(2, { i(1, "LHS"), i(1, "10") }),
 	c(3, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
@@ -75,8 +75,8 @@ local if_snippet = s(
 		if_fmt_1,
 		if_fmt_2,
 	})
-)
-local function_fmt = fmt(
+) --}}}
+local function_fmt = fmt( --{{{
 	[[
 function {}({}) {{
   {}
@@ -90,9 +90,9 @@ function {}({}) {{
 )
 
 local function_snippet = s({ trig = "f[un]?", regTrig = true, hidden = true }, function_fmt)
-local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt))
+local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt)) --}}}
 
-local short_hand_if_fmt = fmt(
+local short_hand_if_fmt = fmt( --{{{
 	[[
 if ({}) {}
 {}
@@ -115,11 +115,11 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 		return snip.captures[1]
 	end),
 	t("return "),
-})
+}) --}}}
 
 -- Begin Refactoring --
 
-cs( -- JS For Loop snippet
+cs( -- JS For Loop snippet{{{
 	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
 	fmt(
 		[[
@@ -140,8 +140,8 @@ for (let {} = 0; {} < {}; {}++) {{
 			i(4),
 		}
 	)
-)
-cs( -- JS While Loop snippet
+) --}}}
+cs( -- JS While Loop snippet{{{
 	"while",
 	fmt(
 		[[
@@ -154,7 +154,7 @@ while ({}) {{
 			i(2, "// TODO:"),
 		}
 	)
-)
+) --}}}
 cs({ trig = "cl" }, { t("console.log("), i(1, ""), t(")") }, "jcl") -- console.log
 
 -- End Refactoring --

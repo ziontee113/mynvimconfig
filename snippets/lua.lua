@@ -1,4 +1,4 @@
-local ls = require("luasnip")
+local ls = require("luasnip") --{{{
 local s = ls.s
 local i = ls.i
 local t = ls.t
@@ -47,17 +47,17 @@ end
 local function lp(package_name) -- Load Package Function
 	package.loaded[package_name] = nil
 	return require(package_name)
-end
+end --}}}
 
 -- Start Refactoring --
 
-cs("CMD", { -- multiline vim.cmd
+cs("CMD", { -- multiline vim.cmd{{{
 	t({ "vim.cmd[[", "  " }),
 	i(1, ""),
 	t({ "", "]]" }),
-})
+}) --}}}
 cs("CMd", fmt("vim.cmd[[{}]]", { i(1, "") })) -- single line vim.cmd
-cs({ -- github import for packer
+cs({ -- github import for packer{{{
 	trig = "https://github%.com/([%w-%._]+)/([%w-%._]+)!",
 	regTrig = true,
 	hidden = true,
@@ -72,9 +72,9 @@ cs({ -- github import for packer
 	end),
 	t({ [["]], "" }),
 	i(1, ""),
-})
+}) --}}}
 
-cs( -- regex LuaSnippet
+cs( -- regex LuaSnippet{{{
 	"regexSnippet",
 	fmt(
 		[=[
@@ -93,8 +93,8 @@ cs( -- {}
 		}
 	),
 	{ "*/snippets/*.lua", "jre" }
-)
-cs( -- multiline LuaSnippet
+) --}}}
+cs( -- multiline LuaSnippet{{{
 	"luaSnippet",
 	fmt(
 		[=[
@@ -117,9 +117,9 @@ cs("{}", fmt([[ -- {}
 		}
 	),
 	{ "*/snippets/*.lua", "jcs" }
-)
+) --}}}
 
-cs( -- luaSnip choice node
+cs( -- luaSnip choice node{{{
 	"choice_node_snippet",
 	fmt(
 		[[ 
@@ -131,9 +131,9 @@ c({}, {{ {} }}),
 		}
 	),
 	{ "*/snippets/*.lua", "jcn" }
-)
+) --}}}
 
-cs( -- Lua function snippet
+cs( -- Lua function snippet{{{
 	"function",
 	fmt(
 		[[ 
@@ -148,8 +148,8 @@ end
 		}
 	),
 	"jff"
-)
-cs( -- Lua local variable snippet
+) --}}}
+cs( -- Lua local variable snippet{{{
 	"local",
 	fmt(
 		[[ 
@@ -158,7 +158,7 @@ local {} = {}
 		{ i(1, ""), i(2, "") }
 	),
 	"jj"
-)
+) --}}}
 
 -- End Refactoring --
 
