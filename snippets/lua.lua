@@ -98,7 +98,8 @@ cs( -- multiline LuaSnippet{{{
 	"luaSnippet",
 	fmt(
 		[=[
-cs("{}", fmt([[ -- {}
+cs("{}", fmt( -- {}
+[[
 {}
 ]], {{
   {}
@@ -158,6 +159,19 @@ local {} = {}
 		{ i(1, ""), i(2, "") }
 	),
 	"jj"
+) --}}}
+
+cs( --{{{ testing!
+	"testing",
+	fmt( -- Testing our theory
+		[[
+this is test in the {} line {}
+]],
+		{
+			i(1, ""),
+			c(2, { i(1, ""), sn(1, { t({ "", "two" }), i(1, "three"), c(2, { t("you"), t("and I ") }) }) }),
+		}
+	)
 ) --}}}
 
 -- End Refactoring --

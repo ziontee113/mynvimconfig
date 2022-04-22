@@ -18,3 +18,20 @@ mary --> drink
 jack ..> eatSpagetti
 eatSpagetti <-- jayce
 @enduml
+
+@startuml
+start
+:init;
+-> test of color;
+if (color?) is (<color:red>red) then
+:print red;
+else 
+:print not red;
+note right: no color
+endif
+partition End {
+:end;
+}
+-> this is the end;
+end
+@enduml
