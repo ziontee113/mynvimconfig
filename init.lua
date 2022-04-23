@@ -37,5 +37,6 @@ require("user.symbols-outline-config")
 require("myPlugs.global")
 
 -- S:imple Configs
+require("Comment").setup()
 require("colorizer").setup(--[[ { scss = { mode = "foreground" } } ]]
 )

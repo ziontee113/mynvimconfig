@@ -1,4 +1,6 @@
-local simpleTable = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
-local one, two = unpack(simpleTable)
+local table = {
+	pattern = "myPattern",
+	"",
+}
 
-print(one, two)
+P(table.pattern)

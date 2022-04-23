@@ -11,56 +11,71 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
--- --
-
-local utils = require("user.luasnip-config.utils")
-
--- --
-
 local snippets = {}
-local autosnippets = {}
+local autosnippets = {} --}}}
 
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true, buffer = true }
-local group = augroup("Lua Snippets", { clear = true })
+local group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
+local pattern = "*.lua"
 
-local function cs(trigger, nodes, keymap) --> cs stands for create snippet
+local function cs(trigger, nodes, opts) --{{{
 	local snippet = s(trigger, nodes)
-	table.insert(snippets, snippet)
+	local target_table = snippets
 
-	if keymap ~= nil then
-		local pattern = "*.lua"
-		if type(keymap) == "table" then
-			pattern = keymap[1]
-			keymap = keymap[2]
+	local keymaps = {}
+
+	if opts ~= nil then
+		-- check for custom pattern
+		if opts.pattern then
+			pattern = opts.pattern
 		end
-		autocmd("BufEnter", {
-			pattern = pattern,
-			group = group,
-			callback = function()
-				map({ "i" }, keymap, function()
-					ls.snip_expand(snippet)
-				end, opts)
-			end,
-		})
-	end
-end
 
-local function lp(package_name) -- Load Package Function
-	package.loaded[package_name] = nil
-	return require(package_name)
+		-- if opts is a string
+		if type(opts) == "string" then
+			if opts == "auto" then
+				target_table = autosnippets
+			else
+				table.insert(keymaps, { "i", opts })
+			end
+		end
+
+		-- if opts is a table
+		if opts ~= nil and type(opts) == "table" then
+			for _, keymap in ipairs(opts) do
+				if type(keymap) == "string" then
+					table.insert(keymaps, { "i", keymap })
+				else
+					table.insert(keymaps, keymap)
+				end
+			end
+		end
+
+		-- set autocmd for each keymap
+		if opts ~= "auto" then
+			for _, keymap in ipairs(keymaps) do
+				vim.api.nvim_create_autocmd("BufEnter", {
+					pattern = pattern,
+					group = group,
+					callback = function()
+						vim.keymap.set(keymap[1], keymap[2], function()
+							ls.snip_expand(snippet)
+						end, { noremap = true, silent = true, buffer = true })
+					end,
+				})
+			end
+		end
+	end
+
+	table.insert(target_table, snippet) -- insert snippet into appropriate table
 end --}}}
 
 -- Start Refactoring --
 
-cs("CMD", { -- multiline vim.cmd{{{
+cs("CMD", { -- [CMD] multiline vim.cmd{{{
 	t({ "vim.cmd[[", "  " }),
 	i(1, ""),
 	t({ "", "]]" }),
 }) --}}}
-cs("CMd", fmt("vim.cmd[[{}]]", { i(1, "") })) -- single line vim.cmd
+cs("cmd", fmt("vim.cmd[[{}]]", { i(1, "") })) -- single line vim.cmd
 cs({ -- github import for packer{{{
 	trig = "https://github%.com/([%w-%._]+)/([%w-%._]+)!",
 	regTrig = true,
@@ -78,7 +93,7 @@ cs({ -- github import for packer{{{
 	i(1, ""),
 }) --}}}
 
-cs( -- regex LuaSnippet{{{
+cs( -- {regexSnippet} LuaSnippet{{{
 	"regexSnippet",
 	fmt(
 		[=[
@@ -96,9 +111,9 @@ cs( -- {}
 			i(4, ""),
 		}
 	),
-	{ "*/snippets/*.lua", "<C-d>" }
+	{ pattern = "*/snippets/*.lua", "<C-d>" }
 ) --}}}
-cs( -- multiline LuaSnippet{{{
+cs( -- [luaSnippet] LuaSnippet{{{
 	"luaSnippet",
 	fmt(
 		[=[
@@ -121,10 +136,10 @@ cs("{}", fmt( -- {}
 			}),
 		}
 	),
-	{ "*/snippets/*.lua", "jcs" }
+	{ pattern = "*/snippets/*.lua", "jcs" }
 ) --}}}
 
-cs( -- luaSnip choice node{{{
+cs( -- choice_node_snippet luaSnip choice node{{{
 	"choice_node_snippet",
 	fmt(
 		[[ 
@@ -135,10 +150,10 @@ c({}, {{ {} }}),
 			i(2, ""),
 		}
 	),
-	{ "*/snippets/*.lua", "jcn" }
+	{ pattern = "*/snippets/*.lua", "jcn" }
 ) --}}}
 
-cs( -- Lua function snippet{{{
+cs( -- [function] Lua function snippet{{{
 	"function",
 	fmt(
 		[[ 
@@ -154,7 +169,23 @@ end
 	),
 	"jff"
 ) --}}}
-cs( -- Lua local variable snippet{{{
+cs( -- [local_function] Lua function snippet{{{
+	"local_function",
+	fmt(
+		[[ 
+local function {}({})
+  {}
+end
+]],
+		{
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}
+	),
+	"jlf"
+) --}}}
+cs( -- [local] Lua local variable snippet{{{
 	"local",
 	fmt(
 		[[ 
