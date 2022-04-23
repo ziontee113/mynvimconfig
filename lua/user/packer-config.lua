@@ -164,4 +164,5 @@ return require("packer").startup(function(use)
 
 	-- Registers
 	-- use("tversteeg/registers.nvim")
+	use("AckslD/nvim-neoclip.lua")
 end)

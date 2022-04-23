@@ -40,3 +40,13 @@ require("myPlugs.global")
 require("Comment").setup()
 require("colorizer").setup(--[[ { scss = { mode = "foreground" } } ]]
 )
+require("neoclip").setup({
+	keys = {
+		telescope = {
+			i = {
+				paste = "<A-p>",
+				paste_behind = "<A-o>",
+			},
+		},
+	},
+})
