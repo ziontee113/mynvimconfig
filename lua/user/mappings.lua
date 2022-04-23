@@ -386,3 +386,4 @@ keymap("n", "<Leader>S", "<cmd>lua require('supporting-acctress').open_window()<
 keymap("n", "<Leader>Z", "<cmd>lua require('zen-mode').toggle()<cr>", opts)
 -- Neoclip
 keymap("n", "<Leader>re", "<cmd>Telescope neoclip default<cr>", opts)
+keymap("i", "<C-r>", "<cmd>Telescope neoclip default<cr>", opts)

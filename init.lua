@@ -44,8 +44,9 @@ require("neoclip").setup({
 	keys = {
 		telescope = {
 			i = {
-				paste = "<A-p>",
-				paste_behind = "<A-o>",
+				paste = "<CR>",
+				paste_behind = "<BS>",
+				select = "<C-s>",
 			},
 		},
 	},
