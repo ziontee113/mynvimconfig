@@ -291,7 +291,7 @@ keymap("n", "<Leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader><C-g>", "<cmd>lua _LAZYGIT_BIG_TOGGLE()<cr>", nosilent_opts)
 keymap("n", "<Leader>N", "<cmd>lua _NPM_START()<cr>", nosilent_opts)
 keymap("n", "<Leader>X", "<cmd>lua _TEST_TOGGLE()<cr>", nosilent_opts)
-keymap("n", "<Tab>", "<cmd>lua _TEST_TOGGLE()<cr>", opts)
+keymap("n", "<S-Tab>", "<cmd>lua _TEST_TOGGLE()<cr>", opts)
 
 --- Lightspeed
 keymap("x", "s", "<Plug>Lightspeed_omni_s", opts)
@@ -323,7 +323,7 @@ vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 9 <CMD>lua require
 vim.cmd([[autocmd FileType harpoon nnoremap <silent> <buffer> 0 <CMD>lua require('harpoon.ui').nav_file(20)<CR>]])
 
 keymap("n", "<Leader>ha", ":lua require('harpoon.mark').add_file()<cr>", opts)
-keymap("n", "<S-Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+keymap("n", "<Tab>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 keymap("n", "<Leader>1", ":lua require('harpoon.ui').nav_file(1)<cr>", opts)
 keymap("n", "<Leader>2", ":lua require('harpoon.ui').nav_file(2)<cr>", opts)
 keymap("n", "<Leader>3", ":lua require('harpoon.ui').nav_file(3)<cr>", opts)

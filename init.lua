@@ -37,8 +37,5 @@ require("user.symbols-outline-config")
 require("myPlugs.global")
 
 -- S:imple Configs
-require("Comment").setup()
--- require("hop").setup()
 require("colorizer").setup(--[[ { scss = { mode = "foreground" } } ]]
 )
--- require("fidget").setup({ window = { blend = 0 } })

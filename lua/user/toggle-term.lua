@@ -14,7 +14,7 @@ require("toggleterm").setup({
 	-- },
 })
 
--- local status_ok, toggleterm = pcall(require, "toggleterm")
+-- local status_ok, toggleterm = pcall(require, "toggleterm"){{{
 -- if not status_ok then
 -- 	return
 -- end
@@ -52,9 +52,9 @@ require("toggleterm").setup({
 -- 	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
 -- end
 
--- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+-- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")}}}
 
-local Terminal = require("toggleterm.terminal").Terminal
+local Terminal = require("toggleterm.terminal").Terminal --{{{
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 local lazygit_big = Terminal:new({
 	cmd = "lazygit",
@@ -93,7 +93,8 @@ function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
-----
+----}}}
+
 local newTerm = Terminal:new({
 	hidden = true,
 	close_on_exit = false,
@@ -167,7 +168,7 @@ local test_new = Terminal:new({
 	-- function to run on opening the terminal
 	on_open = function(term)
 		vim.cmd("startinsert!")
-		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<Tab>", "<cmd>close<CR>", { noremap = true, silent = true })
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<S-Tab>", "<cmd>close<CR>", { noremap = true, silent = true })
 	end,
 })
 

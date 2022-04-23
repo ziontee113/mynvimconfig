@@ -57,8 +57,6 @@ return require("packer").startup(function(use)
 
 	use("mattn/emmet-vim")
 
-	use("j-hui/fidget.nvim")
-
 	-- Null-ls
 	use("jose-elias-alvarez/null-ls.nvim")
 
