@@ -81,7 +81,7 @@ local function same_toLowerCase_dynamic(nodes, index)
 		return sn(index, i(1, toCamelCase(arg[1][1])))
 	end, { nodes })
 end --}}}
-function previousLine()
+local function previousLine()
 	local currentLine = vim.api.nvim_win_get_cursor(0)
 	local prevLine = vim.api.nvim_buf_get_lines(0, currentLine - 1, currentLine, false)
 	P(prevLine)

@@ -1,4 +1,4 @@
-## UML and my problem
+## Todo
 
 Having UML diagrams is a good idea, but it's not the solution to my problem.
 
@@ -10,5 +10,3 @@ Which means I need to learn the skills to become the master. </br>
 I need to be a student, not a master, not yet.
 
 #### A good student doesn't necessary get praised
-
-Students don't need praises, they need knowledge & experience.

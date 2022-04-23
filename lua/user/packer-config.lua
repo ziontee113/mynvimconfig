@@ -156,10 +156,11 @@ return require("packer").startup(function(use)
 	-- Markdown preview
 	use({ "iamcco/markdown-preview.nvim" })
 
-	-- Litee
-	-- use("ldelossa/litee.nvim")
-	-- use("ldelossa/litee-calltree.nvim")
-	-- use("ldelossa/litee-symboltree.nvim")
-	-- use("ldelossa/litee-filetree.nvim")
-	-- use("ldelossa/litee-bookmarks.nvim")
+	-- Zen Mode
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({})
+		end,
+	})
 end)

@@ -64,7 +64,8 @@ vim.o.signcolumn = "yes:2"
 
 -- Fold
 vim.cmd([[set fdc=1]])
-vim.cmd([[hi FoldColumn guibg=none guifg=#008cff]])
+-- vim.cmd([[hi FoldColumn guibg=none guifg=#008cff]])
+vim.cmd([[hi FoldColumn guibg=none guifg=#262626]])
 vim.cmd([[:hi Folded guibg=NONE]])
 
 -- -- Codi Text Color
@@ -87,3 +88,6 @@ vim.cmd([[let g:mkdp_auto_close = 0]])
 -- Runtime Path
 vim.cmd([[set runtimepath+=~/.config/nvim/lua/myPlugs/syntax-tree-surfer/]])
 vim.cmd([[set runtimepath+=~/.config/nvim/lua/myPlugs/supporting-acctress/]])
+
+-- Twilight auto in
+vim.cmd([[ au VimEnter * silent! ZenMode]])

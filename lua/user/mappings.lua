@@ -381,3 +381,6 @@ vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <CR> /-- 
 
 -- Supporting Acctress
 keymap("n", "<Leader>S", "<cmd>lua require('supporting-acctress').open_window()<cr>", opts)
+
+-- Zen Mode
+keymap("n", "<Leader>Z", "<cmd>lua require('zen-mode').toggle()<cr>", opts)
