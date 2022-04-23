@@ -11,16 +11,16 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
-local snippets = {}
-local autosnippets = {} --}}}
+local snippets, autosnippets = {}, {} --}}}
 
 local group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
-local pattern = "*.lua"
+local file_pattern = "*.lua"
 
 local function cs(trigger, nodes, opts) --{{{
 	local snippet = s(trigger, nodes)
 	local target_table = snippets
 
+	local pattern = file_pattern
 	local keymaps = {}
 
 	if opts ~= nil then
