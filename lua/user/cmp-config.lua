@@ -90,7 +90,7 @@ cmp.setup({
 			vim_item.menu = ({
 				copilot = "[Copilot]",
 				luasnip = "[Snippet]",
-				treesitter = "[Treesitter]",
+				-- treesitter = "[Treesitter]",
 				nvim_lua = "[NVim Lua]",
 				nvim_lsp = "[LSP]",
 				buffer = "[Buffer]",
@@ -106,7 +106,7 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "buffer", max_item_count = 6 },
-		{ name = "treesitter", max_item_count = 6 },
+		-- { name = "treesitter", max_item_count = 6 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

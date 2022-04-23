@@ -69,7 +69,10 @@ keymap("n", "<A-k>", [[:keepjumps normal! {<cr>]], opts)
 keymap("x", "<C-j>", [[<cmd>keepjumps normal! j}k<cr>]], opts)
 keymap("x", "<C-k>", [[<cmd>keepjumps normal! k{j<cr>]], opts)
 
+--------------------------------------------------------------------------------
+
 -- Change-in Shortcuts --> We need more of this for lightning speed editting
+
 -- keymap("n", "ck", [[ciq]], term_opts)
 keymap("n", "ckk", [[ciq]], term_opts)
 keymap("n", "ckj", [[cilq]], term_opts)
@@ -78,6 +81,7 @@ keymap("n", "ckg", [[c3ilq]], term_opts)
 keymap("n", "ckl", [[cinq]], term_opts)
 keymap("n", "ck;", [[c2inq]], term_opts)
 keymap("n", "ck'", [[c3inq]], term_opts)
+
 -- keymap("n", "c,", [[cib]], term_opts)
 keymap("n", "c,,", [[cib]], term_opts)
 keymap("n", "c,j", [[cilb]], term_opts)
@@ -86,8 +90,11 @@ keymap("n", "c,g", [[c3ilb]], term_opts)
 keymap("n", "c,l", [[cinb]], term_opts)
 keymap("n", "c,;", [[c2inb]], term_opts)
 keymap("n", "c,'", [[c3inb]], term_opts)
+
 keymap("n", "cj", [[ciw]], opts)
 keymap("n", "cJ", [[ciW]], opts)
+
+--------------------------------------------------------------------------------
 
 -- Delete Shortcuts
 keymap("n", "dl", [[cc<Esc>]], opts)

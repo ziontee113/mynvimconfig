@@ -69,7 +69,7 @@ return require("packer").startup(function(use)
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lua")
 
-	use("ray-x/cmp-treesitter")
+	-- use("ray-x/cmp-treesitter")
 
 	-- Auto Import
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
@@ -157,9 +157,9 @@ return require("packer").startup(function(use)
 	use({ "iamcco/markdown-preview.nvim" })
 
 	-- Litee
-	use("ldelossa/litee.nvim")
-	use("ldelossa/litee-calltree.nvim")
-	use("ldelossa/litee-symboltree.nvim")
-	use("ldelossa/litee-filetree.nvim")
-	use("ldelossa/litee-bookmarks.nvim")
+	-- use("ldelossa/litee.nvim")
+	-- use("ldelossa/litee-calltree.nvim")
+	-- use("ldelossa/litee-symboltree.nvim")
+	-- use("ldelossa/litee-filetree.nvim")
+	-- use("ldelossa/litee-bookmarks.nvim")
 end)

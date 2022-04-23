@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-treesitter"] = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/cmp-treesitter",
-    url = "https://github.com/ray-x/cmp-treesitter"
-  },
   cmp_luasnip = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -158,31 +153,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
     url = "https://github.com/ggandor/lightspeed.nvim"
-  },
-  ["litee-bookmarks.nvim"] = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/litee-bookmarks.nvim",
-    url = "https://github.com/ldelossa/litee-bookmarks.nvim"
-  },
-  ["litee-calltree.nvim"] = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/litee-calltree.nvim",
-    url = "https://github.com/ldelossa/litee-calltree.nvim"
-  },
-  ["litee-filetree.nvim"] = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/litee-filetree.nvim",
-    url = "https://github.com/ldelossa/litee-filetree.nvim"
-  },
-  ["litee-symboltree.nvim"] = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/litee-symboltree.nvim",
-    url = "https://github.com/ldelossa/litee-symboltree.nvim"
-  },
-  ["litee.nvim"] = {
-    loaded = true,
-    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/litee.nvim",
-    url = "https://github.com/ldelossa/litee.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,

@@ -1,7 +1,0 @@
-# Tempo
-
-- I don't like typing variable names.
-
-- We don't like to solve problems because:
-  - We suck at reading
-  --> It overloads our brain's call stack
