@@ -1,14 +1,6 @@
 local set = vim.opt
 
--- Fold
--- vim.cmd([[set foldmethod=manual]])
--- vim.cmd([[
--- autocmd BufWinLeave *.* mkview
--- autocmd BufWinEnter *.* silent loadview
--- ]])
-vim.cmd([[
-set foldmethod=marker
-]])
+vim.cmd([[ set foldmethod=marker ]])
 
 set.number = true
 set.relativenumber = true
@@ -20,11 +12,6 @@ set.shiftwidth = 2
 vim.cmd([[set guicursor=n-v-c:block-Cursor]])
 
 vim.cmd([[au BufEnter * :set formatoptions-=cro]])
-
--- vim.g.tokyonight_style = "night"
--- vim.g.tokyonight_italic_functions = true
--- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
--- vim.cmd([[:colorscheme tokyonight]])
 
 set.hlsearch = false
 set.ignorecase = true
@@ -44,12 +31,10 @@ set.undofile = true
 set.splitright = true
 set.splitbelow = true
 
--- set.timeoutlen = 500
 set.timeoutlen = 1000
 set.cursorline = true
 
 set.showmode = false
--- vim.cmd([[:set cmdheight=2]])
 
 vim.wo.signcolumn = "yes"
 vim.cmd([[:colorscheme gruvbox]])
@@ -68,12 +53,6 @@ vim.cmd([[set fdc=1]])
 vim.cmd([[hi FoldColumn guibg=none guifg=#262626]])
 vim.cmd([[:hi Folded guibg=NONE]])
 
--- -- Codi Text Color
--- vim.cmd([[hi CodiVirtualText guifg=skyblue]])
--- vim.cmd([[
--- let g:codi#width=80
--- ]])
-
 -- Text Yank Post
 vim.cmd([[
 augroup highlight_yank
@@ -85,9 +64,9 @@ augroup END
 -- Markdown Previewer
 vim.cmd([[let g:mkdp_auto_close = 0]])
 
+-- Twilight auto in
+vim.cmd([[ au VimEnter * silent! ZenMode]])
+
 -- Runtime Path
 vim.cmd([[set runtimepath+=~/.config/nvim/lua/myPlugs/syntax-tree-surfer/]])
 vim.cmd([[set runtimepath+=~/.config/nvim/lua/myPlugs/supporting-acctress/]])
-
--- Twilight auto in
-vim.cmd([[ au VimEnter * silent! ZenMode]])
