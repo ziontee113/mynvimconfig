@@ -161,4 +161,7 @@ return require("packer").startup(function(use)
 			require("zen-mode").setup({})
 		end,
 	})
+
+	-- Registers
+	-- use("tversteeg/registers.nvim")
 end)

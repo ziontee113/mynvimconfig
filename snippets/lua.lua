@@ -91,7 +91,7 @@ cs({ -- github import for packer{{{
 	end),
 	t({ [["]], "" }),
 	i(1, ""),
-}) --}}}
+}, "auto") --}}}
 
 cs( -- {regexSnippet} LuaSnippet{{{
 	"regexSnippet",

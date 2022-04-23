@@ -142,7 +142,7 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 
 -- Begin Refactoring --
 
-cs( -- JS For Loop snippet{{{
+cs( -- for([%w_]+) JS For Loop snippet{{{
 	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
 	fmt(
 		[[
@@ -164,7 +164,7 @@ for (let {} = 0; {} < {}; {}++) {{
 		}
 	)
 ) --}}}
-cs( -- JS While Loop snippet{{{
+cs( -- [while] JS While Loop snippet{{{
 	"while",
 	fmt(
 		[[
