@@ -52,7 +52,7 @@ local function cs(trigger, nodes, opts) --{{{
 		-- set autocmd for each keymap
 		if opts ~= "auto" then
 			for _, keymap in ipairs(keymaps) do
-				vim.api.nvim_create_autocmd("BufEnter", {
+				vim.api.nvim_create_autocmd("BufRead", {
 					pattern = pattern,
 					group = group,
 					callback = function()
