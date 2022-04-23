@@ -52,7 +52,7 @@ local function cs(trigger, nodes, opts) --{{{
 		-- set autocmd for each keymap
 		if opts ~= "auto" then
 			for _, keymap in ipairs(keymaps) do
-				vim.api.nvim_create_autocmd("BufRead", {
+				vim.api.nvim_create_autocmd("BufEnter", {
 					pattern = pattern,
 					group = group,
 					callback = function()
@@ -132,7 +132,7 @@ cs("{}", fmt( -- {}
 			c(5, {
 				t(""),
 				fmt([[, "{}"]], { i(1, "keymap") }),
-				fmt([[, "{{ {}, {} }}"]], { i(1, "*/snippets/*.lua"), i(2, "keymap") }),
+				fmt([[, {{ pattern = "{}", {} }}]], { i(1, "*/snippets/*.lua"), i(2, "keymap") }),
 			}),
 		}
 	),
