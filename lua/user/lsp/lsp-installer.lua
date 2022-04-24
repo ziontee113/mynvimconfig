@@ -19,6 +19,14 @@ lsp_installer.on_server_ready(function(server)
 	if server.name == "sumneko_lua" then
 		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+
+		local luadev = require("lua-dev").setup({
+			-- add any options here, or leave empty to use the default settings
+			-- lspconfig = {
+			--   cmd = {"lua-language-server"}
+			-- },
+		})
+		opts = vim.tbl_deep_extend("force", luadev, opts)
 	end
 
 	if server.name == "pyright" then

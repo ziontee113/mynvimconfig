@@ -1,3 +1,5 @@
+-- require("impatient")
+-- require("nvim-startup").setup()
 -- A: Essentials:
 require("user.packer-config")
 require("user.settings")

@@ -90,8 +90,13 @@ local function lsp_keymaps(bufnr)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
-M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" or client.name == "html" or client.name == "jsonls" then
+M.on_attach = function(client, bufnr) --> disable document formatting for these LSPs
+	if
+		client.name == "tsserver"
+		or client.name == "html"
+		or client.name == "jsonls"
+		or client.name == "sumneko_lua"
+	then
 		client.resolved_capabilities.document_formatting = false
 	end
 	lsp_keymaps(bufnr)
