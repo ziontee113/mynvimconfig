@@ -10,6 +10,7 @@ usecase "Eat" as eat
 usecase "Eat Spagetti" as eatSpagetti
 usecase "Drink" as drink
 usecase "Smoke" as smoke
+
 john --> eat
 john --> smoke
 john --> drink

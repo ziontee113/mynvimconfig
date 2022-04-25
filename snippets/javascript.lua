@@ -139,6 +139,11 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 	end),
 	t("return "),
 }) --}}}
+table.insert(autosnippets, if_snippet)
+table.insert(autosnippets, short_hand_if_statement)
+table.insert(autosnippets, short_hand_if_statement_return_shortcut)
+table.insert(snippets, function_snippet)
+table.insert(snippets, function_snippet_func)
 
 -- Begin Refactoring --
 
