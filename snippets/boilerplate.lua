@@ -67,3 +67,9 @@ local function cs(trigger, nodes, opts) --{{{
 
 	table.insert(target_table, snippet) -- insert snippet into appropriate table
 end --}}}
+
+-- Snippets go here:
+
+-- End Snippet Zone --
+
+return snippets, autosnippets
