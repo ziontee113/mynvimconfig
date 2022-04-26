@@ -15,6 +15,7 @@ require("todo-comments").setup({
 		},
 		E = {
 			color = "#25BAA2",
+			alt = { "Optional" },
 		},
 		F = {
 			color = "#E0377A",
@@ -30,7 +31,7 @@ require("todo-comments").setup({
 		},
 		S = {
 			color = "#F7D731",
-			alt = { "SECTION" },
+			alt = { "SECTION", "MUST HAVE" },
 		},
 	},
 })

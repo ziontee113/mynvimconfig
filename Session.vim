@@ -9,14 +9,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess=aoO
-badd +10 test.md
-badd +313 lua/user/mappings.lua
-badd +22 snippets/lua.lua
-badd +7 test.js
-badd +57 snippets/markdown.lua
+badd +2 ~/.config/nvim/test_backup.md
+badd +19 init.lua
+badd +43 lua/user/luasnip-config/init.lua
+badd +18 ~/.config/nvim/lua/user/todo-comments-config.lua
+badd +36 ~/.config/nvim/lua/user/luasnip-config/tutorial.lua
 argglobal
 %argdel
-edit snippets/markdown.lua
+edit ~/.config/nvim/lua/user/luasnip-config/tutorial.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -36,7 +36,8 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 argglobal
-setlocal fdm=manual
+balt ~/.config/nvim/lua/user/todo-comments-config.lua
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -44,25 +45,20 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-1,17fold
-21,43fold
-let &fdl = &fdl
-let s:l = 57 - ((56 * winheight(0) + 24) / 48)
+let s:l = 36 - ((35 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 57
-normal! 0
-lcd ~/.config/nvim
+keepjumps 36
+normal! 03|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.config/nvim/snippets/lua.lua", ":p")) | buffer ~/.config/nvim/snippets/lua.lua | else | edit ~/.config/nvim/snippets/lua.lua | endif
+if bufexists(fnamemodify("~/.config/nvim/lua/user/todo-comments-config.lua", ":p")) | buffer ~/.config/nvim/lua/user/todo-comments-config.lua | else | edit ~/.config/nvim/lua/user/todo-comments-config.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/snippets/lua.lua
+  silent file ~/.config/nvim/lua/user/todo-comments-config.lua
 endif
-balt ~/.config/nvim/test.md
-setlocal fdm=manual
+balt ~/.config/nvim/lua/user/luasnip-config/tutorial.lua
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -70,32 +66,13 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-1,17fold
-48,53fold
-54,69fold
-73,90fold
-91,108fold
-109,121fold
-123,134fold
-136,150fold
-154,168fold
-169,177fold
-179,186fold
-187,193fold
-195,216fold
-let &fdl = &fdl
-195
-normal! zo
-let s:l = 22 - ((21 * winheight(0) + 24) / 48)
+let s:l = 18 - ((17 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 22
-normal! 027|
-lcd ~/.config/nvim
+keepjumps 18
+normal! 023|
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
 exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
 tabnext 1

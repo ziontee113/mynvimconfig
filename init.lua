@@ -1,5 +1,3 @@
--- require("impatient")
--- require("nvim-startup").setup()
 -- A: Essentials:
 require("user.packer-config")
 require("user.settings")
@@ -28,7 +26,7 @@ require("user.evil-lualine")
 require("user.autopairs")
 require("user.todo-comments-config")
 require("user.pretty-fold-config")
--- H: Snippets
+-- H: LuaSnip
 require("user.luasnip-config")
 -- J: Advanced Plugins
 require("user.vim-submode-config")

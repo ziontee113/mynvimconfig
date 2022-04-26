@@ -1,3 +1,21 @@
+local function base_map(lhs)
+	return function(mode)
+		return function(rhs)
+			vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
+		end
+	end
+end
+
+function _G.noremap(lhs)
+	return base_map(lhs)("")
+end
+function _G.inoremap(lhs)
+	return base_map(lhs)("i")
+end
+
+noremap("<LEADER>w")(":set wrap!<CR>")
+inoremap("jk")("<ESC>")
+
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local nosilent_opts = { noremap = true, silent = false }
