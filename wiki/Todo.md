@@ -1,7 +1,6 @@
 # Todos
 
-- Make a tutorial on how to install & setup LuaSnip
-  - It will be called: How to setup LuaSnip? [LuaSnip Tutorial]
+- Add sibling jumping functionalities to syntax-tree-surfer.
 - Create the cheat.sh NeoVim plugin.
 
 - We need to master the vim registers.{{{
