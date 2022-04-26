@@ -70,6 +70,106 @@ end --}}}
 
 -- Start Refactoring --
 
+cs({ -- github import for packer{{{
+	trig = "https://github%.com/([%w-%._]+)/([%w-%._]+)!",
+	regTrig = true,
+	hidden = true,
+}, {
+	t([[use "]]),
+	f(function(_, snip)
+		return snip.captures[1]
+	end),
+	t("/"),
+	f(function(_, snip)
+		return snip.captures[2]
+	end),
+	t({ [["]], "" }),
+	i(1, ""),
+}, "auto") --}}}
+
+cs( -- [luaSnippet] LuaSnippet{{{
+	"luaSnippet",
+	fmt(
+		[=[
+cs("{}", fmt( -- {}
+[[
+{}
+]], {{
+  {}
+  }}){})
+    ]=],
+		{
+			i(1, ""),
+			i(2, "Description"),
+			i(3, ""),
+			i(4, ""),
+			c(5, {
+				t(""),
+				fmt([[, "{}"]], { i(1, "keymap") }),
+				fmt([[, {{ pattern = "{}", {} }}]], { i(1, "*/snippets/*.lua"), i(2, "keymap") }),
+			}),
+		}
+	),
+	{ pattern = "*/snippets/*.lua", "jcs" }
+) --}}}
+
+cs( -- choice_node_snippet luaSnip choice node{{{
+	"choice_node_snippet",
+	fmt(
+		[[ 
+c({}, {{ {} }}),
+]],
+		{
+			i(1, ""),
+			i(2, ""),
+		}
+	),
+	{ pattern = "*/snippets/*.lua", "jcn" }
+) --}}}
+
+cs( -- [function] Lua function snippet{{{
+	"function",
+	fmt(
+		[[ 
+function {}({})
+  {}
+end
+]],
+		{
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}
+	),
+	"jff"
+) --}}}
+cs( -- [local_function] Lua function snippet{{{
+	"local_function",
+	fmt(
+		[[ 
+local function {}({})
+  {}
+end
+]],
+		{
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}
+	),
+	"jlf"
+) --}}}
+cs( -- [local] Lua local variable snippet{{{
+	"local",
+	fmt(
+		[[ 
+local {} = {}
+  ]],
+		{ i(1, ""), i(2, "") }
+	),
+	"jj"
+) --}}}
+
 -- End Refactoring --
 
 return snippets, autosnippets
