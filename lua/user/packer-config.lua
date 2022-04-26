@@ -78,7 +78,6 @@ return require("packer").startup(function(use)
 	-- LuaSnip
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
-	-- use("rafamadriz/friendly-snippets")
 
 	-- Text Formatting / Comments / Targets / Brackets
 	use("wellle/targets.vim")

@@ -2,9 +2,9 @@ local lualine = require("lualine")
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "powerline",
+		-- theme = "powerline",
 		-- theme = "gruvbox",
-		-- theme = "tokyonight",
+		theme = "tokyonight",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {},

@@ -38,6 +38,7 @@ set.showmode = false
 
 vim.wo.signcolumn = "yes"
 vim.cmd([[:colorscheme gruvbox]])
+-- vim.cmd([[:colorscheme tokyonight]])
 vim.cmd([[:highlight SignColumn guibg=NONE]])
 
 -- Wez Term
