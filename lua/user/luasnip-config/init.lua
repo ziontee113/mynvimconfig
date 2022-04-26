@@ -29,25 +29,23 @@ ls.config.set_config({
 -- Key Mapping --{{{
 
 vim.keymap.set({ "i", "s" }, "<c-s>", "<Esc>:w<cr>")
--- vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr><C-c><C-c>i')
 vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr><C-c><C-c>')
--- vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
 
 vim.keymap.set({ "i", "s" }, "<a-p>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand()
 	end
 end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-k>", function()
-	if ls.expand_or_jumpable() then
-		ls.expand_or_jump()
-	end
-end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-j>", function()
-	if ls.jumpable() then
-		ls.jump(-1)
-	end
-end, { silent = true })
+-- vim.keymap.set({ "i", "s" }, "<C-k>", function()
+-- 	if ls.expand_or_jumpable() then
+-- 		ls.expand_or_jump()
+-- 	end
+-- end, { silent = true })
+-- vim.keymap.set({ "i", "s" }, "<C-j>", function()
+-- 	if ls.jumpable() then
+-- 		ls.jump(-1)
+-- 	end
+-- end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<A-y>", "<Esc>o", { silent = true })
 

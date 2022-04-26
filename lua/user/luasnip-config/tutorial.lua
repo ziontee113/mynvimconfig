@@ -1,10 +1,22 @@
 ---- MUST HAVE ----{{{
-
-require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" }) --> snippet location to load from
-
--- Key Maps
 local ls = require("luasnip")
 
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+
+ls.config.set_config({
+	history = true, -- keep around last snippet local to jump back
+	updateevents = "TextChanged,TextChangedI", -- update changes as you type (when using functionNode or Dynamic Node)
+	enable_autosnippets = true,
+	ext_opts = {
+		[require("luasnip.util.types").choiceNode] = {
+			active = {
+				virt_text = { { "●", "GruvboxOrange" } },
+			},
+		},
+	},
+})
+
+-- Key Maps
 vim.keymap.set({ "i", "s" }, "<a-p>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand()
@@ -34,24 +46,6 @@ vim.keymap.set({ "i", "s" }, "<a-h>", function()
 end) --}}}
 
 ---- Optional ----{{{
-
--- Virtual Text
-local types = require("luasnip.util.types")
-
-ls.config.set_config({
-	history = true, --keep around last snippet local to jump back
-	updateevents = "TextChanged,TextChangedI", --update changes as you type (when using functionNode or Dynamic Node)
-	enable_autosnippets = true,
-	ext_opts = {
-		[types.choiceNode] = {
-			active = {
-				virt_text = { { "●", "GruvboxOrange" } },
-			},
-		},
-	},
-})
-
--- More Optional Configs
 
 ls.config.setup({ store_selection_keys = "<A-p>" }) --> store selection for $TM_SELECTED_TEXT
 
