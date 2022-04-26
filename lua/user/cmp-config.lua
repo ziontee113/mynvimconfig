@@ -46,7 +46,7 @@ cmp.setup({
 		-- 	["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		-- 	["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		-- 	["<C-i>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		-- 	--		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		--	["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
@@ -87,8 +87,7 @@ cmp.setup({
 			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			vim_item.menu = ({
 				copilot = "[Copilot]",
-				luasnip = "[Snippet]",
-				-- treesitter = "[Treesitter]",
+				luasnip = "LuaSnip",
 				nvim_lua = "[NVim Lua]",
 				nvim_lsp = "[LSP]",
 				buffer = "[Buffer]",
@@ -104,7 +103,6 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "buffer", max_item_count = 6 },
-		-- { name = "treesitter", max_item_count = 6 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

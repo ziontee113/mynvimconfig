@@ -6,15 +6,15 @@ local function base_map(lhs)
 	end
 end
 
-function _G.noremap(lhs)
+function _G.nnoremap(lhs)
 	return base_map(lhs)("")
 end
 function _G.inoremap(lhs)
 	return base_map(lhs)("i")
 end
 
-noremap("<LEADER>w")(":set wrap!<CR>")
-inoremap("jk")("<ESC>")
+-- noremap("<LEADER>w")(":set wrap!<CR>")
+-- inoremap("jk")("<ESC>")
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -37,6 +37,7 @@ keymap("n", "<Leader><Leader>o", "o<Esc>O", opts)
 keymap("n", "<Leader><Leader>O", "O<Esc>o", opts)
 keymap("n", "<F31>", "<C-i>", opts) --> Ctrl + F7 for Wezterm
 keymap("n", "<A-,>", "owe will use this keymap for the great purpose<Esc>", opts) --> Ctrl + F7 for Wezterm
+keymap("n", "<Leader>\\", ":Twilight<cr>", opts) --> Twilight
 
 -- Experimental Mappings
 keymap("n", "<A-i>", [[<C-i>]], opts)

@@ -1,10 +1,11 @@
 -- Autocommand PackerSync on this file save
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost ~/.config/nvim/lua/user/packer-config.lua source <afile> | PackerSync
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost ~/.config/nvim/lua/user/packer-config.lua source <afile> | PackerSync
+--   augroup end
+-- ]])
+
 -- Use a protected call so we don't error out on first use
 local status_ok, _ = pcall(require, "packer")
 if not status_ok then
@@ -158,7 +159,11 @@ return require("packer").startup(function(use)
 	use({
 		"folke/zen-mode.nvim",
 		config = function()
-			require("zen-mode").setup({})
+			require("zen-mode").setup({
+				plugins = {
+					twilight = { enabled = false },
+				},
+			})
 		end,
 	})
 	use("folke/twilight.nvim")
