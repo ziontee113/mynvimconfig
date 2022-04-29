@@ -1,7 +1,7 @@
 local ls = require("luasnip") --{{{
-local s = ls.s
-local i = ls.i
-local t = ls.t
+local s = ls.s --> snippet
+local i = ls.i --> insert node
+local t = ls.t --> text node
 
 local d = ls.dynamic_node
 local c = ls.choice_node
@@ -195,6 +195,8 @@ local {} = {}
 	),
 	"jj"
 ) --}}}
+
+-- Tutorial Snippets go here --
 
 -- End Refactoring --
 

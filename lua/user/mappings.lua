@@ -402,10 +402,6 @@ vim.cmd([[autocmd FileType markdown nnoremap <silent> <buffer> <Leader>pr :Markd
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>rr :PlantumlOpen<CR>]])
 vim.cmd([[autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>pr :PlantumlOpen<CR>]])
 
--- LuaSnip
-keymap("n", "<Leader><CR>", "<cmd>LuaSnipEdit<cr>", opts)
-vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <CR> /-- End Refactoring --<CR>O<Esc>O]])
-
 -- Supporting Acctress
 keymap("n", "<Leader>S", "<cmd>lua require('supporting-acctress').open_window()<cr>", opts)
 
