@@ -31,7 +31,7 @@ keymap("n", "<Leader>cn", '<cmd>lua require"dap".continue()<CR>', opts)
 keymap("n", "<Leader>dk", '<cmd>:lua require"dap".up()<CR>', opts)
 keymap("n", "<Leader>dj", '<cmd>:lua require"dap".down()<CR>', opts)
 
-keymap("n", "B", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+-- keymap("n", "B", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
 keymap("n", "<leader>dB", '<cmd>lua require"dap".set_breakpoint()<CR>', opts)
 
 keymap("n", "<leader>ds", '<cmd>lua require"dap.ui.widgets".scopes()<CR>', opts)
