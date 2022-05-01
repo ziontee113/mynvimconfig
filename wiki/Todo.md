@@ -1,6 +1,9 @@
 # Todos
 
 - Create a plugin for Get visual selection into short notes.
+  --> Note-taking programmer style!
+  --> Cycleable choices when in a line.
+
 - Create a plugin (or using LuaSnip) to create LuaSwap.
 - Create a StackOverflow Plugin.
 

@@ -13,15 +13,16 @@ function _G.inoremap(lhs)
 	return base_map(lhs)("i")
 end
 
-nnoremap("ch")(":Cheat<CR>")
+nnoremap("co")("o<Esc>c0")
 -- inoremap("jk")("<ESC>")
+
+--------------------------------------------------------------------------------
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local nosilent_opts = { noremap = true, silent = false }
 local term_opts = { silent = true }
 
-keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 

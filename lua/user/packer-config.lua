@@ -98,6 +98,7 @@ return require("packer").startup(function(use)
 	use("kana/vim-submode")
 
 	-- Folds
+	use("anuvyklack/nvim-keymap-amend")
 	use("anuvyklack/pretty-fold.nvim")
 
 	-- Github Copilot
