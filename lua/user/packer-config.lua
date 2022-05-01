@@ -81,10 +81,11 @@ return require("packer").startup(function(use)
 
 	-- Text Formatting / Comments / Targets / Brackets
 	use("wellle/targets.vim")
-	use("numToStr/Comment.nvim")
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
 	use("mg979/vim-visual-multi")
+
+	use("numToStr/Comment.nvim")
 
 	-- Test Jumping / Hopping
 	use("phaazon/hop.nvim")
@@ -179,4 +180,7 @@ return require("packer").startup(function(use)
 	-- use("RishabhRD/popfix")
 	-- use("RishabhRD/nvim-cheat.sh")
 	use("dbeniamine/cheat.sh-vim")
+
+	-- Smooth Scroll
+	use("karb94/neoscroll.nvim")
 end)
