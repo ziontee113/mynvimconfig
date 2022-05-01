@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/beacon.nvim",
     url = "https://github.com/rainbowhxch/beacon.nvim"
   },
+  ["cheat.sh-vim"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/cheat.sh-vim",
+    url = "https://github.com/dbeniamine/cheat.sh-vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/cmp-buffer",

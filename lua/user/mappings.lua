@@ -13,7 +13,7 @@ function _G.inoremap(lhs)
 	return base_map(lhs)("i")
 end
 
--- noremap("<LEADER>w")(":set wrap!<CR>")
+nnoremap("ch")(":Cheat<CR>")
 -- inoremap("jk")("<ESC>")
 
 local keymap = vim.api.nvim_set_keymap
@@ -220,6 +220,14 @@ keymap("v", "<A-Up>", "'<-2<CR>gv=gv", opts)
 -- keymap("n", "w", "b", opts)
 -- keymap("n", "e", "w", opts)
 -- keymap("n", "b", "e", opts)
+keymap("n", "w", "b", opts)
+keymap("n", "b", "w", opts)
+keymap("n", "W", "B", opts)
+keymap("n", "B", "W", opts)
+keymap("x", "w", "b", opts)
+keymap("x", "b", "w", opts)
+keymap("x", "W", "B", opts)
+keymap("x", "B", "W", opts)
 
 -- Insert Mode Remap
 keymap("i", "<C-u>", "<Esc>viWgUgi", opts) --> go UPPERCASE current word

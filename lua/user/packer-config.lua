@@ -1,10 +1,10 @@
 -- Autocommand PackerSync on this file save
--- vim.cmd([[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost ~/.config/nvim/lua/user/packer-config.lua source <afile> | PackerSync
---   augroup end
--- ]])
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost ~/.config/nvim/lua/user/packer-config.lua source <afile> | PackerSync
+  augroup end
+]])
 
 -- Use a protected call so we don't error out on first use
 local status_ok, _ = pcall(require, "packer")
@@ -173,4 +173,9 @@ return require("packer").startup(function(use)
 
 	-- Lua Dev
 	use("folke/lua-dev.nvim")
+
+	-- Cheat Sheet
+	-- use("RishabhRD/popfix")
+	-- use("RishabhRD/nvim-cheat.sh")
+	use("dbeniamine/cheat.sh-vim")
 end)
