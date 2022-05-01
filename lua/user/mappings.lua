@@ -13,9 +13,6 @@ function _G.inoremap(lhs)
 	return base_map(lhs)("i")
 end
 
-nnoremap("co")("o<Esc>c0")
--- inoremap("jk")("<ESC>")
-
 --------------------------------------------------------------------------------
 
 local keymap = vim.api.nvim_set_keymap
@@ -32,6 +29,7 @@ vim.cmd([[:command! Qa qa]])
 vim.cmd([[:command! QA qa]])
 
 -- Experimental Mappings
+keymap("n", "co", "o<Esc>c0", opts)
 keymap("n", "<Leader>o", "2o<Esc>i", opts)
 keymap("n", "<Leader>O", "O<Esc>O", opts)
 keymap("n", "<Leader><Leader>o", "o<Esc>O", opts)
