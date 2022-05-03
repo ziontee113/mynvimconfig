@@ -304,6 +304,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/pretty-fold.nvim",
     url = "https://github.com/anuvyklack/pretty-fold.nvim"
   },
+  ["quick-scope"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/quick-scope",
+    url = "https://github.com/unblevable/quick-scope"
+  },
   ripgrep = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/ripgrep",
