@@ -1,4 +1,4 @@
--- Autocommand PackerSync on this file save
+-- Autocommand PackerSync on this file save{{{
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -10,7 +10,7 @@ vim.cmd([[
 local status_ok, _ = pcall(require, "packer")
 if not status_ok then
 	return
-end
+end --}}}
 
 -- Install your plugins here
 return require("packer").startup(function(use)
