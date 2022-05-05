@@ -54,6 +54,3 @@ require("neoclip").setup({
 require("user.twilight-config")
 -- Smooth Scrolling
 require("user.neoscroll-config")
-
--- Quickscope
-vim.cmd("let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']")

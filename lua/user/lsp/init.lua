@@ -9,11 +9,11 @@ require("user.lsp.handlers").setup()
 vim.cmd([[
 augroup tex_mappings
     autocmd!
-    autocmd FileType html,css,scss,javascript,javascriptreact,typescript,typescriptreact call EmmetSetup()
+    autocmd FileType scss call EmmetSetup()
 augroup END
 ]])
 
 vim.cmd([[function! EmmetSetup()
   " :lua require("lspconfig").emmet_ls.setup({ filetypes = { "html", "css", "scss", "javascript", "typescript", "typescriptreact", "javascriptreact" } })
-  :lua require("lspconfig").emmet_ls.setup({ filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescriptreact" } })
+  :lua require("lspconfig").emmet_ls.setup({ filetypes = { "html", "css", "scss" } })
 endfunction]])
