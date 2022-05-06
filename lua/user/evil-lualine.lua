@@ -221,13 +221,13 @@ ins_right({
 	cond = conditions.hide_in_width,
 })
 
-ins_right({
-	function()
-		return "▊"
-	end,
-	color = { fg = colors.blue },
-	padding = { left = 1 },
-})
+-- ins_right({
+-- 	function()
+-- 		return "▊"
+-- 	end,
+-- 	color = { fg = colors.blue },
+-- 	padding = { left = 1 },
+-- })
 
 -- Now don't forget to initialize lualine
 lualine.setup(config)

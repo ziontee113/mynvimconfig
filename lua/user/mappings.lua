@@ -267,6 +267,9 @@ keymap("i", "", "<Esc>gccA", term_opts)
 keymap("x", "", "gc", term_opts)
 keymap("n", "gO", "gcO", term_opts)
 keymap("n", "gA", "gcA", term_opts)
+-- More comment remaps
+keymap("x", "z/", "gc", term_opts)
+keymap("x", "<Leader>/", "gc", term_opts)
 
 -- Move Cursor Between Windows
 -- keymap("n", "<C-j>", "<c-w>j", opts)
