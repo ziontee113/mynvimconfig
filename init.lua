@@ -1,6 +1,3 @@
--- Language Specific Settings
-require("user.lang-settings.markdown")
-
 -- A: Essentials:
 require("user.packer-config")
 require("user.settings")
@@ -53,7 +50,8 @@ require("neoclip").setup({
 		},
 	},
 })
--- Twilight
 require("user.twilight-config")
--- Smooth Scrolling
 require("user.neoscroll-config")
+
+--  NOTE: Language Specific Settings
+require("user.lang-settings.markdown")

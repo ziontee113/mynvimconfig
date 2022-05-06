@@ -216,7 +216,7 @@ cs( -- Nvim Autocmd in Lua{{{
 	fmt(
 		[[
 vim.api.nvim_create_autocmd("{}", {{
-  pattern = "{}",
+  {},
   group = {},
   callback = function()
     {}
@@ -224,10 +224,10 @@ vim.api.nvim_create_autocmd("{}", {{
 }})
     ]],
 		{
-			i(1, "event"),
-			i(2, "pattern"),
+			i(1, "BufEnter"),
+			c(2, { fmt([[pattern = "{}"]], { i(1) }), fmt([[buffer = {}]], { i(1, "0") }) }),
 			i(3, "group"),
-			i(4, "callback"),
+			i(4, "-- callback"),
 		}
 	)
 ) --}}}
