@@ -117,7 +117,6 @@ return require("packer").startup(function(use)
 	-- 		end, 100)
 	-- 	end,
 	-- })
-
 	-- use({
 	-- 	"zbirenbaum/copilot-cmp",
 	-- 	after = { "copilot.lua", "nvim-cmp" },
@@ -147,15 +146,11 @@ return require("packer").startup(function(use)
 	-- Wilder Cmdline
 	use("gelguy/wilder.nvim")
 
-	-- PreVim
-	-- use("previm/previm")
-
+	-- Markdown Related
 	use("mracos/mermaid.vim")
 	use("aklt/plantuml-syntax")
 	-- use("tyru/open-browser.vim")
 	-- use("weirongxu/plantuml-previewer.vim")
-
-	-- Markdown preview
 	use({ "iamcco/markdown-preview.nvim" })
 
 	-- Zen Mode
@@ -178,7 +173,7 @@ return require("packer").startup(function(use)
 	-- Lua Dev
 	use("folke/lua-dev.nvim")
 
-	-- Cheat Sheet
+	-- cheat.sh
 	-- use("RishabhRD/popfix")
 	-- use("RishabhRD/nvim-cheat.sh")
 	use("dbeniamine/cheat.sh-vim")
