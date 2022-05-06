@@ -96,7 +96,7 @@ ins_left({
 	color = function()
 		-- auto change color according to neovims mode
 		local mode_color = {
-			n = colors.red,
+			n = colors.magenta,
 			i = colors.green,
 			v = colors.blue,
 			[""] = colors.blue,
@@ -128,17 +128,6 @@ ins_left({
 -- 	cond = conditions.buffer_not_empty,
 -- })
 
-ins_left({ "location" })
-
-ins_left({
-	"filename",
-	path = 1,
-	cond = conditions.buffer_not_empty,
-	color = { fg = colors.magenta, gui = "bold" },
-})
-
-ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
-
 ins_left({
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
@@ -150,43 +139,54 @@ ins_left({
 	},
 })
 
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
+ins_left({ "location" })
+
+ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
+
 ins_left({
 	function()
 		return "%="
 	end,
 })
 
+-- Insert mid section. You can make any number of sections in neovim :)
+-- for lualine it's any number greater then 2
 ins_left({
-	-- Lsp server name .
-	function()
-		local msg = "No Active Lsp"
-		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-		local clients = vim.lsp.get_active_clients()
-
-		local combined_lsp_names = ""
-
-		for _, client in ipairs(clients) do
-			local filetypes = client.config.filetypes
-			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-				if client.name ~= "null-ls" then
-					if string.find(combined_lsp_names, client.name) == nil then
-						combined_lsp_names = client.name .. " " .. combined_lsp_names
-					end
-				end
-			end
-		end
-
-		if combined_lsp_names ~= nil then
-			return combined_lsp_names
-		else
-			return msg
-		end
-	end,
-	icon = " LSP:",
-	color = { fg = "#ffffff", gui = "bold" },
+	"filename",
+	path = 1,
+	cond = conditions.buffer_not_empty,
+	color = { fg = colors.magenta, gui = "bold" },
 })
+
+-- ins_left({
+-- 	-- Lsp server name .
+-- 	function()
+-- 		local msg = "No Active Lsp"
+-- 		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+-- 		local clients = vim.lsp.get_active_clients()
+--
+-- 		local combined_lsp_names = ""
+--
+-- 		for _, client in ipairs(clients) do
+-- 			local filetypes = client.config.filetypes
+-- 			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+-- 				if client.name ~= "null-ls" then
+-- 					if string.find(combined_lsp_names, client.name) == nil then
+-- 						combined_lsp_names = client.name .. " " .. combined_lsp_names
+-- 					end
+-- 				end
+-- 			end
+-- 		end
+--
+-- 		if combined_lsp_names ~= nil then
+-- 			return combined_lsp_names
+-- 		else
+-- 			return msg
+-- 		end
+-- 	end,
+-- 	icon = " LSP:",
+-- 	color = { fg = "#ffffff", gui = "bold" },
+-- })
 
 -- Add components to right sections
 -- ins_right({
