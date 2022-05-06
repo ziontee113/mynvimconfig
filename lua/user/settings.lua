@@ -2,8 +2,10 @@ local set = vim.opt
 
 vim.cmd([[ set foldmethod=marker ]])
 
-set.number = true
-set.relativenumber = true
+set.number = false
+set.relativenumber = false
+-- set.number = true
+-- set.relativenumber = true
 set.cursorline = false
 set.expandtab = true
 set.tabstop = 2
@@ -49,7 +51,7 @@ vim.cmd([[set mouse=a]])
 vim.o.signcolumn = "yes:2"
 
 -- Fold
-vim.cmd([[set fdc=1]])
+-- vim.cmd([[set fdc=1]])
 -- vim.cmd([[hi FoldColumn guibg=none guifg=#008cff]])
 vim.cmd([[hi FoldColumn guibg=none guifg=#262626]])
 vim.cmd([[:hi Folded guibg=NONE]])
