@@ -1,3 +1,6 @@
+-- Language Specific Settings
+require("user.lang-settings.markdown")
+
 -- A: Essentials:
 require("user.packer-config")
 require("user.settings")

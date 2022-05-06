@@ -65,8 +65,8 @@ augroup END
 -- Markdown Previewer
 vim.cmd([[let g:mkdp_auto_close = 0]])
 
--- Zen Mode auto in
-vim.cmd([[ au VimEnter * silent! ZenMode]])
+-- -- Zen Mode auto in
+-- vim.cmd([[ au VimEnter * silent! ZenMode]])
 
 -- Runtime Path
 vim.cmd([[set runtimepath+=~/.config/nvim/lua/myPlugs/syntax-tree-surfer/]])

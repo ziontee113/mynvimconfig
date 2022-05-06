@@ -1,0 +1,1 @@
+-- write autocmd for .md files to set wrap settings in that .md buffer

@@ -117,7 +117,8 @@ cs( -- [luaSnippet] LuaSnippet{{{
 	"luaSnippet",
 	fmt(
 		[=[
-cs("{}", fmt( -- {}
+cs( -- {}
+"{}", fmt(
 [[
 {}
 ]], {{
@@ -125,10 +126,10 @@ cs("{}", fmt( -- {}
   }}){})
     ]=],
 		{
-			i(1, ""),
 			i(2, "Description"),
-			i(3, ""),
-			i(4, ""),
+			i(1, "Trigger"),
+			i(3),
+			i(4),
 			c(5, {
 				t(""),
 				fmt([[, "{}"]], { i(1, "keymap") }),
@@ -153,6 +154,7 @@ c({}, {{ {} }}),
 	{ pattern = "*/snippets/*.lua", "jcn" }
 ) --}}}
 
+-- Lua Basic Snippets --
 cs( -- [function] Lua function snippet{{{
 	"function",
 	fmt(
@@ -194,6 +196,40 @@ local {} = {}
 		{ i(1, ""), i(2, "") }
 	),
 	"jj"
+) --}}}
+
+-- Nvim Autocmds --
+cs( --{{{ -- Nvim Augroup in Lua
+	"augroup",
+	fmt(
+		[[
+local {} = vim.api.nvim_create_augroup("{}", {{ clear = true }})
+]],
+		{
+			i(1, "group"),
+			i(2, "Augroup Name"),
+		}
+	)
+) --}}}
+cs( -- Nvim Autocmd in Lua{{{
+	"autocmd",
+	fmt(
+		[[
+vim.api.nvim_create_autocmd("{}", {{
+  pattern = "{}",
+  group = {},
+  callback = function()
+    {}
+  end,
+}})
+    ]],
+		{
+			i(1, "event"),
+			i(2, "pattern"),
+			i(3, "group"),
+			i(4, "callback"),
+		}
+	)
 ) --}}}
 
 -- Tutorial Snippets go here --
