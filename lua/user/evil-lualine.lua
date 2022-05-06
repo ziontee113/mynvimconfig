@@ -6,7 +6,8 @@ local lualine = require("lualine")
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = '#202328',
+  bg       = 'NONE',
+  -- bg       = '#202328',
   fg       = '#bbc2cf',
   yellow   = '#ECBE7B',
   cyan     = '#008080',
@@ -78,18 +79,19 @@ local function ins_right(component)
 	table.insert(config.sections.lualine_x, component)
 end
 
-ins_left({
-	function()
-		return "▊"
-	end,
-	color = { fg = colors.blue }, -- Sets highlighting of component
-	padding = { left = 0, right = 1 }, -- We don't need space before this
-})
+-- ins_left({
+-- 	function()
+-- 		return "▊"
+-- 	end,
+-- 	color = { fg = colors.blue }, -- Sets highlighting of component
+-- 	padding = { left = 0, right = 1 }, -- We don't need space before this
+-- })
 
 ins_left({
 	-- mode component
 	function()
-		return ""
+		-- return ""
+		return "=>"
 	end,
 	color = function()
 		-- auto change color according to neovims mode
@@ -120,11 +122,13 @@ ins_left({
 	padding = { right = 1 },
 })
 
-ins_left({
-	-- filesize component
-	"filesize",
-	cond = conditions.buffer_not_empty,
-})
+-- ins_left({
+-- 	-- filesize component
+-- 	"filesize",
+-- 	cond = conditions.buffer_not_empty,
+-- })
+
+ins_left({ "location" })
 
 ins_left({
 	"filename",
@@ -132,8 +136,6 @@ ins_left({
 	cond = conditions.buffer_not_empty,
 	color = { fg = colors.magenta, gui = "bold" },
 })
-
-ins_left({ "location" })
 
 ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
 

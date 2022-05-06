@@ -9,20 +9,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess=aoO
-badd +2 ~/.config/nvim/test_backup.md
-badd +19 init.lua
-badd +43 lua/user/luasnip-config/init.lua
-badd +18 ~/.config/nvim/lua/user/todo-comments-config.lua
-badd +36 ~/.config/nvim/lua/user/luasnip-config/tutorial.lua
+badd +10 lua/toybox.lua
+badd +325 ~/.config/nvim/lua/user/mappings.lua
+badd +3 ~/.config/nvim/snippets/lua.lua
+badd +76 lua/references.lua
 argglobal
 %argdel
-edit ~/.config/nvim/lua/user/luasnip-config/tutorial.lua
+edit lua/toybox.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -33,10 +36,13 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe '2resize ' . ((&lines * 39 + 26) / 52)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
+exe '3resize ' . ((&lines * 10 + 26) / 52)
+exe 'vert 3resize ' . ((&columns * 106 + 106) / 213)
 argglobal
-balt ~/.config/nvim/lua/user/todo-comments-config.lua
+balt ~/.config/nvim/snippets/lua.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -45,19 +51,19 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 36 - ((35 * winheight(0) + 24) / 49)
+let s:l = 10 - ((9 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 36
-normal! 03|
+keepjumps 10
+normal! 056|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.config/nvim/lua/user/todo-comments-config.lua", ":p")) | buffer ~/.config/nvim/lua/user/todo-comments-config.lua | else | edit ~/.config/nvim/lua/user/todo-comments-config.lua | endif
+if bufexists(fnamemodify("lua/references.lua", ":p")) | buffer lua/references.lua | else | edit lua/references.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/lua/user/todo-comments-config.lua
+  silent file lua/references.lua
 endif
-balt ~/.config/nvim/lua/user/luasnip-config/tutorial.lua
+balt lua/toybox.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -66,15 +72,29 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 18 - ((17 * winheight(0) + 24) / 49)
+let s:l = 76 - ((29 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 18
-normal! 023|
+keepjumps 76
+normal! 033|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
+argglobal
+enew
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+wincmd w
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe '2resize ' . ((&lines * 39 + 26) / 52)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
+exe '3resize ' . ((&lines * 10 + 26) / 52)
+exe 'vert 3resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

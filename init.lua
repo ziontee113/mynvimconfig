@@ -19,8 +19,8 @@ require("user.gitsigns")
 require("user.toggle-term")
 require("user.wilder-config")
 -- F: Status Line
-require("user.lualine-config")
--- require("user.evil-lualine")
+-- require("user.lualine-config")
+require("user.evil-lualine")
 -- require("user.bufferline-config")
 -- G: Editing
 require("user.autopairs")

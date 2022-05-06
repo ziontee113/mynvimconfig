@@ -3,7 +3,13 @@
 local group = vim.api.nvim_create_augroup("Markdown Wrap Settings", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
+	pattern = { "markdown" },
 	group = group,
 	command = "setlocal wrap",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "plantuml" },
+	group = group,
+	command = "setlocal nowrap",
 })

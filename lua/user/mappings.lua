@@ -51,7 +51,7 @@ keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
 -- keymap("n", "<C-o>", [[zM<C-o>]], opts)
 keymap("i", "<A-u>", [[<C-o>u]], opts)
-keymap("n", "<S-y>", "J", opts)
+-- keymap("n", "<S-y>", "J", opts)
 -- keymap(
 -- 	"n",
 -- 	"'",
@@ -184,8 +184,7 @@ function! ToggleLocationList()
 endfunction
 ]])
 
--- Yank / Paste mapping
-keymap("n", "yad", ":% y<cr>", opts)
+-- Yank / Paste mapping keymap("n", "yad", ":% y<cr>", opts)
 keymap("n", "yl", "yy", opts)
 keymap("n", "yp", "yyp", opts)
 keymap("n", "gy", '"*yy', opts)
