@@ -66,8 +66,8 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-path")
 	-- use("hrsh7th/cmp-cmdline")
 
-	-- use("hrsh7th/nvim-cmp")
-	use({ "hrsh7th/nvim-cmp", commit = "433af3dffce64cbd3f99bdac9734768a6cc41951" })
+	use("hrsh7th/nvim-cmp")
+	-- use({ "hrsh7th/nvim-cmp", commit = "433af3dffce64cbd3f99bdac9734768a6cc41951" })
 
 	use("hrsh7th/cmp-nvim-lua")
 

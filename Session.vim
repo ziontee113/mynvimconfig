@@ -9,23 +9,18 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess=aoO
-badd +10 lua/toybox.lua
-badd +325 ~/.config/nvim/lua/user/mappings.lua
-badd +3 ~/.config/nvim/snippets/lua.lua
-badd +76 lua/references.lua
+badd +29 lua/user/lsp/init.lua
+badd +28 lua/user/lsp/lsp-installer.lua
+badd +14 ~/.config/nvim/lua/user/lsp/settings/sumneko_lua.lua
 argglobal
 %argdel
-edit lua/toybox.lua
+edit lua/user/lsp/init.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -37,12 +32,9 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
-exe '2resize ' . ((&lines * 39 + 26) / 52)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
-exe '3resize ' . ((&lines * 10 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 106 + 106) / 213)
 argglobal
-balt ~/.config/nvim/snippets/lua.lua
+balt lua/user/lsp/lsp-installer.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -51,19 +43,19 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 10 - ((9 * winheight(0) + 25) / 50)
+let s:l = 29 - ((28 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 10
-normal! 056|
+keepjumps 29
+normal! 038|
 wincmd w
 argglobal
-if bufexists(fnamemodify("lua/references.lua", ":p")) | buffer lua/references.lua | else | edit lua/references.lua | endif
+if bufexists(fnamemodify("lua/user/lsp/lsp-installer.lua", ":p")) | buffer lua/user/lsp/lsp-installer.lua | else | edit lua/user/lsp/lsp-installer.lua | endif
 if &buftype ==# 'terminal'
-  silent file lua/references.lua
+  silent file lua/user/lsp/lsp-installer.lua
 endif
-balt lua/toybox.lua
+balt ~/.config/nvim/lua/user/lsp/settings/sumneko_lua.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -72,29 +64,15 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 76 - ((29 * winheight(0) + 19) / 39)
+let s:l = 28 - ((27 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 76
-normal! 033|
-wincmd w
-argglobal
-enew
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+keepjumps 28
+normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
-exe '2resize ' . ((&lines * 39 + 26) / 52)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
-exe '3resize ' . ((&lines * 10 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

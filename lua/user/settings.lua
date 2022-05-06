@@ -76,4 +76,7 @@ vim.cmd([[set runtimepath+=~/.config/nvim/lua/myPlugs/supporting-acctress/]])
 
 -- LSP Help Background
 vim.cmd([[:hi NormalFloat guibg=NONE]])
-vim.cmd([[:hi FloatBorder guibg=NONE]])
+-- vim.cmd([[:hi FloatBorder guibg=NONE]])
+
+-- vim.cmd(":hi MsgArea guifg=#008cff")
+vim.cmd(":hi MsgArea guifg=skyblue")

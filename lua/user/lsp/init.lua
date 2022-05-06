@@ -1,19 +1,23 @@
-local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok then
-	return
-end
-
-require("user.lsp.lsp-installer")
+require("nvim-lsp-installer").setup({})
 require("user.lsp.handlers").setup()
+local lspconfig = require("lspconfig")
 
-vim.cmd([[
-augroup tex_mappings
-    autocmd!
-    autocmd FileType scss call EmmetSetup()
-augroup END
-]])
+--- New Start
 
-vim.cmd([[function! EmmetSetup()
-  " :lua require("lspconfig").emmet_ls.setup({ filetypes = { "html", "css", "scss", "javascript", "typescript", "typescriptreact", "javascriptreact" } })
-  :lua require("lspconfig").emmet_ls.setup({ filetypes = { "html", "css", "scss" } })
-endfunction]])
+local servers = { "sumneko_lua", "tsserver", "html", "cssls" }
+for _, lsp in pairs(servers) do
+	local opts = {
+		on_attach = require("user.lsp.handlers").on_attach,
+		capabilities = require("user.lsp.handlers").capabilities,
+	}
+
+	if lsp == "sumneko_lua" then
+		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
+		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+
+		local luadev = require("lua-dev").setup({})
+		opts = vim.tbl_deep_extend("force", luadev, opts)
+	end
+
+	lspconfig[lsp].setup(opts)
+end
