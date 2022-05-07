@@ -127,7 +127,7 @@ cs( -- {}
     ]=],
 		{
 			i(2, "Description"),
-			i(1, "Trigger"),
+			i(1, "trigger"),
 			i(3),
 			i(4),
 			c(5, {
@@ -198,7 +198,7 @@ local {} = {}
 	"jj"
 ) --}}}
 
--- Nvim Autocmds --
+-- Nvim Related --
 cs( --{{{ -- Nvim Augroup in Lua
 	"augroup",
 	fmt(
@@ -228,6 +228,31 @@ vim.api.nvim_create_autocmd("{}", {{
 			c(2, { fmt([[pattern = "{}"]], { i(1) }), fmt([[buffer = {}]], { i(1, "0") }) }),
 			i(3, "group"),
 			i(4, "-- callback"),
+		}
+	)
+) --}}}
+cs( -- Nvim Set Keymap - vim.keymap.set{{{
+	"keymap",
+	fmt(
+		[[
+vim.keymap.set({}, "{}", {}, {{ noremap = true, silent = true }})
+]],
+		{
+			c(1, { fmt([["{}"]], { i(1, "mode") }), fmt([[{{"{}", "{}"}}]], { i(1, "n"), i(2, "x") }) }),
+			i(2, "keymap"),
+			c(3, {
+				fmt([["{}"]], { i(1, "right_hand_side") }),
+				fmt(
+					[[
+function()
+  {}
+end
+      ]],
+					{
+						i(1, "-- Do something here"),
+					}
+				),
+			}),
 		}
 	)
 ) --}}}
