@@ -153,6 +153,19 @@ c({}, {{ {} }}),
 	),
 	{ pattern = "*/snippets/*.lua", "jcn" }
 ) --}}}
+cs( -- LuaSnip fmt(){{{
+	"fmt",
+	fmt(
+		[=[
+fmt([[{}]], {{ {} }}),
+]=],
+		{
+			i(1, ""),
+			i(2, ""),
+		}
+	),
+	{ pattern = "*/snippets/*.lua", "jfm" }
+) --}}}
 
 -- Lua Basic Snippets --
 cs( -- [function] Lua function snippet{{{
