@@ -251,7 +251,7 @@ cs( -- Nvim Set Keymap - vim.keymap.set{{{
 vim.keymap.set({}, "{}", {}, {{ noremap = true, silent = true }})
 ]],
 		{
-			c(1, { fmt([["{}"]], { i(1, "mode") }), fmt([[{{"{}", "{}"}}]], { i(1, "n"), i(2, "x") }) }),
+			c(1, { fmt([["{}"]], { i(1, "n") }), fmt([[{{"{}", "{}"}}]], { i(1, "n"), i(2, "x") }) }),
 			i(2, "keymap"),
 			c(3, {
 				fmt([["{}"]], { i(1, "right_hand_side") }),
