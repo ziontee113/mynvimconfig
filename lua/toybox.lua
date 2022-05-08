@@ -38,9 +38,23 @@ function M.select_test()
 		end,
 	}, function(choice)
 		N(choice, nil, "select_test")
+		N(choice)
 	end)
 end
 
+function M.split_test()
+	vim.cmd("vsplit")
+	local win = vim.api.nvim_get_current_win()
+	local buf = vim.api.nvim_create_buf(true, true)
+	vim.api.nvim_win_set_buf(win, buf)
+
+	vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, { "let x = 100", "const y = 999" })
+	vim.api.nvim_buf_set_option(buf, "filetype", "javascript")
+end
+
+vim.keymap.set("n", "<Leader>jk", function()
+	M.split_test()
+end, { noremap = true })
 vim.keymap.set("n", "<Leader>x", function()
 	M.input_test()
 end, { noremap = true })
