@@ -11,3 +11,7 @@ R = function(name)
 	RELOAD(name)
 	return require(name)
 end
+
+N = function(message, level, title)
+	vim.notify(vim.inspect(message), level or "info", { title = title })
+end

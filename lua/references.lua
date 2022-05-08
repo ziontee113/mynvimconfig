@@ -66,10 +66,13 @@ function M.nodes()
 	local cursor_node = root:descendant_for_range(lnum, col, lnum, col)
 	local iter = keys_iter()
 	local hints = {}
+
+	-- highlight the entire document in gray
 	local win_info = vim.fn.getwininfo(api.nvim_get_current_win())[1]
 	for i = win_info.topline, win_info.botline do
 		api.nvim_buf_add_highlight(0, ns, "TSNodeUnmatched", i - 1, 0, -1)
 	end
+
 	local function register_node(node)
 		local key = iter()
 		local start_row, start_col, end_row, end_col = node:range()
@@ -84,6 +87,7 @@ function M.nodes()
 		hints[key] = node
 	end
 	register_node(cursor_node)
+
 	local parent = cursor_node:parent()
 	while parent do
 		register_node(parent)

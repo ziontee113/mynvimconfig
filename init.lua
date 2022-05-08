@@ -33,6 +33,7 @@ require("user.vim-submode-config")
 -- Cursor Flasher
 require("user.beacon-config")
 require("user.symbols-outline-config")
+require("user.notify-config")
 --Custom Plugins
 require("myPlugs.global")
 

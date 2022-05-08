@@ -180,4 +180,7 @@ return require("packer").startup(function(use)
 
 	-- Smooth Scroll
 	use("karb94/neoscroll.nvim")
+
+	-- Notify
+	use("rcarriga/nvim-notify")
 end)

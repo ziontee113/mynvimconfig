@@ -141,7 +141,7 @@ cs( -- {}
 ) --}}}
 
 cs( -- choice_node_snippet luaSnip choice node{{{
-	"choice_node_snippet",
+	"luaSnip_choice_node",
 	fmt(
 		[[ 
 c({}, {{ {} }}),
@@ -248,7 +248,7 @@ cs( -- Nvim Set Keymap - vim.keymap.set{{{
 	"keymap",
 	fmt(
 		[[
-vim.keymap.set({}, "{}", {}, {{ noremap = true, silent = true }})
+vim.keymap.set({}, "{}", {}, {{ {} }})
 ]],
 		{
 			c(1, { fmt([["{}"]], { i(1, "n") }), fmt([[{{"{}", "{}"}}]], { i(1, "n"), i(2, "x") }) }),
@@ -266,6 +266,7 @@ end
 					}
 				),
 			}),
+			c(4, { t("noremap = true, slient = true"), t("silent = true"), t("noremap = true") }),
 		}
 	)
 ) --}}}

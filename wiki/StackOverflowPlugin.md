@@ -1,20 +1,17 @@
 # Stack Overflow Plugin for Neovim
 
+#### Deadline:
+- 23:59 Tuesday May 10th 2022.
+
 #### Features:
 
-- Getting answers from Stack Overflow in Neovim.
+- From User Input, the plugin get the answers from Stack Overflow API, then display those answers in Neovim.
 
 @startuml
-left to right direction
-actor "User" as user
-actor "API" as api
-rectangle {
-  usecase "Ask Question" as askQuestion
-  usecase "Get Answers" as getAnswers
-  user -- askQuestion
-  askQuestion ..> getAnswers : <<includes>>
-  getAnswers -- api
-  usecase "Read Answer" as readAnswer
-  user -- readAnswer
-}
+start
+:User Input
+Question;
+:API Request;
+:Display Answer;
+end
 @enduml
