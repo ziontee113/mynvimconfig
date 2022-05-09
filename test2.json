@@ -1,0 +1,375 @@
+{
+  "items": [
+    {
+      "tags": ["pytorch", "inference", "openvino", "model-optimizer"],
+      "owner": {
+        "account_id": 1781984,
+        "reputation": 730,
+        "user_id": 1624463,
+        "user_type": "registered",
+        "accept_rate": 100,
+        "profile_image": "https://www.gravatar.com/avatar/7aa4ebf1c627fbdc4090e22c0fbc9d44?s=256&d=identicon&r=PG",
+        "display_name": "dragon7",
+        "link": "https://stackoverflow.com/users/1624463/dragon7"
+      },
+      "view_count": 22,
+      "score": 1,
+      "last_activity_date": 1651839520,
+      "creation_date": 1651839520,
+      "article_id": 72141365,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/intel/articles/72141365/how-to-convert-pytorch-model-and-run-it-with-openvino",
+      "title": "How to convert PyTorch model and run it with OpenVINO™"
+    },
+    {
+      "tags": ["gitlab", "integration", "merge-request", "status-check"],
+      "owner": {
+        "account_id": 22215267,
+        "reputation": 339,
+        "user_id": 16453817,
+        "user_type": "registered",
+        "profile_image": "https://lh3.googleusercontent.com/a/AATXAJxi4KPF1HGbgN1kAqdPMASrDoLZKxCyDdB5iASw=k-s256",
+        "display_name": "Cesar Saavedra",
+        "link": "https://stackoverflow.com/users/16453817/cesar-saavedra"
+      },
+      "view_count": 1248,
+      "score": 19,
+      "last_activity_date": 1651505312,
+      "creation_date": 1631711060,
+      "last_edit_date": 1651505312,
+      "article_id": 69193717,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/gitlab/articles/69193717/how-to-use-external-status-checks-for-merge-requests",
+      "title": "How to use external status checks for merge requests"
+    },
+    {
+      "tags": [
+        "google-cloud-platform",
+        "google-admin-sdk",
+        "service-accounts",
+        ".net-framework-4.8"
+      ],
+      "owner": {
+        "account_id": 7087204,
+        "reputation": 59,
+        "user_id": 5423664,
+        "user_type": "registered",
+        "profile_image": "https://i.stack.imgur.com/3MuYd.jpg?s=256&g=1",
+        "display_name": "Ilan Laloum",
+        "link": "https://stackoverflow.com/users/5423664/ilan-laloum"
+      },
+      "view_count": 31,
+      "score": 0,
+      "last_activity_date": 1651277456,
+      "creation_date": 1651277456,
+      "article_id": 72064744,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/google-cloud/articles/72064744/how-to-user-service-account-on-behalf-of-google-workspace-domain-administrator",
+      "title": "How to user service account on behalf of Google Workspace domain administrator - AdminAPI/.NET Framework"
+    },
+    {
+      "tags": ["python", "machine-learning", "google-cloud-platform", "cloud"],
+      "owner": {
+        "account_id": 24818168,
+        "reputation": 19,
+        "user_id": 18698772,
+        "user_type": "registered",
+        "profile_image": "https://lh3.googleusercontent.com/a/AATXAJzFNYAgp2jRZlnxUVzFr3Dt1Jqs43VQPUnphu__=k-s256",
+        "display_name": "Aditya Dixit",
+        "link": "https://stackoverflow.com/users/18698772/aditya-dixit"
+      },
+      "view_count": 62,
+      "score": 1,
+      "last_activity_date": 1650020020,
+      "creation_date": 1650020020,
+      "article_id": 71883132,
+      "article_type": "knowledge-article",
+      "link": "https://stackoverflow.com/collectives/google-cloud/articles/71883132/machine-learningfundamentals",
+      "title": "Machine Learning(Fundamentals)"
+    },
+    {
+      "tags": ["openvino", "intel-oneapi", "oneapi"],
+      "owner": {
+        "account_id": 24704467,
+        "reputation": 9,
+        "user_id": 18595442,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/95fc682b52f5c4507f5733afc57c80f4?s=256&d=identicon&r=PG",
+        "display_name": "TamalAcharya",
+        "link": "https://stackoverflow.com/users/18595442/tamalacharya"
+      },
+      "view_count": 63,
+      "score": 0,
+      "last_activity_date": 1649063139,
+      "creation_date": 1649063139,
+      "article_id": 71734589,
+      "article_type": "knowledge-article",
+      "link": "https://stackoverflow.com/collectives/intel/articles/71734589/intel-distribution-of-openvino-toolkit-optimised-deep-learning-by-tamal",
+      "title": "Intel&#174; Distribution of OpenVINO™ toolkit --- Optimised Deep Learning – By Tamal Acharya"
+    },
+    {
+      "tags": ["deep-learning", "intel", "openvino", "encoder-decoder"],
+      "owner": {
+        "account_id": 3375070,
+        "reputation": 112,
+        "user_id": 2833360,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/efef14887f09f4510ec9c5dc79b15ef3?s=256&d=identicon&r=PG&f=1",
+        "display_name": "Ragesh Hajela",
+        "link": "https://stackoverflow.com/users/2833360/ragesh-hajela"
+      },
+      "view_count": 106,
+      "score": 2,
+      "last_activity_date": 1648834050,
+      "creation_date": 1648787751,
+      "last_edit_date": 1648834050,
+      "article_id": 71701870,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/intel/articles/71701870/how-to-use-model-downloader-for-encoder-decoder-models-using-openvino-toolkit",
+      "title": "How to use Model Downloader for Encoder Decoder Models using OpenVINO™ toolkit"
+    },
+    {
+      "tags": ["deep-learning", "pytorch", "intel", "openvino"],
+      "owner": {
+        "account_id": 3375070,
+        "reputation": 112,
+        "user_id": 2833360,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/efef14887f09f4510ec9c5dc79b15ef3?s=256&d=identicon&r=PG&f=1",
+        "display_name": "Ragesh Hajela",
+        "link": "https://stackoverflow.com/users/2833360/ragesh-hajela"
+      },
+      "view_count": 323,
+      "score": 5,
+      "last_activity_date": 1648806068,
+      "creation_date": 1648788845,
+      "last_edit_date": 1648806068,
+      "article_id": 71701977,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/intel/articles/71701977/how-to-use-nncf-8-bit-quantization-to-accelerate-the-inference-of-pytorch-models",
+      "title": "How to use NNCF 8-bit Quantization to accelerate the inference of PyTorch models"
+    },
+    {
+      "tags": ["react-native", "expo", "google-cloud-storage"],
+      "owner": {
+        "account_id": 17175266,
+        "reputation": 1986,
+        "user_id": 12431576,
+        "user_type": "registered",
+        "profile_image": "https://i.stack.imgur.com/carJX.jpg?s=256&g=1",
+        "display_name": "BYIRINGIRO Emmanuel",
+        "link": "https://stackoverflow.com/users/12431576/byiringiro-emmanuel"
+      },
+      "view_count": 83,
+      "score": 2,
+      "last_activity_date": 1648308639,
+      "creation_date": 1648308639,
+      "article_id": 71629397,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/google-cloud/articles/71629397/upload-image-with-expo-and-firebase-cloud-storage",
+      "title": "Upload Image with Expo and Firebase Cloud Storage"
+    },
+    {
+      "tags": ["tensorflow", "openvino", "inference-engine", "model-optimizer"],
+      "owner": {
+        "account_id": 1781984,
+        "reputation": 730,
+        "user_id": 1624463,
+        "user_type": "registered",
+        "accept_rate": 100,
+        "profile_image": "https://www.gravatar.com/avatar/7aa4ebf1c627fbdc4090e22c0fbc9d44?s=256&d=identicon&r=PG",
+        "display_name": "dragon7",
+        "link": "https://stackoverflow.com/users/1624463/dragon7"
+      },
+      "view_count": 314,
+      "score": 4,
+      "last_activity_date": 1647952578,
+      "creation_date": 1645449182,
+      "last_edit_date": 1647952578,
+      "article_id": 71206927,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/intel/articles/71206927/how-to-convert-tensorflow-model-and-run-it-with-openvino",
+      "title": "How to convert TensorFlow model and run it with OpenVINO™"
+    },
+    {
+      "tags": ["intel", "openvino", "movidius"],
+      "owner": {
+        "account_id": 1781984,
+        "reputation": 730,
+        "user_id": 1624463,
+        "user_type": "registered",
+        "accept_rate": 100,
+        "profile_image": "https://www.gravatar.com/avatar/7aa4ebf1c627fbdc4090e22c0fbc9d44?s=256&d=identicon&r=PG",
+        "display_name": "dragon7",
+        "link": "https://stackoverflow.com/users/1624463/dragon7"
+      },
+      "view_count": 500,
+      "score": 5,
+      "last_activity_date": 1647952534,
+      "creation_date": 1643206494,
+      "last_edit_date": 1647952534,
+      "article_id": 70864843,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/intel/articles/70864843/how-to-run-openvino-with-neural-compute-stick-2-on-linux",
+      "title": "How to run OpenVINO™ with Neural Compute Stick 2 on Linux"
+    },
+    {
+      "tags": ["gitlab", "gitlab-ci"],
+      "owner": {
+        "account_id": 2818342,
+        "reputation": 276725,
+        "user_id": 2422776,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/2353050223ebecb113741c29458de4b2?s=256&d=identicon&r=PG",
+        "display_name": "Mureinik",
+        "link": "https://stackoverflow.com/users/2422776/mureinik"
+      },
+      "view_count": 94,
+      "score": 4,
+      "last_activity_date": 1647201096,
+      "creation_date": 1647201096,
+      "article_id": 71460307,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/gitlab/articles/71460307/using-needs-to-improve-the-speed-of-your-pipelines",
+      "title": "Using &quot;needs&quot; to improve the speed of your pipelines"
+    },
+    {
+      "tags": [
+        "google-sheets",
+        "google-cloud-platform",
+        "conditional-formatting"
+      ],
+      "owner": {
+        "account_id": 23505363,
+        "reputation": 1,
+        "user_id": 17554728,
+        "user_type": "registered",
+        "profile_image": "https://i.stack.imgur.com/YQjAj.jpg?s=256&g=1",
+        "display_name": "taylor.2317",
+        "link": "https://stackoverflow.com/users/17554728/taylor-2317"
+      },
+      "view_count": 98,
+      "score": 6,
+      "last_activity_date": 1647024006,
+      "creation_date": 1647023957,
+      "last_edit_date": 1647024006,
+      "article_id": 71443247,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/google-cloud/articles/71443247/how-to-highlight-duplicates-through-conditional-formatting-in-google-sheets",
+      "title": "How to highlight duplicates through conditional formatting in Google Sheets"
+    },
+    {
+      "tags": ["gitlab", "gitlab-ci", "pre-commit.com"],
+      "owner": {
+        "account_id": 7575391,
+        "reputation": 16221,
+        "user_id": 5747944,
+        "user_type": "registered",
+        "profile_image": "https://i.stack.imgur.com/yCMUh.jpg?s=256&g=1",
+        "display_name": "sytech",
+        "link": "https://stackoverflow.com/users/5747944/sytech"
+      },
+      "view_count": 539,
+      "score": 8,
+      "last_activity_date": 1645813450,
+      "creation_date": 1645813388,
+      "last_edit_date": 1645813450,
+      "article_id": 71270196,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/gitlab/articles/71270196/how-to-use-pre-commit-to-automatically-correct-commits-and-merge-requests-with-g",
+      "title": "How to use pre-commit to automatically correct commits and merge requests with GitLab CI"
+    },
+    {
+      "tags": [
+        "deep-learning",
+        "artificial-intelligence",
+        "openvino",
+        "dlworkbench"
+      ],
+      "owner": {
+        "account_id": 4678557,
+        "reputation": 173,
+        "user_id": 3788024,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/?s=256&d=identicon&r=PG&f=1",
+        "display_name": "pooja_baraskar",
+        "link": "https://stackoverflow.com/users/3788024/pooja-baraskar"
+      },
+      "view_count": 634,
+      "score": 2,
+      "last_activity_date": 1636390578,
+      "creation_date": 1635866802,
+      "last_edit_date": 1636390578,
+      "article_id": 69812928,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/intel/articles/69812928/analyze-model-performance-on-remote-targets-with-openvino-deep-learning-workben",
+      "title": "Analyze Model Performance on Remote Targets with OpenVINO™ Deep Learning Workbench"
+    },
+    {
+      "tags": ["google-cloud-storage", "gcloud", "gsutil"],
+      "owner": {
+        "account_id": 15651659,
+        "reputation": 313,
+        "user_id": 11292936,
+        "user_type": "registered",
+        "profile_image": "https://lh4.googleusercontent.com/-TYMhw94Jy0M/AAAAAAAAAAI/AAAAAAAAABg/E5NsWsBQZ1Q/photo.jpg?sz=256",
+        "display_name": "thomasmaclean",
+        "link": "https://stackoverflow.com/users/11292936/thomasmaclean"
+      },
+      "view_count": 1684,
+      "score": -18,
+      "last_activity_date": 1627072912,
+      "creation_date": 1626894009,
+      "last_edit_date": 1627072912,
+      "article_id": 68475140,
+      "article_type": "announcement",
+      "link": "https://stackoverflow.com/collectives/google-cloud/articles/68475140/faster-cloud-storage-transfers-using-the-gcloud-command-line",
+      "title": "Faster Cloud Storage transfers using the gcloud command-line"
+    },
+    {
+      "tags": ["google-cloud-sql", "sql-mode", "sqlmode"],
+      "owner": {
+        "account_id": 2284646,
+        "reputation": 942,
+        "user_id": 2008955,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/81603b1fb3b31483780be0700ed183e8?s=256&d=identicon&r=PG",
+        "display_name": "gabidavila",
+        "link": "https://stackoverflow.com/users/2008955/gabidavila"
+      },
+      "view_count": 665,
+      "score": -2,
+      "last_activity_date": 1626710145,
+      "creation_date": 1626710145,
+      "article_id": 68443539,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/google-cloud/articles/68443539/how-to-make-sql-mode-empty-on-cloud-sql",
+      "title": "How to make sql_mode empty on Cloud SQL"
+    },
+    {
+      "tags": ["firebase-realtime-database", "firebase-authentication"],
+      "owner": {
+        "account_id": 72426,
+        "reputation": 495990,
+        "user_id": 209103,
+        "user_type": "registered",
+        "accept_rate": 73,
+        "profile_image": "https://www.gravatar.com/avatar/12d378e6a9788ab9c94bbafe242b82b4?s=256&d=identicon&r=PG",
+        "display_name": "Frank van Puffelen",
+        "link": "https://stackoverflow.com/users/209103/frank-van-puffelen"
+      },
+      "view_count": 2056,
+      "score": 34,
+      "last_activity_date": 1624981637,
+      "creation_date": 1624470789,
+      "last_edit_date": 1624981637,
+      "article_id": 68104924,
+      "article_type": "how-to-guide",
+      "link": "https://stackoverflow.com/collectives/google-cloud/articles/68104924/listen-for-authentication-state-in-android",
+      "title": "Listen for authentication state in Android"
+    }
+  ],
+  "has_more": false,
+  "quota_max": 10000,
+  "quota_remaining": 9898
+}

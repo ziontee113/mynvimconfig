@@ -4,7 +4,7 @@ local lspconfig = require("lspconfig")
 
 --- New Start
 
-local servers = { "sumneko_lua", "tsserver", "html", "cssls" }
+local servers = { "sumneko_lua", "jsonls", "tsserver", "html", "cssls" }
 for _, lsp in pairs(servers) do
 	local opts = {
 		on_attach = require("user.lsp.handlers").on_attach,

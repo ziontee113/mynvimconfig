@@ -42,7 +42,7 @@ function M.select_test()
 	end)
 end
 
-function M.split_test()
+function M.split_test(text)
 	local original_win = vim.api.nvim_get_current_win()
 
 	vim.cmd("vsplit")
@@ -50,7 +50,7 @@ function M.split_test()
 	local buf = vim.api.nvim_create_buf(true, true)
 	vim.api.nvim_win_set_buf(win, buf)
 
-	vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, { "let x = 100", "const y = 999" })
+	vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, text)
 	vim.api.nvim_buf_set_option(buf, "filetype", "javascript")
 
 	vim.api.nvim_win_set_width(win, 40)
@@ -71,20 +71,45 @@ vim.keymap.set("n", "<Leader>kj", function()
 	M.curl_test()
 end, { noremap = true })
 
-local Job = require("plenary.job")
 function M.curl_test()
-	local url = "https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow"
+	local Job = require("plenary.job")
+	local domain = "https://api.stackexchange.com"
+	local key = "&key=A2BkHz)K9Ct2Eb7rjYcedA(("
+	local url = domain .. "/2.3/articles?order=desc&sort=activity&site=stackoverflow" .. key
 
-	Job
-		:new({
-			command = "curl",
-			args = { url, " | gunzip" },
-			on_exit = function(j, return_val)
-				N(return_val)
-				N(j:result())
-			end,
-		})
-		:start()
+	vim.cmd("vsplit")
+	local win = vim.api.nvim_get_current_win()
+	local buf = vim.api.nvim_create_buf(true, false)
+	vim.api.nvim_win_set_buf(win, buf)
+
+	-- Job
+	-- 	:new({
+	-- 		command = "curl",
+	-- 		args = { "--compressed", url },
+	-- 		on_exit = function(job)
+	-- 			local result = job:result()
+	--
+	-- 			vim.schedule(function()
+	-- 				vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, result)
+	-- 				vim.api.nvim_buf_set_option(buf, "filetype", "json")
+	-- 			end)
+	-- 		end,
+	-- 	})
+	-- 	:start()
+
+	local curl = require("plenary.curl")
+	local result = curl.get(url, { accept = "application/json" })
+
+	-- split new lines in string into table
+	local lines = {}
+	for line in string.gmatch(vim.inspect(vim.json.decode(result.body)), "[^\n]+") do
+		table.insert(lines, line)
+	end
+
+	vim.schedule(function()
+		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, lines)
+		vim.api.nvim_buf_set_option(buf, "filetype", "lua")
+	end)
 end
 
 return M
