@@ -43,6 +43,8 @@ function M.select_test()
 end
 
 function M.split_test()
+	local original_win = vim.api.nvim_get_current_win()
+
 	vim.cmd("vsplit")
 	local win = vim.api.nvim_get_current_win()
 	local buf = vim.api.nvim_create_buf(true, true)
@@ -50,6 +52,10 @@ function M.split_test()
 
 	vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, { "let x = 100", "const y = 999" })
 	vim.api.nvim_buf_set_option(buf, "filetype", "javascript")
+
+	vim.api.nvim_win_set_width(win, 40)
+
+	api.nvim_set_current_win(original_win)
 end
 
 vim.keymap.set("n", "<Leader>jk", function()
@@ -61,5 +67,24 @@ end, { noremap = true })
 vim.keymap.set("n", "<Leader>z", function()
 	M.select_test()
 end, { noremap = true })
+vim.keymap.set("n", "<Leader>kj", function()
+	M.curl_test()
+end, { noremap = true })
+
+local Job = require("plenary.job")
+function M.curl_test()
+	local url = "https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow"
+
+	Job
+		:new({
+			command = "curl",
+			args = { url, " | gunzip" },
+			on_exit = function(j, return_val)
+				N(return_val)
+				N(j:result())
+			end,
+		})
+		:start()
+end
 
 return M
