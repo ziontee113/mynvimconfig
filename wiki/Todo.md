@@ -7,7 +7,10 @@
 
 - Create a StackOverflow Plugin.
 
-- Add sibling jumping in normal mode functionalities to syntax-tree-surfer.}}}
+- Add sibling jumping in normal mode functionalities to syntax-tree-surfer.
+
+---
+}}}
 
 - We need to master the vim registers.{{{
   -> We have neoclip for that.

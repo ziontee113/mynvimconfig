@@ -267,8 +267,8 @@ end
 				),
 			}),
 			c(4, {
-				t("noremap = true, slient = true"),
-				t("noremap = true, buffer = true, slient = true"),
+				t("noremap = true, silent = true"),
+				t("noremap = true, buffer = true, silent = true"),
 				t("silent = true"),
 				t("noremap = true"),
 			}),

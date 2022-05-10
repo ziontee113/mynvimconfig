@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	group = group,
 	callback = function()
-		vim.keymap.set("n", "<F6>", ":Glow<cr>", { noremap = true, buffer = true, slient = true })
+		vim.keymap.set("n", "<F6>", ":Glow<cr>", { noremap = true, buffer = true, silent = true })
+		vim.keymap.set("n", "<F5>", ":Glow<cr>", { noremap = true, buffer = true, silent = true })
 	end,
 })
