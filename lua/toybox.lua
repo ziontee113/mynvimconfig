@@ -76,15 +76,14 @@ vim.keymap.set("n", "<Leader>kj", function()
 	M.curl_test()
 end, { noremap = true }) --}}}
 
-local function helper_A(buf, contents)
+local function print_to_right_split(buf, contents) --{{{
 	vim.schedule(function()
 		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, contents)
 		vim.api.nvim_buf_set_option(buf, "filetype", "lua")
 	end)
-end
+end --}}}
 
-function M.curl_test()
-	local Job = require("plenary.job")
+local function SE_API_to_JSON() --{{{
 	local domain = "https://api.stackexchange.com"
 	local api_key = "&key=A2BkHz)K9Ct2Eb7rjYcedA(("
 	-- local query = "/2.3/articles?order=desc&sort=activity&site=stackoverflow"
@@ -92,52 +91,64 @@ function M.curl_test()
 		"/2.3/search/advanced?order=desc&sort=relevance&q=how%20to%20center%20a%20div%20in%20html&site=stackoverflow"
 	local url = domain .. query .. api_key
 
+	local curl = require("plenary.curl")
+	local result = curl.get(url, { accept = "application/json" })
+	local decoded_JSON = vim.json.decode(result.body)
+
+	return decoded_JSON
+end --}}}
+
+local function unescape(str) --{{{
+	str = string.gsub(str, "&lt;", "<")
+	str = string.gsub(str, "&gt;", ">")
+	str = string.gsub(str, "&le;", "<=")
+	str = string.gsub(str, "&ge;", ">=")
+	str = string.gsub(str, "&#x3d;", "=")
+	str = string.gsub(str, "&amp;", "&")
+	str = string.gsub(str, "&quot;", '"')
+	str = string.gsub(str, "&apos;", "'")
+	str = string.gsub(str, "&#39;", "'")
+	str = string.gsub(str, "&#x27;", "'")
+	str = string.gsub(str, "&#x60;", "`")
+	str = string.gsub(str, "&#x7b;", "{")
+	str = string.gsub(str, "&#x7d;", "}")
+	str = string.gsub(str, "&#x7e;", "~")
+	str = string.gsub(str, "&#x5c;", "\\")
+	str = string.gsub(str, "&#x2f;", "/")
+
+	return str
+end --}}}
+
+function M.curl_test()
+	local decoded_JSON = SE_API_to_JSON()
+
 	vim.cmd("vsplit")
 	local win = vim.api.nvim_get_current_win()
 	local buf = vim.api.nvim_create_buf(true, true)
 	vim.api.nvim_win_set_buf(win, buf)
 
-	-- Job
-	-- 	:new({
-	-- 		command = "curl",
-	-- 		args = { "--compressed", url },
-	-- 		on_exit = function(job)
-	-- 			local result = job:result()
-	--
-	-- 			vim.schedule(function()
-	-- 				vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, result)
-	-- 				vim.api.nvim_buf_set_option(buf, "filetype", "json")
-	-- 			end)
-	-- 		end,
-	-- 	})
-	-- 	:start()
-
-	local curl = require("plenary.curl")
-	local result = curl.get(url, { accept = "application/json" })
-
-	local decoded_JSON = vim.json.decode(result.body)
-
-	--  NOTE: show results in a new buffer
-
 	-- -- split new lines in string into table{{{
 	-- local lines = {}
-	-- for line in string.gmatch(vim.inspect(vim.json.decode(result.body)), "[^\n]+") do
+	-- for line in string.gmatch(decoded_JSON, "[^\n]+") do
 	-- 	table.insert(lines, line)
 	-- end
 	--
 	-- -- insert "local results = " at the beginning of the first line
 	-- lines[1] = "local results = " .. lines[1]
 	--
-	-- helper_A(buf, lines)--}}}
+	-- print_to_right_split(buf, lines) --}}}
 
-	-- show only the titles
-	local titles = { "{" }
+	-- print titles{{{
+	local titles = { "local results = {" }
 	for _, item in ipairs(decoded_JSON.items) do
-		table.insert(titles, '"' .. item.title .. '",')
+		local title = item.title
+		title = unescape(title)
+
+		table.insert(titles, '\t"' .. title .. '",')
 	end
 	table.insert(titles, "}")
 
-	helper_A(buf, titles)
+	print_to_right_split(buf, titles) --}}}
 end
 
 return M
