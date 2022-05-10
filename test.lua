@@ -28,7 +28,7 @@ local my_expensive_function = function(x)
 	return x * x
 end
 
-local meta = setmetatable({ cache = {} }, {
+local meta = setmetatable({}, {
 	__call = function(self, val)
 		local ret = self[val]
 		if ret ~= nil then
@@ -43,5 +43,6 @@ local meta = setmetatable({ cache = {} }, {
 	end,
 })
 
+print(meta(3))
 print(meta(3))
 print(meta(3))

@@ -9,8 +9,8 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess=aoO
-badd +30 lua/toybox.lua
-badd +21 lua/user/neoscroll-config.lua
+badd +146 lua/toybox.lua
+badd +47 ~/.config/nvim/test.lua
 argglobal
 %argdel
 edit lua/toybox.lua
@@ -33,7 +33,7 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 argglobal
-balt lua/user/neoscroll-config.lua
+balt ~/.config/nvim/test.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -42,19 +42,20 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 29 - ((28 * winheight(0) + 25) / 50)
+141
+normal! zo
+let s:l = 146 - ((81 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 29
+keepjumps 146
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("lua/user/neoscroll-config.lua", ":p")) | buffer lua/user/neoscroll-config.lua | else | edit lua/user/neoscroll-config.lua | endif
+if bufexists(fnamemodify("~/.config/nvim/test.lua", ":p")) | buffer ~/.config/nvim/test.lua | else | edit ~/.config/nvim/test.lua | endif
 if &buftype ==# 'terminal'
-  silent file lua/user/neoscroll-config.lua
+  silent file ~/.config/nvim/test.lua
 endif
-balt lua/toybox.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -63,12 +64,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 21 - ((20 * winheight(0) + 25) / 50)
+let s:l = 47 - ((28 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 21
-normal! 048|
+keepjumps 47
+normal! 0
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)

@@ -21,17 +21,6 @@ function M.nodes()
 	--  NOTE: require("vim.treesitter").get_parser
 end --}}}
 
-function M.input_test() --{{{
-	-- vim.ui.input({}, function(input)
-	-- 	N(input, "info", "input_test")
-	-- end)
-
-	local cur_line = api.nvim_win_get_cursor(0)
-	local total_lines_num = vim.api.nvim_buf_line_count(0)
-	N(cur_line)
-	N(total_lines_num)
-end --}}}
-
 function M.select_test() --{{{
 	vim.ui.select({ --> Choices
 		"tabs",
@@ -83,12 +72,14 @@ local function print_to_right_split(buf, contents) --{{{
 	end)
 end --}}}
 
-local function SE_API_to_JSON() --{{{
+local function SE_API_to_JSON(question) --{{{
 	local domain = "https://api.stackexchange.com"
 	local api_key = "&key=A2BkHz)K9Ct2Eb7rjYcedA(("
 	-- local query = "/2.3/articles?order=desc&sort=activity&site=stackoverflow"
-	local query =
-		"/2.3/search/advanced?order=desc&sort=relevance&q=how%20to%20center%20a%20div%20in%20html&site=stackoverflow"
+
+	question = string.gsub(question, "%s", "%%20")
+
+	local query = "/2.3/search/advanced?order=desc&sort=relevance&q=" .. question .. "&site=stackoverflow"
 	local url = domain .. query .. api_key
 
 	local curl = require("plenary.curl")
@@ -119,36 +110,42 @@ local function unescape(str) --{{{
 	return str
 end --}}}
 
-function M.curl_test()
-	local decoded_JSON = SE_API_to_JSON()
-
+function M.curl_test(decoded_JSON)
 	vim.cmd("vsplit")
 	local win = vim.api.nvim_get_current_win()
 	local buf = vim.api.nvim_create_buf(true, true)
 	vim.api.nvim_win_set_buf(win, buf)
 
-	-- -- split new lines in string into table{{{
-	-- local lines = {}
-	-- for line in string.gmatch(decoded_JSON, "[^\n]+") do
-	-- 	table.insert(lines, line)
-	-- end
-	--
-	-- -- insert "local results = " at the beginning of the first line
-	-- lines[1] = "local results = " .. lines[1]
-	--
-	-- print_to_right_split(buf, lines) --}}}
+	-- split new lines in string into table{{{
+	local lines = {}
+	for line in string.gmatch(I(decoded_JSON), "[^\n]+") do
+		table.insert(lines, line)
+	end
 
-	-- print titles{{{
-	local titles = { "local results = {" }
+	-- insert "local results = " at the beginning of the first line
+	lines[1] = "local results = " .. lines[1]
+
+	-- print titles
+	table.insert(lines, "")
+	table.insert(lines, "local titles = {")
 	for _, item in ipairs(decoded_JSON.items) do
 		local title = item.title
 		title = unescape(title)
 
-		table.insert(titles, '\t"' .. title .. '",')
+		table.insert(lines, "\t[=[ " .. title .. " ]=],")
 	end
-	table.insert(titles, "}")
+	table.insert(lines, "}")
 
-	print_to_right_split(buf, titles) --}}}
+	print_to_right_split(buf, lines) --}}}
+end
+
+function M.input_test()
+	vim.ui.input({}, function(input)
+		if input then
+			local decoded_JSON = SE_API_to_JSON(input)
+			M.curl_test(decoded_JSON)
+		end
+	end)
 end
 
 return M
