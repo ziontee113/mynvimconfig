@@ -63,7 +63,7 @@ function M.split_test(text) --{{{
 	api.nvim_set_current_win(original_win)
 end --}}}
 
-vim.keymap.set("n", "<Leader>jk", function()
+vim.keymap.set("n", "<Leader>jk", function() --{{{ Keymaps
 	M.split_test()
 end, { noremap = true })
 vim.keymap.set("n", "<Leader>x", function()
@@ -74,13 +74,23 @@ vim.keymap.set("n", "<Leader>z", function()
 end, { noremap = true })
 vim.keymap.set("n", "<Leader>kj", function()
 	M.curl_test()
-end, { noremap = true })
+end, { noremap = true }) --}}}
+
+local function helper_A(buf, contents)
+	vim.schedule(function()
+		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, contents)
+		vim.api.nvim_buf_set_option(buf, "filetype", "lua")
+	end)
+end
 
 function M.curl_test()
 	local Job = require("plenary.job")
 	local domain = "https://api.stackexchange.com"
-	local key = "&key=A2BkHz)K9Ct2Eb7rjYcedA(("
-	local url = domain .. "/2.3/articles?order=desc&sort=activity&site=stackoverflow" .. key
+	local api_key = "&key=A2BkHz)K9Ct2Eb7rjYcedA(("
+	-- local query = "/2.3/articles?order=desc&sort=activity&site=stackoverflow"
+	local query =
+		"/2.3/search/advanced?order=desc&sort=relevance&q=how%20to%20center%20a%20div%20in%20html&site=stackoverflow"
+	local url = domain .. query .. api_key
 
 	vim.cmd("vsplit")
 	local win = vim.api.nvim_get_current_win()
@@ -105,19 +115,29 @@ function M.curl_test()
 	local curl = require("plenary.curl")
 	local result = curl.get(url, { accept = "application/json" })
 
-	-- split new lines in string into table
-	local lines = {}
-	for line in string.gmatch(vim.inspect(vim.json.decode(result.body)), "[^\n]+") do
-		table.insert(lines, line)
+	local decoded_JSON = vim.json.decode(result.body)
+
+	--  NOTE: show results in a new buffer
+
+	-- -- split new lines in string into table{{{
+	-- local lines = {}
+	-- for line in string.gmatch(vim.inspect(vim.json.decode(result.body)), "[^\n]+") do
+	-- 	table.insert(lines, line)
+	-- end
+	--
+	-- -- insert "local results = " at the beginning of the first line
+	-- lines[1] = "local results = " .. lines[1]
+	--
+	-- helper_A(buf, lines)--}}}
+
+	-- show only the titles
+	local titles = { "{" }
+	for _, item in ipairs(decoded_JSON.items) do
+		table.insert(titles, '"' .. item.title .. '",')
 	end
+	table.insert(titles, "}")
 
-	-- insert "results = " at the beginning of the first line
-	lines[1] = "local results = " .. lines[1]
-
-	vim.schedule(function()
-		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, lines)
-		vim.api.nvim_buf_set_option(buf, "filetype", "lua")
-	end)
+	helper_A(buf, titles)
 end
 
 return M

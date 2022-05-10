@@ -2,6 +2,9 @@ P = function(v)
 	print(vim.inspect(v))
 	return v
 end
+I = function(v)
+	return vim.inspect(v)
+end
 
 RELOAD = function(...)
 	return require("plenary.reload").reload_module(...)
