@@ -13,3 +13,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = group,
 	command = "setlocal nowrap",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	group = group,
+	callback = function()
+		vim.keymap.set("n", "<F6>", ":Glow<cr>", { noremap = true, buffer = true, slient = true })
+	end,
+})

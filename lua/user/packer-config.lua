@@ -153,6 +153,8 @@ return require("packer").startup(function(use)
 	-- use("weirongxu/plantuml-previewer.vim")
 	use({ "iamcco/markdown-preview.nvim" })
 
+	use({ "ellisonleao/glow.nvim", branch = "main" })
+
 	-- Zen Mode
 	use({
 		"folke/zen-mode.nvim",

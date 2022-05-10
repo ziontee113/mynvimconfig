@@ -266,7 +266,12 @@ end
 					}
 				),
 			}),
-			c(4, { t("noremap = true, slient = true"), t("silent = true"), t("noremap = true") }),
+			c(4, {
+				t("noremap = true, slient = true"),
+				t("noremap = true, buffer = true, slient = true"),
+				t("silent = true"),
+				t("noremap = true"),
+			}),
 		}
 	)
 ) --}}}

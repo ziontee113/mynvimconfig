@@ -12,7 +12,10 @@ t["zt"] = { "zt", { "96" } }
 t["zz"] = { "zz", { "96" } }
 t["zb"] = { "zb", { "96" } }
 
-t["G"] = { "scroll", { "9999", "true", "96" } }
-t["gg"] = { "scroll", { "-9999", "true", "96" } }
+-- t["G"] = { "scroll", { "9999", "true", "96" } }
+-- t["gg"] = { "scroll", { "-9999", "true", "96" } }
+local e = "96"
+t["gg"] = { "scroll", { "1 - vim.api.nvim_win_get_cursor(0)[1]", "true", "1", "5", e } }
+t["G"] = { "scroll", { "vim.api.nvim_buf_line_count(0) - vim.api.nvim_win_get_cursor(0)[1]", "true", "1", "5", e } }
 
 require("neoscroll.config").set_mappings(t)

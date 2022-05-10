@@ -21,13 +21,18 @@ function M.nodes()
 	--  NOTE: require("vim.treesitter").get_parser
 end --}}}
 
-function M.input_test()
-	vim.ui.input({}, function(input)
-		N(input, "info", "input_test")
-	end)
-end
+function M.input_test() --{{{
+	-- vim.ui.input({}, function(input)
+	-- 	N(input, "info", "input_test")
+	-- end)
 
-function M.select_test()
+	local cur_line = api.nvim_win_get_cursor(0)
+	local total_lines_num = vim.api.nvim_buf_line_count(0)
+	N(cur_line)
+	N(total_lines_num)
+end --}}}
+
+function M.select_test() --{{{
 	vim.ui.select({ --> Choices
 		"tabs",
 		"spaces",
@@ -40,9 +45,9 @@ function M.select_test()
 		N(choice, nil, "select_test")
 		N(choice)
 	end)
-end
+end --}}}
 
-function M.split_test(text)
+function M.split_test(text) --{{{
 	local original_win = vim.api.nvim_get_current_win()
 
 	vim.cmd("vsplit")
@@ -56,7 +61,7 @@ function M.split_test(text)
 	vim.api.nvim_win_set_width(win, 40)
 
 	api.nvim_set_current_win(original_win)
-end
+end --}}}
 
 vim.keymap.set("n", "<Leader>jk", function()
 	M.split_test()
@@ -79,7 +84,7 @@ function M.curl_test()
 
 	vim.cmd("vsplit")
 	local win = vim.api.nvim_get_current_win()
-	local buf = vim.api.nvim_create_buf(true, false)
+	local buf = vim.api.nvim_create_buf(true, true)
 	vim.api.nvim_win_set_buf(win, buf)
 
 	-- Job
@@ -105,6 +110,9 @@ function M.curl_test()
 	for line in string.gmatch(vim.inspect(vim.json.decode(result.body)), "[^\n]+") do
 		table.insert(lines, line)
 	end
+
+	-- insert "results = " at the beginning of the first line
+	lines[1] = "local results = " .. lines[1]
 
 	vim.schedule(function()
 		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, lines)
