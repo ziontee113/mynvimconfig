@@ -128,10 +128,10 @@ vim.keymap.set("n", "<Leader>kj", function()
 	M.input_test()
 end, { noremap = true }) --}}}
 
-local function print_to_right_split(buf, contents) --{{{
+local function print_to_right_split(buf, contents, filetype) --{{{
 	vim.schedule(function()
 		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, contents)
-		vim.api.nvim_buf_set_option(buf, "filetype", "lua")
+		vim.api.nvim_buf_set_option(buf, "filetype", filetype or "lua")
 	end)
 end --}}}
 
@@ -150,16 +150,20 @@ local function SE_API_to_JSON(question) --{{{
 
 	question = "&q=" .. string.gsub(question, "%s", "%%20")
 
-	local with_body = "&filter=withbody"
+	-- local filter = "&filter=withbody"
+	-- local filter = -- body & body_markdown
+	-- 	"&filter=!95kkh65WFZ)RhgpIx)CICUjWUcI0zc7mF5moTK(msTJOtjUZmFore2f2z5RGtW8a5o1fOtSuXjBXbXbnQWAoExQo_fU89xxwPxblD"
+	local filter = -- only body_markdown
+		"&filter=!_o.tLhueaZj*bf0)b_-oNkK83AcRWjEMcHWgbAQNAxd_gFmsixoZlee5zHS_6YAB(H4iNmu.oOitAsLm8-Fxbini6PK3xFzAH2WMUZUH9r"
 	local tags = "&tagged=javascript"
 
 	local query = "/2.3/search/advanced?order=desc&sort=relevance"
 		.. question
 		.. tags
 		.. "&site=stackoverflow"
-		.. with_body
+		.. filter
 	local url = domain .. query .. api_key
-	N(url) -- for debugging
+	-- N(url) -- for debugging
 
 	local decoded_JSON = curl_url(url)
 
@@ -169,10 +173,10 @@ end --}}}
 function M.curl_test(decoded_JSON)
 	vim.cmd("vsplit")
 	local win = vim.api.nvim_get_current_win()
-	local buf = vim.api.nvim_create_buf(true, true)
+	local buf = vim.api.nvim_create_buf(false, false)
 	vim.api.nvim_win_set_buf(win, buf)
 
-	-- split new lines in string into table
+	-- split new lines in string into table{{{
 	local lines = {}
 	for line in string.gmatch(I(decoded_JSON), "[^\n]+") do
 		table.insert(lines, line)
@@ -190,7 +194,15 @@ function M.curl_test(decoded_JSON)
 	end
 	table.insert(lines, "}")
 
-	print_to_right_split(buf, lines)
+	print_to_right_split(buf, lines) --}}}
+
+	-- -- Paint The Town{{{
+	-- local lines = {}
+	-- for line in string.gmatch(decoded_JSON.items[1].body, "[^\n]+") do
+	-- 	table.insert(lines, line)
+	-- end
+	--
+	-- print_to_right_split(buf, lines, "markdown") --}}}
 end
 
 function M.input_test()
