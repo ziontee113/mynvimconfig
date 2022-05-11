@@ -4,6 +4,9 @@ require("neoscroll").setup({
 
 local t = {}
 -- Syntax: t[keys] = {function, {function arguments}}
+t["<C-y>"] = { "scroll", { "-4", "true", "45" } }
+t["<C-e>"] = { "scroll", { "4", "true", "45" } }
+
 t["<C-u>"] = { "scroll", { "-11", "true", "69" } }
 t["<C-d>"] = { "scroll", { "11", "true", "69" } }
 t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "96", [['circular']] } }

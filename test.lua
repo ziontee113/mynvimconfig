@@ -46,3 +46,45 @@ local meta = setmetatable({}, {
 print(meta(3))
 print(meta(3))
 print(meta(3))
+
+-----------------------------------------------------
+
+local M = {}
+
+M.memo = setmetatable({
+	put = function(cache, params, result)
+		local node = cache
+		for i = 1, #params do
+			local param = vim.inspect(params[i])
+			node.children = node.children or {}
+			node.children[param] = node.children[param] or {}
+			node = node.children[param]
+		end
+		node.result = result
+	end,
+	get = function(cache, params)
+		local node = cache
+		for i = 1, #params do
+			local param = vim.inspect(params[i])
+			node = node.children and node.children[param]
+			if not node then
+				return nil
+			end
+		end
+		return node.result
+	end,
+}, {
+	__call = function(memo, func)
+		local cache = {}
+
+		return function(...)
+			local params = { ... }
+			local result = memo.get(cache, params)
+			if not result then
+				result = { func(...) }
+				memo.put(cache, params, result)
+			end
+			return unpack(result)
+		end
+	end,
+})

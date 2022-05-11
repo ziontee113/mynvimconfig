@@ -56,7 +56,7 @@ return require("packer").startup(function(use)
 	use("williamboman/nvim-lsp-installer")
 	use("hrsh7th/cmp-nvim-lsp")
 
-	use("mattn/emmet-vim")
+	-- use("mattn/emmet-vim")
 
 	-- Null-ls
 	use("jose-elias-alvarez/null-ls.nvim")

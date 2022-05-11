@@ -62,7 +62,8 @@ vim.keymap.set("n", "<Leader>z", function()
 	M.select_test()
 end, { noremap = true })
 vim.keymap.set("n", "<Leader>kj", function()
-	M.curl_test()
+	-- M.curl_test()
+	M.input_test()
 end, { noremap = true }) --}}}
 
 local function print_to_right_split(buf, contents) --{{{
@@ -77,10 +78,18 @@ local function SE_API_to_JSON(question) --{{{
 	local api_key = "&key=A2BkHz)K9Ct2Eb7rjYcedA(("
 	-- local query = "/2.3/articles?order=desc&sort=activity&site=stackoverflow"
 
-	question = string.gsub(question, "%s", "%%20")
+	question = "&q=" .. string.gsub(question, "%s", "%%20")
 
-	local query = "/2.3/search/advanced?order=desc&sort=relevance&q=" .. question .. "&site=stackoverflow"
+	local with_body = "&filter=withbody"
+	local tags = "&tagged=javascript"
+
+	local query = "/2.3/search/advanced?order=desc&sort=relevance"
+		.. question
+		.. tags
+		.. "&site=stackoverflow"
+		.. with_body
 	local url = domain .. query .. api_key
+	N(url) -- for debugging
 
 	local curl = require("plenary.curl")
 	local result = curl.get(url, { accept = "application/json" })
