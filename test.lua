@@ -43,15 +43,13 @@ local meta = setmetatable({}, {
 	end,
 })
 
-print(meta(3))
-print(meta(3))
-print(meta(3))
+-- print(meta(3))
+-- print(meta(3))
+-- print(meta(3))
 
 -----------------------------------------------------
 
-local M = {}
-
-M.memo = setmetatable({
+local memo = setmetatable({
 	put = function(cache, params, result)
 		local node = cache
 		for i = 1, #params do
@@ -83,8 +81,19 @@ M.memo = setmetatable({
 			if not result then
 				result = { func(...) }
 				memo.put(cache, params, result)
+				print("not cached")
+			else
+				print("cached")
 			end
 			return unpack(result)
 		end
 	end,
 })
+
+local my_expensive_function = memo(function(x)
+	return x * x
+end)
+
+print(my_expensive_function(3))
+print(my_expensive_function(3))
+print(my_expensive_function(3))
