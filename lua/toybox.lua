@@ -153,8 +153,10 @@ local function SE_API_to_JSON(question) --{{{
 	-- local filter = "&filter=withbody"
 	-- local filter = -- body & body_markdown
 	-- 	"&filter=!95kkh65WFZ)RhgpIx)CICUjWUcI0zc7mF5moTK(msTJOtjUZmFore2f2z5RGtW8a5o1fOtSuXjBXbXbnQWAoExQo_fU89xxwPxblD"
+	-- local filter = -- only body_markdown
+	-- 	"&filter=!_o.tLhueaZj*bf0)b_-oNkK83AcRWjEMcHWgbAQNAxd_gFmsixoZlee5zHS_6YAB(H4iNmu.oOitAsLm8-Fxbini6PK3xFzAH2WMUZUH9r"
 	local filter = -- only body_markdown
-		"&filter=!_o.tLhueaZj*bf0)b_-oNkK83AcRWjEMcHWgbAQNAxd_gFmsixoZlee5zHS_6YAB(H4iNmu.oOitAsLm8-Fxbini6PK3xFzAH2WMUZUH9r"
+		"&filter=!QWRdKli8sNK1EmcTY3G30.1B)jVv46wKiw_p5wdsc()rzc.dNJudv"
 	local tags = "&tagged=javascript"
 
 	local query = "/2.3/search/advanced?order=desc&sort=relevance"
@@ -176,33 +178,34 @@ function M.curl_test(decoded_JSON)
 	local buf = vim.api.nvim_create_buf(false, false)
 	vim.api.nvim_win_set_buf(win, buf)
 
-	-- split new lines in string into table{{{
-	local lines = {}
-	for line in string.gmatch(I(decoded_JSON), "[^\n]+") do
-		table.insert(lines, line)
-	end
-	lines[1] = "local results = " .. lines[1] -- insert "local results = " at the beginning of the first line
-
-	-- print titles
-	table.insert(lines, "")
-	table.insert(lines, "local titles = {")
-	for _, item in ipairs(decoded_JSON.items) do
-		local title = item.title
-		title = unescape(title)
-
-		table.insert(lines, "\t[=[ " .. title .. " ]=],")
-	end
-	table.insert(lines, "}")
-
-	print_to_right_split(buf, lines) --}}}
-
-	-- -- Paint The Town{{{
+	-- -- split new lines in string into table{{{
 	-- local lines = {}
-	-- for line in string.gmatch(decoded_JSON.items[1].body, "[^\n]+") do
+	-- for line in string.gmatch(I(decoded_JSON), "[^\n]+") do
 	-- 	table.insert(lines, line)
 	-- end
+	-- lines[1] = "local results = " .. lines[1] -- insert "local results = " at the beginning of the first line
 	--
-	-- print_to_right_split(buf, lines, "markdown") --}}}
+	-- -- print titles
+	-- table.insert(lines, "")
+	-- table.insert(lines, "local titles = {")
+	-- for _, item in ipairs(decoded_JSON.items) do
+	-- 	local title = item.title
+	-- 	title = unescape(title)
+	--
+	-- 	table.insert(lines, "\t[=[ " .. title .. " ]=],")
+	-- end
+	-- table.insert(lines, "}")
+	--
+	-- print_to_right_split(buf, lines) --}}}
+
+	-- Paint The Town{{{
+	local lines = {}
+	for line in string.gmatch(decoded_JSON.items[1].answers[1].body_markdown, "[^\n]+") do
+		line = unescape(line)
+		table.insert(lines, line)
+	end
+
+	print_to_right_split(buf, lines, "javascript") --}}}
 end
 
 function M.input_test()
