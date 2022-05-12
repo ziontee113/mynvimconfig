@@ -132,6 +132,7 @@ local function print_to_right_split(buf, contents, filetype) --{{{
 	vim.schedule(function()
 		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, contents)
 		vim.api.nvim_buf_set_option(buf, "filetype", filetype or "lua")
+		vim.cmd([[:%s/\r//g]]) --> Get rid of the ^M character
 	end)
 end --}}}
 
