@@ -185,4 +185,6 @@ return require("packer").startup(function(use)
 
 	-- Notify
 	use("rcarriga/nvim-notify")
+	-- NUI
+	use("MunifTanjim/nui.nvim")
 end)

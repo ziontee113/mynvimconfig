@@ -121,9 +121,6 @@ end, { noremap = true })
 vim.keymap.set("n", "<Leader>x", function()
 	M.input_test()
 end, { noremap = true })
-vim.keymap.set("n", "<Leader>z", function()
-	M.select_test()
-end, { noremap = true })
 vim.keymap.set("n", "<Leader>kj", function()
 	-- M.curl_test()
 	M.input_test()
@@ -233,3 +230,8 @@ function M.input_test()
 end
 
 return M
+
+-- Current Target:
+--> Left Split to display the questions & The Question
+--> Right Split to display the answers & The Answer
+-- Also rewrite the code to make it cleaner

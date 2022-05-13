@@ -59,3 +59,4 @@ require("user.lang-settings.markdown")
 
 ------------------  NOTE: Testing out Stufs ----------------------------
 require("toybox")
+require("nui-test")

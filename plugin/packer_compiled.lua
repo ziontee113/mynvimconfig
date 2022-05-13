@@ -179,6 +179,11 @@ _G.packer_plugins = {
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
     url = "https://github.com/karb94/neoscroll.nvim"
   },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/ubur/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/ubur/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
