@@ -61,6 +61,7 @@ local function unescape(str) --{{{
 	str = string.gsub(str, "&#x7e;", "~")
 	str = string.gsub(str, "&#x5c;", "\\")
 	str = string.gsub(str, "&#x2f;", "/")
+	str = string.gsub(str, "\r", "")
 
 	return str
 end --}}}
@@ -132,7 +133,7 @@ local function print_to_right_split(buf, contents, filetype) --{{{
 	vim.schedule(function()
 		vim.api.nvim_buf_set_text(buf, 0, 0, 0, 0, contents)
 		vim.api.nvim_buf_set_option(buf, "filetype", filetype or "lua")
-		vim.cmd([[:%s/\r//g]]) --> Get rid of the ^M character
+		-- vim.cmd([[:%s/\r//g]]) --> Get rid of the ^M character --> use Lua gsub \r instead
 	end)
 end --}}}
 
@@ -206,7 +207,7 @@ function M.curl_test(decoded_JSON)
 		table.insert(lines, line)
 	end
 
-	print_to_right_split(buf, lines, "javascript") --}}}
+	print_to_right_split(buf, lines, "markdown") --}}}
 end
 
 function M.input_test()
