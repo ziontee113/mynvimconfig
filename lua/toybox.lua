@@ -35,9 +35,9 @@ local memo = setmetatable({ --{{{
 			if not result then
 				result = { func(...) }
 				memo.put(cache, params, result)
-				-- print("not cached")
+				print("not cached")
 			else
-				-- print("cached")
+				print("cached")
 			end
 			return unpack(result)
 		end
@@ -177,7 +177,7 @@ end --}}}
 function M.curl_test(decoded_JSON)
 	vim.cmd("vsplit")
 	local win = vim.api.nvim_get_current_win()
-	local buf = vim.api.nvim_create_buf(false, false)
+	local buf = vim.api.nvim_create_buf(true, true)
 	vim.api.nvim_win_set_buf(win, buf)
 
 	-- -- split new lines in string into table{{{
@@ -204,10 +204,23 @@ function M.curl_test(decoded_JSON)
 	local lines = {}
 	for line in string.gmatch(decoded_JSON.items[1].answers[1].body_markdown, "[^\n]+") do
 		line = unescape(line)
+
+		if line ~= "" then
+			if not line:match("^%s") then
+				line = "// " .. line
+			end
+		end
+
 		table.insert(lines, line)
 	end
 
-	print_to_right_split(buf, lines, "markdown") --}}}
+	-- print the title
+	table.insert(lines, "const title = '" .. decoded_JSON.items[1].title .. "';")
+
+	print_to_right_split(buf, lines, "javascript") --}}}
+
+	vim.api.nvim_win_set_option(win, "wrap", true) --> well it works here
+	-- vim.cmd([[:setlocal wrap]]) --> well it works here
 end
 
 function M.input_test()
