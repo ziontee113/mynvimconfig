@@ -3,6 +3,7 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
+local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 
@@ -61,6 +62,8 @@ function M.directory_picker()
 			"~/.local/share/nvim/site/pack/packer/start/",
 		}),
 
+		sorter = sorters.get_generic_fuzzy_sorter({}),
+
 		layout_stratey = "vertical",
 		layout_config = {
 			height = 12,
@@ -75,12 +78,6 @@ function M.directory_picker()
 			map("n", "<CR>", enter)
 			return true
 		end,
-
-		on_complete = { --> start in Normal Mode
-			function()
-				vim.cmd("stopinsert")
-			end,
-		},
 	}
 
 	---@diagnostic disable-next-line: missing-parameter
