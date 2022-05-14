@@ -14,6 +14,8 @@ require("user.treesitter")
 require("user.telescope-config")
 require("user.telescope-custom-pickers")
 -- E: UI Elements
+-- require("user.nvim-tree")
+require("user.neotree-config")
 require("user.nvim-tree")
 require("user.gitsigns")
 require("user.toggle-term")

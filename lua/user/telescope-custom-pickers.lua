@@ -42,4 +42,48 @@ function M.vimrc_live_grep()
 	builtin.live_grep(opts)
 end
 
+function M.directory_picker()
+	local pickers = require("telescope.pickers")
+	local finders = require("telescope.finders")
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+
+	local function enter(prompt_bufnr)
+		local selected = action_state.get_selected_entry()
+		local cmd = "cd " .. selected[1]
+		vim.cmd(cmd)
+		actions.close(prompt_bufnr)
+	end
+
+	local opts = {
+		finder = finders.new_table({
+			"~/.config/nvim/",
+			"/mnt/d/notes",
+		}),
+
+		layout_stratey = "vertical",
+		layout_config = {
+			height = 12,
+			width = 0.25,
+			prompt_position = "top",
+		},
+		prompt_title = "Directory Picker",
+		sorting_strategy = "ascending",
+
+		--
+
+		attach_mappings = function(prompt_bufnr, map)
+			map("i", "<CR>", enter)
+			return true
+		end,
+	}
+
+	local dirs = pickers.new(opts)
+	dirs:find()
+end
+
+vim.keymap.set("n", "<Leader>l", function()
+	M.directory_picker()
+end, { noremap = true, silent = true })
+
 return M

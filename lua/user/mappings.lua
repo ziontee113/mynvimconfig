@@ -283,8 +283,6 @@ keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
 keymap("n", "<leader>hs", "<c-w>s<c-w>j", opts)
 
 ------ Plugins--------
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 -- Telescope
 keymap(
 	"n",
@@ -299,7 +297,6 @@ keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<cr>", opts)
 keymap("n", "<C-g>", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
-keymap("n", "<leader>l", ":lua require('user.telescope-custom-pickers').grep_string()<cr>", opts)
 keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 -- keymap("n", "<leader>zf", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 -- keymap("n", "<leader>wo", ":Telescope grep_string<cr>", opts)
