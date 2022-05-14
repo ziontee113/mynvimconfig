@@ -76,8 +76,15 @@ function M.directory_picker()
 			map("i", "<CR>", enter)
 			return true
 		end,
+
+		on_complete = { --> start in Normal Mode
+			function()
+				vim.cmd("stopinsert")
+			end,
+		},
 	}
 
+	---@diagnostic disable-next-line: missing-parameter
 	local dirs = pickers.new(opts)
 	dirs:find()
 end
