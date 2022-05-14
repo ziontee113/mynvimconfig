@@ -168,3 +168,4 @@ require("neo-tree").setup({
 
 vim.keymap.set("n", "<Leader>e", ":NeoTreeRevealToggle<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })

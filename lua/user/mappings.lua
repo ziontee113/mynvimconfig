@@ -37,12 +37,7 @@ keymap("n", "<Leader><Leader>O", "O<Esc>o", opts)
 keymap("n", "<F31>", "<C-i>", opts) --> Ctrl + F7 for Wezterm
 keymap("n", "<A-,>", "owe will use this keymap for the great purpose<Esc>", opts) --> Ctrl + F7 for Wezterm
 
-keymap(
-	"n",
-	"<Leader>\\",
-	":set number! | set relativenumber! | set signcolumn:no | set cursorline! | :Twilight<cr>",
-	opts
-) --> Twilight
+keymap("n", "<Leader><Leader>\\", ":Twilight<cr>", opts) --> Twilight
 keymap("n", "<Leader>-", ":set number! | set relativenumber! | set signcolumn:no | set cursorline!<cr>", opts) --> Twilight
 keymap("n", "<Leader><Leader>-", ":set signcolumn:yes:2<cr>", opts) --> Twilight
 
