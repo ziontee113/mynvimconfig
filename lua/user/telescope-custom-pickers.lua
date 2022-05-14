@@ -1,6 +1,10 @@
 local M = {}
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 function M.grep_string()
 	builtin.grep_string({
@@ -43,11 +47,6 @@ function M.vimrc_live_grep()
 end
 
 function M.directory_picker()
-	local pickers = require("telescope.pickers")
-	local finders = require("telescope.finders")
-	local actions = require("telescope.actions")
-	local action_state = require("telescope.actions.state")
-
 	local function enter(prompt_bufnr)
 		local selected = action_state.get_selected_entry()
 		local cmd = "cd " .. selected[1]
@@ -59,6 +58,7 @@ function M.directory_picker()
 		finder = finders.new_table({
 			"~/.config/nvim/",
 			"/mnt/d/notes",
+			"~/.local/share/nvim/site/pack/packer/start/",
 		}),
 
 		layout_stratey = "vertical",
@@ -70,10 +70,9 @@ function M.directory_picker()
 		prompt_title = "Directory Picker",
 		sorting_strategy = "ascending",
 
-		--
-
 		attach_mappings = function(prompt_bufnr, map)
 			map("i", "<CR>", enter)
+			map("n", "<CR>", enter)
 			return true
 		end,
 

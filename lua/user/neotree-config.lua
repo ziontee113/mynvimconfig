@@ -1,5 +1,5 @@
 require("neo-tree").setup({
-	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+	close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 	popup_border_style = "rounded",
 	enable_git_status = true,
 	enable_diagnostics = true,
@@ -57,7 +57,7 @@ require("neo-tree").setup({
 	},
 	window = {
 		position = "left",
-		width = 30,
+		width = 36,
 		mapping_options = {
 			noremap = true,
 			nowait = true,
@@ -166,4 +166,5 @@ require("neo-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<Leader>e", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>e", ":NeoTreeRevealToggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
