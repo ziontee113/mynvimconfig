@@ -198,13 +198,18 @@ function M.curl_test(decoded_JSON)
 	-- print_to_right_split(buf, lines) --}}}
 
 	-- Paint The Town{{{
+	local target_data = decoded_JSON.items[1].answers[1].body_markdown
+
 	local lines = {}
-	for line in string.gmatch(decoded_JSON.items[1].answers[1].body_markdown, "[^\n]+") do
+	for line in string.gmatch(target_data, "[^\n]+") do
 		line = unescape(line)
 
 		if line ~= "" then
 			if not line:match("^%s") then
 				line = "// " .. line
+			else
+				-- delete 4 spaces at the beginning of the line
+				line = line:gsub("^%s%s%s%s", "")
 			end
 		end
 
