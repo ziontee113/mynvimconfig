@@ -242,7 +242,8 @@ require("hop").setup({})
 vim.keymap.set("n", "vP", function()
 	vim.cmd([[:HopLine]])
 	vim.schedule(function()
-		vim.cmd([[:normal ojj]]) --> POGG
+		vim.cmd([[:normal ojja ]]) --> POGG
+		vim.cmd("startinsert")
 	end)
 end, { noremap = true, silent = true })
 
