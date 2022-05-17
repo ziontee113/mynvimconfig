@@ -146,10 +146,12 @@ keymap("n", "<S-h>", ":bprevious<cr>", opts)
 -- Cursor Movement Mappings
 -- keymap("n", "<C-m>", ":call cursor(0, len(getline('.'))/2)<cr>", opts)
 -- keymap("n", "<C-m>", "`m", opts)
-keymap("v", "<C-u>", "11k", opts)
-keymap("v", "<C-d>", "11j", opts)
-keymap("n", "<C-u>", "11k", opts)
-keymap("n", "<C-d>", "11j", opts)
+
+--> This segment got handled by neoscroll
+-- keymap("v", "<C-u>", "11k", opts)
+-- keymap("v", "<C-d>", "11j", opts)
+-- keymap("n", "<C-u>", "11k", opts)
+-- keymap("n", "<C-d>", "11j", opts)
 
 -- Alt Cursor Movement Mappings - Normal Mode
 -- keymap("n", "<A-j>", "3j", opts)

@@ -266,6 +266,13 @@ vim.keymap.set("n", "vy", function()
 	end)
 end, { noremap = true, silent = true })
 
+vim.keymap.set("n", "vY", function()
+	vim.cmd([[:HopLine]])
+	vim.schedule(function()
+		vim.cmd([[:normal @f]])
+	end)
+end, { noremap = true, silent = true })
+
 return M
 
 -- Current Target:
