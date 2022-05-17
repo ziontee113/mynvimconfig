@@ -29,6 +29,7 @@ vim.cmd([[:command! Qa qa]])
 vim.cmd([[:command! QA qa]])
 
 -- Experimental Mappings
+keymap("n", "dp", "dap", opts)
 keymap("n", "co", "o<Esc>c0", opts)
 keymap("n", "<Leader>o", "2o<Esc>i", opts)
 keymap("n", "<Leader>O", "O<Esc>O", opts)
