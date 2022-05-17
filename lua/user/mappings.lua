@@ -85,8 +85,8 @@ keymap("n", "<C-j>", [[:keepjumps normal! j}k<cr>]], opts)
 keymap("n", "<C-k>", [[:keepjumps normal! k{j<cr>]], opts)
 -- keymap("n", "<A-j>", [[:keepjumps normal! }<cr>]], opts)
 -- keymap("n", "<A-k>", [[:keepjumps normal! {<cr>]], opts)
-keymap("n", "<A-j>", [[10j]], opts)
-keymap("n", "<A-k>", [[10k]], opts)
+keymap("n", "<A-j>", [[5j]], opts)
+keymap("n", "<A-k>", [[5k]], opts)
 -- keymap("x", "<C-j>", [[<cmd>keepjumps normal! }<cr>]], opts)
 -- keymap("x", "<C-k>", [[<cmd>keepjumps normal! {<cr>]], opts)
 keymap("x", "<C-j>", [[<cmd>keepjumps normal! j}k<cr>]], opts)
@@ -368,6 +368,17 @@ vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 2 :vertical resiz
 vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 1 :vertical resize 120<CR>]])
 
 -- Syntax Tree Surfer
+
+-- version 1.1
+
+keymap(
+	"n",
+	"vp",
+	'<cmd>lua require("syntax-tree-surfer").go_to_top_node_and_execute_commands(false, { "normal! O", "normal! O", "startinsert" })<cr>',
+	opts
+)
+
+-- version 1.0
 keymap("n", "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', opts)
 keymap("n", "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', opts)
 
