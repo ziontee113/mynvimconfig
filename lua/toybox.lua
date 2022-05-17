@@ -237,10 +237,10 @@ end
 
 --------------------> Utopia
 
-require("hop").setup({})
+require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 
 vim.keymap.set("n", "vP", function()
-	vim.cmd([[:HopLine]])
+	vim.cmd([[:HopLineStart]]) --> Best thing ever in the history of mankind
 	vim.schedule(function()
 		vim.cmd([[:normal ojja ]]) --> POGG
 		vim.cmd("startinsert")
@@ -248,7 +248,7 @@ vim.keymap.set("n", "vP", function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "vo", function()
-	vim.cmd([[:HopLine]])
+	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		vim.cmd([[normal! o]])
 		vim.cmd([[normal! o]])
@@ -257,7 +257,7 @@ vim.keymap.set("n", "vo", function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "vO", function()
-	vim.cmd([[:HopLine]])
+	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		vim.cmd([[normal! O]])
 		vim.cmd([[normal! O]])
@@ -275,7 +275,7 @@ vim.keymap.set("n", "vy", function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "vY", function()
-	vim.cmd([[:HopLine]])
+	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		vim.cmd([[:normal @f]])
 	end)
