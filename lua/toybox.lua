@@ -61,6 +61,7 @@ local function unescape(str) --{{{
 	str = string.gsub(str, "&#x7e;", "~")
 	str = string.gsub(str, "&#x5c;", "\\")
 	str = string.gsub(str, "&#x2f;", "/")
+
 	str = string.gsub(str, "\r", "")
 
 	return str
@@ -233,6 +234,24 @@ function M.input_test()
 		end
 	end)
 end
+
+--------------------
+
+require("hop").setup({})
+
+vim.keymap.set("n", "vo", function()
+	vim.cmd([[:HopLine]])
+	vim.schedule(function()
+		vim.cmd([[normal! ooooooo]])
+	end)
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "vy", function()
+	require("tsht").nodes()
+	vim.schedule(function()
+		vim.cmd([[normal! d]])
+	end)
+end, { noremap = true, silent = true })
 
 return M
 
