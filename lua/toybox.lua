@@ -239,6 +239,13 @@ end
 
 require("hop").setup({})
 
+vim.keymap.set("n", "vP", function()
+	vim.cmd([[:HopLine]])
+	vim.schedule(function()
+		vim.cmd([[:normal ojj]]) --> POGG
+	end)
+end, { noremap = true, silent = true })
+
 vim.keymap.set("n", "vo", function()
 	vim.cmd([[:HopLine]])
 	vim.schedule(function()
