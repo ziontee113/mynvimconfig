@@ -59,7 +59,9 @@ function M.directory_picker()
 		finder = finders.new_table({
 			"~/.config/nvim/",
 			"/mnt/d/notes",
+			"/mnt/e/YouTube Projects/",
 			"~/.local/share/nvim/site/pack/packer/start/",
+			"/mnt/c/Users/VD/Documents/Rainmeter/Skins/TriSound/",
 		}),
 
 		sorter = sorters.get_generic_fuzzy_sorter({}),
