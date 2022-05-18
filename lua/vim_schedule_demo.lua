@@ -7,14 +7,22 @@ require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 --------------------
 --------------------
 
---> TODO: yank a line with HopLineStart
+-- SECTION: yank a line with HopLineStart
+vim.keymap.set("n", "yl", function()
+	vim.cmd([[:HopLineStart]]) --> jump to line
+	vim.schedule(function()
+		vim.cmd([[normal! yy]]) --> yank the line
+		vim.cmd([[normal! ]]) --> jump back
+	end)
+end, { noremap = true, silent = true })
 
---SECTION: Hyper Jump Yank
+-- SECTION: Hyper Jump Yank
 vim.keymap.set("n", "YY", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		require("tsht").nodes()
 		vim.schedule(function()
+			vim.cmd([[normal! V]]) --> go to visual selection mode -> optional
 			vim.cmd([[normal! y]]) --> yank
 			vim.cmd([[normal! ]]) --> pressing <C-o>
 		end)

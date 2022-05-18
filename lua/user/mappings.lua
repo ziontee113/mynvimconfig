@@ -183,7 +183,7 @@ endfunction
 ]])
 
 -- Yank / Paste mapping keymap("n", "yad", ":% y<cr>", opts)
-keymap("n", "yl", "yy", opts)
+-- keymap("n", "yl", "yy", opts)
 keymap("n", "yp", "yyp", opts)
 keymap("n", "gy", '"*yy', opts)
 keymap("x", "gy", '"*y', opts)
