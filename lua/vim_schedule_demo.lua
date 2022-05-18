@@ -1,5 +1,4 @@
 require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
-
 --------------------> Vim.schedule demonstration
 --------------------
 --------------------
@@ -7,7 +6,7 @@ require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 --------------------
 --------------------
 
-local function jump_back_to_original_buffer(original_buffer)
+local function jump_back_to_original_buffer(original_buffer) --{{{
 	local current_buffer = vim.api.nvim_get_current_buf()
 
 	if current_buffer ~= original_buffer then
@@ -17,7 +16,20 @@ local function jump_back_to_original_buffer(original_buffer)
 		-- jump back to the original line
 		vim.cmd([[normal! ]])
 	end
-end
+end --}}}
+
+-- SECTION: Hyper Yank with Treesitter Node Select
+vim.keymap.set("n", "yx", function()
+	local original_buffer = vim.api.nvim_get_current_buf()
+
+	vim.cmd([[:HopLineStartMW]]) --> jump to line
+	vim.schedule(function()
+		require("syntax-tree-surfer").select()
+		vim.cmd([[normal! V]]) --> go to visual selection mode -> optional
+		vim.cmd([[normal! y]]) --> yank
+		jump_back_to_original_buffer(original_buffer)
+	end)
+end, { noremap = true, silent = true })
 
 -- SECTION: Hyper Yank a line
 vim.keymap.set("n", "yl", function()
