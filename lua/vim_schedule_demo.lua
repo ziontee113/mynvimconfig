@@ -7,25 +7,42 @@ require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 --------------------
 --------------------
 
--- SECTION: yank a line with HopLineStart
+-- SECTION: Hyper Yank a line
 vim.keymap.set("n", "yl", function()
-	vim.cmd([[:HopLineStart]]) --> jump to line
-	--> It's more ocmplicated when it comes to multiple windows, we'll save it for later
+	local original_buffer = vim.api.nvim_get_current_buf()
+	vim.cmd([[:HopLineStartMW]]) --> jump to line
 	vim.schedule(function()
 		vim.cmd([[normal! yy]]) --> yank the line
-		vim.cmd([[normal! ]]) --> jump back
+		local current_buffer = vim.api.nvim_get_current_buf()
+		vim.schedule(function()
+			if current_buffer ~= original_buffer then
+				-- jump back to the original buffer
+				vim.cmd([[normal! ]])
+			else
+				-- jump back to the original line
+				vim.cmd([[normal! ]])
+			end
+		end)
 	end)
 end, { noremap = true, silent = true })
 
--- SECTION: Hyper Yank
+-- SECTION: Hyper Yank Block
 vim.keymap.set("n", "yb", function()
-	vim.cmd([[:HopLineStart]])
+	local original_buffer = vim.api.nvim_get_current_buf()
+	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
+		local current_buffer = vim.api.nvim_get_current_buf()
 		require("tsht").nodes()
 		vim.schedule(function()
 			vim.cmd([[normal! V]]) --> go to visual selection mode -> optional
 			vim.cmd([[normal! y]]) --> yank
-			vim.cmd([[normal! ]]) --> jump back
+			if current_buffer ~= original_buffer then
+				-- jump back to the original buffer
+				vim.cmd([[normal! ]])
+			else
+				-- jump back to the original line
+				vim.cmd([[normal! ]])
+			end
 		end)
 	end)
 end, { noremap = true, silent = true })
