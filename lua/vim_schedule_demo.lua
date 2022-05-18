@@ -18,13 +18,14 @@ vim.keymap.set("n", "yl", function()
 end, { noremap = true, silent = true })
 
 -- SECTION: Hyper Yank
-vim.keymap.set("n", "YY", function()
+vim.keymap.set("n", "yb", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		require("tsht").nodes()
 		vim.schedule(function()
 			vim.cmd([[normal! V]]) --> go to visual selection mode -> optional
 			vim.cmd([[normal! y]]) --> yank
+			vim.cmd([[normal! ]]) --> jump back
 		end)
 	end)
 end, { noremap = true, silent = true })
