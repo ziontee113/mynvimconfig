@@ -62,6 +62,7 @@ require("user.lang-settings.markdown")
 ------------------  NOTE: Testing out Stufs ----------------------------
 require("toybox")
 require("nui-test")
+require("vim_schedule_demo")
 
 -- Cursorline color
 vim.cmd([[highlight Cursorline guibg=#212121]])

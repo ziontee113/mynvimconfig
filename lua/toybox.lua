@@ -235,52 +235,6 @@ function M.input_test()
 	end)
 end
 
---------------------> Utopia
-
-require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
-
-vim.keymap.set("n", "vP", function()
-	vim.cmd([[:HopLineStart]]) --> Best thing ever in the history of mankind
-	vim.schedule(function()
-		vim.cmd([[:normal ojja ]]) --> POGG
-		vim.cmd("startinsert")
-	end)
-end, { noremap = true, silent = true })
-
-vim.keymap.set("n", "vo", function()
-	vim.cmd([[:HopLineStart]])
-	vim.schedule(function()
-		vim.cmd([[normal! o]])
-		vim.cmd([[normal! o]])
-		vim.cmd([[startinsert]])
-	end)
-end, { noremap = true, silent = true })
-
-vim.keymap.set("n", "vO", function()
-	vim.cmd([[:HopLineStart]])
-	vim.schedule(function()
-		vim.cmd([[normal! O]])
-		vim.cmd([[normal! O]])
-		vim.cmd([[startinsert]])
-	end)
-end, { noremap = true, silent = true })
-
-vim.keymap.set("n", "vy", function()
-	require("tsht").nodes()
-	vim.schedule(function()
-		vim.cmd([[normal! c]])
-		vim.cmd([[normal! l]])
-		vim.cmd([[startinsert]])
-	end)
-end, { noremap = true, silent = true })
-
-vim.keymap.set("n", "vY", function()
-	vim.cmd([[:HopLineStart]])
-	vim.schedule(function()
-		vim.cmd([[:normal @f]])
-	end)
-end, { noremap = true, silent = true })
-
 return M
 
 -- Current Target:
