@@ -16,6 +16,7 @@ vim.keymap.set("n", "YY", function()
 		require("tsht").nodes()
 		vim.schedule(function()
 			vim.cmd([[normal! y]]) --> yank
+			vim.cmd([[normal! ]]) --> pressing <C-o>
 		end)
 	end)
 end, { noremap = true, silent = true })
