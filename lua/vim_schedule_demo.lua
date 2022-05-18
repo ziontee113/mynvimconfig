@@ -7,42 +7,39 @@ require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 --------------------
 --------------------
 
+local function jump_back_to_original_buffer(original_buffer)
+	local current_buffer = vim.api.nvim_get_current_buf()
+
+	if current_buffer ~= original_buffer then
+		-- jump back to the original buffer
+		vim.cmd([[normal! ]])
+	else
+		-- jump back to the original line
+		vim.cmd([[normal! ]])
+	end
+end
+
 -- SECTION: Hyper Yank a line
 vim.keymap.set("n", "yl", function()
 	local original_buffer = vim.api.nvim_get_current_buf()
+
 	vim.cmd([[:HopLineStartMW]]) --> jump to line
 	vim.schedule(function()
 		vim.cmd([[normal! yy]]) --> yank the line
-		local current_buffer = vim.api.nvim_get_current_buf()
-		vim.schedule(function()
-			if current_buffer ~= original_buffer then
-				-- jump back to the original buffer
-				vim.cmd([[normal! ]])
-			else
-				-- jump back to the original line
-				vim.cmd([[normal! ]])
-			end
-		end)
+		jump_back_to_original_buffer(original_buffer)
 	end)
 end, { noremap = true, silent = true })
 
--- SECTION: Hyper Yank Block
+-- SECTION: Hyper Yank Treesitter Block
 vim.keymap.set("n", "yb", function()
 	local original_buffer = vim.api.nvim_get_current_buf()
 	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
-		local current_buffer = vim.api.nvim_get_current_buf()
 		require("tsht").nodes()
 		vim.schedule(function()
 			vim.cmd([[normal! V]]) --> go to visual selection mode -> optional
 			vim.cmd([[normal! y]]) --> yank
-			if current_buffer ~= original_buffer then
-				-- jump back to the original buffer
-				vim.cmd([[normal! ]])
-			else
-				-- jump back to the original line
-				vim.cmd([[normal! ]])
-			end
+			jump_back_to_original_buffer(original_buffer)
 		end)
 	end)
 end, { noremap = true, silent = true })
