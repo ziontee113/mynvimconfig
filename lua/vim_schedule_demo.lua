@@ -7,7 +7,7 @@ require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 --------------------
 --------------------
 
---  NOTE: Hop to create blank lines
+--  NOTE: Hop to create new lines
 
 vim.keymap.set("n", "vo", function()
 	vim.cmd([[:HopLineStart]])
@@ -16,8 +16,24 @@ vim.keymap.set("n", "vo", function()
 		vim.cmd([[startinsert]])
 	end)
 end, { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>vo", function()
+	vim.cmd([[:HopLineStart]])
+	vim.schedule(function()
+		vim.cmd([[normal! o]])
+		vim.cmd([[normal! o]])
+		vim.cmd([[startinsert]])
+	end)
+end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "vO", function()
+	vim.cmd([[:HopLineStart]])
+	vim.schedule(function()
+		vim.cmd([[normal! O]])
+		vim.cmd([[normal! O]])
+		vim.cmd([[startinsert]])
+	end)
+end, { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>vO", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		vim.cmd([[normal! O]])
