@@ -20,7 +20,7 @@ set.ignorecase = true
 set.smartcase = true
 
 set.wrap = false
-set.scrolloff = 8
+-- set.scrolloff = 8
 
 set.fileencoding = "utf-8"
 set.termguicolors = true
