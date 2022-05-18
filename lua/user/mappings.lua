@@ -376,7 +376,7 @@ vim.cmd([[autocmd FileType quickrun nnoremap <silent> <buffer> 1 :vertical resiz
 
 keymap(
 	"n",
-	"vp",
+	"<Leader>p",
 	'<cmd>lua require("syntax-tree-surfer").go_to_top_node_and_execute_commands(false, { "normal! O", "normal! O", "startinsert" })<cr>',
 	opts
 )
