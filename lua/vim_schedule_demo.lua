@@ -10,13 +10,14 @@ require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 -- SECTION: yank a line with HopLineStart
 vim.keymap.set("n", "yl", function()
 	vim.cmd([[:HopLineStart]]) --> jump to line
+	--> It's more ocmplicated when it comes to multiple windows, we'll save it for later
 	vim.schedule(function()
 		vim.cmd([[normal! yy]]) --> yank the line
 		vim.cmd([[normal! ]]) --> jump back
 	end)
 end, { noremap = true, silent = true })
 
--- SECTION: Hyper Jump Yank
+-- SECTION: Hyper Yank
 vim.keymap.set("n", "YY", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
@@ -24,7 +25,6 @@ vim.keymap.set("n", "YY", function()
 		vim.schedule(function()
 			vim.cmd([[normal! V]]) --> go to visual selection mode -> optional
 			vim.cmd([[normal! y]]) --> yank
-			vim.cmd([[normal! ]]) --> pressing <C-o>
 		end)
 	end)
 end, { noremap = true, silent = true })
