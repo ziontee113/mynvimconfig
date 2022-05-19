@@ -19,7 +19,8 @@ local function jump_back_to_original_buffer(original_buffer) --{{{
 	end
 end --}}}
 
--- SECTION: Hyper Yank with Treesitter Node Select
+-- SECTION: Hyper Yank
+-- NOTE: Hyper Yank with Treesitter Node Select
 vim.keymap.set("n", "yx", function()
 	local original_buffer = vim.api.nvim_get_current_buf()
 
@@ -32,7 +33,7 @@ vim.keymap.set("n", "yx", function()
 	end)
 end, opts)
 
--- SECTION: Hyper Yank a line
+-- NOTE: Hyper Yank a line
 vim.keymap.set("n", "yl", function()
 	local original_buffer = vim.api.nvim_get_current_buf()
 
@@ -43,7 +44,7 @@ vim.keymap.set("n", "yl", function()
 	end)
 end, opts)
 
--- SECTION: Hyper Yank Treesitter Block
+-- NOTE: Hyper Yank Treesitter Block
 vim.keymap.set("n", "yb", function()
 	local original_buffer = vim.api.nvim_get_current_buf()
 	vim.cmd([[:HopLineStartMW]])
@@ -57,25 +58,25 @@ vim.keymap.set("n", "yb", function()
 	end)
 end, opts)
 
--- SECTION: Using nvim-treehopper to yank
+-- NOTE: Using nvim-treehopper to yank
 vim.keymap.set("n", "ym", function()
 	require("tsht").nodes()
 	vim.schedule(function()
+		vim.cmd([[normal! V]]) --> go to visual selection mode
 		vim.cmd([[normal! y]]) --> yank
 	end)
 end, opts)
 
---SECTION: Hop Paste to the line below target
+--SECTION: Hyper Pasting
 
 vim.keymap.set("n", "vp", function()
-	vim.cmd([[:HopLineStart]])
+	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
-		vim.cmd([[normal! o]]) --> make new line below target
 		vim.cmd([[normal! p]]) --> paste
 	end)
 end, opts)
 vim.keymap.set("n", "<Leader>vp", function()
-	vim.cmd([[:HopLineStart]])
+	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
 		vim.cmd([[normal! o]]) --> make new line below target
 		vim.cmd([[normal! o]]) --> make another new line below target
@@ -84,20 +85,29 @@ vim.keymap.set("n", "<Leader>vp", function()
 end, opts)
 
 vim.keymap.set("n", "vP", function()
-	vim.cmd([[:HopLineStart]])
+	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
 		vim.cmd([[normal! P]]) --> paste
 	end)
 end, opts)
 vim.keymap.set("n", "<Leader>vP", function()
-	vim.cmd([[:HopLineStart]])
+	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
 		vim.cmd([[normal! O]]) --> make another new line below target
 		vim.cmd([[normal! P]]) --> paste
 	end)
 end, opts)
 
---  NOTE: Hop to create new lines
+--------------------
+--------------------
+--------------------
+--------------------
+--------------------
+--------------------
+--------------------
+--------------------
+--------------------
+-- VIDEO 1: NOTE: Hop to create new lines
 
 vim.keymap.set("n", "vo", function()
 	vim.cmd([[:HopLineStart]])
