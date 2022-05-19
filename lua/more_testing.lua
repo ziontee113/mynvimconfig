@@ -16,7 +16,11 @@ local function test_extmark()
 	local ok, keynum = pcall(vim.fn.getchar)
 
 	if ok then
-		N(keynum)
+		if keynum == 27 then --> Esc
+			api.nvim_buf_clear_namespace(0, ns, 0, -1)
+		else
+			N(keynum)
+		end
 	end
 end
 
