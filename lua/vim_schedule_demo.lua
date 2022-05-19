@@ -44,8 +44,8 @@ vim.keymap.set("n", "yl", function()
 	end)
 end, opts)
 
--- NOTE: Hyper Yank Treesitter Block
-vim.keymap.set("n", "yb", function()
+-- NOTE: Hyper Yank Treesitter Code Block
+vim.keymap.set("n", "yc", function()
 	local original_buffer = vim.api.nvim_get_current_buf()
 	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
@@ -67,7 +67,7 @@ vim.keymap.set("n", "ym", function()
 	end)
 end, opts)
 
---SECTION: Hyper Pasting
+--SECTION: Hyper Paste
 
 vim.keymap.set("n", "vp", function()
 	vim.cmd([[:HopLineStartMW]])

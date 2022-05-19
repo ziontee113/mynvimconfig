@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter
 local api = vim.api
 local M = {}
 local ns = api.nvim_create_namespace("me.tsnode")
@@ -49,7 +50,10 @@ local function keys_iter()
 end
 
 function M.nodes()
+	-- clearing the namespace
 	api.nvim_buf_clear_namespace(0, ns, 0, -1)
+
+	-- variable declarations & check for treesitter queries
 	local ts = vim.treesitter
 	local get_query = require("vim.treesitter.query").get_query
 	local get_parser = require("vim.treesitter").get_parser
@@ -58,6 +62,8 @@ function M.nodes()
 		print("No locals query for language", vim.bo.filetype)
 		return
 	end
+
+	-- declare parser
 	local parser = ts.get_parser(0)
 	local trees = parser:parse()
 	local root = trees[1]:root()
