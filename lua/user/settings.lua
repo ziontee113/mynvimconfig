@@ -6,7 +6,6 @@ set.number = false
 set.relativenumber = false
 -- set.number = true
 -- set.relativenumber = true
-set.cursorline = false
 set.expandtab = true
 set.tabstop = 2
 set.softtabstop = 2
