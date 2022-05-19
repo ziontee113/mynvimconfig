@@ -73,21 +73,21 @@ function M.nodes()
 	local iter = keys_iter()
 	local hints = {}
 
-	-- highlight the entire document in gray
-	local win_info = vim.fn.getwininfo(api.nvim_get_current_win())[1]
-	for i = win_info.topline, win_info.botline do
-		api.nvim_buf_add_highlight(0, ns, "TSNodeUnmatched", i - 1, 0, -1)
-	end
+	-- -- highlight the entire document in gray
+	-- local win_info = vim.fn.getwininfo(api.nvim_get_current_win())[1]
+	-- for i = win_info.topline, win_info.botline do
+	-- 	api.nvim_buf_add_highlight(0, ns, "TSNodeUnmatched", i - 1, 0, -1)
+	-- end
 
 	local function register_node(node)
 		local key = iter()
 		local start_row, start_col, end_row, end_col = node:range()
 		api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
-			virt_text = { { key, "TSNodeKey" } },
+			virt_text = { { key, "DapUIScope" } },
 			virt_text_pos = "overlay",
 		})
 		api.nvim_buf_set_extmark(0, ns, end_row, end_col, {
-			virt_text = { { key, "TSNodeKey" } },
+			virt_text = { { key, "DapUIScope" } },
 			virt_text_pos = "overlay",
 		})
 		hints[key] = node

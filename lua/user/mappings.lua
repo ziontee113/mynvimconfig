@@ -303,7 +303,7 @@ keymap("n", "<leader><C-p>", ":lua require('user.telescope-custom-pickers').vimr
 keymap("n", "<leader><leader>g", ":lua require('user.telescope-custom-pickers').vimrc_live_grep()<cr>", opts)
 
 -- TS Hoppper
-keymap("x", "m", ":lua require('tsht').nodes()<CR>", opts)
+keymap("x", "m", ":lua require('references').nodes()<CR>", opts)
 -- Packer Mappings
 -- keymap("n", "<leader>S", ":w\n :luafile %\n :PackerSync<cr>", opts)
 
