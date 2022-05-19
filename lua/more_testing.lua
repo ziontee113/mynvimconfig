@@ -19,7 +19,8 @@ local function test_extmark()
 		if keynum == 27 then --> Esc
 			api.nvim_buf_clear_namespace(0, ns, 0, -1)
 		else
-			N(keynum)
+			local key = string.char(keynum)
+			N(key)
 		end
 	end
 end

@@ -277,6 +277,7 @@ keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
 -- Split Windows
 -- keymap("n", "<leader>V", "<c-w>v<c-w>l<:Telescope find_files<cr>", opts)
 keymap("n", "<leader>v", "<c-w>v<c-w>l", opts)
+keymap("n", "<leader>vs", "<c-w>v<c-w>l", opts)
 -- keymap("n", "<leader>hS", "<c-w>S<c-w>j<:Telescope find_files<cr>", opts)
 keymap("n", "<leader>hs", "<c-w>s<c-w>j", opts)
 
