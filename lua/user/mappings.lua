@@ -202,8 +202,8 @@ keymap("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("i", "<A-Up>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<A-Down>", ":m .+1<CR>==", opts)
 keymap("n", "<A-Up>", ":m .-2<CR>==", opts)
-keymap("v", "<A-Down>", "'>+1<CR>gv=gv", opts)
-keymap("v", "<A-Up>", "'<-2<CR>gv=gv", opts)
+keymap("x", "<A-Down>", ":m'>+<CR>gv=gv", opts)
+keymap("x", "<A-Up>", ":m-2<CR>gv=gv", opts)
 
 -- w,e,b (Wordwise Motions) remaps
 keymap("n", "w", "b", opts)
