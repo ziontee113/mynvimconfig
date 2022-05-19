@@ -65,6 +65,7 @@ require("nui-test")
 require("vim_schedule_demo")
 
 require("hop-mappings")
+require("more_testing")
 
 -- Cursorline color
 vim.cmd([[highlight Cursorline guibg=#212121]])

@@ -5,7 +5,7 @@ local ns = api.nvim_create_namespace("me.tsnode")
 
 M.config = { hint_keys = {} }
 
-local function keys_iter()
+local function keys_iter() --{{{
 	local i = 0
 	local len = #M.config.hint_keys
 	return function()
@@ -47,7 +47,7 @@ local function keys_iter()
 			end
 		end
 	end
-end
+end --}}}
 
 function M.nodes()
 	-- clearing the namespace
@@ -94,18 +94,25 @@ function M.nodes()
 	end
 	register_node(cursor_node)
 
+	-- get all nodes that are in the same scope as the cursor node
 	local parent = cursor_node:parent()
 	while parent do
 		register_node(parent)
 		parent = parent:parent()
 	end
+
 	vim.cmd("redraw")
+
 	while true do
 		local ok, keynum = pcall(vim.fn.getchar)
+
 		if not ok then
 			api.nvim_buf_clear_namespace(0, ns, 0, -1)
 			break
 		end
+
+		N(keynum)
+
 		if type(keynum) == "number" then
 			local key = string.char(keynum)
 			local node = hints[key]
