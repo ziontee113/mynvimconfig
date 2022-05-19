@@ -6,6 +6,7 @@ require("hop").setup({}) -- testing out Hop.nvim with vim.schedule
 --------------------
 --------------------
 
+local opts = { noremap = true, silent = true }
 local function jump_back_to_original_buffer(original_buffer) --{{{
 	local current_buffer = vim.api.nvim_get_current_buf()
 
@@ -29,7 +30,7 @@ vim.keymap.set("n", "yx", function()
 		vim.cmd([[normal! y]]) --> yank
 		jump_back_to_original_buffer(original_buffer)
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 -- SECTION: Hyper Yank a line
 vim.keymap.set("n", "yl", function()
@@ -40,7 +41,7 @@ vim.keymap.set("n", "yl", function()
 		vim.cmd([[normal! yy]]) --> yank the line
 		jump_back_to_original_buffer(original_buffer)
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 -- SECTION: Hyper Yank Treesitter Block
 vim.keymap.set("n", "yb", function()
@@ -54,7 +55,7 @@ vim.keymap.set("n", "yb", function()
 			jump_back_to_original_buffer(original_buffer)
 		end)
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 -- SECTION: Using nvim-treehopper to yank
 vim.keymap.set("n", "ym", function()
@@ -62,7 +63,7 @@ vim.keymap.set("n", "ym", function()
 	vim.schedule(function()
 		vim.cmd([[normal! y]]) --> yank
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 --SECTION: Hop Paste to the line below target
 
@@ -72,7 +73,7 @@ vim.keymap.set("n", "vp", function()
 		vim.cmd([[normal! o]]) --> make new line below target
 		vim.cmd([[normal! p]]) --> paste
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 vim.keymap.set("n", "<Leader>vp", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
@@ -80,21 +81,21 @@ vim.keymap.set("n", "<Leader>vp", function()
 		vim.cmd([[normal! o]]) --> make another new line below target
 		vim.cmd([[normal! p]]) --> paste
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 vim.keymap.set("n", "vP", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		vim.cmd([[normal! P]]) --> paste
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 vim.keymap.set("n", "<Leader>vP", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
 		vim.cmd([[normal! O]]) --> make another new line below target
 		vim.cmd([[normal! P]]) --> paste
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 --  NOTE: Hop to create new lines
 
@@ -104,7 +105,7 @@ vim.keymap.set("n", "vo", function()
 		vim.cmd([[normal! o]])
 		vim.cmd([[startinsert]])
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 vim.keymap.set("n", "<Leader>vo", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
@@ -112,7 +113,7 @@ vim.keymap.set("n", "<Leader>vo", function()
 		vim.cmd([[normal! o]])
 		vim.cmd([[startinsert]])
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 vim.keymap.set("n", "vO", function()
 	vim.cmd([[:HopLineStart]])
@@ -121,7 +122,7 @@ vim.keymap.set("n", "vO", function()
 		vim.cmd([[normal! O]])
 		vim.cmd([[startinsert]])
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 vim.keymap.set("n", "<Leader>vO", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
@@ -129,7 +130,7 @@ vim.keymap.set("n", "<Leader>vO", function()
 		vim.cmd([[normal! O]])
 		vim.cmd([[startinsert]])
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 --  NOTE: Hop with Macros
 
@@ -138,7 +139,7 @@ vim.keymap.set("n", "vY", function()
 	vim.schedule(function()
 		vim.cmd([[:normal @f]])
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 --  NOTE: Hop can even trigger LuaSnip Snippets (complicated)
 
@@ -148,7 +149,7 @@ vim.keymap.set("n", "your_keymap", function()
 		vim.cmd([[:normal ojja ]]) --> POGG
 		vim.cmd("startinsert")
 	end)
-end, { noremap = true, silent = true })
+end, opts)
 
 --  NOTE: TSHT (Treesitter hint textobject) --> mfussenegger/nvim-treehopper
 
@@ -158,4 +159,4 @@ vim.keymap.set("n", "vy", function()
 		vim.cmd([[normal! c]])
 		vim.cmd([[startinsert]])
 	end)
-end, { noremap = true, silent = true })
+end, opts)
