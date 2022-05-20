@@ -16,14 +16,7 @@ local function get_nodes_in_array()
 	local function recursive_child_iter(node)
 		if node:iter_children() then
 			for child in node:iter_children() do
-				-- do something with the child
-
-				---@diagnostic disable-next-line: unused-local
-				local start_row, start_col, end_row, end_col = node:range()
-				api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
-					virt_text = { { "x", "DapUIScope" } },
-					virt_text_pos = "overlay",
-				})
+				-- do something with the child (if we want tod)
 
 				table.insert(nodes, child)
 				recursive_child_iter(child)
@@ -39,10 +32,26 @@ end
 -- loop through nodes and print their type
 local function print_types()
 	local nodes = get_nodes_in_array()
+	local desired_types = { "function", "variable_declaration" }
 
 	vim.cmd([[:messages clear]])
 	for _, node in ipairs(nodes) do
 		print(node:type())
+
+		-- loop through desired_types
+		for _, desired_type in ipairs(desired_types) do
+			if node:type() == desired_type then
+				---@diagnostic disable-next-line: unused-local
+				local start_row, start_col, end_row, end_col = node:range()
+
+				local capitalized_first_char = string.upper(string.sub(desired_type, 1, 1))
+
+				api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
+					virt_text = { { capitalized_first_char, "DapUIScope" } },
+					virt_text_pos = "overlay",
+				})
+			end
+		end
 	end
 end
 
