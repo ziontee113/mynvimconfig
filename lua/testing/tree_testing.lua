@@ -32,22 +32,23 @@ end
 -- loop through nodes and print their type
 local function print_types()
 	local nodes = get_nodes_in_array()
-	local desired_types = { "function", "variable_declaration" }
+	local desired_types = { "function", "variable_declaration", "if_statement", "for_statement" }
+	local desired_aliases = { "F", "v", "I", "F" }
 
 	vim.cmd([[:messages clear]])
 	for _, node in ipairs(nodes) do
 		print(node:type())
 
 		-- loop through desired_types
-		for _, desired_type in ipairs(desired_types) do
+		for index, desired_type in ipairs(desired_types) do
 			if node:type() == desired_type then
 				---@diagnostic disable-next-line: unused-local
 				local start_row, start_col, end_row, end_col = node:range()
 
-				local capitalized_first_char = string.upper(string.sub(desired_type, 1, 1))
+				local alias = desired_aliases[index]
 
 				api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
-					virt_text = { { capitalized_first_char, "DapUIScope" } },
+					virt_text = { { alias, "DapUIScope" } },
 					virt_text_pos = "overlay",
 				})
 			end
