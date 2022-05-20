@@ -195,9 +195,9 @@ keymap("n", "gp", '"*p', opts)
 keymap("n", "vv", "viw", opts)
 keymap("n", "vV", "viW", opts)
 --
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-keymap("v", "p", '"_dP', opts)
+keymap("x", "<", "<gv", opts)
+keymap("x", ">", ">gv", opts)
+keymap("x", "p", '"_dP', opts)
 
 --Moving Lines
 keymap("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", opts)

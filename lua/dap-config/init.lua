@@ -36,7 +36,7 @@ keymap("n", "<leader>dB", '<cmd>lua require"dap".set_breakpoint()<CR>', opts)
 
 keymap("n", "<leader>ds", '<cmd>lua require"dap.ui.widgets".scopes()<CR>', opts)
 keymap("n", "<leader>di", '<cmd>lua require"dap.ui.widgets".hover()<CR>', opts)
-keymap("v", "<leader>di", '<cmd>lua require"dap.ui.widgets".visual_hover()<CR>', opts)
+keymap("x", "<leader>di", '<cmd>lua require"dap.ui.widgets".visual_hover()<CR>', opts)
 
 keymap("n", "<leader>duh", '<cmd>lua require"dap.ui.widgets".hover()<CR>', opts)
 keymap(

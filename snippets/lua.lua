@@ -248,7 +248,7 @@ cs( -- Nvim Set Keymap - vim.keymap.set{{{
 	"keymap",
 	fmt(
 		[[
-vim.keymap.set({}, "{}", {}, {{ {} }})
+vim.keymap.set({}, "{}", {}, {})
 ]],
 		{
 			c(1, { fmt([["{}"]], { i(1, "n") }), fmt([[{{"{}", "{}"}}]], { i(1, "n"), i(2, "x") }) }),
@@ -267,10 +267,11 @@ end
 				),
 			}),
 			c(4, {
-				t("noremap = true, silent = true"),
-				t("noremap = true, buffer = true, silent = true"),
-				t("silent = true"),
-				t("noremap = true"),
+				t("{ noremap = true, silent = true }"),
+				t("{ noremap = true, buffer = true, silent = true }"),
+				t("{ silent = true }"),
+				t("{ noremap = true }"),
+				t("opts"),
 			}),
 		}
 	)
