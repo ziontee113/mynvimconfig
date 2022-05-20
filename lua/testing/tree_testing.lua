@@ -59,39 +59,112 @@ local dictionary = {
 		alias = "F",
 	},
 }
--- key presses
-local keys = "asdfjklweroiuxcv.,mtybn"
-keys = vim.split(keys, "")
+
+local left_hand_side = "fdswervcxqt"
+left_hand_side = vim.split(left_hand_side, "")
+local right_hand_side = "jkloiupy"
+right_hand_side = vim.split(right_hand_side, "")
 
 local function print_types(desired_types)
 	local nodes = get_nodes_in_array()
-	local count = 1
 
-	vim.cmd([[:messages clear]])
+	local current_window = api.nvim_get_current_win()
+	local current_line = vim.api.nvim_win_get_cursor(current_window)[1]
+
+	local nodes_before_cursor = {}
+	local nodes_after_cursor = {}
+
+	local hash_table = {}
+
 	for _, node in ipairs(nodes) do
+		local start_row, start_col, end_row, end_col = node:range()
+
+		if start_row < current_line then
+			table.insert(nodes_before_cursor, node)
+		elseif start_row >= current_line then
+			table.insert(nodes_after_cursor, node)
+		end
+	end
+
+	local color_group = "DapUIScope"
+
+	-- loop backwards through nodes_before_cursor
+	local count = 1
+	for i = #nodes_before_cursor, 1, -1 do
+		local node = nodes_before_cursor[i]
 		local node_type = node:type()
-		print(node_type)
+		local start_row, start_col, end_row, end_col = node:range()
 
-		-- check if the node type is in the desired_types
+		if not left_hand_side[count] then
+			break
+		end
+
 		if has_value(desired_types, node_type) then
-			local color_group = dictionary[node_type].color_group
-			local alias = dictionary[node_type].alias
-			---@diagnostic disable-next-line: unused-local
-			local start_row, start_col, end_row, end_col = node:range()
-
 			api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
-				virt_text = { { keys[count], color_group } },
+				virt_text = { { left_hand_side[count], color_group } },
 				virt_text_pos = "overlay",
 			})
+
+			hash_table[left_hand_side[count]] = {}
+			hash_table[left_hand_side[count]].start_row = start_row
+			hash_table[left_hand_side[count]].start_col = start_col
 
 			count = count + 1
 		end
 	end
+
+	count = 1
+	for i = 1, #nodes_after_cursor do
+		local node = nodes_after_cursor[i]
+		local node_type = node:type()
+		local start_row, start_col, end_row, end_col = node:range()
+
+		if not right_hand_side[count] then
+			break
+		end
+
+		if has_value(desired_types, node_type) then
+			api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
+				virt_text = { { right_hand_side[count], color_group } },
+				virt_text_pos = "overlay",
+			})
+
+			hash_table[right_hand_side[count]] = {}
+			hash_table[right_hand_side[count]].start_row = start_row
+			hash_table[right_hand_side[count]].start_col = start_col
+
+			count = count + 1
+		end
+	end
+
+	vim.cmd([[redraw]])
+
+	local ok, keynum = pcall(vim.fn.getchar)
+	if ok then
+		local key = string.char(keynum)
+		if hash_table[key] then
+			local start_row = hash_table[key].start_row + 1
+			local start_col = hash_table[key].start_col
+
+			vim.api.nvim_win_set_cursor(current_window, { start_row, start_col })
+		end
+	end
+
+	api.nvim_buf_clear_namespace(0, ns, 0, -1)
 end
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", " pt", function()
+vim.keymap.set("n", "gkv", function()
 	print_types({ "variable_declaration" })
+end, opts)
+vim.keymap.set("n", "gkf", function()
+	print_types({ "function" })
+end, opts)
+vim.keymap.set("n", "gki", function()
+	print_types({ "if_statement" })
+end, opts)
+vim.keymap.set("n", "gkl", function()
+	print_types({ "for_statement" })
 end, opts)
 
 vim.keymap.set("n", " me", ":messages<cr>", opts)
