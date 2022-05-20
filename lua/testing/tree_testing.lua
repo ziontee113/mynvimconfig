@@ -79,9 +79,9 @@ local function print_types(desired_types)
 	for _, node in ipairs(nodes) do
 		local start_row, start_col, end_row, end_col = node:range()
 
-		if start_row < current_line then
+		if start_row + 1 < current_line then
 			table.insert(nodes_before_cursor, node)
-		elseif start_row >= current_line then
+		elseif start_row > current_line then
 			table.insert(nodes_after_cursor, node)
 		end
 	end
@@ -100,8 +100,13 @@ local function print_types(desired_types)
 		end
 
 		if has_value(desired_types, node_type) then
-			api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
+			api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
 				virt_text = { { left_hand_side[count], color_group } },
+				virt_text_pos = "overlay",
+			})
+
+			api.nvim_buf_set_extmark(0, ns, start_row, -1, {
+				virt_text = { { " " .. left_hand_side[count] .. " <-- " .. node_type, color_group } },
 				virt_text_pos = "overlay",
 			})
 
@@ -124,8 +129,13 @@ local function print_types(desired_types)
 		end
 
 		if has_value(desired_types, node_type) then
-			api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
+			api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
 				virt_text = { { right_hand_side[count], color_group } },
+				virt_text_pos = "overlay",
+			})
+
+			api.nvim_buf_set_extmark(0, ns, start_row, -1, {
+				virt_text = { { " " .. right_hand_side[count] .. " <-- " .. node_type, color_group } },
 				virt_text_pos = "overlay",
 			})
 
@@ -154,6 +164,9 @@ local function print_types(desired_types)
 end
 
 local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "gj", function()
+	print_types({ "function", "if_statement", "for_statement" })
+end, opts)
 vim.keymap.set("n", "gv", function()
 	print_types({ "variable_declaration" })
 end, opts)
