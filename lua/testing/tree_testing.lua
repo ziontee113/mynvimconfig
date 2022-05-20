@@ -154,16 +154,16 @@ local function print_types(desired_types)
 end
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "gkv", function()
+vim.keymap.set("n", "gv", function()
 	print_types({ "variable_declaration" })
 end, opts)
-vim.keymap.set("n", "gkf", function()
+vim.keymap.set("n", "gfu", function()
 	print_types({ "function" })
 end, opts)
-vim.keymap.set("n", "gki", function()
+vim.keymap.set("n", "gif", function()
 	print_types({ "if_statement" })
 end, opts)
-vim.keymap.set("n", "gkl", function()
+vim.keymap.set("n", "gfo", function()
 	print_types({ "for_statement" })
 end, opts)
 
