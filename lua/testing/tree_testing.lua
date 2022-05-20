@@ -1,5 +1,9 @@
 ---@diagnostic disable: missing-parameter
 local api = vim.api
+local ns = api.nvim_create_namespace("tree_testing_ns")
+
+-- clear namespace
+api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
 local function get_nodes_in_array()
 	local ts = vim.treesitter
@@ -12,7 +16,15 @@ local function get_nodes_in_array()
 	local function recursive_child_iter(node)
 		if node:iter_children() then
 			for child in node:iter_children() do
-				P(child:type())
+				-- do something with the child
+
+				---@diagnostic disable-next-line: unused-local
+				local start_row, start_col, end_row, end_col = node:range()
+				api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
+					virt_text = { { "x", "DapUIScope" } },
+					virt_text_pos = "overlay",
+				})
+
 				table.insert(nodes, child)
 				recursive_child_iter(child)
 			end
@@ -28,6 +40,7 @@ end
 local function print_types()
 	local nodes = get_nodes_in_array()
 
+	vim.cmd([[:messages clear]])
 	for _, node in ipairs(nodes) do
 		print(node:type())
 	end
