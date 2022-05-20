@@ -84,6 +84,8 @@ keymap("n", "{", [[:keepjumps normal! {<cr>]], opts)
 
 keymap("n", "<C-j>", [[:keepjumps normal! j}k<cr>]], opts)
 keymap("n", "<C-k>", [[:keepjumps normal! k{j<cr>]], opts)
+keymap("o", "<C-j>", [[:keepjumps normal! 0j}<cr>]], opts)
+keymap("o", "<C-k>", [[:keepjumps normal! 0k{<cr>]], opts)
 -- keymap("n", "<A-j>", [[:keepjumps normal! }<cr>]], opts)
 -- keymap("n", "<A-k>", [[:keepjumps normal! {<cr>]], opts)
 keymap("n", "<A-j>", [[5j]], opts)
