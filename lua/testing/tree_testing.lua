@@ -40,7 +40,7 @@ local function has_value(tab, val)
 	return false
 end
 
--- loop through nodes and print their type
+-- dictionary
 local dictionary = {
 	["function"] = {
 		color_group = "DapUIScope",
@@ -59,8 +59,13 @@ local dictionary = {
 		alias = "F",
 	},
 }
+-- key presses
+local keys = "asdfjklweroiuxcv.,mtybn"
+keys = vim.split(keys, "")
+
 local function print_types(desired_types)
 	local nodes = get_nodes_in_array()
+	local count = 1
 
 	vim.cmd([[:messages clear]])
 	for _, node in ipairs(nodes) do
@@ -75,9 +80,11 @@ local function print_types(desired_types)
 			local start_row, start_col, end_row, end_col = node:range()
 
 			api.nvim_buf_set_extmark(0, ns, start_row, start_col, {
-				virt_text = { { alias, color_group } },
+				virt_text = { { keys[count], color_group } },
 				virt_text_pos = "overlay",
 			})
+
+			count = count + 1
 		end
 	end
 end
