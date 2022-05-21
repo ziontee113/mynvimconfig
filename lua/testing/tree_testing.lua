@@ -19,8 +19,6 @@ local function get_nodes_in_array()
 	local function recursive_child_iter(node)
 		if node:iter_children() then
 			for child in node:iter_children() do
-				-- do something with the child (if we want tod)
-
 				table.insert(nodes, child)
 				recursive_child_iter(child)
 			end
@@ -64,9 +62,9 @@ local dictionary = {
 }
 
 -- possible keymaps
-local left_hand_side = "fdswervcxqt"
+local left_hand_side = "fdsawervcxqtzb"
 left_hand_side = vim.split(left_hand_side, "")
-local right_hand_side = "jkloiupy"
+local right_hand_side = "jkl;oiu.,mpy/n"
 right_hand_side = vim.split(right_hand_side, "")
 
 -- function to execute
