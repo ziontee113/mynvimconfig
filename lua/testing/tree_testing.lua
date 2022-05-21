@@ -1,4 +1,4 @@
----@diagnostic disable: missing-parameter, unused-local
+---@diagnostic disable: missing-parameter, unused-local, empty-block
 
 -- Imports & aliases ///1
 local api = vim.api
@@ -175,8 +175,25 @@ local function print_types(desired_types) -- ///2
 end
 
 local function go_to_next_instance(desired_types) -- ///2
-	-- TODO:
+	local current_buffer = vim.api.nvim_get_current_buf()
+	if current_syntax_nodes[current_buffer] then
+		-- TODO:
+	end
 end
+
+-- Autocmds ///1
+local augroup = vim.api.nvim_create_augroup("STS_augroup", { clear = true })
+vim.api.nvim_create_autocmd({
+	"TextChanged",
+	--[[ "TextChangedI" ]]
+}, {
+	buffer = 0,
+	group = augroup,
+	callback = function()
+		local current_buffer = vim.api.nvim_get_current_buf()
+		current_syntax_nodes[current_buffer] = nil
+	end,
+})
 
 -- Mappings ///1
 local opts = { noremap = true, silent = true }
