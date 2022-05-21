@@ -175,9 +175,30 @@ local function print_types(desired_types) -- ///2
 end
 
 local function go_to_next_instance(desired_types) -- ///2
+	-- get nodes to operate on
 	local current_buffer = vim.api.nvim_get_current_buf()
+	local nodes = nil
 	if current_syntax_nodes[current_buffer] then
-		-- TODO:
+		nodes = current_syntax_nodes[current_buffer]
+	else
+		nodes = get_nodes_in_array()
+	end
+
+	-- get current cursor position
+	local current_window = api.nvim_get_current_win()
+	local current_line = vim.api.nvim_win_get_cursor(current_window)[1]
+
+	-- loop through nodes, find the closest one to the cursor
+	local closest_node = nil
+	local closest_distance = nil
+	for _, node in ipairs(nodes) do
+		local start_row, start_col, end_row, end_col = node:range()
+		local distance = math.abs(start_row - current_line)
+
+		if closest_distance == nil or distance < closest_distance then
+			closest_node = node
+			closest_distance = distance
+		end
 	end
 end
 
