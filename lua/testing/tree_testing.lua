@@ -1,13 +1,13 @@
 ---@diagnostic disable: missing-parameter, unused-local
 
--- Imports & aliases
+-- Imports & aliases ///1
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
--- clear namespace
+-- Clear Namespace ///1
 api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
--- utils
+-- Utils ///1
 local function get_nodes_in_array()
 	local ts = vim.treesitter
 	local parser = ts.get_parser(0)
@@ -30,7 +30,7 @@ local function get_nodes_in_array()
 	return nodes
 end
 
--- helper function
+-- helper function [has_value] ///2
 local function has_value(tab, val)
 	for index, value in ipairs(tab) do
 		if value == val then
@@ -41,7 +41,7 @@ local function has_value(tab, val)
 	return false
 end
 
--- dictionary declaration
+-- Dictionary Declaration ///1
 local dictionary = {
 	["function"] = {
 		color_group = "DapUIScope",
@@ -67,7 +67,7 @@ left_hand_side = vim.split(left_hand_side, "")
 local right_hand_side = "jkl;oiu.,mpy/n"
 right_hand_side = vim.split(right_hand_side, "")
 
--- function to execute
+-- Functions to Execute ///1
 local function print_types(desired_types)
 	local nodes = get_nodes_in_array()
 
@@ -166,7 +166,7 @@ local function print_types(desired_types)
 	api.nvim_buf_clear_namespace(0, ns, 0, -1)
 end
 
--- mappings
+-- Mappings ///1
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gj", function()
 	print_types({ "function", "if_statement", "for_statement" })
@@ -192,3 +192,5 @@ end, opts)
 vim.keymap.set("n", "<A-p>", function()
 	print("-")
 end, opts)
+
+-- vim: foldmethod=marker foldmarker=///,//>
