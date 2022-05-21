@@ -203,13 +203,15 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 		nodes = get_nodes_in_array()
 	end
 
-	-- set up variables
-	local previous_closest_node = nil
-	local next_closest_node = nil
-
 	-- get cursor position
 	local current_window = api.nvim_get_current_win()
 	local current_line = vim.api.nvim_win_get_cursor(current_window)[1]
+
+	-- set up variables
+	local previous_closest_node = nil
+	local next_closest_node = nil
+	local previous_closest_node_line = nil
+	local next_closest_node_line = nil
 
 	if nodes then
 		nodes = get_desired_nodes(nodes, desired_types)
@@ -221,13 +223,15 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 			if start_row + 1 < current_line then
 				if previous_closest_node == nil then
 					previous_closest_node = node
-				elseif start_row > previous_closest_node:range()[1] then
+					previous_closest_node_line = start_row
+				elseif start_row > previous_closest_node_line then
 					previous_closest_node = node
 				end
 			elseif start_row > current_line then
 				if next_closest_node == nil then
 					next_closest_node = node
-				elseif start_row < next_closest_node:range()[1] then
+					next_closest_node_line = start_row
+				elseif start_row < previous_closest_node_line then
 					next_closest_node = node
 				end
 			end
