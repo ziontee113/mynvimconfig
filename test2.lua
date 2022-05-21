@@ -1,28 +1,10 @@
-local str = [[
-Some Text Up here
+---@diagnostic disable: redefined-local, unused-local
+local var = vim.tbl_contains
+local var = vim.tbl_isempty
+local var = vim.tbl_map
 
-  begin
-    super simple
-    string
-  end
+local api = vim.api
+local var = api.nvim_echo
+local var = api.nvim_replace_termcodes
 
-Some Text Down here
-
-  begin
-    super simple
-    string
-  end
-____
-]]
-
-print(str)
-
-local pattern = "^%s.*%s"
-
-for line in str:gmatch("[^\n]+") do
-	if line:match(pattern) then
-		print("matched" .. line)
-	else
-		-- print("not matched")
-	end
-end
+local var = vim.fn.foldclosed

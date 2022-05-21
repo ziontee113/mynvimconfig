@@ -1,4 +1,4 @@
----@diagnostic disable: missing-parameter
+---@diagnostic disable: missing-parameter, unused-local
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
