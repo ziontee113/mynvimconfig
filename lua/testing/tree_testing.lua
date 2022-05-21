@@ -224,14 +224,14 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 				if previous_closest_node == nil then
 					previous_closest_node = node
 					previous_closest_node_line = start_row
-				elseif start_row > previous_closest_node_line then
+				elseif previous_closest_node_line and start_row > previous_closest_node_line then
 					previous_closest_node = node
 				end
 			elseif start_row > current_line then
 				if next_closest_node == nil then
 					next_closest_node = node
 					next_closest_node_line = start_row
-				elseif start_row < previous_closest_node_line then
+				elseif previous_closest_node_line and start_row < previous_closest_node_line then
 					next_closest_node = node
 				end
 			end
