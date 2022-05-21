@@ -11,7 +11,7 @@ local current_syntax_nodes = {}
 api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
 -- Utils (Getters) ///1
-local function get_nodes_in_array()
+local function get_nodes_in_array() -- ///2
 	local ts = vim.treesitter
 	local parser = ts.get_parser(0)
 	local trees = parser:parse()
@@ -34,6 +34,27 @@ local function get_nodes_in_array()
 	current_syntax_nodes[current_buffer] = nodes
 
 	return nodes
+end
+
+local function get_candidate_nodes(nodes, desired_types) -- ///2
+	-- get current cursor position
+	local current_window = api.nvim_get_current_win()
+	local current_line = vim.api.nvim_win_get_cursor(current_window)[1]
+	local return_nodes = {}
+
+	-- loop through nodes
+	for i = 1, #nodes do
+		local node = nodes[i]
+		local node_type = node:type()
+		local start_row, start_col, end_row, end_col = node:range()
+
+		-- if node_type is in desired_types, add to return_nodes
+		if vim.tbl_contains(desired_types, node_type) then
+			table.insert(return_nodes, node)
+		end
+	end
+
+	return return_nodes
 end
 
 -- helper function [has_value] ///2
@@ -174,7 +195,7 @@ local function print_types(desired_types) -- ///2
 	api.nvim_buf_clear_namespace(0, ns, 0, -1)
 end
 
-local function go_to_next_instance(desired_types) -- ///2
+local function go_to_next_instance(desired_types, forward) -- ///2
 	-- get nodes to operate on
 	local current_buffer = vim.api.nvim_get_current_buf()
 	local nodes = nil
@@ -184,21 +205,8 @@ local function go_to_next_instance(desired_types) -- ///2
 		nodes = get_nodes_in_array()
 	end
 
-	-- get current cursor position
-	local current_window = api.nvim_get_current_win()
-	local current_line = vim.api.nvim_win_get_cursor(current_window)[1]
-
-	-- loop through nodes, find the closest one to the cursor
-	local closest_node = nil
-	local closest_distance = nil
-	for _, node in ipairs(nodes) do
-		local start_row, start_col, end_row, end_col = node:range()
-		local distance = math.abs(start_row - current_line)
-
-		if closest_distance == nil or distance < closest_distance then
-			closest_node = node
-			closest_distance = distance
-		end
+	if nodes then
+		nodes = get_candidate_nodes(nodes, desired_types)
 	end
 end
 
