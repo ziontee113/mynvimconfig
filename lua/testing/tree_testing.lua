@@ -1,10 +1,13 @@
 ---@diagnostic disable: missing-parameter, unused-local
+
+-- Imports & aliases
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
 -- clear namespace
 api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
+-- utils
 local function get_nodes_in_array()
 	local ts = vim.treesitter
 	local parser = ts.get_parser(0)
@@ -29,7 +32,7 @@ local function get_nodes_in_array()
 	return nodes
 end
 
--- helper function has_value
+-- helper function
 local function has_value(tab, val)
 	for index, value in ipairs(tab) do
 		if value == val then
@@ -40,7 +43,7 @@ local function has_value(tab, val)
 	return false
 end
 
--- dictionary
+-- dictionary declaration
 local dictionary = {
 	["function"] = {
 		color_group = "DapUIScope",
@@ -60,11 +63,13 @@ local dictionary = {
 	},
 }
 
+-- possible keymaps
 local left_hand_side = "fdswervcxqt"
 left_hand_side = vim.split(left_hand_side, "")
 local right_hand_side = "jkloiupy"
 right_hand_side = vim.split(right_hand_side, "")
 
+-- function to execute
 local function print_types(desired_types)
 	local nodes = get_nodes_in_array()
 
@@ -163,6 +168,7 @@ local function print_types(desired_types)
 	api.nvim_buf_clear_namespace(0, ns, 0, -1)
 end
 
+-- mappings
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gj", function()
 	print_types({ "function", "if_statement", "for_statement" })
@@ -184,9 +190,7 @@ vim.keymap.set("n", " me", ":messages<cr>", opts)
 vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
 vim.keymap.set("n", "<A-n>", function()
 	print("+")
-	-- Jump to next item
 end, opts)
 vim.keymap.set("n", "<A-p>", function()
 	print("-")
-	-- Jump to last item
 end, opts)
