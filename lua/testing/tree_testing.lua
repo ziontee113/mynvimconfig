@@ -36,10 +36,8 @@ local function get_nodes_in_array() -- ///2
 	return nodes
 end
 
-local function get_candidate_nodes(nodes, desired_types) -- ///2
+local function get_desired_nodes(nodes, desired_types) -- ///2
 	-- get current cursor position
-	local current_window = api.nvim_get_current_win()
-	local current_line = vim.api.nvim_win_get_cursor(current_window)[1]
 	local return_nodes = {}
 
 	-- loop through nodes
@@ -205,8 +203,48 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 		nodes = get_nodes_in_array()
 	end
 
+	-- set up variables
+	local previous_closest_node = nil
+	local next_closest_node = nil
+
+	-- get cursor position
+	local current_window = api.nvim_get_current_win()
+	local current_line = vim.api.nvim_win_get_cursor(current_window)[1]
+
 	if nodes then
-		nodes = get_candidate_nodes(nodes, desired_types)
+		nodes = get_desired_nodes(nodes, desired_types)
+
+		-- find closest nodes before & after cursor
+		for _, node in ipairs(nodes) do
+			local start_row, start_col, end_row, end_col = node:range()
+
+			if start_row + 1 < current_line then
+				if previous_closest_node == nil then
+					previous_closest_node = node
+				elseif start_row > previous_closest_node:range()[1] then
+					previous_closest_node = node
+				end
+			elseif start_row > current_line then
+				if next_closest_node == nil then
+					next_closest_node = node
+				elseif start_row < next_closest_node:range()[1] then
+					next_closest_node = node
+				end
+			end
+		end
+	end
+
+	-- depends on forward or not, set cursor to closest node
+	if forward then
+		if next_closest_node then
+			local start_row, start_col, end_row, end_col = next_closest_node:range()
+			vim.api.nvim_win_set_cursor(current_window, { start_row + 1, start_col })
+		end
+	else
+		if previous_closest_node then
+			local start_row, start_col, end_row, end_col = previous_closest_node:range()
+			vim.api.nvim_win_set_cursor(current_window, { start_row + 1, start_col })
+		end
 	end
 end
 
@@ -245,10 +283,10 @@ end, opts)
 vim.keymap.set("n", " me", ":messages<cr>", opts)
 vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
 vim.keymap.set("n", "<A-n>", function()
-	N(current_desired_types)
+	go_to_next_instance({ "function", "if_statement", "for_statement" }, true)
 end, opts)
 vim.keymap.set("n", "<A-p>", function()
-	N(current_desired_types)
+	go_to_next_instance({ "function", "if_statement", "for_statement" }, false)
 end, opts)
 
 -- vim: foldmethod=marker foldmarker=///,//>
