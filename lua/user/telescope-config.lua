@@ -15,7 +15,7 @@ telescope.setup({
 
 		mappings = {
 			i = {
-				["!d"] = require("telescope.actions").delete_buffer,
+				["!d"] = actions.delete_buffer,
 
 				["<C-n>"] = actions.cycle_history_next,
 				["<C-p>"] = actions.cycle_history_prev,
@@ -53,6 +53,8 @@ telescope.setup({
 				["<A-p>"] = action_layout.toggle_preview,
 			},
 			n = {
+				["!d"] = actions.delete_buffer,
+
 				["<esc>"] = actions.close,
 				["<CR>"] = actions.select_default,
 				["<C-x>"] = actions.select_horizontal,

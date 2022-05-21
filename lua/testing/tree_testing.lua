@@ -182,3 +182,11 @@ end, opts)
 
 vim.keymap.set("n", " me", ":messages<cr>", opts)
 vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
+vim.keymap.set("n", "<A-n>", function()
+	print("+")
+	-- Jump to next item
+end, opts)
+vim.keymap.set("n", "<A-p>", function()
+	print("-")
+	-- Jump to last item
+end, opts)

@@ -293,6 +293,7 @@ keymap(
 )
 keymap("n", " b", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown())<cr>", opts)
 keymap("n", "<leader>k", ":Telescope keymaps<cr>", opts)
+keymap("n", "<leader>ke", ":Telescope keymaps<cr>", opts)
 keymap("n", "<leader>he", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>hi", ":Telescope highlights<cr>", opts)
 keymap("n", "<c-f>", ":Telescope find_files<cr>", opts)
