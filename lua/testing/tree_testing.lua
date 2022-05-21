@@ -5,11 +5,12 @@ local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
 local current_desired_types = nil
+local current_syntax_nodes = {}
 
 -- Clear Namespace ///1
 api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
--- Utils ///1
+-- Utils (Getters) ///1
 local function get_nodes_in_array()
 	local ts = vim.treesitter
 	local parser = ts.get_parser(0)
@@ -28,6 +29,9 @@ local function get_nodes_in_array()
 	end
 
 	recursive_child_iter(root)
+
+	local current_buffer = vim.api.nvim_get_current_buf()
+	current_syntax_nodes[current_buffer] = nodes
 
 	return nodes
 end
@@ -171,9 +175,7 @@ local function print_types(desired_types) -- ///2
 end
 
 local function go_to_next_instance(desired_types) -- ///2
-	-- TODO: how do we make sure that we can save the desired_types?
-	--> Every time the user pick a desired_type, we should save it
-	--> Done!
+	-- TODO:
 end
 
 -- Mappings ///1
