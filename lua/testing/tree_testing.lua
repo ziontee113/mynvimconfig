@@ -296,3 +296,6 @@ vim.keymap.set("n", "<A-p>", function()
 end, opts)
 
 -- vim: foldmethod=marker foldmarker=///,//>
+
+-- TODOS: ///1
+-- TODO: differenciate named functions and unamed functions
