@@ -4,6 +4,8 @@
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
+local current_desired_types = nil
+
 -- Clear Namespace ///1
 api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
@@ -68,7 +70,9 @@ local right_hand_side = "jkl;oiu.,mpy/n"
 right_hand_side = vim.split(right_hand_side, "")
 
 -- Functions to Execute ///1
-local function print_types(desired_types)
+local function print_types(desired_types) -- ///2
+	current_desired_types = desired_types
+
 	local nodes = get_nodes_in_array()
 
 	local current_window = api.nvim_get_current_win()
@@ -166,6 +170,12 @@ local function print_types(desired_types)
 	api.nvim_buf_clear_namespace(0, ns, 0, -1)
 end
 
+local function go_to_next_instance(desired_types) -- ///2
+	-- TODO: how do we make sure that we can save the desired_types?
+	--> Every time the user pick a desired_type, we should save it
+	--> Done!
+end
+
 -- Mappings ///1
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gj", function()
@@ -187,10 +197,10 @@ end, opts)
 vim.keymap.set("n", " me", ":messages<cr>", opts)
 vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
 vim.keymap.set("n", "<A-n>", function()
-	print("+")
+	N(current_desired_types)
 end, opts)
 vim.keymap.set("n", "<A-p>", function()
-	print("-")
+	N(current_desired_types)
 end, opts)
 
 -- vim: foldmethod=marker foldmarker=///,//>
