@@ -239,15 +239,26 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 	end
 
 	-- depends on forward or not, set cursor to closest node
+	local cursor_moved = false
 	if forward then
 		if next_closest_node then
 			local start_row, start_col, end_row, end_col = next_closest_node:range()
 			vim.api.nvim_win_set_cursor(current_window, { start_row + 1, start_col })
+			cursor_moved = true
 		end
 	else
 		if previous_closest_node then
 			local start_row, start_col, end_row, end_col = previous_closest_node:range()
 			vim.api.nvim_win_set_cursor(current_window, { start_row + 1, start_col })
+			cursor_moved = true
+		end
+	end
+
+	if not cursor_moved then
+		if forward then
+			print("No next instance found")
+		else
+			print("No previous instance found")
 		end
 	end
 end
