@@ -111,7 +111,7 @@ local function print_types(desired_types) -- ///2
 
 		if start_row + 1 < current_line then
 			table.insert(nodes_before_cursor, node)
-		elseif start_row > current_line then
+		elseif start_row + 1 > current_line then
 			table.insert(nodes_after_cursor, node)
 		end
 	end
@@ -227,7 +227,7 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 				elseif previous_closest_node_line and start_row > previous_closest_node_line then
 					previous_closest_node = node
 				end
-			elseif start_row > current_line then
+			elseif start_row + 1 > current_line then
 				if next_closest_node == nil then
 					next_closest_node = node
 					next_closest_node_line = start_row

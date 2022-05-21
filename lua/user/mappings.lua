@@ -130,7 +130,7 @@ keymap("n", "dl", [[cc<Esc>]], opts)
 -- keymap("n", "<A-h>", [[zc]], opts)
 -- keymap("n", "<A-j>", [[zj]], opts)
 -- keymap("n", "<A-k>", [[zk]], opts)
-keymap("n", "zm", [[zM]], opts)
+-- keymap("n", "zm", [[zM]], opts)
 keymap("n", "zp", [[vipzf]], opts)
 
 -- Save and Esc remaps
