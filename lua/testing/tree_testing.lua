@@ -269,13 +269,24 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 			print("No previous instance found")
 		end
 	else -- if cursor moved
+		-- TODO:: make virt_text timeout after 300ms
 		if forward then
 			while next_closest_node_index + 1 <= #nodes do
-				-- create virtual text
+				local start_row, start_col, end_row, end_col = nodes[next_closest_node_index + 1]:range()
+				api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
+					virt_text = { { "", "DapUIScope" } },
+					virt_text_pos = "overlay",
+				})
+				next_closest_node_index = next_closest_node_index + 1
 			end
 		else
-			while next_closest_node_index - 1 >= 1 do
-				-- create virtual text
+			while previous_closest_node_index - 1 >= 1 do
+				local start_row, start_col, end_row, end_col = nodes[previous_closest_node_index - 1]:range()
+				api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
+					virt_text = { { "", "DapUIScope" } },
+					virt_text_pos = "overlay",
+				})
+				previous_closest_node_index = previous_closest_node_index - 1
 			end
 		end
 	end
