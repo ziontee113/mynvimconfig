@@ -67,5 +67,7 @@ require("vim_schedule_demo")
 require("hop-mappings")
 require("more_testing")
 
+require("user.c_mappings")
+
 -- Cursorline color
 vim.cmd([[highlight Cursorline guibg=#212121]])
