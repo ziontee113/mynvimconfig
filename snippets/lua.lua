@@ -173,6 +173,8 @@ local {}_fmt = fmt([[
 ) --}}}
 
 -- Lua Basic Snippets --
+
+-- local declarations and functions
 cs( -- [function] Lua function snippet{{{
 	"function",
 	fmt(
@@ -216,6 +218,7 @@ local {} = {}
 	"jj"
 ) --}}}
 
+-- For Loops
 local for_in_fmt = fmt( --{{{
 	[[
 for {} in {} do
@@ -244,6 +247,7 @@ cs( -- Lua For loop{{{
 	"jfor"
 ) --}}}
 
+-- If Statements
 cs( -- Lua If Statement{{{
 	"if",
 	fmt(
