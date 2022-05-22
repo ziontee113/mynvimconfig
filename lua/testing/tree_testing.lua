@@ -199,6 +199,7 @@ local function print_types(desired_types) -- ///2
 end
 
 local function go_to_next_instance(desired_types, forward, opts) -- ///2
+	-- get nodes to operate on
 	local nodes = get_nodes_in_array()
 
 	-- get cursor position
@@ -215,10 +216,14 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 	local next_closest_node_index = nil
 
 	if nodes then
-		if opts then
-			if opts.siblings_only then
-				-- TODO:: get desired nodes, but limit them only to siblings
-			end
+		-- filter the nodes based on the opts
+		if opts and opts.siblings_only then
+			-- TODO:: get desired nodes, but limit them only to siblings
+			-- opts.siblings_only = { desired_types = { "if_statement" }, blacklist = { "variable_declaration" } }
+			--> with this option, it will only jump to siblings of the desired types
+			--> if the cursor is on a desired_types node, it will only jump to siblings of that node
+			--> if the cursor is not on a desired_types node, it will jump to the closest sibling of the desired_types
+			--? should we make a flexible mode?
 		else
 			nodes = get_desired_nodes(nodes, desired_types)
 		end
