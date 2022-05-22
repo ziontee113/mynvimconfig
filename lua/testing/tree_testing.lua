@@ -334,6 +334,8 @@ vim.api.nvim_create_autocmd({
 
 -- Mappings ///1
 local opts = { noremap = true, silent = true }
+
+-- jump with virt_text
 vim.keymap.set("n", "gj", function()
 	print_types({ "function", "if_statement", "for_statement", "switch_statement", "while_statement" })
 end, opts)
@@ -350,8 +352,7 @@ vim.keymap.set("n", "gfo", function()
 	print_types({ "for_statement" })
 end, opts)
 
-vim.keymap.set("n", " me", ":messages<cr>", opts)
-vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
+-- jump with desired_types
 vim.keymap.set("n", "<A-n>", function()
 	local current_buffer = vim.api.nvim_get_current_buf()
 	go_to_next_instance(current_desired_types, true)
@@ -368,6 +369,10 @@ vim.keymap.set("n", "<A-p>", function()
 		vim.cmd("norm! zz")
 	end)
 end, opts)
+
+-- show & clear messages
+vim.keymap.set("n", " me", ":messages<cr>", opts)
+vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
 
 -- TODOS: ///1
 -- TODO: differenciate named functions and unamed functions
