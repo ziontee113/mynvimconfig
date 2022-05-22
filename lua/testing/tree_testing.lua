@@ -19,6 +19,29 @@ local current_syntax_nodes = {} -- hash table of nodes for each buffer, gets cle
 api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
 -- Utils (Getters) ///1
+local function recursive_child_iter(node, table_to_insert, desired_types) -- ///2
+	if node:iter_children() then
+		for child in node:iter_children() do
+			if desired_types then
+				if vim.tbl_contains(desired_types, child:type()) then
+					table.insert(table_to_insert, child)
+				end
+			else
+				table.insert(table_to_insert, child)
+			end
+
+			recursive_child_iter(child, table_to_insert, desired_types)
+		end
+	end
+end
+local function filter_children_recursively(node, desired_types)
+	local children = {}
+
+	recursive_child_iter(node, children, desired_types)
+
+	return children
+end
+
 local function get_nodes_in_array() -- ///2
 	local ts = vim.treesitter
 	local parser = ts.get_parser(0)
@@ -28,19 +51,10 @@ local function get_nodes_in_array() -- ///2
 	local current_buffer = vim.api.nvim_get_current_buf()
 	local nodes = {}
 
-	local function recursive_child_iter(node)
-		if node:iter_children() then
-			for child in node:iter_children() do
-				table.insert(nodes, child)
-				recursive_child_iter(child)
-			end
-		end
-	end
-
 	if current_syntax_nodes[current_buffer] then
 		nodes = current_syntax_nodes[current_buffer]
 	else
-		recursive_child_iter(root)
+		recursive_child_iter(root, nodes)
 		current_syntax_nodes[current_buffer] = nodes
 	end
 
@@ -280,6 +294,10 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 				previous_closest_node_index = 1
 			end
 
+			if opts.destination == "children" then
+				nodes = filter_children_recursively(current_node, desired_types)
+			end
+
 			if opts.destination == "siblings" then
 				nodes = filter_sibling_nodes(current_node, desired_types)
 
@@ -287,7 +305,6 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 					nodes = {}
 					-- if the current node type is in desired_types, then don't filter
 					if not vim.tbl_contains(desired_types, current_node:type()) then
-						-- HACK: this is a hack to get the cursor to jump to the parent if_statement
 						previous_closest_node = filter_nearest_parent(current_node, desired_types)
 						previous_closest_node_index = 1
 					end
@@ -349,41 +366,43 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 			end
 		end
 	else -- if cursor moved
-		if forward then
-			while next_closest_node_index + 1 <= #nodes do
-				local start_row, start_col, end_row, end_col = nodes[next_closest_node_index + 1]:range()
-				local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
-					virt_text = { { "", "DapUIScope" } },
-					virt_text_pos = "overlay",
-				})
-				next_closest_node_index = next_closest_node_index + 1
+		if opts.destination ~= "children" and opts.destination ~= "parent" then
+			if forward then
+				while next_closest_node_index + 1 <= #nodes do
+					local start_row, start_col, end_row, end_col = nodes[next_closest_node_index + 1]:range()
+					local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
+						virt_text = { { "", "DapUIScope" } },
+						virt_text_pos = "overlay",
+					})
+					next_closest_node_index = next_closest_node_index + 1
 
-				local timer = vim.loop.new_timer()
-				timer:start(
-					800,
-					800,
-					vim.schedule_wrap(function()
-						api.nvim_buf_del_extmark(0, ns, extmark_id)
-					end)
-				)
-			end
-		else
-			while previous_closest_node_index - 1 >= 1 do
-				local start_row, start_col, end_row, end_col = nodes[previous_closest_node_index - 1]:range()
-				local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
-					virt_text = { { "", "DapUIScope" } },
-					virt_text_pos = "overlay",
-				})
-				previous_closest_node_index = previous_closest_node_index - 1
+					local timer = vim.loop.new_timer()
+					timer:start(
+						800,
+						800,
+						vim.schedule_wrap(function()
+							api.nvim_buf_del_extmark(0, ns, extmark_id)
+						end)
+					)
+				end
+			else
+				while previous_closest_node_index - 1 >= 1 do
+					local start_row, start_col, end_row, end_col = nodes[previous_closest_node_index - 1]:range()
+					local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
+						virt_text = { { "", "DapUIScope" } },
+						virt_text_pos = "overlay",
+					})
+					previous_closest_node_index = previous_closest_node_index - 1
 
-				local timer = vim.loop.new_timer()
-				timer:start(
-					800,
-					800,
-					vim.schedule_wrap(function()
-						api.nvim_buf_del_extmark(0, ns, extmark_id)
-					end)
-				)
+					local timer = vim.loop.new_timer()
+					timer:start(
+						800,
+						800,
+						vim.schedule_wrap(function()
+							api.nvim_buf_del_extmark(0, ns, extmark_id)
+						end)
+					)
+				end
 			end
 		end
 	end
@@ -441,7 +460,7 @@ vim.keymap.set("n", "_", function()
 	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, false, { destination = "parent" })
 end, opts)
 vim.keymap.set("n", "+", function()
-	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true)
+	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true, { destination = "children" })
 end, opts)
 
 vim.keymap.set("n", "<A-n>", function()
@@ -467,5 +486,6 @@ vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
 -- TODO: differenciate named functions and unamed functions
 -- TODO:: make the .setup() function
 -- TODO: make functionalities for jump up / down level / siblings
+--> TODO: jump sublings & up is fine, the problem is jump down, we need to get the tree from the current node and then jump
 
 -- vim: foldmethod=marker foldmarker=///,//>
