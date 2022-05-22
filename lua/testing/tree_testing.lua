@@ -2,6 +2,7 @@
 
 -- Imports & aliases ///1
 local M = {}
+local ts_utils = require("nvim-treesitter.ts_utils")
 
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
@@ -58,6 +59,29 @@ local function get_desired_nodes(nodes, desired_types) -- ///2
 	end
 
 	return return_nodes
+end
+
+-- what is the logic behind this? ///2
+local function filter_sibling_nodes(node, desired_types)
+	local current_node_id = node:id()
+	local parent = node:parent()
+	local return_nodes = {}
+
+	for child in parent:iter_children() do
+		if child:id() ~= current_node_id then
+			local node_type = child:type()
+
+			if vim.tbl_contains(desired_types, node_type) then
+				table.insert(return_nodes, child)
+			end
+		end
+	end
+
+	if #return_nodes then
+		return return_nodes
+	else
+		return nil
+	end
 end
 
 -- helper function [has_value] ///2
@@ -225,6 +249,14 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 			--! if not, check each parent's siblings until it finds one
 			--! if it doesn't find one, print message "not found
 			--! if it finds it, jump to it
+
+			local current_node = ts_utils.get_node_at_cursor(current_window)
+			nodes = filter_sibling_nodes(current_node, desired_types)
+
+			while not filter_sibling_nodes(current_node, desired_types) do
+				current_node = current_node:parent()
+				nodes = filter_sibling_nodes(current_node, desired_types)
+			end
 		else
 			nodes = get_desired_nodes(nodes, desired_types)
 		end
