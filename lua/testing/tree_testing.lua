@@ -99,6 +99,21 @@ local function filter_nearest_parent(node, desired_types) -- ///2
 	end
 end
 
+local function get_parent_nodes(node, desired_types) -- ///2
+	local parents = {}
+
+	while node:parent() do
+		node = node:parent()
+		local node_type = node:type()
+
+		if vim.tbl_contains(desired_types, node_type) then
+			table.insert(parents, node)
+		end
+	end
+
+	return parents
+end
+
 -- helper function [has_value] ///2
 local function has_value(tab, val)
 	for index, value in ipairs(tab) do
@@ -256,17 +271,30 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 
 	if nodes then
 		-- filter the nodes based on the opts
-		if opts and opts.siblings_only then
+		if opts then
 			local current_node = ts_utils.get_node_at_cursor(current_window)
-			nodes = filter_sibling_nodes(current_node, desired_types)
 
-			if #nodes == 0 then
-				nodes = {}
-				-- if the current node type is in desired_types, then don't filter
-				if not vim.tbl_contains(desired_types, current_node:type()) then
-					-- HACK: this is a hack to get the cursor to jump to the parent if_statement
-					previous_closest_node = filter_nearest_parent(current_node, desired_types)
-					previous_closest_node_index = 1
+			if opts.destination == "parent" then
+				nodes = get_parent_nodes(current_node, desired_types)
+				previous_closest_node = nodes[1]
+				previous_closest_node_index = 1
+			end
+
+			if opts.destination == "children" then
+				nodes = filter_children_nodes(current_node, desired_types)
+			end
+
+			if opts.destination == "siblings" then
+				nodes = filter_sibling_nodes(current_node, desired_types)
+
+				if #nodes == 0 then
+					nodes = {}
+					-- if the current node type is in desired_types, then don't filter
+					if not vim.tbl_contains(desired_types, current_node:type()) then
+						-- HACK: this is a hack to get the cursor to jump to the parent if_statement
+						previous_closest_node = filter_nearest_parent(current_node, desired_types)
+						previous_closest_node_index = 1
+					end
 				end
 			end
 		else
@@ -407,11 +435,17 @@ vim.keymap.set("n", "gfo", function()
 end, opts)
 
 -- jump with desired_types
-vim.keymap.set("n", "=", function()
-	go_to_next_instance({ "if_statement", "else_clause" }, true, { siblings_only = true })
-end, opts)
 vim.keymap.set("n", "-", function()
-	go_to_next_instance({ "if_statement", "else_clause" }, false, { siblings_only = true })
+	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, false, { destination = "siblings" })
+end, opts)
+vim.keymap.set("n", "=", function()
+	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true, { destination = "siblings" })
+end, opts)
+vim.keymap.set("n", "_", function()
+	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, false, { destination = "parent" })
+end, opts)
+vim.keymap.set("n", "+", function()
+	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true, { destination = "siblings" })
 end, opts)
 
 vim.keymap.set("n", "<A-n>", function()
