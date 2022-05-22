@@ -198,7 +198,7 @@ local function print_types(desired_types) -- ///2
 	api.nvim_buf_clear_namespace(0, ns, 0, -1)
 end
 
-local function go_to_next_instance(desired_types, forward) -- ///2
+local function go_to_next_instance(desired_types, forward, opts) -- ///2
 	local nodes = get_nodes_in_array()
 
 	-- get cursor position
@@ -215,7 +215,13 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 	local next_closest_node_index = nil
 
 	if nodes then
-		nodes = get_desired_nodes(nodes, desired_types)
+		if opts then
+			if opts.siblings_only then
+				-- TODO:: get desired nodes, but limit them only to siblings
+			end
+		else
+			nodes = get_desired_nodes(nodes, desired_types)
+		end
 
 		-- find closest nodes before & after cursor
 		for index, node in ipairs(nodes) do
