@@ -310,3 +310,6 @@ end, opts)
 
 -- TODOS: ///1
 -- TODO: differenciate named functions and unamed functions
+-- TODO: add virt_text
+-- TODO: make snippets for: [TODO comments, if_statements, for_statements]
+-- TODO: make functionalities for jump up / down level / siblings

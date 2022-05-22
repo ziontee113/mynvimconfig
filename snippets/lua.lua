@@ -211,6 +211,34 @@ local {} = {}
 	"jj"
 ) --}}}
 
+local for_in_fmt = fmt(
+	[[
+for {} in {} do
+  {}
+end
+]],
+	{ i(1, "item"), i(2, "table"), i(3, "-- TODO:") }
+)
+local for_ipairs_fmt = fmt(
+	[[
+{}for {}, {} in ipairs({}) do
+  {}
+end
+]],
+	{
+		i(1, ""),
+		c(2, { t("_"), i("index"), i("idx") }),
+		i(3, "value"),
+		i(4, "table"),
+		i(5, "-- TODO:"),
+	}
+)
+cs( -- for ipairs
+	"for",
+	c(1, { for_ipairs_fmt, for_in_fmt }),
+	"jfor"
+)
+
 -- Nvim Related --
 cs( --{{{ -- Nvim Augroup in Lua
 	"augroup",
