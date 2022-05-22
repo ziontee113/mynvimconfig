@@ -19,9 +19,15 @@ function myFunc(arg) {
     if (LHS === RHS) {
       console.log(LHS);
     }
+
     if (LHS === RHS) {
       console.log(LHS);
+    } else if (LHS === RHS) {
+      console.log(LHS);
+    } else {
+      console.log(LHS);
     }
+
     if (LHS === RHS) {
       console.log(RHS);
     }

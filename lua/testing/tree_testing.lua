@@ -90,7 +90,6 @@ local function filter_nearest_parent(node, desired_types) -- ///2
 		local parent_type = parent:type()
 
 		if vim.tbl_contains(desired_types, parent_type) then
-			N(parent_type)
 			return parent
 		else
 			return filter_nearest_parent(parent, desired_types)
@@ -263,9 +262,12 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 
 			if #nodes == 0 then
 				nodes = {}
-				-- HACK: this is a hack to get the cursor to jump to the parent if_statement
-				previous_closest_node = filter_nearest_parent(current_node, desired_types)
-				previous_closest_node_index = 1
+				-- if the current node type is in desired_types, then don't filter
+				if not vim.tbl_contains(desired_types, current_node:type()) then
+					-- HACK: this is a hack to get the cursor to jump to the parent if_statement
+					previous_closest_node = filter_nearest_parent(current_node, desired_types)
+					previous_closest_node_index = 1
+				end
 			end
 		else
 			nodes = get_desired_nodes(nodes, desired_types)
@@ -406,10 +408,10 @@ end, opts)
 
 -- jump with desired_types
 vim.keymap.set("n", "=", function()
-	go_to_next_instance({ "if_statement" }, true, { siblings_only = true })
+	go_to_next_instance({ "if_statement", "else_clause" }, true, { siblings_only = true })
 end, opts)
 vim.keymap.set("n", "-", function()
-	go_to_next_instance({ "if_statement" }, false, { siblings_only = true })
+	go_to_next_instance({ "if_statement", "else_clause" }, false, { siblings_only = true })
 end, opts)
 
 vim.keymap.set("n", "<A-n>", function()
