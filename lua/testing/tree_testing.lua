@@ -61,8 +61,7 @@ local function get_desired_nodes(nodes, desired_types) -- ///2
 	return return_nodes
 end
 
--- what is the logic behind this? ///2
-local function filter_sibling_nodes(node, desired_types)
+local function filter_sibling_nodes(node, desired_types) -- ///2
 	local current_node_id = node:id()
 	local parent = node:parent()
 	local return_nodes = {}
@@ -77,14 +76,14 @@ local function filter_sibling_nodes(node, desired_types)
 		end
 	end
 
-	if #return_nodes then
-		return return_nodes
-	else
+	if #return_nodes == 0 then
 		return nil
+	else
+		return return_nodes
 	end
 end
 
--- helper function [has_value] ///2
+-- helper function [has_value]
 local function has_value(tab, val)
 	for index, value in ipairs(tab) do
 		if value == val then
@@ -242,20 +241,23 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 	if nodes then
 		-- filter the nodes based on the opts
 		if opts and opts.siblings_only then
-			-- TODO:: get desired nodes, but limit them only to siblings
-			-- opts.siblings_only = true
-			--! first on all, check if any siblings are desired_types
-			--! if it is, then jump to the closest sibling of that node
-			--! if not, check each parent's siblings until it finds one
-			--! if it doesn't find one, print message "not found
-			--! if it finds it, jump to it
-
 			local current_node = ts_utils.get_node_at_cursor(current_window)
-			nodes = filter_sibling_nodes(current_node, desired_types)
+			nodes = nil
 
-			while not filter_sibling_nodes(current_node, desired_types) do
-				current_node = current_node:parent()
-				nodes = filter_sibling_nodes(current_node, desired_types)
+			while true do
+				if current_node:parent() then
+					nodes = filter_sibling_nodes(current_node, desired_types)
+					if nodes and #nodes > 0 then
+						break
+					end
+					current_node = current_node:parent()
+				else
+					break
+				end
+			end
+
+			if not nodes then
+				nodes = {}
 			end
 		else
 			nodes = get_desired_nodes(nodes, desired_types)
@@ -393,8 +395,14 @@ vim.keymap.set("n", "gfo", function()
 end, opts)
 
 -- jump with desired_types
+vim.keymap.set("n", "=", function()
+	go_to_next_instance({ "if_statement" }, true, { siblings_only = true })
+end, opts)
+vim.keymap.set("n", "-", function()
+	go_to_next_instance({ "if_statement" }, false, { siblings_only = true })
+end, opts)
+
 vim.keymap.set("n", "<A-n>", function()
-	local current_buffer = vim.api.nvim_get_current_buf()
 	go_to_next_instance(current_desired_types, true)
 	vim.schedule(function()
 		vim.cmd("norm! zO")
@@ -402,7 +410,6 @@ vim.keymap.set("n", "<A-n>", function()
 	end)
 end, opts)
 vim.keymap.set("n", "<A-p>", function()
-	local current_buffer = vim.api.nvim_get_current_buf()
 	go_to_next_instance(current_desired_types, false)
 	vim.schedule(function()
 		vim.cmd("norm! zO")
