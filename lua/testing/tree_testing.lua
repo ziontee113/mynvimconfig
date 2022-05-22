@@ -306,10 +306,10 @@ vim.keymap.set("n", "<A-p>", function()
 	go_to_next_instance(current_desired_types, false)
 end, opts)
 
--- vim: foldmethod=marker foldmarker=///,//>
-
 -- TODOS: ///1
 -- TODO: differenciate named functions and unamed functions
 -- TODO: add virt_text
 -- TODO: make snippets for: [TODO comments, if_statements, for_statements]
 -- TODO: make functionalities for jump up / down level / siblings
+
+-- vim: foldmethod=marker foldmarker=///,//>

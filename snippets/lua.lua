@@ -264,6 +264,21 @@ end
 	"jif"
 ) --}}}
 
+-- TODOS:
+cs( -- basic TODO comments{{{
+	"todo",
+	fmt(
+		[[
+-- {}: {}
+]],
+		{
+			c(1, { t("TODO:"), t("HACK"), t("FIX"), t("BUG") }),
+			i(2, ""),
+		}
+	),
+	"jtod"
+) --}}}
+
 -- Nvim Related --
 cs( --{{{ -- Nvim Augroup in Lua
 	"augroup",
