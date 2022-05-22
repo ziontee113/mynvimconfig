@@ -19,6 +19,7 @@ local function get_nodes_in_array() -- ///2
 	local trees = parser:parse()
 	local root = trees[1]:root()
 
+	local current_buffer = vim.api.nvim_get_current_buf()
 	local nodes = {}
 
 	local function recursive_child_iter(node)
@@ -30,10 +31,12 @@ local function get_nodes_in_array() -- ///2
 		end
 	end
 
-	recursive_child_iter(root)
-
-	local current_buffer = vim.api.nvim_get_current_buf()
-	current_syntax_nodes[current_buffer] = nodes
+	if current_syntax_nodes[current_buffer] then
+		nodes = current_syntax_nodes[current_buffer]
+	else
+		recursive_child_iter(root)
+		current_syntax_nodes[current_buffer] = nodes
+	end
 
 	return nodes
 end
@@ -196,14 +199,7 @@ local function print_types(desired_types) -- ///2
 end
 
 local function go_to_next_instance(desired_types, forward) -- ///2
-	-- get nodes to operate on
-	local current_buffer = vim.api.nvim_get_current_buf()
-	local nodes = nil
-	if current_syntax_nodes[current_buffer] then
-		nodes = current_syntax_nodes[current_buffer]
-	else
-		nodes = get_nodes_in_array()
-	end
+	local nodes = get_nodes_in_array()
 
 	-- get cursor position
 	local current_window = api.nvim_get_current_win()
@@ -357,16 +353,16 @@ vim.keymap.set("n", "<A-n>", function()
 	local current_buffer = vim.api.nvim_get_current_buf()
 	go_to_next_instance(current_desired_types, true)
 	vim.schedule(function()
-		vim.cmd("norm! zo")
-		vim.cmd("norm! zz")
+		vim.cmd("norm! zO")
+		-- vim.cmd("norm! zz")
 	end)
 end, opts)
 vim.keymap.set("n", "<A-p>", function()
 	local current_buffer = vim.api.nvim_get_current_buf()
 	go_to_next_instance(current_desired_types, false)
 	vim.schedule(function()
-		vim.cmd("norm! zo")
-		vim.cmd("norm! zz")
+		vim.cmd("norm! zO")
+		-- vim.cmd("norm! zz")
 	end)
 end, opts)
 
