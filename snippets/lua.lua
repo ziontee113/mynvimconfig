@@ -216,15 +216,15 @@ local {} = {}
 	"jj"
 ) --}}}
 
-local for_in_fmt = fmt(
+local for_in_fmt = fmt( --{{{
 	[[
 for {} in {} do
   {}
 end
 ]],
 	{ i(1, "item"), i(2, "table"), i(3, "-- TODO:") }
-)
-local for_ipairs_fmt = fmt(
+) --}}}
+local for_ipairs_fmt = fmt( --{{{
 	[[
 {}for {}, {} in ipairs({}) do
   {}
@@ -237,12 +237,28 @@ end
 		i(4, "table"),
 		i(5, "-- TODO:"),
 	}
-)
-cs( -- for ipairs
+) --}}}
+cs( -- Lua For loop{{{
 	"for",
 	c(1, { for_ipairs_fmt, for_in_fmt }),
 	"jfor"
-)
+) --}}}
+
+cs( -- Lua If Statement{{{
+	"if",
+	fmt(
+		[[
+if {} then
+  {}
+end
+]],
+		{
+			i(1, "condition"),
+			i(2, "-- TODO:"),
+		}
+	),
+	"jif"
+) --}}}
 
 -- Nvim Related --
 cs( --{{{ -- Nvim Augroup in Lua
