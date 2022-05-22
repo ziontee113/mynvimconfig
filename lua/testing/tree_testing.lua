@@ -1,7 +1,12 @@
 ---@diagnostic disable: missing-parameter, unused-local, empty-block
 
 -- Imports & aliases ///1
-local M = {}
+local M = {
+	opts = {
+		disable_no_instance_found_report = false,
+	},
+}
+
 local ts_utils = require("nvim-treesitter.ts_utils")
 
 local api = vim.api
@@ -310,10 +315,12 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 
 	-- if there is no next instance, print message
 	if not cursor_moved then
-		if forward then
-			print("No next instance found")
-		else
-			print("No previous instance found")
+		if not M.opts.disable_no_instance_found_report then
+			if forward then
+				print("No next instance found")
+			else
+				print("No previous instance found")
+			end
 		end
 	else -- if cursor moved
 		if forward then
