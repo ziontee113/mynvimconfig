@@ -272,11 +272,11 @@ cs( -- basic TODO comments{{{
 -- {}: {}
 ]],
 		{
-			c(1, { t("TODO:"), t("HACK"), t("FIX"), t("BUG") }),
+			c(1, { t("TODO:"), t("QUESTION"), t("HACK"), t("FIX"), t("BUG") }),
 			i(2, ""),
 		}
 	),
-	"jtod"
+	{ "jtod", "jkt" }
 ) --}}}
 
 -- Nvim Related --

@@ -9,6 +9,7 @@ require("todo-comments").setup({
 		},
 		C = {
 			color = "#32BA25",
+			alt = { "QUESTION" },
 		},
 		D = {
 			color = "#FA76DD",
