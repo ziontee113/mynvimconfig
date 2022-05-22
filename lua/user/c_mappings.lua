@@ -28,3 +28,6 @@ keymap("n", "cJ", "ciW", opts)
 keymap("n", "<CR>", "o", opts) --> Ctrl + F7 for Wezterm
 keymap("n", "<F32>", "O", opts) --> Ctrl + F8 for Wezterm
 keymap("i", "<F32>", "<C-o>O", opts) --> Ctrl + F8 for Wezterm
+
+-- Testing
+keymap("n", "s<CR>", "5k", opts) --> Ctrl + F8 for Wezterm
