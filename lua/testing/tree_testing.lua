@@ -213,26 +213,33 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 	local previous_closest_node_line = nil
 	local next_closest_node_line = nil
 
+	local previous_closest_node_index = nil
+	local next_closest_node_index = nil
+
 	if nodes then
 		nodes = get_desired_nodes(nodes, desired_types)
 
 		-- find closest nodes before & after cursor
-		for _, node in ipairs(nodes) do
+		for index, node in ipairs(nodes) do
 			local start_row, start_col, end_row, end_col = node:range()
 
 			if start_row + 1 < current_line then
 				if previous_closest_node == nil then
 					previous_closest_node = node
 					previous_closest_node_line = start_row
+					previous_closest_node_index = index
 				elseif previous_closest_node_line and start_row > previous_closest_node_line then
 					previous_closest_node = node
+					previous_closest_node_index = index
 				end
 			elseif start_row + 1 > current_line then
 				if next_closest_node == nil then
 					next_closest_node = node
 					next_closest_node_line = start_row
+					next_closest_node_index = index
 				elseif previous_closest_node_line and start_row < previous_closest_node_line then
 					next_closest_node = node
+					next_closest_node_index = index
 				end
 			end
 		end
@@ -254,11 +261,22 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 		end
 	end
 
+	-- if there is no next instance, print message
 	if not cursor_moved then
 		if forward then
 			print("No next instance found")
 		else
 			print("No previous instance found")
+		end
+	else -- if cursor moved
+		if forward then
+			while next_closest_node_index + 1 <= #nodes do
+				-- create virtual text
+			end
+		else
+			while next_closest_node_index - 1 >= 1 do
+				-- create virtual text
+			end
 		end
 	end
 end
@@ -308,7 +326,11 @@ end, opts)
 
 -- TODOS: ///1
 -- TODO: differenciate named functions and unamed functions
+
 -- TODO: add virt_text
+-- for what functionality?
+-- When we jump around with a-n and a-p
+
 -- TODO: make functionalities for jump up / down level / siblings
 
 -- vim: foldmethod=marker foldmarker=///,//>
