@@ -271,7 +271,6 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 			print("No previous instance found")
 		end
 	else -- if cursor moved
-		-- TODO:: make virt_text timeout after 300ms
 		if forward then
 			while next_closest_node_index + 1 <= #nodes do
 				local start_row, start_col, end_row, end_col = nodes[next_closest_node_index + 1]:range()
@@ -294,7 +293,7 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 			while previous_closest_node_index - 1 >= 1 do
 				local start_row, start_col, end_row, end_col = nodes[previous_closest_node_index - 1]:range()
 				local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
-					virt_text = { { "", "DapUISource" } },
+					virt_text = { { "", "DapUIScope" } },
 					virt_text_pos = "overlay",
 				})
 				previous_closest_node_index = previous_closest_node_index - 1
@@ -356,10 +355,18 @@ vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
 vim.keymap.set("n", "<A-n>", function()
 	local current_buffer = vim.api.nvim_get_current_buf()
 	go_to_next_instance(current_desired_types, true)
+	vim.schedule(function()
+		vim.cmd("norm! zo")
+		vim.cmd("norm! zz")
+	end)
 end, opts)
 vim.keymap.set("n", "<A-p>", function()
 	local current_buffer = vim.api.nvim_get_current_buf()
 	go_to_next_instance(current_desired_types, false)
+	vim.schedule(function()
+		vim.cmd("norm! zo")
+		vim.cmd("norm! zz")
+	end)
 end, opts)
 
 -- TODOS: ///1
