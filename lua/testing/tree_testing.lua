@@ -1,6 +1,8 @@
 ---@diagnostic disable: missing-parameter, unused-local, empty-block
 
 -- Imports & aliases ///1
+local M = {}
+
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
@@ -310,6 +312,11 @@ local function go_to_next_instance(desired_types, forward) -- ///2
 	end
 end
 
+-- Setup Function ///1
+M.setup = function(opts)
+	return opts
+end
+
 -- Autocmds ///1
 local augroup = vim.api.nvim_create_augroup("STS_augroup", { clear = true })
 vim.api.nvim_create_autocmd({
@@ -355,11 +362,8 @@ end, opts)
 
 -- TODOS: ///1
 -- TODO: differenciate named functions and unamed functions
-
--- TODO: add virt_text
--- for what functionality?
--- When we jump around with a-n and a-p
-
 -- TODO: make functionalities for jump up / down level / siblings
+
+-- TODO:: make the .setup() function
 
 -- vim: foldmethod=marker foldmarker=///,//>
