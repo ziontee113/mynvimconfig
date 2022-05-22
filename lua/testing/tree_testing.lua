@@ -79,12 +79,13 @@ local function filter_sibling_nodes(node, desired_types) -- ///2
 	return return_nodes
 end
 
-local function filter_nearest_parent(node, desired_types)
+local function filter_nearest_parent(node, desired_types) -- ///2
 	if node:parent() then
 		local parent = node:parent()
 		local parent_type = parent:type()
 
 		if vim.tbl_contains(desired_types, parent_type) then
+			N(parent_type)
 			return parent
 		else
 			return filter_nearest_parent(parent, desired_types)
@@ -256,7 +257,10 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 			nodes = filter_sibling_nodes(current_node, desired_types)
 
 			if #nodes == 0 then
-				nodes = { filter_nearest_parent(current_node, desired_types) }
+				nodes = {}
+				-- HACK: this is a hack to get the cursor to jump to the parent if_statement
+				previous_closest_node = filter_nearest_parent(current_node, desired_types)
+				previous_closest_node_index = 1
 			end
 		else
 			nodes = get_desired_nodes(nodes, desired_types)
