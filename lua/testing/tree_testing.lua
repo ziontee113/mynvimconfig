@@ -6,7 +6,7 @@ local M = {}
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
-local current_desired_types = nil
+local current_desired_types = { "function", "if_statement", "for_statement" }
 local current_syntax_nodes = {}
 
 -- Clear Namespace ///1
@@ -314,7 +314,9 @@ end
 
 -- Setup Function ///1
 M.setup = function(opts)
-	return opts
+	if opts.default_desired_types then
+		current_desired_types = opts.default_desired_types
+	end
 end
 
 -- Autocmds ///1

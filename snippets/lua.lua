@@ -241,9 +241,23 @@ end
 		i(5, "-- TODO:"),
 	}
 ) --}}}
+local for_pairs_fmt = fmt( --{{{
+	[[
+{}for {}, {} in pairs({}) do
+  {}
+end
+]],
+	{
+		i(1, ""),
+		i(2, "key"),
+		i(3, "value"),
+		i(4, "table"),
+		i(5, "-- TODO:"),
+	}
+) --}}}
 cs( -- Lua For loop{{{
 	"for",
-	c(1, { for_ipairs_fmt, for_in_fmt }),
+	c(1, { for_ipairs_fmt, for_pairs_fmt, for_in_fmt }),
 	"jfor"
 ) --}}}
 
