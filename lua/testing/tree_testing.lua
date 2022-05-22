@@ -6,8 +6,8 @@ local M = {}
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
-local current_desired_types = { "function", "if_statement", "for_statement" }
-local current_syntax_nodes = {}
+local current_desired_types = { "function", "if_statement", "for_statement", "while_statement", "switch_statement" } -- default desired types
+local current_syntax_nodes = {} -- hash table of nodes for each buffer, gets cleared when TextChanged event is triggered
 
 -- Clear Namespace ///1
 api.nvim_buf_clear_namespace(0, ns, 0, -1)
@@ -335,7 +335,7 @@ vim.api.nvim_create_autocmd({
 -- Mappings ///1
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gj", function()
-	print_types({ "function", "if_statement", "for_statement" })
+	print_types({ "function", "if_statement", "for_statement", "switch_statement", "while_statement" })
 end, opts)
 vim.keymap.set("n", "gv", function()
 	print_types({ "variable_declaration" })
@@ -371,8 +371,7 @@ end, opts)
 
 -- TODOS: ///1
 -- TODO: differenciate named functions and unamed functions
--- TODO: make functionalities for jump up / down level / siblings
-
 -- TODO:: make the .setup() function
+-- TODO: make functionalities for jump up / down level / siblings
 
 -- vim: foldmethod=marker foldmarker=///,//>
