@@ -219,11 +219,12 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 		-- filter the nodes based on the opts
 		if opts and opts.siblings_only then
 			-- TODO:: get desired nodes, but limit them only to siblings
-			-- opts.siblings_only = { desired_types = { "if_statement" }, blacklist = { "variable_declaration" } }
-			--> with this option, it will only jump to siblings of the desired types
-			--> if the cursor is on a desired_types node, it will only jump to siblings of that node
-			--> if the cursor is not on a desired_types node, it will jump to the closest sibling of the desired_types
-			--? should we make a flexible mode?
+			-- opts.siblings_only = true
+			--! first on all, check if any siblings are desired_types
+			--! if it is, then jump to the closest sibling of that node
+			--! if not, check each parent's siblings until it finds one
+			--! if it doesn't find one, print message "not found
+			--! if it finds it, jump to it
 		else
 			nodes = get_desired_nodes(nodes, desired_types)
 		end
