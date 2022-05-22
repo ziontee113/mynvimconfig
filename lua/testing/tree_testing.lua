@@ -280,10 +280,6 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 				previous_closest_node_index = 1
 			end
 
-			if opts.destination == "children" then
-				nodes = filter_children_nodes(current_node, desired_types)
-			end
-
 			if opts.destination == "siblings" then
 				nodes = filter_sibling_nodes(current_node, desired_types)
 
@@ -445,7 +441,7 @@ vim.keymap.set("n", "_", function()
 	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, false, { destination = "parent" })
 end, opts)
 vim.keymap.set("n", "+", function()
-	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true, { destination = "siblings" })
+	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true)
 end, opts)
 
 vim.keymap.set("n", "<A-n>", function()
