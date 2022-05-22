@@ -76,14 +76,25 @@ local function filter_sibling_nodes(node, desired_types) -- ///2
 		end
 	end
 
-	if #return_nodes == 0 then
-		return nil
+	return return_nodes
+end
+
+local function filter_nearest_parent(node, desired_types)
+	if node:parent() then
+		local parent = node:parent()
+		local parent_type = parent:type()
+
+		if vim.tbl_contains(desired_types, parent_type) then
+			return parent
+		else
+			return filter_nearest_parent(parent, desired_types)
+		end
 	else
-		return return_nodes
+		return nil
 	end
 end
 
--- helper function [has_value]
+-- helper function [has_value] ///2
 local function has_value(tab, val)
 	for index, value in ipairs(tab) do
 		if value == val then
@@ -242,22 +253,10 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 		-- filter the nodes based on the opts
 		if opts and opts.siblings_only then
 			local current_node = ts_utils.get_node_at_cursor(current_window)
-			nodes = nil
+			nodes = filter_sibling_nodes(current_node, desired_types)
 
-			while true do
-				if current_node:parent() then
-					nodes = filter_sibling_nodes(current_node, desired_types)
-					if nodes and #nodes > 0 then
-						break
-					end
-					current_node = current_node:parent()
-				else
-					break
-				end
-			end
-
-			if not nodes then
-				nodes = {}
+			if #nodes == 0 then
+				nodes = { filter_nearest_parent(current_node, desired_types) }
 			end
 		else
 			nodes = get_desired_nodes(nodes, desired_types)

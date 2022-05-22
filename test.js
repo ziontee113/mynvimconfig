@@ -7,7 +7,21 @@ function myFunc(arg) {
     if (LHS === RHS) {
       console.log(LHS);
     }
-
+    if (LHS === RHS) {
+      console.log(LHS);
+    }
+    if (LHS === RHS) {
+      console.log(LHS);
+    }
+    if (LHS === RHS) {
+      console.log(LHS);
+    }
+    if (LHS === RHS) {
+      console.log(LHS);
+    }
+    if (LHS === RHS) {
+      console.log(LHS);
+    }
     if (LHS === RHS) {
       console.log(RHS);
     }
