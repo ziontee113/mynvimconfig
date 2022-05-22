@@ -1,4 +1,4 @@
----@diagnostic disable: missing-parameter, unused-local, empty-block
+---@diagnostic disable: missing-parameter, empty-block
 
 -- Imports & aliases ///1
 local M = {
@@ -147,25 +147,22 @@ local function has_value(tab, val)
 	return false
 end
 
+local function set_extmark_then_delete_it(start_row, start_col, contents, color_group, timeout)
+	local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
+		virt_text = { { contents, color_group } },
+		virt_text_pos = "overlay",
+	})
+
+	local timer = vim.loop.new_timer()
+	timer:start(
+		timeout,
+		timeout,
+		vim.schedule_wrap(function()
+			api.nvim_buf_del_extmark(0, ns, extmark_id)
+		end)
+	)
+end
 -- Dictionary Declaration ///1
-local dictionary = {
-	["function"] = {
-		color_group = "DapUIScope",
-		alias = "F",
-	},
-	["variable_declaration"] = {
-		color_group = "DapUIScope",
-		alias = "v",
-	},
-	["if_statement"] = {
-		color_group = "DapUIScope",
-		alias = "I",
-	},
-	["for_statement"] = {
-		color_group = "DapUIScope",
-		alias = "F",
-	},
-}
 
 -- possible keymaps
 local left_hand_side = "fdsawervcxqtzb"
@@ -378,38 +375,14 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 			if forward then
 				while next_closest_node_index + 1 <= #nodes do
 					local start_row, start_col, end_row, end_col = nodes[next_closest_node_index + 1]:range()
-					local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
-						virt_text = { { "", "DapUIScope" } },
-						virt_text_pos = "overlay",
-					})
 					next_closest_node_index = next_closest_node_index + 1
-
-					local timer = vim.loop.new_timer()
-					timer:start(
-						800,
-						800,
-						vim.schedule_wrap(function()
-							api.nvim_buf_del_extmark(0, ns, extmark_id)
-						end)
-					)
+					set_extmark_then_delete_it(start_row, start_col, "", "DapUIScope", 800)
 				end
 			else
 				while previous_closest_node_index - 1 >= 1 do
 					local start_row, start_col, end_row, end_col = nodes[previous_closest_node_index - 1]:range()
-					local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
-						virt_text = { { "", "DapUIScope" } },
-						virt_text_pos = "overlay",
-					})
 					previous_closest_node_index = previous_closest_node_index - 1
-
-					local timer = vim.loop.new_timer()
-					timer:start(
-						800,
-						800,
-						vim.schedule_wrap(function()
-							api.nvim_buf_del_extmark(0, ns, extmark_id)
-						end)
-					)
+					set_extmark_then_delete_it(start_row, start_col, "", "DapUIScope", 800)
 				end
 			end
 		end
