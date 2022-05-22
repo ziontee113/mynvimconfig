@@ -17,6 +17,7 @@ local current_desired_types = {
 	"if_statement",
 	"else_clause",
 	"else_statement",
+	"elseif_statement",
 	"for_statement",
 	"while_statement",
 	"switch_statement",
@@ -147,7 +148,11 @@ local function has_value(tab, val)
 	return false
 end
 
-local function set_extmark_then_delete_it(start_row, start_col, contents, color_group, timeout)
+local function set_extmark_then_delete_it(start_row, start_col, contents, color_group, timeout) -- ///2
+	if start_col <= 0 then
+		start_col = 1
+	end
+
 	local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
 		virt_text = { { contents, color_group } },
 		virt_text_pos = "overlay",
@@ -161,10 +166,10 @@ local function set_extmark_then_delete_it(start_row, start_col, contents, color_
 			api.nvim_buf_del_extmark(0, ns, extmark_id)
 		end)
 	)
-end
--- Dictionary Declaration ///1
 
--- possible keymaps
+	return extmark_id
+end
+-- Possible Keymaps for jumping ///1
 local left_hand_side = "fdsawervcxqtzb"
 left_hand_side = vim.split(left_hand_side, "")
 local right_hand_side = "jkl;oiu.,mpy/n"
@@ -337,7 +342,7 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 					next_closest_node = node
 					next_closest_node_line = start_row
 					next_closest_node_index = index
-				elseif previous_closest_node_line and start_row < previous_closest_node_line then
+				elseif next_closest_node_line and start_row < next_closest_node_line then
 					next_closest_node = node
 					next_closest_node_index = index
 				end
