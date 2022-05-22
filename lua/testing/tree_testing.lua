@@ -12,7 +12,15 @@ local ts_utils = require("nvim-treesitter.ts_utils")
 local api = vim.api
 local ns = api.nvim_create_namespace("tree_testing_ns")
 
-local current_desired_types = { "function", "if_statement", "for_statement", "while_statement", "switch_statement" } -- default desired types
+local current_desired_types = {
+	"function",
+	"if_statement",
+	"else_clause",
+	"else_statement",
+	"for_statement",
+	"while_statement",
+	"switch_statement",
+} -- default desired types
 local current_syntax_nodes = {} -- hash table of nodes for each buffer, gets cleared when TextChanged event is triggered
 
 -- Clear Namespace ///1
@@ -366,7 +374,7 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 			end
 		end
 	else -- if cursor moved
-		if opts.destination ~= "children" and opts.destination ~= "parent" then
+		if not opts then
 			if forward then
 				while next_closest_node_index + 1 <= #nodes do
 					local start_row, start_col, end_row, end_col = nodes[next_closest_node_index + 1]:range()
