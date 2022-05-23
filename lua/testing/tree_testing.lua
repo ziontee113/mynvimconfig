@@ -415,24 +415,28 @@ vim.api.nvim_create_autocmd({
 	end,
 })
 
+-- Methods to return ///1
+M.filtered_jump = go_to_next_instance
+M.targeted_jump = print_types
+
 -- Mappings ///1
 local opts = { noremap = true, silent = true }
 
 -- jump with virt_text
 vim.keymap.set("n", "gj", function()
-	print_types({ "function", "if_statement", "for_statement", "switch_statement", "while_statement" })
+	M.targeted_jump({ "function", "if_statement", "for_statement", "switch_statement", "while_statement" })
 end, opts)
 vim.keymap.set("n", "gv", function()
-	print_types({ "variable_declaration" })
+	M.targeted_jump({ "variable_declaration" })
 end, opts)
 vim.keymap.set("n", "gfu", function()
-	print_types({ "function" })
+	M.targeted_jump({ "function" })
 end, opts)
 vim.keymap.set("n", "gif", function()
-	print_types({ "if_statement" })
+	M.targeted_jump({ "if_statement" })
 end, opts)
 vim.keymap.set("n", "gfo", function()
-	print_types({ "for_statement" })
+	M.targeted_jump({ "for_statement" })
 end, opts)
 
 -- jump with desired_types
@@ -470,7 +474,7 @@ vim.keymap.set("n", " mc", ":messages clear<cr>", opts)
 
 -- TODOS: ///1
 -- TODO: differenciate named functions and unamed functions
--- TODO:: make the .setup() function
+
 -- TODO: make functionalities for jump up / down level / siblings
 --> TODO: jump sublings & up is fine, the problem is jump down, we need to get the tree from the current node and then jump
 
