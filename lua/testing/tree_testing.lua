@@ -171,7 +171,7 @@ local function set_extmark_then_delete_it(start_row, start_col, contents, color_
 end
 -- Dictionary ///1
 local icon_dictionary = {
-	["if_statement"] = "כֿ",
+	["if_statement"] = "",
 	["else_clause"] = "",
 	["else_statement"] = "",
 	["elseif_statement"] = "",
@@ -219,7 +219,7 @@ local function print_types(desired_types) -- ///2
 	for i = #nodes_before_cursor, 1, -1 do
 		local node = nodes_before_cursor[i]
 		local node_type = node:type()
-		local start_row, start_col, end_row, end_col = node:range()
+		local start_row, start_col = node:range()
 
 		if not left_hand_side[count] then
 			break
@@ -248,7 +248,7 @@ local function print_types(desired_types) -- ///2
 	for i = 1, #nodes_after_cursor do
 		local node = nodes_after_cursor[i]
 		local node_type = node:type()
-		local start_row, start_col, end_row, end_col = node:range()
+		local start_row, start_col = node:range()
 
 		if not right_hand_side[count] then
 			break
@@ -466,27 +466,27 @@ end, opts)
 
 -- jump with desired_types
 vim.keymap.set("n", "-", function()
-	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, false, { destination = "siblings" })
+	M.filtered_jump({ "if_statement", "else_clause", "else_statement" }, false, { destination = "siblings" })
 end, opts)
 vim.keymap.set("n", "=", function()
-	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true, { destination = "siblings" })
+	M.filtered_jump({ "if_statement", "else_clause", "else_statement" }, true, { destination = "siblings" })
 end, opts)
 vim.keymap.set("n", "_", function()
-	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, false, { destination = "parent" })
+	M.filtered_jump({ "if_statement", "else_clause", "else_statement" }, false, { destination = "parent" })
 end, opts)
 vim.keymap.set("n", "+", function()
-	go_to_next_instance({ "if_statement", "else_clause", "else_statement" }, true, { destination = "children" })
+	M.filtered_jump({ "if_statement", "else_clause", "else_statement" }, true, { destination = "children" })
 end, opts)
 
 vim.keymap.set("n", "<A-n>", function()
-	go_to_next_instance(current_desired_types, true)
+	M.filtered_jump(current_desired_types, true)
 	vim.schedule(function()
 		vim.cmd("norm! zO")
 		-- vim.cmd("norm! zz")
 	end)
 end, opts)
 vim.keymap.set("n", "<A-p>", function()
-	go_to_next_instance(current_desired_types, false)
+	M.filtered_jump(current_desired_types, false)
 	vim.schedule(function()
 		vim.cmd("norm! zO")
 		-- vim.cmd("norm! zz")
