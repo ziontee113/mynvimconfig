@@ -149,11 +149,11 @@ local function has_value(tab, val)
 end
 
 local function set_extmark_then_delete_it(start_row, start_col, contents, color_group, timeout) -- ///2
-	if start_col <= 0 then
-		start_col = 1
-	end
+	-- if start_col <= 0 then
+	-- 	start_col = 1
+	-- end
 
-	local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 1, {
+	local extmark_id = api.nvim_buf_set_extmark(0, ns, start_row, start_col - 0, {
 		virt_text = { { contents, color_group } },
 		virt_text_pos = "overlay",
 	})
@@ -171,14 +171,15 @@ local function set_extmark_then_delete_it(start_row, start_col, contents, color_
 end
 -- Dictionary ///1
 local icon_dictionary = {
-	["if_statement"] = "",
-	["else_clause"] = "",
-	["else_statement"] = "",
-	["elseif_statement"] = "",
-	["for_statement"] = "ﯩ",
+	["if_statement"] = "כֿ",
+	["else_clause"] = "",
+	["else_statement"] = "",
+	["elseif_statement"] = "",
+	["for_statement"] = "ﭜ",
 	["while_statement"] = "ﯩ",
 	["switch_statement"] = "ﳟ",
 	["function"] = "",
+	["variable_declaration"] = "",
 }
 
 -- Possible keymaps for jumping
