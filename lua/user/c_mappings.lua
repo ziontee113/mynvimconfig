@@ -140,4 +140,17 @@ require("syntax-tree-surfer").setup({
 		"while_statement",
 		"switch_statement",
 	},
+	left_hand_side = "fdsawervcxqtzb",
+	right_hand_side = "jkl;oiu.,mpy/n",
+	icon_dictionary = {
+		["if_statement"] = "",
+		["else_clause"] = "",
+		["else_statement"] = "",
+		["elseif_statement"] = "",
+		["for_statement"] = "ﭜ",
+		["while_statement"] = "ﯩ",
+		["switch_statement"] = "ﳟ",
+		["function"] = "",
+		["variable_declaration"] = "",
+	},
 })
