@@ -169,7 +169,19 @@ local function set_extmark_then_delete_it(start_row, start_col, contents, color_
 
 	return extmark_id
 end
--- Possible Keymaps for jumping ///1
+-- Dictionary ///1
+local icon_dictionary = {
+	["if_statement"] = "",
+	["else_clause"] = "",
+	["else_statement"] = "",
+	["elseif_statement"] = "",
+	["for_statement"] = "ﯩ",
+	["while_statement"] = "ﯩ",
+	["switch_statement"] = "ﳟ",
+	["function"] = "",
+}
+
+-- Possible keymaps for jumping
 local left_hand_side = "fdsawervcxqtzb"
 left_hand_side = vim.split(left_hand_side, "")
 local right_hand_side = "jkl;oiu.,mpy/n"
@@ -379,15 +391,27 @@ local function go_to_next_instance(desired_types, forward, opts) -- ///2
 		if not opts then
 			if forward then
 				while next_closest_node_index + 1 <= #nodes do
-					local start_row, start_col, end_row, end_col = nodes[next_closest_node_index + 1]:range()
+					local start_row, start_col = nodes[next_closest_node_index + 1]:range()
+					set_extmark_then_delete_it(
+						start_row,
+						start_col,
+						icon_dictionary[nodes[next_closest_node_index + 1]:type()],
+						"DapUIScope",
+						800
+					)
 					next_closest_node_index = next_closest_node_index + 1
-					set_extmark_then_delete_it(start_row, start_col, "", "DapUIScope", 800)
 				end
 			else
 				while previous_closest_node_index - 1 >= 1 do
-					local start_row, start_col, end_row, end_col = nodes[previous_closest_node_index - 1]:range()
+					local start_row, start_col = nodes[previous_closest_node_index - 1]:range()
+					set_extmark_then_delete_it(
+						start_row,
+						start_col,
+						icon_dictionary[nodes[previous_closest_node_index - 1]:type()],
+						"DapUIScope",
+						800
+					)
 					previous_closest_node_index = previous_closest_node_index - 1
-					set_extmark_then_delete_it(start_row, start_col, "", "DapUIScope", 800)
 				end
 			end
 		end
