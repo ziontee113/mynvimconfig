@@ -191,7 +191,7 @@ return require("packer").startup(function(use)
 	use("dbeniamine/cheat.sh-vim")
 
 	-- Smooth Scroll
-	use("karb94/neoscroll.nvim")
+	-- use("karb94/neoscroll.nvim")
 
 	-- Notify
 	use("rcarriga/nvim-notify")

@@ -68,6 +68,7 @@ require("hop-mappings")
 require("more_testing")
 
 require("user.c_mappings")
+require("user.syntax-tree-surfer-config")
 
 -- Cursorline color
 vim.cmd([[highlight Cursorline guibg=#212121]])
