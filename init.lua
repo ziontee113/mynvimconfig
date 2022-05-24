@@ -69,6 +69,7 @@ require("hop-mappings")
 require("more_testing")
 
 require("user.c_mappings")
+require("user.mappings.n_mappings")
 require("user.syntax-tree-surfer-config")
 
 -- Cursorline color

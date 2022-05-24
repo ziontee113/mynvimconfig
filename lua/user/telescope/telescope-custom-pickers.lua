@@ -58,6 +58,7 @@ function M.directory_picker()
 	local opts = {
 		finder = finders.new_table({
 			"~/.config/nvim/",
+			"~/.config/custom-nvim-plugin/",
 			"~/.config/nvim/lua/myPlugs/syntax-tree-surfer/",
 			"/mnt/d/notes",
 			"/mnt/e/YouTube Projects/",
