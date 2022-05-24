@@ -59,7 +59,7 @@ function M.directory_picker()
 		finder = finders.new_table({
 			"~/.config/nvim/",
 			"~/.config/custom-nvim-plugin/",
-			"~/.config/nvim-plugin-clones/todo-comments.nvim/",
+			"~/.config/nvim-plugin-clones",
 			"~/.config/nvim/lua/myPlugs/syntax-tree-surfer/",
 			"/mnt/d/notes",
 			"/mnt/e/YouTube Projects/",

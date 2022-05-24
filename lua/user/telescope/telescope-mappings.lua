@@ -3,6 +3,8 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- vim.cmd([[autocmd FileType TelescopePrompt inoremap <silent> <buffer> kk <Esc>]])
+
 keymap(
 	"n",
 	"<C-p>",

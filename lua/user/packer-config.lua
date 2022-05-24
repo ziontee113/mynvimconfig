@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
 	use("nvim-telescope/telescope-live-grep-raw.nvim")
 	use("nvim-telescope/telescope.nvim")
 	use("BurntSushi/ripgrep")
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- Vim UI
 	use("stevearc/dressing.nvim")
