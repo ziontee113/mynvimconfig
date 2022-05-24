@@ -73,3 +73,5 @@ require("user.syntax-tree-surfer-config")
 
 -- Cursorline color
 -- vim.cmd([[highlight Cursorline guibg=#212121]])
+-- Folded Color
+-- vim.cmd([[highlight Folded guifg=#5e97ec]])
