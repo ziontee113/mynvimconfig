@@ -47,8 +47,12 @@ return require("packer").startup(function(use)
 
 	-- Color Scheme
 	use("gruvbox-community/gruvbox")
-	use("folke/tokyonight.nvim")
-	use("folke/todo-comments.nvim")
+	-- use("folke/tokyonight.nvim")
+	-- use("jacoborus/tender.vim")
+	-- use("EdenEast/nightfox.nvim")
+	use("bluz71/vim-nightfly-guicolors")
+
+	-- use("folke/todo-comments.nvim")
 
 	-- Tree Sitter
 	-- use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "21ac88b9551072f49ba994f461f78794af43a5aa" })

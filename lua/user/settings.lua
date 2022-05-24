@@ -37,8 +37,14 @@ set.cursorline = true
 
 set.showmode = false
 
+-- edgy
+set.laststatus = 0
+
 vim.wo.signcolumn = "yes"
-vim.cmd([[:colorscheme gruvbox]])
+-- vim.cmd([[:colorscheme gruvbox]])
+-- vim.cmd([[:colorscheme tender]])
+-- vim.cmd([[:colorscheme terafox]])
+vim.cmd([[:colorscheme nightfly]])
 -- vim.cmd([[:colorscheme tokyonight]])
 vim.cmd([[:highlight SignColumn guibg=NONE]])
 

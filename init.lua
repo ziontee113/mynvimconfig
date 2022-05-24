@@ -27,7 +27,7 @@ require("user.evil-lualine")
 -- require("user.bufferline-config")
 -- G: Editing
 require("user.autopairs")
-require("user.todo-comments-config")
+--require("user.todo-comments-config")
 require("user.pretty-fold-config")
 -- H: LuaSnip
 require("user.luasnip-config")
@@ -72,4 +72,4 @@ require("user.c_mappings")
 require("user.syntax-tree-surfer-config")
 
 -- Cursorline color
-vim.cmd([[highlight Cursorline guibg=#212121]])
+-- vim.cmd([[highlight Cursorline guibg=#212121]])

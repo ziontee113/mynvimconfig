@@ -3,9 +3,9 @@ if not status_ok then
 	return
 end
 
-vim.cmd(":highlight GitSignsAdd guifg=#afaf00 guibg=NONE")
-vim.cmd(":highlight GitSignsChange guifg=#87af87 guibg=NONE")
-vim.cmd(":highlight GitSignsDelete guifg=#ff5f5f guibg=NONE")
+-- vim.cmd(":highlight GitSignsAdd guifg=#afaf00 guibg=NONE")
+-- vim.cmd(":highlight GitSignsChange guifg=#87af87 guibg=NONE")
+-- vim.cmd(":highlight GitSignsDelete guifg=#ff5f5f guibg=NONE")
 
 gitsigns.setup({
 	signs = {

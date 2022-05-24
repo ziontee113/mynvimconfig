@@ -1,6 +1,6 @@
 function myFunc(arg) {
   if (LHS === RHS) {
-    //TODO:;
+    // TODO:;
   }
 
   if (LHS === RHS) {
