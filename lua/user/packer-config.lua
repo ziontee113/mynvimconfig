@@ -152,7 +152,7 @@ return require("packer").startup(function(use)
 	use("thinca/vim-quickrun")
 
 	-- Cursor Flasher
-	use({ "rainbowhxch/beacon.nvim" })
+	-- use({ "rainbowhxch/beacon.nvim" })
 
 	-- Workspace Symbols
 	use("simrat39/symbols-outline.nvim")

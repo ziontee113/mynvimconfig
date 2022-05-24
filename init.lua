@@ -1,46 +1,46 @@
--- A: Essentials:
+-- ESSENTIALS:
 require("user.packer-config")
 require("user.settings")
 require("user.mappings")
 -- require("user.mappings-hop")
--- B: LSP Related:
+-- LSP RELATED:
 require("user.null-ls-config")
 require("user.cmp-config")
 require("user.lsp")
 require("dap-config")
--- C: Treesitter
+-- TREESITTER:
 require("user.treesitter")
--- D: Telescope
+-- TELESCOPE:
 require("user.telescope.telescope-config")
 require("user.telescope.telescope-custom-pickers")
 require("user.telescope.telescope-mappings")
--- E: UI Elements
+-- UI_ELEMENTS:
 -- require("user.nvim-tree")
 require("user.neotree-config")
 require("user.nvim-tree")
 require("user.gitsigns")
 require("user.toggle-term")
 require("user.wilder-config")
--- F: Status Line
+-- STATUS_LINE:
 -- require("user.lualine-config")
 require("user.evil-lualine")
 -- require("user.bufferline-config")
--- G: Editing
+-- EDITING:
 require("user.autopairs")
 --require("user.todo-comments-config")
 require("user.pretty-fold-config")
--- H: LuaSnip
+-- LUASNIP:
 require("user.luasnip-config")
--- J: Advanced Plugins
+-- ADVANCED_PLUGINS:
 require("user.vim-submode-config")
--- Cursor Flasher
-require("user.beacon-config")
+-- CURSOR_FLASHER:
+-- require("user.beacon-config")
 require("user.symbols-outline-config")
 require("user.notify-config")
 --Custom Plugins
 require("myPlugs.global")
 
--- S:imple Configs
+-- SIMPLE_CONFIGS:
 require("Comment").setup()
 require("colorizer").setup()
 require("neoclip").setup({
