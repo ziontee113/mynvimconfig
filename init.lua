@@ -23,7 +23,7 @@ require("user.toggle-term")
 require("user.wilder-config")
 -- STATUS_LINE:
 -- require("user.lualine-config")
-require("user.evil-lualine")
+-- require("user.evil-lualine")
 -- require("user.bufferline-config")
 -- EDITING:
 require("user.autopairs")
@@ -75,4 +75,4 @@ require("user.syntax-tree-surfer-config")
 -- Cursorline color
 -- vim.cmd([[highlight Cursorline guibg=#212121]])
 -- Folded Color
--- vim.cmd([[highlight Folded guifg=#5e97ec]])
+vim.cmd([[highlight Folded guifg=#424242]])

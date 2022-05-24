@@ -1,4 +1,4 @@
-local function base_map(lhs)
+local function base_map(lhs) --{{{
 	return function(mode)
 		return function(rhs)
 			vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
@@ -11,9 +11,7 @@ function _G.nnoremap(lhs)
 end
 function _G.inoremap(lhs)
 	return base_map(lhs)("i")
-end
-
---------------------------------------------------------------------------------
+end --}}}
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
