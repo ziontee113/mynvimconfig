@@ -54,7 +54,7 @@ require("neoclip").setup({
 	},
 })
 require("user.twilight-config")
-require("user.neoscroll-config")
+-- require("user.neoscroll-config")
 
 ------------------  NOTE: Language Specific Settings ----------------------------
 require("user.lang-settings.markdown")
