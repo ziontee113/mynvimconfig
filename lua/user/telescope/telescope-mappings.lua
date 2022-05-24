@@ -20,5 +20,5 @@ keymap("n", "<C-g>", ":lua require('telescope').extensions.live_grep_raw.live_gr
 keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>fz", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 
-keymap("n", "<leader><C-p>", ":lua require('user.telescope-custom-pickers').vimrc_find_files()<cr>", opts)
-keymap("n", "<leader><leader>g", ":lua require('user.telescope-custom-pickers').vimrc_live_grep()<cr>", opts)
+keymap("n", "<leader><C-p>", ":lua require('user.telescope.telescope-custom-pickers').vimrc_find_files()<cr>", opts)
+keymap("n", "<leader><leader>g", ":lua require('user.telescope.telescope-custom-pickers').vimrc_live_grep()<cr>", opts)
