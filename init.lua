@@ -3,7 +3,7 @@ require("user.packer-config")
 require("user.settings")
 require("user.mappings")
 -- require("user.mappings-hop")
--- LSP RELATED:
+-- LSP_RELATED:
 require("user.null-ls-config")
 require("user.cmp-config")
 require("user.lsp")

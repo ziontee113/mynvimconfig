@@ -43,6 +43,8 @@ keymap("n", "<Leader>-", ":set number! | set relativenumber! | set signcolumn:no
 keymap("n", "<Leader><Leader>-", ":set signcolumn:yes:2<cr>", opts) --> Twilight
 
 -- Experimental Mappings
+keymap("n", "<c-e>", [[2<C-e>]], opts)
+keymap("n", "<c-y>", [[2<C-y>]], opts)
 keymap("n", "<A-i>", [[<C-i>]], opts)
 keymap("n", "<A-o>", [[o<Esc>]], opts)
 -- keymap("n", "<C-o>", [[zM<C-o>]], opts)
