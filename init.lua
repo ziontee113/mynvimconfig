@@ -11,8 +11,9 @@ require("dap-config")
 -- C: Treesitter
 require("user.treesitter")
 -- D: Telescope
-require("user.telescope-config")
-require("user.telescope-custom-pickers")
+require("user.telescope.telescope-config")
+require("user.telescope.telescope-custom-pickers")
+require("user.telescope.telescope-mappings")
 -- E: UI Elements
 -- require("user.nvim-tree")
 require("user.neotree-config")
